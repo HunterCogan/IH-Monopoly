@@ -12,6 +12,9 @@ class Character {
 		this.jail[0] === true;
 		// if yes, prompt for options
 	}
+
+	// on dice roll call this function to move. accepts dice number as steps value
+	moveDraw(steps) {}
 }
 
 export { Character };
