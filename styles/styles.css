@@ -38,7 +38,8 @@ body {
 #board {
     width: 800px;
     height: 100%;
-    background: dimgray;
+    background: url('../assets/template-board.jpeg') no-repeat;
+    background-size: contain;
 }
 
 .player-box {
