@@ -18,6 +18,8 @@ body {
     linear-gradient(60deg,  #484848 25%, transparent 25.5%, transparent 75%,  #484848 75%,  #484848);
     background-size:40px 70px;
     background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+    /**/
+    font-family: "Josefin Sans", serif;
 }
 
 .flex-column {
@@ -48,6 +50,13 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    border-radius: 5px;
+}
+
+.player-name {
+    text-align: center;
+    font-family: "Josefin Sans", serif;
+    font-size: 1.50rem;
 }
 
 #p1-box {
