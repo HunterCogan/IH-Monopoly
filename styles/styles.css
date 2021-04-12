@@ -18,6 +18,8 @@ body {
     linear-gradient(60deg,  #484848 25%, transparent 25.5%, transparent 75%,  #484848 75%,  #484848);
     background-size:40px 70px;
     background-position: 0 0, 0 0, 20px 35px, 20px 35px, 0 0, 20px 35px;
+    /**/
+    font-family: "Josefin Sans", serif;
 }
 
 .flex-column {
@@ -40,6 +42,8 @@ body {
     height: 100%;
     background: url('../assets/template-board.jpeg') no-repeat;
     background-size: cover;
+    border-radius: 30px;
+    overflow: hidden;
 }
 
 .player-box {
@@ -48,20 +52,32 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
+    border-radius: 15px;
+    margin: 15px;
+}
+
+.player-name {
+    text-align: center;
+    font-family: "Josefin Sans", serif;
+    font-size: 1.50rem;
 }
 
 #p1-box {
     background-color: #ffd3d5;
+    margin-top: 0;
 }
 
 #p2-box {
     background-color: #9dcfff;
+    margin-bottom: 0;
 }
 
 #p3-box {
+    margin-top: 0;
     background-color: #bbffbb;
 }
 
 #p4-box {
     background-color: #ffecbc;
+    margin-bottom: 0;
 }
