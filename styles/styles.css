@@ -42,6 +42,8 @@ body {
     height: 100%;
     background: url('../assets/template-board.jpeg') no-repeat;
     background-size: cover;
+    border-radius: 30px;
+    overflow: hidden;
 }
 
 .player-box {
@@ -50,7 +52,8 @@ body {
     padding: 15px;
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
+    border-radius: 15px;
+    margin: 15px;
 }
 
 .player-name {
@@ -61,16 +64,20 @@ body {
 
 #p1-box {
     background-color: #ffd3d5;
+    margin-top: 0;
 }
 
 #p2-box {
     background-color: #9dcfff;
+    margin-bottom: 0;
 }
 
 #p3-box {
+    margin-top: 0;
     background-color: #bbffbb;
 }
 
 #p4-box {
     background-color: #ffecbc;
+    margin-bottom: 0;
 }
