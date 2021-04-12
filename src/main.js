@@ -1,4 +1,4 @@
 import { game } from './game.js';
-import { cards } from './objects/cards.js';
+import { cards } from './objects/tiles.js';
 
 game('dummyData');
