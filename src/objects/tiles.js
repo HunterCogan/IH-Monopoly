@@ -1,15 +1,14 @@
 class Property {
-	constructor(name, cost, rentPrices, mortagage, housePrice, color, position) {
+	constructor(name, cost, rentPrices, mortagage, housePrice, type) {
 		// number for position on the board
-		this.poistion = position;
 
 		this.name = name;
 		// Cost to buy property
 		this.cost = cost;
 		// Prices for rent in array [base rent, 1server, 2server, ..., supercomputer]
 		this.rentPrices = rentPrices;
-		// Type of property, color or utility
-		this.color = color;
+		// Type of property, type or utility
+		this.type = type;
 		//Owner of property
 		this.owner = null;
 		//how many servers are on property, 1 - 5, 1-4 for server, 5 for supercomputer
@@ -19,209 +18,177 @@ class Property {
 		this.mortgage = mortagage;
 		this.housePrice = housePrice;
 	}
+	//  the cards object will tiles, current player will be player
+	calculateRent(tiles, player, currentPosition) {
+		// check card types and counters
+	}
+
+	// takes the current position of the player, and the cards Object
+	checkOwner(currentPosition, tiles) {
+		if (tiles[currentPosition].owner) this.calculateRent();
+	}
 }
 
 let cards = {};
 
-cards.microsoft = new Property(
+cards[1] = new Property(
 	'Microsoft',
 	'0.6',
 	[0.2, 0.1, 0.3, 0.9, 1.6, 2.5],
 	0.3,
 	0.5,
-	'brown',
-	1
+	'brown'
 );
 
-cards.linkedIn = new Property(
+cards[3] = new Property(
 	'linkedin',
 	0.6,
 	[0.04, 0.2, 0.6, 1.8, 3.2, 4.5],
 	0.3,
 	0.5,
-	'brown',
-	3
+	'brown'
 );
 
-cards.foxNews = new Property(
+cards[6] = new Property(
 	'foxnews.com',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
 	0.5,
 	0.5,
-	'lightBlue',
-	6
+	'lightBlue'
 );
 
-cards.imdb = new Property(
+cards[8] = new Property(
 	'imdb.com',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
 	0.5,
 	0.5,
-	'lightBlue',
-	8
+	'lightBlue'
 );
-cards.espn = new Property(
+cards[9] = new Property(
 	'espn.com',
 	1.2,
 	[0.08, 0.4, 1, 3, 4.5, 6],
 	0.6,
 	0.5,
-	'lightBlue',
-	9
+	'lightBlue'
 );
-cards.weather = new Property(
+cards[11] = new Property(
 	'weather.com',
 	1.4,
 	[0.1, 0.5, 1.5, 4.5, 6.25, 7.5],
 	0.7,
 	1,
-	'pink',
-	11
+	'pink'
 );
-cards.craigslist = new Property(
+cards[13] = new Property(
 	'craiglist',
 	1.4,
 	[0.1, 0.5, 1.5, 4.5, 6.25, 7.5],
 	0.7,
 	1,
-	'pink',
-	13
+	'pink'
 );
 
-cards.walmart = new Property(
-	'Walmart.com',
-	1.6,
-	[0.12, 0.6, 1.8, 5, 7, 9],
-	0.8,
-	1,
-	'pink',
-	14
-);
-cards.zoom = new Property(
-	'Zoom.',
-	1.8,
-	[0.14, 0.7, 2, 5.5, 7.5, 9.5],
-	0.9,
-	1,
-	'orange',
-	16
-);
-cards.fandom = new Property(
+cards[14] = new Property('Walmart.com', 1.6, [0.12, 0.6, 1.8, 5, 7, 9], 0.8, 1, 'pink');
+cards[16] = new Property('Zoom.', 1.8, [0.14, 0.7, 2, 5.5, 7.5, 9.5], 0.9, 1, 'orange');
+cards[18] = new Property(
 	'fandom.com',
 	1.8,
 	[0.14, 0.7, 2, 5.5, 7.5, 9.5],
 	0.9,
 	1,
-	'orange',
-	18
+	'orange'
 );
 
-cards.cnn = new Property('CNN.com', 2, [0.16, 0.8, 2.2, 6, 8, 10], 1, 1, 'Orange', 19);
-cards.instagram = new Property(
+cards[19] = new Property('CNN.com', 2, [0.16, 0.8, 2.2, 6, 8, 10], 1, 1, 'Orange');
+cards[21] = new Property(
 	'Instagram.com',
 	2.2,
 	[0.18, 0.9, 2.5, 7, 8.75, 10.5],
 	1.1,
 	1.5,
-	'red',
-	21
+	'red'
 );
-cards.ebay = new Property(
+cards[23] = new Property(
 	'Ebay.com',
 	2.2,
 	[0.18, 0.9, 2.5, 7, 8.75, 10.5],
 	1.1,
 	1.5,
-	'red',
-	23
+	'red'
 ); // Export Property Class
-cards.twitter = new Property(
-	'Twitter.com',
-	2.4,
-	[0.2, 1, 3, 7.5, 9.25, 11],
-	1.2,
-	1.5,
-	'red',
-	24
-);
-cards.reddit = new Property(
+cards[24] = new Property('Twitter.com', 2.4, [0.2, 1, 3, 7.5, 9.25, 11], 1.2, 1.5, 'red');
+cards[26] = new Property(
 	'Reddit.com',
 	2.6,
 	[0.22, 1.1, 3.3, 8, 9.75, 11.5],
 	1.3,
 	1.5,
-	'Yellow',
-	26
+	'Yellow'
 );
-cards.cornhub = new Property(
+cards[27] = new Property(
 	'CornHub.com',
 	2.6,
 	[0.22, 1.1, 3.3, 8, 9.75, 11.5],
 	1.3,
 	1.5,
-	'yellow',
-	27
+	'yellow'
 );
 
-cards.yahoo = new Property(
+cards[29] = new Property(
 	'Yahoo.com',
 	2.8,
 	[0.24, 1.2, 3.6, 8.5, 10.25, 12],
 	1.4,
 	1.5,
-	'yellow',
-	29
+	'yellow'
 );
 
-cards.wikipedia = new Property(
+cards[31] = new Property(
 	'Wikipedia.com',
 	3,
 	[0.26, 1.3, 3.9, 9, 11, 12.75],
 	1.5,
 	2,
-	'green',
-	31
+	'green'
 );
 
-cards.amazon = new Property(
+cards[32] = new Property(
 	'Amazon.com',
 	3,
 	[0.26, 1.3, 3.9, 9, 11, 12.75],
 	1.5,
 	2,
-	'green',
-	32
+	'green'
 );
 
-cards.youtube = new Property(
+cards[34] = new Property(
 	'YouTube.com',
 	3.2,
 	[0.28, 1.5, 4.5, 10, 12, 14],
 	1.6,
 	2,
-	'green',
-	34
+	'green'
 );
 
-cards.facebook = new Property(
+cards[37] = new Property(
 	'Facebook.com',
 	3.5,
 	[0.35, 1.75, 5, 11, 13, 15],
 	1.75,
 	2,
-	'darkBlue',
-	37
+	'darkBlue'
 );
 
-cards.google = new Property(
-	'Google.com',
-	4,
-	[0.5, 2, 6, 14, 17, 20],
-	2,
-	2,
-	'darkBlue',
-	39
-);
+cards[39] = new Property('Google.com', 4, [0.5, 2, 6, 14, 17, 20], 2, 2, 'darkBlue');
+
+cards[5] = new Property('Charter', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+cards[15] = new Property('Time Warner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+cards[25] = new Property('AT&T', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+cards[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+
+cards[12] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
+cards[28] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
 export { cards };
