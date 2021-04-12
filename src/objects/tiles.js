@@ -12,20 +12,32 @@ class Property {
 		//Owner of property
 		this.owner = null;
 		//how many servers are on property, 1 - 5, 1-4 for server, 5 for supercomputer
-		this.server = null;
+		this.server = 0;
 		// mortage is an arr with price for
 		// mortgage and a boolean to check if rent is collectable
 		this.mortgage = mortagage;
 		this.housePrice = housePrice;
 	}
 	//  the cards object will tiles, current player will be player
-	calculateRent(tiles, player, currentPosition) {
+	calculateRent(currPlayer, tiles, diceRoll) {
+		// how many of the same type of cards this owner has
+		let typeCounter = 0;
+		let rentDue = 0;
+		// loop for how many of the same card type this owner has
+		for (card in tiles) {
+			card.type == this.type && card.owner == this.owner ? counter++ : (counter += 0);
+		}
 		// check card types and counters
+		this.type === 'isp'
+			? (rentDue += this.rentPrices[typeCounter - 1])
+			: this.type === 'utility'
+			? (rentDue += (this.rentPrices[counter - 1] * diceRoll) / 10)
+			: (rentDue += this.rentPrices[this.server] * typeCounter);
 	}
 
-	// takes the current position of the player, and the cards Object
-	checkOwner(currentPosition, tiles) {
-		if (tiles[currentPosition].owner) this.calculateRent();
+	// pass in current player and the cards object
+	checkOwner(currPlayer, tiles, diceRoll) {
+		if (this.owner) this.calculateRent(currPlayer, tiles, diceRoll);
 	}
 }
 
