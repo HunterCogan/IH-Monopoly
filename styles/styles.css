@@ -132,11 +132,39 @@ body {
         margin: 15px;
     }
 
+    /* player content */
+
     .player-name {
         text-align: center;
         font-family: "Josefin Sans", serif;
         font-size: 1.50rem;
+        height: 25px;
+        width: 25px;
+        border: 2px black solid;
     }
+
+    .player-coin {
+        height: 25px;
+        width: 25px;
+        border: 2px black solid;
+    }
+
+    .player-property{
+        height: 25px;
+        width: 25px;
+        border: 2px black solid;
+    }
+
+    .player-token{
+        height: 25px;
+        width: 25px;
+        border: 2px black solid;
+    }
+
+
+/* player content END*/
+
+
 /*End Player Boxes*/
 
 /*Outside Tabs that will show who owns what property*/
