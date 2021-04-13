@@ -58,25 +58,8 @@ body {
     overflow: hidden;
 }
 
-#p1-box {
-    background-color: #ffd3d5;
-    margin-top: 0;
-}
-
-#p2-box {
-    background-color: #9dcfff;
-    margin-bottom: 0;
-}
-
-#p3-box {
-    background-color: #bbffbb;
-    margin-top: 0;
-}
-
-#p4-box {
-    background-color: #ffecbc;
-    margin-bottom: 0;
-}
+#p1-box, #p3-box {margin-top: 0;}
+#p2-box, #p4-box {margin-bottom: 0;}
 
 .players {
     height: 100%;
@@ -136,20 +119,51 @@ body {
     height: 100%;
 }
 
+/*player token circles*/
+
+#remove-in-production {
+    display: flex;
+    flex-direction: column;
+}
+
 .tokenBackground{
-    background-color: #9dcfff;
-    height: 40px;
-    width: 40px;
-    border-radius: 50px;
+    height: 25px;
+    width: 25px;
+    border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.p1 {background-color: #ffd3d5;}
+.p2 {background-color: #9dcfff;}
+.p3 {background-color: #bbffbb;}
+.p4 {background-color: #ffecbc;}
+
 #speaker{
-    background-image: url("../assets/Iconpack/outline_speaker_black_24dp.png");
+    background-image: url("../assets/Iconpack/speaker.png");
     background-size: 100%;
-    height: 30px;
-    width: 30px;
-    
+    height: 19px;
+    width: 19px;
+}
+
+#mouse {
+    background-image: url("../assets/Iconpack/mouse.png");
+    background-size: 100%;
+    height: 19px;
+    width: 19px;
+}
+
+#keyboard {
+    background-image: url("../assets/Iconpack/keyboard.png");
+    background-size: 100%;
+    height: 19px;
+    width: 19px;
+}
+
+#monitor {
+    background-image: url("../assets/Iconpack/monitor.png");
+    background-size: 100%;
+    height: 19px;
+    width: 19px;
 }

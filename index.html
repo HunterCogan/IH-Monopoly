@@ -12,16 +12,24 @@
 </head>
 
 <body>
+
+	<!--Wrap everything to center-->
 	<div id="body-wrap">
+
+		<!--Left side player boxes-->
 		<div class="flex-column players">
-			<div id="p1-box" class="player-box">
+			<div id="p1-box" class="player-box p1">
 				<div class="player-name">Dicky</div>
 			</div>
-			<div id="p2-box" class="player-box">
+			<div id="p2-box" class="player-box p2">
 				<div class="player-name">Juan</div>
 			</div>
 		</div>
+
+		<!--Wrapper for board and "property owned by X player" tabs-->
 		<div id="board-wrap">
+
+			<!--Top row with tab placeholders-->
 			<div id="tab-top" class="flex-row">
 				<div class="board-tab tab-corner-h"></div>
 				<div id="tab-instagram" class="board-tab tab-middle-h"></div>
@@ -35,7 +43,11 @@
 				<div id="tab-yahoo" class="board-tab tab-middle-h"></div>
 				<div class="board-tab tab-corner-h"></div>
 			</div>
+
+			<!--Wrapper row that holds left tabs, game board, and right tabs-->
 			<div id="tab-middle" class="flex-row">
+
+				<!--Left column with tab placeholders-->
 				<div id="tabs-left" class="flex-column">
 					<div class="board-tab tab-corner-v"></div>
 					<div id="tab-cnn" class="board-tab tab-middle-v"></div>
@@ -49,7 +61,11 @@
 					<div id="tab-weather" class="board-tab tab-middle-v"></div>
 					<div class="board-tab tab-corner-v"></div>
 				</div>
+
+				<!--Actual game board-->
 				<div id="board"></div>
+
+				<!--Right column with tab placeholders-->
 				<div id="tabs-right" class="flex-column">
 					<div id="tab-hacked-1" class="board-tab tab-corner-v"></div>
 					<div id="tab-wikipedia" class="board-tab tab-middle-v"></div>
@@ -64,6 +80,8 @@
 					<div class="board-tab tab-corner-v"></div>
 				</div>
 			</div>
+
+			<!--Bottom row with tab placeholders-->
 			<div id="tab-bottom" class="flex-row">
 				<div class="board-tab tab-corner-h"></div>
 				<div id="tab-espn" class="board-tab tab-middle-h"></div>
@@ -78,33 +96,46 @@
 				<div class="board-tab tab-corner-h"></div>
 			</div>
 		</div>
+
+		<!--Right side player boxes-->
 		<div class="flex-column players">
-			<div id="p3-box" class="player-box">
+			<div id="p3-box" class="player-box p3">
 				<div class="player-name">Jonny</div>
 			</div>
-			<div id="p4-box" class="player-box">
+			<div id="p4-box" class="player-box p4">
 				<div class="player-name">Hunter</div>
 			</div>
 		</div>
+
+	</div>
+	<!-- End of main wrapper -->
+</body>
+
+<!-- Juan Tokens -->
+
+<!-- speaker -->
+<div id ="remove-in-production">
+	<div class="tokenBackground p1">
+		<div id="speaker"></div>
 	</div>
 
-</body>
-<!-- Juan Token -->
-<!-- speaker -->
-<div class="tokenBackground">
-	<div id="speaker">
+	<!-- mouse -->
+	<div class="tokenBackground p2">
+		<div id="mouse"></div>
+	</div>
 
+	<!-- keyboard -->
+	<div class="tokenBackground p3">
+		<div id="keyboard"></div>
+	</div>
+
+	<!-- monitor -->
+	<div class="tokenBackground p4">
+		<div id="monitor"></div>
 	</div>
 </div>
 
-
-
-
-
-
-
-<!-- Juan token ends -->
-
+<!-- Juan tokens end -->
 
 <script type="module" src="src/objects/cards.js"></script>
 <script type="module" src="src/objects/players.js"></script>
