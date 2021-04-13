@@ -14,5 +14,7 @@ function dice2() {
 	return Math.round(Math.random() * 6);
 }
 
-diceRoll = dice1() + dice2();
+function diceRoll() {
+	return dice1() + dice2();
+}
 export { dice1, dice2, diceRoll };
