@@ -206,24 +206,27 @@ body {
     /* player content */
 
     .player-name {
-        text-align: center;
         font-family: "Josefin Sans", serif;
         font-size: 1.75rem;
         height: 40px;
         width: 100%;
         border: 2px black solid;
         border-radius: 25px;
-        padding-top: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .player-coin {
-        text-align: center;
         font-family: "Josefin Sans", serif;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
         height: 40px;
         width: 100%;
         border: 2px black solid;
         border-radius: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .player-property{
@@ -241,6 +244,14 @@ body {
         width: 80px;
         border: 2px black solid;
         border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .player-tokens div {
+        height: 56px;
+        width: 56px;
     }
 
 
@@ -310,28 +321,28 @@ body {
     .p3 {background-color: #bbffbb;}
     .p4 {background-color: #ffecbc;}
 
-    #speaker{
+    .speaker{
         background-image: url("../assets/Iconpack/speaker.png");
         background-size: 100%;
         height: 19px;
         width: 19px;
     }
 
-    #mouse {
+    .mouse {
         background-image: url("../assets/Iconpack/mouse.png");
         background-size: 100%;
         height: 19px;
         width: 19px;
     }
 
-    #keyboard {
+    .keyboard {
         background-image: url("../assets/Iconpack/keyboard.png");
         background-size: 100%;
         height: 19px;
         width: 19px;
     }
 
-    #monitor {
+    .monitor {
         background-image: url("../assets/Iconpack/monitor.png");
         background-size: 100%;
         height: 19px;
