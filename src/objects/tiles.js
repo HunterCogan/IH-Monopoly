@@ -1,7 +1,7 @@
 let totalHouse = 50;
 let totalHotel = 50;
 class Property {
-	constructor(name, cost, rentPrices, mortagage, housePrice, type) {
+	constructor(name, cost, rentPrices, mortgage, housePrice, type) {
 		// number for position on the board
 
 		this.name = name;
@@ -17,8 +17,19 @@ class Property {
 		this.server = 0;
 		// mortage is an arr with price for
 		// mortgage and a boolean to check if rent is collectable
-		this.mortgage = mortagage;
+		this.mortgage = mortgage;
 		this.housePrice = housePrice;
+		this.isMortgaged = false;
+	}
+
+	mortgagProp(currPlayer) {
+		currPlayer.bitcoin += this.mortgage
+		this.isMortgaged = true
+	}
+
+	unmortgageProp(currPlayer) {
+		currPlayer.bitcoin -= (this.mortgage * 1.1)
+		this.isMortgaged = false
 	}
 
 	// how many of one type does owner have and do they have all of of one type
@@ -54,22 +65,25 @@ class Property {
 
 	//  the cards object will tiles, current player will be player
 	calculateRent(allGameObjects) {
-		const { properties, diceRoll } = allGameObjects;
-		// desstructure return values
-		const { typeCounter, typeMax, serverCount } = this.counter(properties);
-		//whats the max amount of server of this property type
-		const noServer = Math.max(...serverCount);
-		// update the amount of rent due by the typeMax
-		this.type === 'isp'
-			? (rentDue += this.rentPrices[typeCounter - 1])
-			: this.type === 'utility'
-			? (rentDue += (this.rentPrices[typeCounter - 1] * diceRoll) / 10)
-			: typeMax === true && noServer === 0
-			? (rentDue += this.rentPrices[0] * 2)
-			: (rentDue += this.rentPrices[this.server]);
-
-		// subtract rent from player and give it to owner
-		return rentDue;
+		if (!isMortgaged) {
+			const { properties, diceRoll } = allGameObjects;
+			// desstructure return values
+			const { typeCounter, typeMax, serverCount } = this.counter(properties);
+			//whats the max amount of server of this property type
+			const noServer = Math.max(...serverCount);
+			// update the amount of rent due by the typeMax
+			this.type === 'isp'
+				? (rentDue += this.rentPrices[typeCounter - 1])
+				: this.type === 'utility'
+				? (rentDue += (this.rentPrices[typeCounter - 1] * diceRoll) / 10)
+				: typeMax === true && noServer === 0
+				? (rentDue += this.rentPrices[0] * 2)
+				: (rentDue += this.rentPrices[this.server]);
+	
+			// subtract rent from player and give it to owner
+			return rentDue;
+		}
+		return 0;
 	}
 
 	// pass in current player and the cards object
@@ -108,7 +122,7 @@ let properties = {};
 
 properties[1] = new Property(
 	'microsoft',
-	'0.6',
+	0.6,
 	[0.2, 0.1, 0.3, 0.9, 1.6, 2.5],
 	0.3,
 	0.5,
