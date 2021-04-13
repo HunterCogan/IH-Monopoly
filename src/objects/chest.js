@@ -23,33 +23,46 @@ function landOnCommunity(currPlayer) {
 	communityCard.action(currPlayer);
 }
 
+// Advance to Go (Collect $2)
 let card1 = new Community(1);
 card1.action = (currPlayer) => {
 	currPlayer.position = 0;
 	currPlayer.bitcoin += 2;
 };
+
+// Collect $2
 let card2 = new Community(2);
 card2.action = (currPlayer) => {
 	currPlayer.bitcoin += 2;
 };
+
+// Pay $0.5
 let card3 = new Community(3);
 card3.action = (currPlayer) => {
 	currPlayer.bitcoin -= 0.5;
 };
+
+// From sale of stock you get $0.5
 let card4 = new Community(4);
 card4.action = (currPlayer) => {
-	currPlayer.bitcoin += 2;
+	currPlayer.bitcoin += .5;
 };
+
+// Anti-virus Software–Free ransomware unlock
 let card5 = new Community(5);
 card5.action = (currPlayer) => {
 	currPlayer.getOutJail[0] = true;
 	currPlayer.getOutJail[1] += 1;
 };
+
+// You’ve been hacked!–Files are locked immediately–Do not pass Go, do not collect $2
 let card6 = new Community(6);
 card6.action = (currPlayer) => {
 	currPlayer.jail[0] = true;
 	currPlayer.position = 10;
 };
+
+// Collect $.5 from every player
 let card7 = new Community(7);
 card7.action = (currPlayer, players) => {
 	for (player in players) {
@@ -58,34 +71,50 @@ card7.action = (currPlayer, players) => {
 		TODO: currPlayer += 0.5;
 	}
 };
+
+// Receive $1
 let card8 = new Community(8);
 card8.action = (currPlayer) => {
 	currPlayer.bitcoin += 1;
 };
+
+// Receive $0.2
 let card9 = new Community(9);
 card9.action = (currPlayer) => {
 	currPlayer.bitcoin += 0.2;
 };
+
+// Receive $0.1
 let card10 = new Community(10);
 card10.action = (currPlayer) => {
 	currPlayer.bitcoin += 0.1;
 };
+
+// Receive $1
 let card11 = new Community(11);
 card11.action = (currPlayer) => {
 	currPlayer.bitcoin += 1;
 };
+
+// Pay $1
 let card12 = new Community(12);
 card12.action = (currPlayer) => {
 	currPlayer.bitcoin -= 1;
 };
+
+// Pay $1.5
 let card13 = new Community(13);
 card13.action = (currPlayer) => {
 	currPlayer.bitcoin -= 1.5;
 };
+
+// Receive $0.25
 let card14 = new Community(14);
 card14.action = (currPlayer) => {
 	currPlayer.bitcoin += 0.25;
 };
+
+// Pay $0.4 per server–$1.15 per quantum computer
 let card14 = new Community(14);
 card14.action = (currPlayer, tiles) => {
 	//need to destruct
