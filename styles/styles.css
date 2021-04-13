@@ -37,14 +37,33 @@ body {
     background-color: rgba(0,0,0,0.4);
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .modal-content {
     background-size: contain;
     background-repeat: no-repeat;
-    border: 1px solid #888;
     width: 500px;
     height: 570px;
+    cursor: default;
+}
+
+.modal-contain {
+    position: relative;
+    align-items: flex-end;
+    cursor: unset;
+    z-index: 2;
+}
+
+.close {
+    background: url("../assets/Iconpack/close-white.png") no-repeat;
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+}
+
+#prop-modal-content {
+    margin-right: 40px;
 }
 
 /*Start Global Classes*/
@@ -183,7 +202,6 @@ body {
 
     /* player box  End*/
     
-
 
     /* player content */
 
