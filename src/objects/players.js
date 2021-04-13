@@ -7,6 +7,7 @@ class Character {
 		this.jail = [false, 0];
 		this.position = 0;
 		this.properties = [];
+		this.getOutJail = [false, 0];
 	}
 	// Check if player in jail, if so, prompt for options or check turns missed
 	checkJail() {

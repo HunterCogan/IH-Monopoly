@@ -45,7 +45,7 @@ class Property {
 	}
 	buy(currPlayer) {
 		// update owner
-		this.owner = currPlayer.name;
+		this.owner = currPlayer;
 		//take money
 		currPlayer.bitcoin -= cost;
 		// add property to player's list of properties they own
@@ -53,7 +53,7 @@ class Property {
 	}
 
 	//  the cards object will tiles, current player will be player
-	calculateRent(currPlayer, tiles, diceRoll) {
+	calculateRent(tiles, diceRoll) {
 		// desstructure return values
 		const { typeCounter, typeMax, serverCount } = this.counter(tiles);
 		const noServer = Math.max(...serverCount);
@@ -67,15 +67,12 @@ class Property {
 			: (rentDue += this.rentPrices[this.server]);
 
 		// subtract rent from player and give it to owner
-		if (currPlayer.bitcoin < rentDue) return 'you are broke';
-		currPlayer.bitcoin -= rentDue;
-		this.owner.bitcoin += rentDue;
+		return rentDue;
 	}
 
 	// pass in current player and the cards object
-	checkOwner(currPlayer, tiles, diceRoll) {
+	checkOwner(currPlayer) {
 		if (this.owner && this.owner !== currPlayer.name) {
-			this.calculateRent(currPlayer, tiles, diceRoll);
 			return true;
 		}
 		return false;
@@ -102,9 +99,9 @@ class Property {
 	}
 }
 
-let cards = {};
+let properties = {};
 
-cards[1] = new Property(
+properties[1] = new Property(
 	'microsoft',
 	'0.6',
 	[0.2, 0.1, 0.3, 0.9, 1.6, 2.5],
@@ -113,7 +110,7 @@ cards[1] = new Property(
 	'brown'
 );
 
-cards[3] = new Property(
+properties[3] = new Property(
 	'linkedin',
 	0.6,
 	[0.04, 0.2, 0.6, 1.8, 3.2, 4.5],
@@ -122,7 +119,7 @@ cards[3] = new Property(
 	'brown'
 );
 
-cards[6] = new Property(
+properties[6] = new Property(
 	'foxnews',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
@@ -131,7 +128,7 @@ cards[6] = new Property(
 	'lightBlue'
 );
 
-cards[8] = new Property(
+properties[8] = new Property(
 	'imdb',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
@@ -139,7 +136,7 @@ cards[8] = new Property(
 	0.5,
 	'lightBlue'
 );
-cards[9] = new Property(
+properties[9] = new Property(
 	'espn',
 	1.2,
 	[0.08, 0.4, 1, 3, 4.5, 6],
@@ -147,7 +144,7 @@ cards[9] = new Property(
 	0.5,
 	'lightBlue'
 );
-cards[11] = new Property(
+properties[11] = new Property(
 	'weather',
 	1.4,
 	[0.1, 0.5, 1.5, 4.5, 6.25, 7.5],
@@ -155,7 +152,7 @@ cards[11] = new Property(
 	1,
 	'pink'
 );
-cards[13] = new Property(
+properties[13] = new Property(
 	'craiglist',
 	1.4,
 	[0.1, 0.5, 1.5, 4.5, 6.25, 7.5],
@@ -164,9 +161,23 @@ cards[13] = new Property(
 	'pink'
 );
 
-cards[14] = new Property('Walmart.com', 1.6, [0.12, 0.6, 1.8, 5, 7, 9], 0.8, 1, 'pink');
-cards[16] = new Property('Zoom.', 1.8, [0.14, 0.7, 2, 5.5, 7.5, 9.5], 0.9, 1, 'orange');
-cards[18] = new Property(
+properties[14] = new Property(
+	'Walmart.com',
+	1.6,
+	[0.12, 0.6, 1.8, 5, 7, 9],
+	0.8,
+	1,
+	'pink'
+);
+properties[16] = new Property(
+	'Zoom.',
+	1.8,
+	[0.14, 0.7, 2, 5.5, 7.5, 9.5],
+	0.9,
+	1,
+	'orange'
+);
+properties[18] = new Property(
 	'fandom',
 	1.8,
 	[0.14, 0.7, 2, 5.5, 7.5, 9.5],
@@ -175,8 +186,8 @@ cards[18] = new Property(
 	'orange'
 );
 
-cards[19] = new Property('CNN.com', 2, [0.16, 0.8, 2.2, 6, 8, 10], 1, 1, 'Orange');
-cards[21] = new Property(
+properties[19] = new Property('CNN.com', 2, [0.16, 0.8, 2.2, 6, 8, 10], 1, 1, 'Orange');
+properties[21] = new Property(
 	'instagram',
 	2.2,
 	[0.18, 0.9, 2.5, 7, 8.75, 10.5],
@@ -184,7 +195,7 @@ cards[21] = new Property(
 	1.5,
 	'red'
 );
-cards[23] = new Property(
+properties[23] = new Property(
 	'ebay',
 	2.2,
 	[0.18, 0.9, 2.5, 7, 8.75, 10.5],
@@ -192,8 +203,15 @@ cards[23] = new Property(
 	1.5,
 	'red'
 ); // Export Property Class
-cards[24] = new Property('Twitter.com', 2.4, [0.2, 1, 3, 7.5, 9.25, 11], 1.2, 1.5, 'red');
-cards[26] = new Property(
+properties[24] = new Property(
+	'Twitter.com',
+	2.4,
+	[0.2, 1, 3, 7.5, 9.25, 11],
+	1.2,
+	1.5,
+	'red'
+);
+properties[26] = new Property(
 	'reddit',
 	2.6,
 	[0.22, 1.1, 3.3, 8, 9.75, 11.5],
@@ -201,7 +219,7 @@ cards[26] = new Property(
 	1.5,
 	'Yellow'
 );
-cards[27] = new Property(
+properties[27] = new Property(
 	'cornHub',
 	2.6,
 	[0.22, 1.1, 3.3, 8, 9.75, 11.5],
@@ -210,7 +228,7 @@ cards[27] = new Property(
 	'yellow'
 );
 
-cards[29] = new Property(
+properties[29] = new Property(
 	'yahoo',
 	2.8,
 	[0.24, 1.2, 3.6, 8.5, 10.25, 12],
@@ -219,7 +237,7 @@ cards[29] = new Property(
 	'yellow'
 );
 
-cards[31] = new Property(
+properties[31] = new Property(
 	'wikipedia',
 	3,
 	[0.26, 1.3, 3.9, 9, 11, 12.75],
@@ -228,7 +246,7 @@ cards[31] = new Property(
 	'green'
 );
 
-cards[32] = new Property(
+properties[32] = new Property(
 	'amazon',
 	3,
 	[0.26, 1.3, 3.9, 9, 11, 12.75],
@@ -237,7 +255,7 @@ cards[32] = new Property(
 	'green'
 );
 
-cards[34] = new Property(
+properties[34] = new Property(
 	'youTube',
 	3.2,
 	[0.28, 1.5, 4.5, 10, 12, 14],
@@ -246,7 +264,7 @@ cards[34] = new Property(
 	'green'
 );
 
-cards[37] = new Property(
+properties[37] = new Property(
 	'facebook',
 	3.5,
 	[0.35, 1.75, 5, 11, 13, 15],
@@ -255,14 +273,14 @@ cards[37] = new Property(
 	'darkBlue'
 );
 
-cards[39] = new Property('Google.com', 4, [0.5, 2, 6, 14, 17, 20], 2, 2, 'darkBlue');
+properties[39] = new Property('Google.com', 4, [0.5, 2, 6, 14, 17, 20], 2, 2, 'darkBlue');
 
-cards[5] = new Property('Charter', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
-cards[15] = new Property('Time Warner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
-cards[25] = new Property('AT&T', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
-cards[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+properties[5] = new Property('Charter', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+properties[15] = new Property('Time Warner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+properties[25] = new Property('AT&T', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+properties[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 
-cards[12] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
-cards[28] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
+properties[12] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
+properties[28] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
 
-export { cards };
+export { properties };
