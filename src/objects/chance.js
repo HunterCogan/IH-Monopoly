@@ -148,13 +148,15 @@ card10.action = (allGameObjects) => {
 
 // Pay tax of $0.15
 let card11 = new Chance(11);
-card11.action = (currPlayer) => {
+card11.action = (allGameObjects) => {
+	const { currPlayer } = allGameObjects;
 	currPlayer.bitcoin -= 0.15;
 };
 
 // Take a trip to Charter ISP–If you pass Go, collect $2
 let card12 = new Chance(12);
-card12.action = (currPlayer) => {
+card12.action = (allGameObjects) => {
+	const { currPlayer } = allGameObjects;
 	if (currPlayer.position > 5) {
 		currPlayer.bitcoin += 2;
 	}
@@ -163,26 +165,32 @@ card12.action = (currPlayer) => {
 
 // Advance hardware to Google Walk
 let card13 = new Chance(13);
-card13.action = (currPlayer) => {
+card13.action = (allGameObjects) => {
+	const { currPlayer } = allGameObjects;
 	currPlayer.position = 39;
 };
 
 // Pay each player $0.5
 let card14 = new Chance(14);
 card14.action = (currPlayer, otherPlayers) => {
-	currPlayer.bitcoin -= otherPlayers * 0.5;
-	otherPlayers.bitcoin += 0.5;
+	const { currPlayer, players } = allGameObjects;
+	for (player in players) {
+		currPlayer.bitcoin -= 0.5;
+		player.bitcoin += 0.5;
+	}
 };
 
 // Collect $1
 let card15 = new Chance(15);
-card15.action = (currPlayer) => {
+card15.action = (allGameObjects) => {
+	const { currPlayer } = allGameObjects;
 	currPlayer.bitcoin += 1;
 };
 
 // Collect $1.5
 let card16 = new Chance(16);
-card16.action = (currPlayer) => {
+card16.action = (allGameObjects) => {
+	const { currPlayer } = allGameObjects;
 	currPlayer.bitcoin += 1.5;
 };
 

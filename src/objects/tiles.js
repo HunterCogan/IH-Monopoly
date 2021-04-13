@@ -108,7 +108,7 @@ let properties = {};
 
 properties[1] = new Property(
 	'microsoft',
-	'0.6',
+	0.6,
 	[0.2, 0.1, 0.3, 0.9, 1.6, 2.5],
 	0.3,
 	0.5,
