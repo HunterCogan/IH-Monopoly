@@ -18,11 +18,12 @@ const removeBorders = () => {
 };
 
 pSelect.forEach((e, i) => {
+    //handle clicking on a player select box
     e.onclick = () => {
         removeBorders();
         e.classList.toggle('pSelected');
         pSelected = (i);
-        console.log(pSelected);
+
     };
 });
 
