@@ -112,13 +112,17 @@ body {
 }
 
 .tab-middle-h {
-    background: linear-gradient(45deg, #4335b5, #59b7fbf2);
-    width: 66px;
+    background: linear-gradient(45deg, #437daf, #59b7fbf2);
+    width: 59px;
+    border-radius: 4px;
+    margin: 1px 4px;
 }
 
 .tab-middle-v {
-    background: linear-gradient(45deg, #4335b5, #59b7fbf2);
-    height: 66px;
+    background: linear-gradient(45deg, #437daf, #59b7fbf2);
+    height: 60px;
+    border-radius: 4px;
+    margin: 4px 1px;
 }
 
 #tab-top {
