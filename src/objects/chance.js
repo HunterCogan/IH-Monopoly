@@ -19,10 +19,10 @@ function randomize() {
 	}
 }
 
-//randomly pick card
+//call to randomly pick card when player lands on chance tile
 function landOnChance(currPlayer) {
 	const chanceCard = randomized.pop();
-	chanceCard(currPlayer);
+	chanceCard.action(currPlayer);
 }
 let card1 = new Chance('Advance to Go\nCollect \u20BF 2 ');
 card1.action = (currPlayer) => {
@@ -57,5 +57,5 @@ chanceCards.push(
 	card14,
 	card15
 );
-
-export { chanceCards };
+randomize();
+export { randomized, landOnChance };
