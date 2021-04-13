@@ -48,6 +48,8 @@ class Property {
 		this.owner = currPlayer.name;
 		//take money
 		currPlayer.bitcoin -= cost;
+		// add property to player's list of properties they own
+		currPlayer.properties.push(this.name);
 	}
 
 	//  the cards object will tiles, current player will be player
@@ -262,4 +264,5 @@ cards[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 
 cards[12] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
 cards[28] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
+
 export { cards };
