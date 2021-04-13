@@ -1,11 +1,12 @@
-const example1 = () => {
-    //
+const $ = function(ele) {
+    return document.querySelector(ele);
 };
 
-const example2 = () => {
-    //
+const showProperty = (ele) => {
+    let clickedEle = $(`#${ele}`)
+    console.log(clickedEle);
 };
 
-let testVariable = [];
 
-export {example1, example2, testVariable}
+showProperty('microsoft');
+export {$, showProperty}

@@ -44,7 +44,7 @@ class Property {
 let cards = {};
 
 cards[1] = new Property(
-	'Microsoft',
+	'microsoft',
 	'0.6',
 	[0.2, 0.1, 0.3, 0.9, 1.6, 2.5],
 	0.3,
@@ -62,7 +62,7 @@ cards[3] = new Property(
 );
 
 cards[6] = new Property(
-	'foxnews.com',
+	'foxnews',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
 	0.5,
@@ -71,7 +71,7 @@ cards[6] = new Property(
 );
 
 cards[8] = new Property(
-	'imdb.com',
+	'imdb',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
 	0.5,
@@ -79,7 +79,7 @@ cards[8] = new Property(
 	'lightBlue'
 );
 cards[9] = new Property(
-	'espn.com',
+	'espn',
 	1.2,
 	[0.08, 0.4, 1, 3, 4.5, 6],
 	0.6,
@@ -87,7 +87,7 @@ cards[9] = new Property(
 	'lightBlue'
 );
 cards[11] = new Property(
-	'weather.com',
+	'weather',
 	1.4,
 	[0.1, 0.5, 1.5, 4.5, 6.25, 7.5],
 	0.7,
@@ -106,7 +106,7 @@ cards[13] = new Property(
 cards[14] = new Property('Walmart.com', 1.6, [0.12, 0.6, 1.8, 5, 7, 9], 0.8, 1, 'pink');
 cards[16] = new Property('Zoom.', 1.8, [0.14, 0.7, 2, 5.5, 7.5, 9.5], 0.9, 1, 'orange');
 cards[18] = new Property(
-	'fandom.com',
+	'fandom',
 	1.8,
 	[0.14, 0.7, 2, 5.5, 7.5, 9.5],
 	0.9,
@@ -116,7 +116,7 @@ cards[18] = new Property(
 
 cards[19] = new Property('CNN.com', 2, [0.16, 0.8, 2.2, 6, 8, 10], 1, 1, 'Orange');
 cards[21] = new Property(
-	'Instagram.com',
+	'instagram',
 	2.2,
 	[0.18, 0.9, 2.5, 7, 8.75, 10.5],
 	1.1,
@@ -124,7 +124,7 @@ cards[21] = new Property(
 	'red'
 );
 cards[23] = new Property(
-	'Ebay.com',
+	'ebay',
 	2.2,
 	[0.18, 0.9, 2.5, 7, 8.75, 10.5],
 	1.1,
@@ -133,7 +133,7 @@ cards[23] = new Property(
 ); // Export Property Class
 cards[24] = new Property('Twitter.com', 2.4, [0.2, 1, 3, 7.5, 9.25, 11], 1.2, 1.5, 'red');
 cards[26] = new Property(
-	'Reddit.com',
+	'reddit',
 	2.6,
 	[0.22, 1.1, 3.3, 8, 9.75, 11.5],
 	1.3,
@@ -141,7 +141,7 @@ cards[26] = new Property(
 	'Yellow'
 );
 cards[27] = new Property(
-	'CornHub.com',
+	'cornHub',
 	2.6,
 	[0.22, 1.1, 3.3, 8, 9.75, 11.5],
 	1.3,
@@ -150,7 +150,7 @@ cards[27] = new Property(
 );
 
 cards[29] = new Property(
-	'Yahoo.com',
+	'yahoo',
 	2.8,
 	[0.24, 1.2, 3.6, 8.5, 10.25, 12],
 	1.4,
@@ -159,7 +159,7 @@ cards[29] = new Property(
 );
 
 cards[31] = new Property(
-	'Wikipedia.com',
+	'wikipedia',
 	3,
 	[0.26, 1.3, 3.9, 9, 11, 12.75],
 	1.5,
@@ -168,7 +168,7 @@ cards[31] = new Property(
 );
 
 cards[32] = new Property(
-	'Amazon.com',
+	'amazon',
 	3,
 	[0.26, 1.3, 3.9, 9, 11, 12.75],
 	1.5,
@@ -177,7 +177,7 @@ cards[32] = new Property(
 );
 
 cards[34] = new Property(
-	'YouTube.com',
+	'youTube',
 	3.2,
 	[0.28, 1.5, 4.5, 10, 12, 14],
 	1.6,
@@ -186,7 +186,7 @@ cards[34] = new Property(
 );
 
 cards[37] = new Property(
-	'Facebook.com',
+	'facebook',
 	3.5,
 	[0.35, 1.75, 5, 11, 13, 15],
 	1.75,
