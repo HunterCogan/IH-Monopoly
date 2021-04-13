@@ -2,6 +2,22 @@ const $ = function(ele) {
     return document.querySelector(ele);
 };
 
+let startModal = $('#start-modal');
+let bodyWrap = $('#body-wrap');
+
+//dev exit modal
+let modalClose = $('#modalClose');
+modalClose.onclick = e => {
+    startModal.style.display = "none";
+    bodyWrap.style.display = "flex";
+};
+
+//page load popup modal
+const handleStartModal = () => {
+
+};
+
+//property popup modal
 const showProperty = (ele) => {
     let propModal = $('#property-modal');
     let propModalContent = $('#prop-modal-content');
@@ -23,6 +39,7 @@ const showProperty = (ele) => {
     };
 };
 
+//bind the property tiles
 document.querySelectorAll('.grid').forEach((e, i) => {
     e.onclick = () => {
         showProperty(e.id);
