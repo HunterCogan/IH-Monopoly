@@ -49,17 +49,19 @@ class Property {
 		//take money
 		currPlayer.bitcoin -= cost;
 	}
+
 	//  the cards object will tiles, current player will be player
 	calculateRent(currPlayer, tiles, diceRoll) {
 		// desstructure return values
-		const { typeCounter, typeMax } = this.counter(tiles);
+		const { typeCounter, typeMax, serverCount } = this.counter(tiles);
+		const noServer = Math.max(...serverCount);
 		// update the amount of rent due by the typeMax
 		this.type === 'isp'
 			? (rentDue += this.rentPrices[typeCounter - 1])
 			: this.type === 'utility'
 			? (rentDue += (this.rentPrices[counter - 1] * diceRoll) / 10)
-			: typeMax === true
-			? (rentDue += this.rentPrices[this.server] * 2)
+			: typeMax === true && noServer === 0
+			? (rentDue += this.rentPrices[0] * 2)
 			: (rentDue += this.rentPrices[this.server]);
 
 		// subtract rent from player and give it to owner
