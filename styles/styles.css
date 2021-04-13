@@ -38,11 +38,11 @@ body {
     justify-content: center;
     align-items: center;
     width: 1600px;
-    height: 830px;
+    height: 800px;
 }
 
 #board-wrap {
-    height: 830px;
+    height: 800px;
     width: 830px;
     display: flex;
     flex-direction: column;
@@ -99,33 +99,32 @@ body {
 }
 
 .tab-corner-h {
-    background-color: red;
     height: 15px;
-    width: 124px;
+    width: 128px;
 }
 
 .tab-corner-v {
-    background-color: red;
-    height: 124px;
+    height: 128px;
     width: 15px;
 }
 
 .tab-middle-h {
     background: linear-gradient(45deg, #437daf, #59b7fbf2);
-    width: 59px;
+    width: 56px;
     border-radius: 4px;
-    margin: 1px 4px;
+    margin: 1px 5px;
 }
 
 .tab-middle-v {
     background: linear-gradient(45deg, #437daf, #59b7fbf2);
-    height: 60px;
+    height: 59px;
     border-radius: 4px;
-    margin: 4px 1px;
+    margin: 8px 1px;
 }
 
-#tab-top {
+#tab-top, #tab-bottom {
     height: 15px;
+    justify-content: center;
 }
 
 #tab-middle {
@@ -133,8 +132,8 @@ body {
     align-items: center;
 }
 
-#tab-bottom {
-    height: 15px;
+#tabs-left, #tabs-right {
+    height: 100%;
 }
 
 .tokenBackground{
