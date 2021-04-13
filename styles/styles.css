@@ -52,7 +52,7 @@ body {
 #board {
     width: 100%;
     height: 100%;
-    background: url('../assets/template-board.jpeg') no-repeat center;
+    background: url('../assets/WEBopoly.jpg') no-repeat center;
     background-size: contain;
     border-radius: 30px;
     overflow: hidden;
@@ -132,4 +132,22 @@ body {
 
 #tab-bottom {
     height: 15px;
+}
+
+.tokenBackground{
+    background-color: #9dcfff;
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#speaker{
+    background-image: url("../assets/Iconpack/outline_speaker_black_24dp.png");
+    background-size: 100%;
+    height: 30px;
+    width: 30px;
+    
 }
