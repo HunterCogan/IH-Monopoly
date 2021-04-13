@@ -139,6 +139,10 @@
 							<div id="grid-go" class="grid-corner-h"></div>
 						</div>
 					</div>
+
+					<!-- animations here-->
+					<canvas></canvas>
+
 				</div>
 
 				<!--Right column with tab placeholders-->
@@ -214,8 +218,17 @@
 	<!--start Pageload Modal -->
 	<div id="start-modal" class="modal">
 		<div id="start-modal-content" class="modal-content">
-			<div id="modalClose"></div>
-
+			<div class="flex-row flex-end">
+				<div id="modalClose"></div>
+			</div>
+			<div id="logo"></div>
+			<div id="p-select-name">Players:</div>
+			<div id="p-select-wrap" class="flex-row">
+				<div class="p1 p-select-btn"><span>1</span></div>
+				<div class="p2 p-select-btn "><span>2</span></div>
+				<div class="p3 p-select-btn"><span>3</span></div>
+				<div id="p-num-default" class="p4 p-select-btn"><span>4</span></div>
+			</div>
 		</div>
 	</div>
 </body>

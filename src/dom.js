@@ -2,8 +2,29 @@ const $ = function(ele) {
     return document.querySelector(ele);
 };
 
+
+//////////////////////Start Page-load Modal//////////////////////
 let startModal = $('#start-modal');
 let bodyWrap = $('#body-wrap');
+let pSelect = document.querySelectorAll('.p-select-btn');
+let pSelected = 3;
+
+const removeBorders = () => {
+    pSelect.forEach((e, i) => {
+        if (e.classList.contains('pSelected')) {
+            e.classList.remove('pSelected');
+        }
+    });
+};
+
+pSelect.forEach((e, i) => {
+    e.onclick = () => {
+        removeBorders();
+        e.classList.toggle('pSelected');
+        pSelected = (i);
+        console.log(pSelected);
+    };
+});
 
 //dev exit modal
 let modalClose = $('#modalClose');
@@ -12,10 +33,18 @@ modalClose.onclick = e => {
     bodyWrap.style.display = "flex";
 };
 
+
 //page load popup modal
 const handleStartModal = () => {
 
 };
+
+
+$('#p-num-default').classList.add('pSelected');
+
+//////////////////////End Page-load Modal//////////////////////
+
+//////////////////////Start Property Popup Modal//////////////////////
 
 //property popup modal
 const showProperty = (ele) => {
@@ -38,6 +67,8 @@ const showProperty = (ele) => {
         }
     };
 };
+
+//////////////////////End Property Popup Modal//////////////////////
 
 //bind the property tiles
 document.querySelectorAll('.grid').forEach((e, i) => {
