@@ -8,6 +8,9 @@ let startModal = $('#start-modal');
 let bodyWrap = $('#body-wrap');
 let pSelect = document.querySelectorAll('.p-select-btn');
 let pSelected = 3;
+let p2 = $('#p2-name');
+let p3 = $('#p3-name');
+let p4 = $('#p4-name');
 
 const removeBorders = () => {
     pSelect.forEach((e, i) => {
@@ -23,6 +26,25 @@ pSelect.forEach((e, i) => {
         removeBorders();
         e.classList.toggle('pSelected');
         pSelected = (i);
+        if (pSelected === 0) {
+            p2.style.display = 'none';
+            p3.style.display = 'none';
+            p4.style.display = 'none';
+        } else if (pSelected === 1) {
+            p2.style.display = 'flex';
+
+            p3.style.display = 'none';
+            p4.style.display = 'none';
+        } else if (pSelected === 2) {
+            p2.style.display = 'flex';
+            p3.style.display = 'flex';
+
+            p4.style.display = 'none';
+        } else if (pSelected === 3) {
+            p2.style.display = 'flex';
+            p3.style.display = 'flex';
+            p4.style.display = 'flex';
+        }
 
     };
 });
