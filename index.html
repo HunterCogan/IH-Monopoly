@@ -1,28 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-		/>
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans" />
-		<link rel="stylesheet" href="styles/styles.css" />
-		<title>Webopoly</title>
-	</head>
 
-	<body>
-		<!--Wrap everything to center-->
-		<div id="body-wrap">
-			<!--Left side player boxes-->
-			<div class="flex-column players">
-				<div id="p1-box" class="player-box p1">
-					<div class="player-name">Dicky</div>
-				</div>
-				<div id="p2-box" class="player-box p2">
-					<div class="player-name">Juan</div>
-				</div>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans" />
+	<link rel="stylesheet" href="styles/styles.css" />
+	<title>Webopoly</title>
+</head>
+
+<body>
+
+	<!--Wrap everything to center-->
+	<div id="body-wrap">
+
+		<!--Left side player boxes-->
+		<div class="flex-column players">
+			<div id="p1-box" class="player-box p1">
+				<div class="player-name">Player: Jonny</div>
+				<div class="player-coin">Coin Amount: ₿</div>
+				<button type="button" class="player-property">Properties</button>
+				<div class="player-tokens"></div>
+			</div>
+			<div id="p2-box" class="player-box p2">
+				<div class="player-name">Player: Juan</div>
+				<div class="player-coin">Coin Amount: ₿</div>
+				<button type="button" class="player-property">Properties</button>
+				<div class="player-tokens"></div>
+			</div>
+		</div>
+
+		<!--Wrapper for board and "property owned by X player" tabs-->
+		<div id="board-wrap">
+
+			<!--Top row with tab placeholders-->
+			<div id="tab-top" class="flex-row">
+				<div class="board-tab tab-corner-h"></div>
+				<div id="tab-instagram" class="board-tab tab-middle-h"></div>
+				<div id="tab-chance-1" class="board-tab tab-middle-h"></div>
+				<div id="tab-ebay" class="board-tab tab-middle-h"></div>
+				<div id="tab-twitter" class="board-tab tab-middle-h"></div>
+				<div id="tab-att" class="board-tab tab-middle-h"></div>
+				<div id="tab-reddit" class="board-tab tab-middle-h"></div>
+				<div id="tab-cornhub" class="board-tab tab-middle-h"></div>
+				<div id="tab-fiber" class="board-tab tab-middle-h"></div>
+				<div id="tab-yahoo" class="board-tab tab-middle-h"></div>
+				<div class="board-tab tab-corner-h"></div>
 			</div>
 
 			<!--Wrapper for board and "property owned by X player" tabs-->
@@ -152,14 +177,35 @@
 				</div>
 			</div>
 
-			<!--Right side player boxes-->
-			<div class="flex-column players">
-				<div id="p3-box" class="player-box p3">
-					<div class="player-name">Jonny</div>
-				</div>
-				<div id="p4-box" class="player-box p4">
-					<div class="player-name">Hunter</div>
-				</div>
+			<!--Bottom row with tab placeholders-->
+			<div id="tab-bottom" class="flex-row">
+				<div class="board-tab tab-corner-h"></div>
+				<div id="tab-espn" class="board-tab tab-middle-h"></div>
+				<div id="tab-imdb" class="board-tab tab-middle-h"></div>
+				<div id="tab-chance" class="board-tab tab-middle-h"></div>
+				<div id="tab-foxnews" class="board-tab tab-middle-h"></div>
+				<div id="tab-charter" class="board-tab tab-middle-h"></div>
+				<div id="tab-income-tax" class="board-tab tab-middle-h"></div>
+				<div id="tab-linkedin" class="board-tab tab-middle-h"></div>
+				<div id="tab-chest" class="board-tab tab-middle-h"></div>
+				<div id="tab-microsoft" class="board-tab tab-middle-h"></div>
+				<div class="board-tab tab-corner-h"></div>
+			</div>
+		</div>
+
+		<!--Right side player boxes-->
+		<div class="flex-column players">
+			<div id="p3-box" class="player-box p3">
+				<div class="player-name">Player: Dicky</div>
+				<div class="player-coin">Coin Amount: ₿</div>
+				<button type="button" class="player-property">Properties</button>
+				<div class="player-tokens"></div>
+			</div>
+			<div id="p4-box" class="player-box p4">
+				<div class="player-name">Player: Hunter</div>
+				<div class="player-coin">Coin Amount: ₿</div>
+				<button type="button" class="player-property">Properties</button>
+				<div class="player-tokens"></div>
 			</div>
 		</div>
 		<!-- End of main wrapper -->
@@ -167,11 +213,11 @@
 
 	<!-- Juan Tokens -->
 
-	<!-- speaker -->
-	<div id="remove-in-production">
-		<div class="tokenBackground p1">
-			<div id="speaker"></div>
-		</div>
+<!-- speaker -->
+<div id="remove-in-production">
+	<div class="tokenBackground p1">
+		<div id="speaker"></div>
+	</div>
 
 		<!-- mouse -->
 		<div class="tokenBackground p2">
