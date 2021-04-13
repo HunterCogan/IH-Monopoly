@@ -7,6 +7,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
     /* temp background pattern? */
     background-color: #2f2f2f;
@@ -22,6 +23,7 @@ body {
     font-family: "Josefin Sans", serif;
 }
 
+/*Start Global Classes*/
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -31,127 +33,199 @@ body {
     display: flex;
     flex-direction: row;
 }
+/*End Global Classes*/
 
-#body-wrap {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 1600px;
-    height: 830px;
-}
+/*wrap board and center*/
 
-#board-wrap {
-    height: 830px;
-    width: 830px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+    #body-wrap {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 1600px;
+        height: 800px;
+    }
 
-#board {
-    width: 100%;
-    height: 100%;
-    background: url('../assets/WEBopoly.jpg') no-repeat center;
-    background-size: contain;
-    border-radius: 30px;
-    overflow: hidden;
-    transform: scaleY(1.04);
-}
+    #board-wrap {
+        height: 800px;
+        width: 830px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
-#p1-box {
-    background-color: #ffd3d5;
-    margin-top: 0;
-}
 
-#p2-box {
-    background-color: #9dcfff;
-    margin-bottom: 0;
-}
 
-#p3-box {
-    background-color: #bbffbb;
-    margin-top: 0;
-}
+    #board {
+        width: 100%;
+        height: 100%;
+        background: url('../assets/WEBopoly.jpg') no-repeat center;
+        background-size: contain;
+        border-radius: 30px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+    }
+/**/
 
-#p4-box {
-    background-color: #ffecbc;
-    margin-bottom: 0;
-}
+/*Start Board Grid*/
+    #board-grid {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
 
-.players {
-    height: 100%;
-}
+    #grid-left, #grid-right {
+        width: 110px;
+    }
 
-.player-box {
-    width: 200px;
-    flex-grow: 1;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 15px;
-    margin: 15px;
-}
+    #grid-block {
+        width: 580px;
+    }
 
-.player-name {
-    text-align: center;
-    font-family: "Josefin Sans", serif;
-    font-size: 1.50rem;
-}
+    .grid:hover {
+        box-shadow: inset 0px 0px 20px 9px rgba(0,0,0,0.40)
+    ;
+        cursor: pointer;
+    }
 
-.tab-corner-h {
-    background-color: red;
-    height: 15px;
-    width: 124px;
-}
+    .grid-mid {
+        height: 580px;
+    }
 
-.tab-corner-v {
-    background-color: red;
-    height: 124px;
-    width: 15px;
-}
+    .grid-h {
+        height: 110px;
+    }
 
-.tab-middle-h {
-    background: linear-gradient(45deg, #4335b5, #59b7fbf2);
-    width: 66px;
-}
+    .grid-corner-h {
+        height: 100%;
+        width: 110px;
+    }
 
-.tab-middle-v {
-    background: linear-gradient(45deg, #4335b5, #59b7fbf2);
-    height: 66px;
-}
+    .grid-middle-h {
+        width: 65px;
+        margin-left: 1px;
+    }
 
-#tab-top {
-    height: 15px;
-}
+    .grid-middle-v {
+        height: 65px;
+        margin-top: 1px;
+    }
+/*End Board Grid*/
 
-#tab-middle {
-    height: 100%;
-    align-items: center;
-}
+/*Start Player Boxes*/
+    #p1-box, #p3-box {margin-top: 0;}
+    #p2-box, #p4-box {margin-bottom: 0;}
 
-#tab-bottom {
-    height: 15px;
-}
+    .players {
+        height: 100%;
+    }
 
-/* Token Test */
+    .player-box {
+        width: 200px;
+        flex-grow: 1;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 15px;
+        margin: 15px;
+    }
 
-.tokenBackground{
-    background-color: #9dcfff;
-    height: 40px;
-    width: 40px;
-    border-radius: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .player-name {
+        text-align: center;
+        font-family: "Josefin Sans", serif;
+        font-size: 1.50rem;
+    }
+/*End Player Boxes*/
 
-#speaker{
-    background-image: url("../assets/Iconpack/outline_speaker_black_24dp.png");
-    background-size: 100%;
-    height: 30px;
-    width: 30px;
-    
-}
+/*Outside Tabs that will show who owns what property*/
+    .tab-corner-h {
+        height: 15px;
+        width: 128px;
+    }
 
-/* Tokent Test End */
+    .tab-corner-v {
+        height: 128px;
+        width: 15px;
+    }
+
+    .tab-middle-h {
+        width: 56px;
+        border-radius: 4px;
+        margin: 1px 5px;
+    }
+
+    .tab-middle-h:hover, .tab-middle-v:hover {
+        background: linear-gradient(45deg, #437daf, #59b7fbf2);
+    }
+
+    .tab-middle-v {
+        height: 59px;
+        border-radius: 4px;
+        margin: 8px 1px;
+    }
+
+    #tab-top, #tab-bottom {
+        height: 15px;
+        justify-content: center;
+    }
+
+    #tab-middle {
+        height: 100%;
+        align-items: center;
+    }
+
+    #tabs-left, #tabs-right {
+        height: 100%;
+    }
+
+/*player token circles*/
+    #remove-in-production {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tokenBackground{
+        height: 25px;
+        width: 25px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .p1 {background-color: #ffd3d5;}
+    .p2 {background-color: #9dcfff;}
+    .p3 {background-color: #bbffbb;}
+    .p4 {background-color: #ffecbc;}
+
+    #speaker{
+        background-image: url("../assets/Iconpack/speaker.png");
+        background-size: 100%;
+        height: 19px;
+        width: 19px;
+    }
+
+    #mouse {
+        background-image: url("../assets/Iconpack/mouse.png");
+        background-size: 100%;
+        height: 19px;
+        width: 19px;
+    }
+
+    #keyboard {
+        background-image: url("../assets/Iconpack/keyboard.png");
+        background-size: 100%;
+        height: 19px;
+        width: 19px;
+    }
+
+    #monitor {
+        background-image: url("../assets/Iconpack/monitor.png");
+        background-size: 100%;
+        height: 19px;
+        width: 19px;
+    }
+
+/*end tokens*/
