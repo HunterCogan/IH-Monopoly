@@ -5,6 +5,8 @@ class Character {
 		this.bitcoin = 15;
 		// jail status, if true, how many turns have they been in jail
 		this.jail = [false, 0];
+		this.position = 0;
+		this.properties = [];
 	}
 	// Check if player in jail, if so, prompt for options or check turns missed
 	checkJail() {
