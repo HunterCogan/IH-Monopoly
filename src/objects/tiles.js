@@ -1,3 +1,5 @@
+let totalHouse = 50;
+let totalHotel = 50;
 class Property {
 	constructor(name, cost, rentPrices, mortagage, housePrice, type) {
 		// number for position on the board
@@ -18,26 +20,81 @@ class Property {
 		this.mortgage = mortagage;
 		this.housePrice = housePrice;
 	}
-	//  the cards object will tiles, current player will be player
-	calculateRent(currPlayer, tiles, diceRoll) {
-		// how many of the same type of cards this owner has
+
+	// how many of one type does owner have and do they have all of of one type
+	counter(tiles) {
 		let typeCounter = 0;
-		let rentDue = 0;
+		let typeMax = false;
+		let serverCount = [];
+
 		// loop for how many of the same card type this owner has
 		for (card in tiles) {
-			card.type == this.type && card.owner == this.owner ? counter++ : (counter += 0);
+			if (card.type == this.type && card.owner == this.owner) {
+				counter++;
+				serverCount.push(card.server);
+			}
 		}
-		// check card types and counters
+		// if owner has all of the same group update typeMax
+		this.type === 'darkBlue' || (this.type === 'brown' && typeCounter == 2)
+			? (typeMax = true)
+			: typeMax === 3
+			? (typeMax = true)
+			: (typeMax = false);
+
+		return { typeCounter, typeMax, serverCount };
+	}
+	buy(currPlayer) {
+		// update owner
+		this.owner = currPlayer.name;
+		//take money
+		currPlayer.bitcoin -= cost;
+	}
+	//  the cards object will tiles, current player will be player
+	calculateRent(currPlayer, tiles, diceRoll) {
+		// desstructure return values
+		const { typeCounter, typeMax } = this.counter(tiles);
+		// update the amount of rent due by the typeMax
 		this.type === 'isp'
 			? (rentDue += this.rentPrices[typeCounter - 1])
 			: this.type === 'utility'
 			? (rentDue += (this.rentPrices[counter - 1] * diceRoll) / 10)
-			: (rentDue += this.rentPrices[this.server] * typeCounter);
+			: typeMax === true
+			? (rentDue += this.rentPrices[this.server] * 2)
+			: (rentDue += this.rentPrices[this.server]);
+
+		// subtract rent from player and give it to owner
+		if (currPlayer.bitcoin < rentDue) return 'you are broke';
+		currPlayer.bitcoin -= rentDue;
+		this.owner.bitcoin += rentDue;
 	}
 
 	// pass in current player and the cards object
 	checkOwner(currPlayer, tiles, diceRoll) {
-		if (this.owner) this.calculateRent(currPlayer, tiles, diceRoll);
+		if (this.owner && this.owner !== currPlayer.name) {
+			this.calculateRent(currPlayer, tiles, diceRoll);
+			return true;
+		}
+		return false;
+	}
+	// build servers
+	build(currPlayer) {
+		const { typeMax, serverCount } = this.counter(tiles);
+		// if utility or isp, cannot use this function;
+		if (this.type === 'utility' || this.type == 'isp') return false;
+
+		//if owner owns all of the same type he can build
+		if (typeMax) {
+			// check what he can build
+			if (this.server === Math.min(...serverCount)) {
+				//update server count
+				this.server++;
+				// take money from player
+				currPlayer.bitcoin -= this.housePrice;
+			}
+		}
+
+		//if not no
+		return false;
 	}
 }
 
