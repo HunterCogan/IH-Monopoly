@@ -190,11 +190,12 @@ body {
     .player-name {
         text-align: center;
         font-family: "Josefin Sans", serif;
-        font-size: 1.50rem;
+        font-size: 1.75rem;
         height: 40px;
         width: 100%;
         border: 2px black solid;
         border-radius: 25px;
+        padding-top: 15px;
     }
 
     .player-coin {
