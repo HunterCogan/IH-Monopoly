@@ -13,9 +13,9 @@ class Community {
 }
 
 function randomize() {
-	for (x = 0; x < communityCards.length; x++) {
-		const randomIndex = Math.floor(Math.random() * chanceCards.length);
-		community.push(communityCards.slice(randomIndex, randomIndex + 1));
+	for (let x = 0; x < 17; x++) {
+		const randomIndex = Math.floor(Math.random() * communityCards.length);
+		community.push(...communityCards.splice(randomIndex, 1));
 	}
 }
 function landOnCommunity(currPlayer) {
@@ -117,7 +117,7 @@ let card15 = new Community(15);
 card15.action = (currPlayer, tiles) => {
 	//need to destruct
 
-	TODO: const amt = 0;
+	let amt = 0;
 	for (card in tiles) {
 		if (card.owner.name === currPlayer.name) {
 			if (card.server < 5) {
@@ -128,7 +128,7 @@ card15.action = (currPlayer, tiles) => {
 		}
 	}
 	//check for broke-ness
-	TODO: currPlayer.bitcoin -= amt;
+	currPlayer.bitcoin -= amt;
 };
 
 let card16 = new Community(16);
@@ -140,7 +140,7 @@ card17.action = (currPlayer) => {
 	currPlayer.bitcoin += 1;
 };
 
-chanceCards.push(
+communityCards.push(
 	card1,
 	card2,
 	card3,
@@ -161,4 +161,5 @@ chanceCards.push(
 );
 
 randomize();
+
 export { community, landOnCommunity };

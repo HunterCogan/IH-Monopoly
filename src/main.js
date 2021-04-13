@@ -12,5 +12,17 @@ const juan = new Character('Juan');
 const hunter = new Character('Hunter');
 const players = { dicky, johnny, juan, hunter };
 const currPlayer = johnny;
+const currentProperty = properties[1];
 
-const allGameObjects = { currPlayer, players, properties, chance, community };
+const allGameObjects = {
+	currPlayer,
+	players,
+	properties,
+	chance,
+	community,
+	diceRoll,
+};
+currentProperty.owner = johnny;
+let y = currentProperty.checkOwner(allGameObjects);
+
+landOnChance(allGameObjects);
