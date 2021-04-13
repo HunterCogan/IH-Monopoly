@@ -45,7 +45,7 @@ class Property {
 	}
 	buy(currPlayer) {
 		// update owner
-		this.owner = currPlayer.name;
+		this.owner = currPlayer;
 		//take money
 		currPlayer.bitcoin -= cost;
 		// add property to player's list of properties they own
@@ -53,7 +53,7 @@ class Property {
 	}
 
 	//  the cards object will tiles, current player will be player
-	calculateRent(currPlayer, tiles, diceRoll) {
+	calculateRent(tiles, diceRoll) {
 		// desstructure return values
 		const { typeCounter, typeMax, serverCount } = this.counter(tiles);
 		const noServer = Math.max(...serverCount);
@@ -67,15 +67,12 @@ class Property {
 			: (rentDue += this.rentPrices[this.server]);
 
 		// subtract rent from player and give it to owner
-		if (currPlayer.bitcoin < rentDue) return 'you are broke';
-		currPlayer.bitcoin -= rentDue;
-		this.owner.bitcoin += rentDue;
+		return rentDue
 	}
 
 	// pass in current player and the cards object
-	checkOwner(currPlayer, tiles, diceRoll) {
+	checkOwner(currPlayer) {
 		if (this.owner && this.owner !== currPlayer.name) {
-			this.calculateRent(currPlayer, tiles, diceRoll);
 			return true;
 		}
 		return false;
