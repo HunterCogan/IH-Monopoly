@@ -22,14 +22,16 @@ class Property {
 		this.isMortgaged = false;
 	}
 
-	mortgagProp(currPlayer) {
-		currPlayer.bitcoin += this.mortgage
-		this.isMortgaged = true
+	mortgagProp(allGameObjects) {
+		const { currPlayer } = allGameObjects;
+		currPlayer.bitcoin += this.mortgage;
+		this.isMortgaged = true;
 	}
 
-	unmortgageProp(currPlayer) {
-		currPlayer.bitcoin -= (this.mortgage * 1.1)
-		this.isMortgaged = false
+	unmortgageProp(allGameObjects) {
+		const { currPlayer } = allGameObjects;
+		currPlayer.bitcoin -= this.mortgage * 1.1;
+		this.isMortgaged = false;
 	}
 
 	// how many of one type does owner have and do they have all of of one type
@@ -54,7 +56,8 @@ class Property {
 
 		return { typeCounter, typeMax, serverCount };
 	}
-	buy(currPlayer) {
+	buy(allGameObjects) {
+		const { currPlayer } = allGameObjects;
 		// update owner
 		this.owner = currPlayer;
 		//take money
@@ -79,7 +82,7 @@ class Property {
 				: typeMax === true && noServer === 0
 				? (rentDue += this.rentPrices[0] * 2)
 				: (rentDue += this.rentPrices[this.server]);
-	
+
 			// subtract rent from player and give it to owner
 			return rentDue;
 		}
