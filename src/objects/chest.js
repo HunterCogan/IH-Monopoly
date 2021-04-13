@@ -86,19 +86,31 @@ let card14 = new Community(14);
 card14.action = (currPlayer) => {
 	currPlayer.bitcoin += 0.25;
 };
-let card14 = new Community(14);
-card14.action = (currPlayer, tiles) => {
+let card15 = new Community(15);
+card15.action = (currPlayer, tiles) => {
 	//need to destruct
 
 	TODO: const amt = 0;
 	for (card in tiles) {
 		if (card.owner.name === currPlayer.name) {
-			if (card.server < 5) amt += card.server * 0.4;
-			card.server += 1.15;
+			if (card.server < 5) {
+				amt += card.server * 0.4;
+			} else {
+				amt += 1.15;
+			}
 		}
 	}
 	//check for broke-ness
 	TODO: currPlayer.bitcoin -= amt;
+};
+
+let card16 = new Community(16);
+card16.action = (currPlayer) => {
+	currPlayer.bitcoin += 0.1;
+};
+let card17 = new Community(17);
+card17.action = (currPlayer) => {
+	currPlayer.bitcoin += 1;
 };
 
 chanceCards.push(

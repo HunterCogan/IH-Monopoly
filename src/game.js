@@ -17,4 +17,4 @@ function dice2() {
 function diceRoll() {
 	return dice1() + dice2();
 }
-export { dice1, dice2, diceRoll };
+export { diceRoll };
