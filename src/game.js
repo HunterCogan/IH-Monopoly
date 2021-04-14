@@ -46,20 +46,36 @@ function payJail() {
 
 function rollJail() {
 	//variable dice1 = dice()
+	let dice1 = dice()
 	//variable dice 2 = dice()
+	let dice2 = dice()
 	//roll currplayer.dice() === currPlayer.dice()
-	//if true currPlayer.rolled Number = dice1 + dice2
+	if (dice1 === dice2) {
+		//if true currPlayer.rolled Number = dice1 + dice2
+		currPlayer.rolledNumber = dice1 + dice2
+	}
 	// if player is on third turn and double false subtract money
+	if (dice1 !== dice2 && currPlayer.jail[1] === 3) {
+		currPlayer.bitcoin -= .5
+		currPlayer.rolledNumber = dice1 + dice2
+	}
 	//set currPlayer.jail = false counter to 0
-	// close Jail modal
-	//currPlayer.player.move()
+	currPlayer.jail = [false, 0]
+	// TODO: close Jail modal
+	currPlayer.player.move()
 }
 
 function freeJail() {
 	//check if they have pass
+	if (currPlayer.getOutJail[0] === false) {
+		console.log("You can't do that")
+	}
 	//if true pass - 1 if = 0 then pass = false
 	// change player jail status to false and 0
-	// close modal
+	currPlayer.getOutJail[0] = false
+	currPlayer.getOutJail[1] -= 1
+	currPlayer.jail = [false, 0]
+	// TODO: close modal
 }
 
 function rollDice() {
