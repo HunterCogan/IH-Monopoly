@@ -347,8 +347,21 @@ div.p-select-btn {
     boredcolor(orange) = #f37f24
     boredcolor(yellow) = #f4df30
  */
+    #player1iconColor{
+        background-color:#ec3a25;
+    }
+    
+    #player2iconColor{
+        background-color:#04a55c;
+    }
+    
+    #player3iconColor{
+        background-color:#275ecb;
+    }
 
-
+    #player4iconColor{
+        background-color:#f37f24;
+    }
 
 
     #p1Color{
@@ -436,7 +449,7 @@ div.p-select-btn {
         height: 40px;
         width: 100%;
         border: 2px black solid;
-        border-radius: 25px;
+        border-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -453,8 +466,8 @@ div.p-select-btn {
     }
 
     .player-tokens{
-        height: 80px;
-        width: 80px;
+        height: 65px;
+        width: 65px;
         border: 2px black solid;
         border-radius: 50px;
         display: flex;
@@ -463,8 +476,8 @@ div.p-select-btn {
     }
 
     .player-tokens div {
-        height: 56px;
-        width: 56px;
+        height: 45px;
+        width: 45px;
     }
 
 
