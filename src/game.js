@@ -1,19 +1,20 @@
 //Characeter is a CLASS
 import { Character } from './objects/players.js';
-//properties is an OBJECT of OBJECTS
-import { properties } from './objects/tiles.js';
-//chance is an ARRAY of OBJECTS
-//landOnChance RETURNS an OBJECT of a chance Card
-import { chance, landOnChance } from './objects/chance.js';
 
-// community is an ARRAY of OBJECTS
-// landOnCommunity RETURNS an OBJECT of a community Card
-import { community, landOnCommunity } from './objects/chest.js';
+import { startOutput as nameList } from './dom.js';
 
 // pass this to almost all functions, destructure what you need
 
-//TODO: need to import array of players from DOM
-
+let players = [];
+let index = 0;
+let currPlayer = players[index];
+let rolledNumber;
+// takes an ARRAY to make the players
+function createPlayers(playerNames) {
+	for (let name of playerNames) {
+		players.push(new Character(name));
+	}
+}
 // returns a number of dice roll
 function dice1() {
 	return Math.round(Math.random() * 6);
@@ -21,34 +22,40 @@ function dice1() {
 function dice2() {
 	return Math.round(Math.random() * 6);
 }
-function diceRoll() {
-	return dice1() + dice2();
-}
-
-// takes an ARRAY to make the players
-let players = [];
-let index = 0;
-let currPlayer = players[index];
-function createPlayers(playerNames) {
-	for (let name of playerNames) {
-		players.push(new Character(name));
-	}
+function rollDice() {
+	rolledNumber = dice1() + dice2();
 }
 
 function startGame() {
-	//TODO:TESTING REMOVE BEFORE DEPLOYING
-	createPlayers(['Dicky', 'Johnny', 'Hunter', 'Juan']);
+	createPlayers(nameList.slice(1));
+	console.log('Game Started');
+	turn();
 }
-//TODO:TESTING REMOVE BEFORE DEPLOYING
-const allGameObjects = {
-	currPlayer,
-	players,
-	properties,
-	chance,
-	community,
-	diceRoll,
-};
-const currentProperty = properties[1];
-currentProperty.owner = currPlayer;
 
-export { startGame };
+function turn() {
+	currPlayer = players[index];
+	console.log(`You are player ${index + 1} ${currPlayer.name}`);
+
+	//TODO: prompt to click roll dice???????
+	rollDice();
+	// pass this to almost all functions, destructure what you need
+	const allGameObjects = {
+		currPlayer,
+		players,
+		rolledNumber,
+	};
+	console.log(allGameObjects);
+	if (!currPlayer.inJail()) {
+		//TODO: MOVE and ANIMATE token to position
+		currPlayer.movePlayer(allGameObjects);
+	}
+
+	if (index < nameList[0]) {
+		index++;
+	} else {
+		index = 0;
+	}
+	turn();
+}
+
+export { startGame, dice1, dice2 };

@@ -1,7 +1,6 @@
-const $ = function(ele) {
-    return document.querySelector(ele);
+const $ = function (ele) {
+	return document.querySelector(ele);
 };
-
 
 //////////////////////Start Page-load Modal//////////////////////
 let startModal = $('#start-modal');
@@ -24,128 +23,136 @@ let p4Input = $('#p4-name input');
 let startOutput = [];
 
 const removeBorders = () => {
-    pSelect.forEach((e, i) => {
-        if (e.classList.contains('pSelected')) {
-            e.classList.remove('pSelected');
-        }
-    });
+	pSelect.forEach((e, i) => {
+		if (e.classList.contains('pSelected')) {
+			e.classList.remove('pSelected');
+		}
+	});
 };
 
 pSelect.forEach((e, i) => {
-    //handle clicking on a player select box
-    e.onclick = () => {
-        removeBorders();
-        e.classList.toggle('pSelected');
-        pSelected = (i);
-        if (pSelected === 0) {
-            p2.style.display = 'none';
-            p3.style.display = 'none';
-            p4.style.display = 'none';
-        } else if (pSelected === 1) {
-            p2.style.display = 'flex';
+	//handle clicking on a player select box
+	e.onclick = () => {
+		removeBorders();
+		e.classList.toggle('pSelected');
+		pSelected = i;
+		if (pSelected === 0) {
+			p2.style.display = 'none';
+			p3.style.display = 'none';
+			p4.style.display = 'none';
+		} else if (pSelected === 1) {
+			p2.style.display = 'flex';
 
-            p3.style.display = 'none';
-            p4.style.display = 'none';
-        } else if (pSelected === 2) {
-            p2.style.display = 'flex';
-            p3.style.display = 'flex';
+			p3.style.display = 'none';
+			p4.style.display = 'none';
+		} else if (pSelected === 2) {
+			p2.style.display = 'flex';
+			p3.style.display = 'flex';
 
-            p4.style.display = 'none';
-        } else if (pSelected === 3) {
-            p2.style.display = 'flex';
-            p3.style.display = 'flex';
-            p4.style.display = 'flex';
-        }
-
-    };
+			p4.style.display = 'none';
+		} else if (pSelected === 3) {
+			p2.style.display = 'flex';
+			p3.style.display = 'flex';
+			p4.style.display = 'flex';
+		}
+	};
 });
-
 
 //page load popup modal
 //this is pretty sloppy so lmk if you need explaination
 const handleStartModal = () => {
-    let allGood = true;
-    const checkP4 = () => {
-        if (p4Input.value) {
-            p4Target.innerHTML = p4Input.value;
-        } else  {
-            allGood = false;
-            p3Target.innerHTML = '';
-            p4Input.style.border = 'red 2px solid';
-        }
-    };
-    const checkP3 = () => {
-        if (p3Input.value) {
-            p3Target.innerHTML = p3Input.value;
-        } else {
-            allGood = false;
-            p3Target.innerHTML = '';
-            p3Input.style.border = 'red 2px solid';
-        }
-    };
-    const checkP2 = () => {
-        if (p2Input.value) {
-            p2Target.innerHTML = p2Input.value;
-        } else {
-            allGood = false;
-            p2Input.style.border = 'red 2px solid';
-        }
-    };
-    const checkP1 = () => {
-        if (p1Input.value) {
-            p1Target.innerHTML = p1Input.value;
-        } else {
-            allGood = false;
-            p1Input.style.border = 'red 2px solid';
-        }
-    };
+	let allGood = true;
+	const checkP4 = () => {
+		if (p4Input.value) {
+			p4Target.innerHTML = p4Input.value;
+		} else {
+			allGood = false;
+			p3Target.innerHTML = '';
+			p4Input.style.border = 'red 2px solid';
+		}
+	};
+	const checkP3 = () => {
+		if (p3Input.value) {
+			p3Target.innerHTML = p3Input.value;
+		} else {
+			allGood = false;
+			p3Target.innerHTML = '';
+			p3Input.style.border = 'red 2px solid';
+		}
+	};
+	const checkP2 = () => {
+		if (p2Input.value) {
+			p2Target.innerHTML = p2Input.value;
+		} else {
+			allGood = false;
+			p2Input.style.border = 'red 2px solid';
+		}
+	};
+	const checkP1 = () => {
+		if (p1Input.value) {
+			p1Target.innerHTML = p1Input.value;
+		} else {
+			allGood = false;
+			p1Input.style.border = 'red 2px solid';
+		}
+	};
 
-    if (pSelected === 3) {
-        checkP1();
-        checkP2();
-        checkP3();
-        checkP4();
-        startOutput.push(pSelected, p1Target.innerText, p2Target.innerText, p3Target.innerText, p4Target.innerText);
-    } else if (pSelected === 2) {
-        checkP1();
-        checkP2();
-        checkP3();
-        if (allGood) {
-            $('#p4-box').style.display = 'none';
-            startOutput.push(pSelected, p1Target.innerText, p2Target.innerText, p3Target.innerText);
-        }
-    } else if (pSelected === 1) {
-        checkP1();
-        checkP2();
-        if (allGood) {
-            $('#p3-box').style.display = 'none';
-            $('#p4-box').style.display = 'none';
-            startOutput.push(pSelected, p1Target.innerText, p2Target.innerText);
-        }
-    } else if (pSelected === 0) {
-        allGood = false;
-        $('#lonely').style.display = 'flex';
-    }
+	if (pSelected === 3) {
+		checkP1();
+		checkP2();
+		checkP3();
+		checkP4();
+		startOutput.push(
+			pSelected,
+			p1Target.innerText,
+			p2Target.innerText,
+			p3Target.innerText,
+			p4Target.innerText
+		);
+	} else if (pSelected === 2) {
+		checkP1();
+		checkP2();
+		checkP3();
+		if (allGood) {
+			$('#p4-box').style.display = 'none';
+			startOutput.push(
+				pSelected,
+				p1Target.innerText,
+				p2Target.innerText,
+				p3Target.innerText
+			);
+		}
+	} else if (pSelected === 1) {
+		checkP1();
+		checkP2();
+		if (allGood) {
+			$('#p3-box').style.display = 'none';
+			$('#p4-box').style.display = 'none';
+			startOutput.push(pSelected, p1Target.innerText, p2Target.innerText);
+		}
+	} else if (pSelected === 0) {
+		allGood = false;
+		$('#lonely').style.display = 'flex';
+	}
 
-    if (allGood) {
-        startModal.style.display = "none";
-        bodyWrap.style.display = "flex";
-        console.log('OUTPUT: ' , startOutput);
-    }
+	if (allGood) {
+		startModal.style.display = 'none';
+		bodyWrap.style.display = 'flex';
+		console.log('OUTPUT: ', startOutput);
+	}
 };
 
 modalClose.onclick = () => {
-    handleStartModal();
+	handleStartModal();
 };
 
 //remove this for product
 devBtn.onclick = () => {
-    p1Input.value = 'Juan';
-    p2Input.value = 'Dicky';
-    p3Input.value = 'Jonny';
-    p4Input.value = 'Hunter';
+	p1Input.value = 'Juan';
+	p2Input.value = 'Dicky';
+	p3Input.value = 'Jonny';
+	p4Input.value = 'Hunter';
 };
-
 
 $('#p-num-default').classList.add('pSelected');
 
@@ -155,33 +162,33 @@ $('#p-num-default').classList.add('pSelected');
 
 //property popup modal
 const showProperty = (ele) => {
-    let propModal = $('#property-modal');
-    let propModalContent = $('#prop-modal-content');
-    let cardName = ele.split('-')[1];
-    let close = $('#close-prop');
+	let propModal = $('#property-modal');
+	let propModalContent = $('#prop-modal-content');
+	let cardName = ele.split('-')[1];
+	let close = $('#close-prop');
 
-    //show modal
-    propModal.style.display = "flex";
-    propModalContent.style.backgroundImage = `url("./assets/Cards/${cardName}.jpg")`;
+	//show modal
+	propModal.style.display = 'flex';
+	propModalContent.style.backgroundImage = `url("./assets/Cards/${cardName}.jpg")`;
 
-    //Close if click outside
-    window.onclick = e => {
-        if (e.target === propModal) {
-            propModal.style.display = "none";
-        }
-        if (e.target === close) {
-            propModal.style.display = "none";
-        }
-    };
+	//Close if click outside
+	window.onclick = (e) => {
+		if (e.target === propModal) {
+			propModal.style.display = 'none';
+		}
+		if (e.target === close) {
+			propModal.style.display = 'none';
+		}
+	};
 };
 
 //////////////////////End Property Popup Modal//////////////////////
 
 //bind the property tiles
 document.querySelectorAll('.grid').forEach((e, i) => {
-    e.onclick = () => {
-        showProperty(e.id);
-    };
+	e.onclick = () => {
+		showProperty(e.id);
+	};
 });
 
-export {$, showProperty}
+export { $, showProperty, startOutput };

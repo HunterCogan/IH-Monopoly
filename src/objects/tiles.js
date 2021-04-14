@@ -61,7 +61,7 @@ class Property {
 		// update owner
 		this.owner = currPlayer;
 		//take money
-		currPlayer.bitcoin -= cost;
+		currPlayer.bitcoin -= this.cost;
 		// add property to player's list of properties they own
 		currPlayer.properties.push(this.name);
 	}
@@ -125,7 +125,7 @@ class Property {
 let properties = {};
 
 properties[1] = new Property(
-	'microsoft',
+	'Microsoft Avenue',
 	0.6,
 	[0.2, 0.1, 0.3, 0.9, 1.6, 2.5],
 	0.3,
@@ -134,7 +134,7 @@ properties[1] = new Property(
 );
 
 properties[3] = new Property(
-	'linkedin',
+	'LinkedIn Avenue',
 	0.6,
 	[0.04, 0.2, 0.6, 1.8, 3.2, 4.5],
 	0.3,
@@ -143,7 +143,7 @@ properties[3] = new Property(
 );
 
 properties[6] = new Property(
-	'foxnews',
+	'Fox News Avenue',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
 	0.5,
@@ -152,7 +152,7 @@ properties[6] = new Property(
 );
 
 properties[8] = new Property(
-	'imdb',
+	'IMDB Avenue',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
 	0.5,
@@ -160,7 +160,7 @@ properties[8] = new Property(
 	'lightBlue'
 );
 properties[9] = new Property(
-	'espn',
+	'ESPN Avenue',
 	1.2,
 	[0.08, 0.4, 1, 3, 4.5, 6],
 	0.6,
@@ -168,7 +168,7 @@ properties[9] = new Property(
 	'lightBlue'
 );
 properties[11] = new Property(
-	'weather',
+	'Weather Place',
 	1.4,
 	[0.1, 0.5, 1.5, 4.5, 6.25, 7.5],
 	0.7,
@@ -176,7 +176,7 @@ properties[11] = new Property(
 	'pink'
 );
 properties[13] = new Property(
-	'craiglist',
+	'Craiglist Avenue',
 	1.4,
 	[0.1, 0.5, 1.5, 4.5, 6.25, 7.5],
 	0.7,
@@ -185,7 +185,7 @@ properties[13] = new Property(
 );
 
 properties[14] = new Property(
-	'Walmart.com',
+	'Walmart Avenue',
 	1.6,
 	[0.12, 0.6, 1.8, 5, 7, 9],
 	0.8,
@@ -193,7 +193,7 @@ properties[14] = new Property(
 	'pink'
 );
 properties[16] = new Property(
-	'Zoom.',
+	'Zoom Place',
 	1.8,
 	[0.14, 0.7, 2, 5.5, 7.5, 9.5],
 	0.9,
@@ -201,7 +201,7 @@ properties[16] = new Property(
 	'orange'
 );
 properties[18] = new Property(
-	'fandom',
+	'Fandom Avenue',
 	1.8,
 	[0.14, 0.7, 2, 5.5, 7.5, 9.5],
 	0.9,
@@ -209,9 +209,16 @@ properties[18] = new Property(
 	'orange'
 );
 
-properties[19] = new Property('CNN.com', 2, [0.16, 0.8, 2.2, 6, 8, 10], 1, 1, 'Orange');
+properties[19] = new Property(
+	'CNN Avenue',
+	2,
+	[0.16, 0.8, 2.2, 6, 8, 10],
+	1,
+	1,
+	'Orange'
+);
 properties[21] = new Property(
-	'instagram',
+	'Instagram Avenue',
 	2.2,
 	[0.18, 0.9, 2.5, 7, 8.75, 10.5],
 	1.1,
@@ -219,7 +226,7 @@ properties[21] = new Property(
 	'red'
 );
 properties[23] = new Property(
-	'ebay',
+	'Ebay Avenue',
 	2.2,
 	[0.18, 0.9, 2.5, 7, 8.75, 10.5],
 	1.1,
@@ -227,7 +234,7 @@ properties[23] = new Property(
 	'red'
 ); // Export Property Class
 properties[24] = new Property(
-	'Twitter.com',
+	'Twitter Avenue',
 	2.4,
 	[0.2, 1, 3, 7.5, 9.25, 11],
 	1.2,
@@ -235,7 +242,7 @@ properties[24] = new Property(
 	'red'
 );
 properties[26] = new Property(
-	'reddit',
+	'Reddit Avenue',
 	2.6,
 	[0.22, 1.1, 3.3, 8, 9.75, 11.5],
 	1.3,
@@ -243,7 +250,7 @@ properties[26] = new Property(
 	'Yellow'
 );
 properties[27] = new Property(
-	'cornHub',
+	'CornHub Avenue',
 	2.6,
 	[0.22, 1.1, 3.3, 8, 9.75, 11.5],
 	1.3,
@@ -252,7 +259,7 @@ properties[27] = new Property(
 );
 
 properties[29] = new Property(
-	'yahoo',
+	'Yahoo Gardens',
 	2.8,
 	[0.24, 1.2, 3.6, 8.5, 10.25, 12],
 	1.4,
@@ -261,7 +268,7 @@ properties[29] = new Property(
 );
 
 properties[31] = new Property(
-	'wikipedia',
+	'wikipedia Avenue',
 	3,
 	[0.26, 1.3, 3.9, 9, 11, 12.75],
 	1.5,
@@ -270,7 +277,7 @@ properties[31] = new Property(
 );
 
 properties[32] = new Property(
-	'amazon',
+	'Amazon Avenue',
 	3,
 	[0.26, 1.3, 3.9, 9, 11, 12.75],
 	1.5,
@@ -279,7 +286,7 @@ properties[32] = new Property(
 );
 
 properties[34] = new Property(
-	'youTube',
+	'YouTube Avenue',
 	3.2,
 	[0.28, 1.5, 4.5, 10, 12, 14],
 	1.6,
@@ -288,7 +295,7 @@ properties[34] = new Property(
 );
 
 properties[37] = new Property(
-	'facebook',
+	'Facebook Place',
 	3.5,
 	[0.35, 1.75, 5, 11, 13, 15],
 	1.75,
@@ -296,7 +303,14 @@ properties[37] = new Property(
 	'darkBlue'
 );
 
-properties[39] = new Property('Google.com', 4, [0.5, 2, 6, 14, 17, 20], 2, 2, 'darkBlue');
+properties[39] = new Property(
+	'Google Place',
+	4,
+	[0.5, 2, 6, 14, 17, 20],
+	2,
+	2,
+	'darkBlue'
+);
 
 properties[5] = new Property('Charter', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[15] = new Property('Time Warner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');

@@ -1,3 +1,6 @@
+//properties is an OBJECT of OBJECTS
+import { properties } from './tiles.js';
+
 // all the chance cards before shuffling
 let chanceCards = [];
 // all the card after being shuffled
@@ -17,13 +20,22 @@ function randomize() {
 		chance.push(...chanceCards.splice(randomIndex, 1));
 	}
 }
-
+let cardCounter = 0;
 //call to randomly pick card when player lands on chance tile
 function landOnChance(allGameObjects) {
-	// const { currPlayer } = allGameObjects;
-	const chanceCard = chance.pop();
-
-	chanceCard.action(allGameObjects);
+	if (cardCounter === 32) cardCounter = 0;
+	if (cardCounter < 16) {
+		const chanceCard = chance.pop();
+		chanceCard.action(allGameObjects);
+		chanceCards.push(chanceCard);
+		cardCounter++;
+	}
+	if (32 > cardCounter > 15) {
+		const chanceCard = chance.shift();
+		chanceCard.action(allGameObjects);
+		chance.push(chanceCard);
+		cardCounter++;
+	}
 }
 
 // Advance to Go (Collect $2)
@@ -57,7 +69,7 @@ card3.action = (allGameObjects) => {
 // Advance hardware to nearest Tech Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.
 let card4 = new Chance(4);
 card4.action = (allGameObjects) => {
-	const { currPlayer, properties, diceRoll } = allGameObjects;
+	const { currPlayer, diceRoll } = allGameObjects;
 	if (currPlayer.position === 36) {
 		currPlayer.bitcoin += 2;
 		currPlayer.position = 12;
@@ -81,7 +93,7 @@ card4.action = (allGameObjects) => {
 // Advance hardware to the nearest ISP and pay owner twice the fee to which he/she is otherwise entitled. If ISP is unowned, you may buy it from the Bank.
 let card5 = new Chance(5);
 card5.action = (allGameObjects) => {
-	const { currPlayer, properties, diceRoll } = allGameObjects;
+	const { currPlayer, diceRoll } = allGameObjects;
 	if (currPlayer.position === 7) {
 		currPlayer.position = 15;
 	}
@@ -134,7 +146,7 @@ card9.action = (allGameObjects) => {
 // Make general repairs on all your property–For each server pay $0.25–For each Quantum Computer $1
 let card10 = new Chance(10);
 card10.action = (allGameObjects) => {
-	const { currPlayer, properties } = allGameObjects;
+	const { currPlayer } = allGameObjects;
 	let amt = 0;
 	for (let card in properties) {
 		if (

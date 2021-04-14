@@ -1,3 +1,6 @@
+//properties is an OBJECT of OBJECTS
+import { properties } from './tiles.js';
+
 let communityCards = [];
 
 let community = [];
@@ -17,12 +20,22 @@ function randomize() {
 		community.push(...communityCards.splice(randomIndex, 1));
 	}
 }
-
+let cardCounter = 0;
 // returns a random card from community chest
 function landOnCommunity(allGameObjects) {
-	const { currPlayer } = allGameObjects;
-	const communityCard = community.pop();
-	communityCard.action(currPlayer);
+	if (cardCounter === 32) cardCounter = 0;
+	if (cardCounter < 16) {
+		const communityCard = community.pop();
+		communityCard.action(allGameObjects);
+		communityCards.push(communityCard);
+		cardCounter++;
+	}
+	if (32 > cardCounter > 15) {
+		const communityCard = community.shift();
+		communityCard.action(allGameObjects);
+		community.push(communityCard);
+		cardCounter++;
+	}
 }
 
 // Advance to Go (Collect $2)
@@ -131,7 +144,7 @@ card14.action = (allGameObjects) => {
 };
 let card15 = new Community(15);
 card15.action = (allGameObjects) => {
-	const { currPlayer, properties } = allGameObjects;
+	const { currPlayer } = allGameObjects;
 
 	let amt = 0;
 	for (let property in properties) {
@@ -153,6 +166,7 @@ card15.action = (allGameObjects) => {
 let card16 = new Community(16);
 card16.action = (allGameObjects) => {
 	const { currPlayer } = allGameObjects;
+	//FIXME: cannot read property "bitcoin" of undefined
 	currPlayer.bitcoin += 0.1;
 };
 let card17 = new Community(17);
