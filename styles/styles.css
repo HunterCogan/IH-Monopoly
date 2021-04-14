@@ -347,6 +347,8 @@ div.p-select-btn {
     boredcolor(orange) = #f37f24
     boredcolor(yellow) = #f4df30
  */
+    /* icon color on player card */
+
     #player1iconColor{
         background-color:#ec3a25;
     }
@@ -362,7 +364,47 @@ div.p-select-btn {
     #player4iconColor{
         background-color:#f37f24;
     }
+    /* icon color on player card End*/
 
+    /* coin color on player card */
+    #player1coincolor{
+        background-color: #ec3a25;
+    }
+
+    #player2coincolor{
+        background-color: #04a55c;
+    }
+
+    #player3coincolor{
+        background-color: #275ecb;
+    }
+
+    #player4coincolor{
+        background-color: #f37f24;
+    }
+
+    /* text color */
+
+    #p1-money{
+        color: white;
+    }
+
+    #p2-money{
+        color: white;
+    }
+
+    #p3-money{
+        color: white;
+    }
+
+    #p4-money{
+        color: white;
+    }
+
+    /* text color END */
+    /* coin color on player card END */
+
+    
 
     #p1Color{
      background-color:#ec3b25
