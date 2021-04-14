@@ -95,28 +95,3 @@ function endTurn() {
 }
 
 export { startGame, checkJail, rollDice, move, endTurn, players, currPlayer };
-
-// function turn() {
-// 	console.log(`You are player ${index + 1} ${currPlayer.name}`);
-
-// 	//TODO: prompt to click roll dice???????
-// 	rollDice();
-// 	// pass this to almost all functions, destructure what you need
-// 	const allGameObjects = {
-// 		currPlayer,
-// 		players,
-// 		rolledNumber,
-// 	};
-// 	console.log(allGameObjects);
-// 	if (!currPlayer.inJail()) {
-// 		//TODO: MOVE and ANIMATE token to position
-// 		currPlayer.movePlayer(allGameObjects);
-// 	}
-
-// 	if (index < nameList[0]) {
-// 		index++;
-// 	} else {
-// 		index = 0;
-// 	}
-// 	// turn();
-// }
