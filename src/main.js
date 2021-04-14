@@ -6,6 +6,6 @@ import { startGame, checkJail, rollDice, move, endTurn } from './game.js';
 const playBtn = document.querySelector('#modalClose');
 playBtn.addEventListener('click', startGame);
 const diceBtn = document.querySelector('#roll-dice');
-diceBtn.addEventListener('click', rollDice());
+diceBtn.addEventListener('click', rollDice);
 const endBtn = document.querySelector('#end-turn');
 endBtn.addEventListener('click', endTurn);

@@ -184,12 +184,7 @@ const showProperty = (ele) => {
 
 //////////////////////End Property Popup Modal//////////////////////
 
-//bind the property tiles
-document.querySelectorAll('.grid').forEach((e, i) => {
-	e.onclick = () => {
-		showProperty(e.id);
-	};
-});
+//////////////////////Test movement //////////////////////
 
 let p1Piece = $('#p1-token');
 let testBtn = $('#testBtn');
@@ -227,5 +222,24 @@ const movePiece = (where, current) => {
 testBtn.onclick = () => movePiece(4, 1);
 
 window.movePiece = movePiece;
+
+//////////////////////End Test Movement//////////////////////
+
+//////////////////////Start Mortgage modal//////////////////////
+let mortgageBtn = $('#mortgage-properties');
+mortgageBtn.onclick = () => {
+	
+};
+//////////////////////End Mortgage modal//////////////////////
+
+
+//////////////////////Page-load binding//////////////////////
+//bind the property tiles
+document.querySelectorAll('.grid').forEach((e, i) => {
+	e.onclick = () => {
+		showProperty(e.id);
+	};
+});
+//////////////////////End page-load binding//////////////////////
 
 export { $, showProperty, startOutput, movePiece };
