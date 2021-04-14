@@ -248,10 +248,10 @@ manageBtn.onclick = () => {
 
 
 //////////////////////Start Mortgage modal//////////////////////
-let mortgageBtn = $('#mortgage-properties');
-mortgageBtn.onclick = () => {
-
-};
+// let mortgageBtn = $('#mortgage-properties');
+// mortgageBtn.onclick = () => {
+//
+// };
 //////////////////////End Mortgage modal//////////////////////
 
 //////////////////////Page-load binding//////////////////////
