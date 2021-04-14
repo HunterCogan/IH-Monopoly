@@ -19,7 +19,7 @@
 			<div class="flex-column players">
 				<div id="p1-box" class="player-box p1">
 					<div class="player-name">
-						<span>Jonny</span>
+						<span id="p1Target">Jonny</span>
 					</div>
 					<div class="player-coin">
 						<span>₿ 12.34</span>
@@ -31,7 +31,7 @@
 				</div>
 				<div id="p2-box" class="player-box p2">
 					<div class="player-name">
-						<span>Juan</span>
+						<span id="p2Target">Juan</span>
 					</div>
 					<div class="player-coin">
 						<span>₿ 12.34</span>
@@ -177,7 +177,7 @@
 			<div class="flex-column players">
 				<div id="p3-box" class="player-box p3">
 					<div class="player-name">
-						<span>Dicky</span>
+						<span id="p3Target">Dicky</span>
 					</div>
 					<div class="player-coin">
 						<span>₿ 12.34</span>
@@ -189,7 +189,7 @@
 				</div>
 				<div id="p4-box" class="player-box p4">
 					<div class="player-name">
-						<span>Hunter</span>
+						<span id="p4Target">Hunter</span>
 					</div>
 					<div class="player-coin">
 						<span>₿ 69.69</span>
@@ -223,24 +223,28 @@
 				</div>
 				<div id="name-list" class="flex-end flex-column">
 					<div id="p1-name" class="p-name-hold flex-row">
-						<span>Player 1: </span
-						><input type="text" placeholder="Name Here . . ." maxlength="11" />
+						<span>Player 1: </span>
+						<input type="text" placeholder="Name Here . . ." maxlength="11" />
 					</div>
 					<div id="p2-name" class="p-name-hold flex-row">
-						<span>Player 2: </span
-						><input type="text" placeholder="Name Here . . ." maxlength="11" />
+						<span>Player 2: </span>
+						<input type="text" placeholder="Name Here . . ." maxlength="11" />
 					</div>
 					<div id="p3-name" class="p-name-hold flex-row">
-						<span>Player 3: </span
-						><input type="text" placeholder="Name Here . . ." maxlength="11" />
+						<span>Player 3: </span>
+						<input type="text" placeholder="Name Here . . ." maxlength="11" />
 					</div>
 					<div id="p4-name" class="p-name-hold flex-row">
-						<span>Player 4: </span
-						><input type="text" placeholder="Name Here . . ." maxlength="11" />
+						<span>Player 4: </span>
+						<input type="text" placeholder="Name Here . . ." maxlength="11" />
 					</div>
 				</div>
-				<div id="start-play" class="flex-row flex-end">
-					<div id="modalClose"><span>Play!</span></div>
+				<div id="start-play" class="flex-column">
+					<div id="tempDevBtnHolder" class="flex-row">
+						<div id="devBtn">devBtn</div>
+						<div id="modalClose"><span>Play!</span></div>
+					</div>
+					<span id="lonely" style="display: none">You won't have much fun playing this by yourself... &#x1F614</span>
 				</div>
 			</div>
 		</div>
