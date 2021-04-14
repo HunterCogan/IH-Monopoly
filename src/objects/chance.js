@@ -120,7 +120,6 @@ let card7 = new Chance(7);
 card7.action = () => {
 	currPlayer.getOutJail[0] = true;
 	currPlayer.getOutJail[1] += 1;
-	currPlayer.jailOptions.usePass = true;
 };
 
 // Go Back 3 Spaces
