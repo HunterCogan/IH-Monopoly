@@ -53,7 +53,8 @@ class Character {
 		const { rolledNumber } = allGameObjects;
 		this.position + rolledNumber >= 40
 			? (this.position = rolledNumber + this.position - 40)
-			: (this.position += rolledNumber);
+			: // TODO:if pass go collect
+			  (this.position += rolledNumber);
 		// check the position and its options
 		this.checkPosition(allGameObjects);
 	}

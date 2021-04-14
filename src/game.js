@@ -55,7 +55,7 @@ function turn() {
 	} else {
 		index = 0;
 	}
-	//turn();
+	// turn();
 }
 
 export { startGame, dice1, dice2 };
