@@ -22,7 +22,7 @@
 						<span id="p1Target">Jonny</span>
 					</div>
 					<div class="player-coin">
-						<span>₿ 12.34</span>
+						₿ <span id="p1-money">15.00</span>
 					</div>
 					<button type="button" class="player-property">Properties</button>
 					<div class="player-tokens">
@@ -34,7 +34,7 @@
 						<span id="p2Target">Juan</span>
 					</div>
 					<div class="player-coin">
-						<span>₿ 12.34</span>
+						₿ <span id="p2-money">15.00</span>
 					</div>
 					<button type="button" class="player-property">Properties</button>
 					<div class="player-tokens">
@@ -107,7 +107,12 @@
 									<div id="grid-weather" class="grid grid-middle-v"></div>
 								</div>
 
-								<div id="grid-block" class="grid-mid"></div>
+								<!--Middle interface-->
+								<div id="grid-block" class="grid-mid">
+									<div id="interface-hold">
+										<button id="testBtn"> TEST </button>
+									</div>
+								</div>
 
 								<div id="grid-right" class="flex-column grid-mid">
 									<div id="grid-wikipedia" class="grid grid-middle-v"></div>
@@ -133,7 +138,11 @@
 								<div id="grid-linkedin" class="grid grid-middle-h"></div>
 								<div id="grid-chest" class="grid-middle-h"></div>
 								<div id="grid-microsoft" class="grid grid-middle-h"></div>
-								<div id="grid-go" class="grid-corner-h"></div>
+								<div id="grid-go" class="grid-corner-h">
+									<div id="p1-token" class="tokenBackground p1">
+										<div class="speaker"></div>
+									</div>
+								</div>
 							</div>
 						</div>
 
@@ -180,7 +189,7 @@
 						<span id="p3Target">Dicky</span>
 					</div>
 					<div class="player-coin">
-						<span>₿ 12.34</span>
+						₿ <span id="p3-money">15.00</span>
 					</div>
 					<button type="button" class="player-property">Properties</button>
 					<div class="player-tokens">
@@ -192,7 +201,7 @@
 						<span id="p4Target">Hunter</span>
 					</div>
 					<div class="player-coin">
-						<span>₿ 69.69</span>
+						₿ <span id="p4-money">15.00</span>
 					</div>
 					<button type="button" class="player-property">Properties</button>
 					<div class="player-tokens">
@@ -254,9 +263,6 @@
 
 	<!-- speaker -->
 	<div id="remove-in-production">
-		<div class="tokenBackground p1">
-			<div class="speaker"></div>
-		</div>
 
 		<!-- mouse -->
 		<div class="tokenBackground p2">
@@ -277,6 +283,6 @@
 	<!-- Juan tokens end -->
 
 
-	<script type="module" src="src/dom.js"></script>
+	<script type="script" src="src/dom.js"></script>
 	<script type="module" src="src/main.js"></script>
 </html>
