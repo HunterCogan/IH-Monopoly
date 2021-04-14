@@ -295,16 +295,6 @@ div.p-select-btn {
         position: relative;
     }
 
-    #interface-hold {
-        border-radius: 25px;
-        position: absolute;
-        bottom: 25px;
-        right: 25px;
-        height: 275px;
-        width: 530px;
-        box-shadow: inset 0px 0px 28px 0px rgba(0,0,0,0.35)
-    }
-
     .grid:hover {
         box-shadow: inset 0px 0px 20px 9px rgba(0,0,0,0.40),
                     0px 0px 5px 2px rgba(0,0,0,0.5);
@@ -532,8 +522,25 @@ div.p-select-btn {
         position: absolute;
         transition: all 1s;
     }
-    /* test */
-
-    
 
 /*end tokens*/
+
+/*Main Interface */
+#interface-hold {
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    height: 275px;
+    width: 530px;
+    box-shadow: inset 0px 0px 28px 0px rgba(0,0,0,0.35)
+}
+
+.menu-btn {
+    padding: 5px 10px;
+    background-color: #e5fff8;
+    margin: 5px 0;
+    border-radius: 5px;
+}
