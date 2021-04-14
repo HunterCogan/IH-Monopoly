@@ -1,5 +1,6 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
+import { currPlayer, players } from './../game.js';
 
 let communityCards = [];
 
@@ -40,23 +41,20 @@ function landOnCommunity(allGameObjects) {
 
 // Advance to Go (Collect $2)
 let card1 = new Community(1);
-card1.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card1.action = () => {
 	currPlayer.position = 0;
 	currPlayer.bitcoin += 2;
 };
 
 // Collect $2
 let card2 = new Community(2);
-card2.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card2.action = () => {
 	currPlayer.bitcoin += 2;
 };
 
 // Pay $0.5
 let card3 = new Community(3);
-card3.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card3.action = () => {
 	currPlayer.bitcoin -= 0.5;
 };
 
@@ -69,24 +67,22 @@ card4.action = (allGameObjects) => {
 
 // Anti-virus Software–Free ransomware unlock
 let card5 = new Community(5);
-card5.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card5.action = () => {
 	currPlayer.getOutJail[0] = true;
 	currPlayer.getOutJail[1] += 1;
+	currPlayer.jailOptions.usePass = true;
 };
 
 // You’ve been hacked!–Files are locked immediately–Do not pass Go, do not collect $2
 let card6 = new Community(6);
-card6.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card6.action = () => {
 	currPlayer.jail[0] = true;
 	currPlayer.position = 10;
 };
 
 // Collect $.5 from every player
 let card7 = new Community(7);
-card7.action = (allGameObjects) => {
-	const { currPlayer, players } = allGameObjects;
+card7.action = () => {
 	for (let player in players) {
 		players[player].bitcoin -= 0.5;
 		//have a function to check for broke-ness added to player
@@ -96,56 +92,47 @@ card7.action = (allGameObjects) => {
 
 // Receive $1
 let card8 = new Community(8);
-card8.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card8.action = () => {
 	currPlayer.bitcoin += 1;
 };
 
 // Receive $0.2
 let card9 = new Community(9);
-card9.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card9.action = () => {
 	currPlayer.bitcoin += 0.2;
 };
 
 // Receive $0.1
 let card10 = new Community(10);
-card10.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card10.action = () => {
 	currPlayer.bitcoin += 0.1;
 };
 
 // Receive $1
 let card11 = new Community(11);
-card11.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card11.action = () => {
 	currPlayer.bitcoin += 1;
 };
 
 // Pay $1
 let card12 = new Community(12);
-card12.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card12.action = () => {
 	currPlayer.bitcoin -= 1;
 };
 
 // Pay $1.5
 let card13 = new Community(13);
-card13.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card13.action = () => {
 	currPlayer.bitcoin -= 1.5;
 };
 
 // Receive $0.25
 let card14 = new Community(14);
-card14.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card14.action = () => {
 	currPlayer.bitcoin += 0.25;
 };
 let card15 = new Community(15);
-card15.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
-
+card15.action = () => {
 	let amt = 0;
 	for (let property in properties) {
 		if (
@@ -164,14 +151,12 @@ card15.action = (allGameObjects) => {
 };
 
 let card16 = new Community(16);
-card16.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card16.action = () => {
 	//FIXME: cannot read property "bitcoin" of undefined
 	currPlayer.bitcoin += 0.1;
 };
 let card17 = new Community(17);
-card17.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card17.action = () => {
 	currPlayer.bitcoin += 1;
 };
 
