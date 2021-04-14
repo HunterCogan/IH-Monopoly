@@ -1,4 +1,4 @@
-import { currPlayer, players } from './..game.js';
+import { currPlayer } from './..game.js';
 
 let totalHouse = 50;
 let totalHotel = 50;

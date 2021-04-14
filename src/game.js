@@ -46,35 +46,35 @@ function payJail() {
 
 function rollJail() {
 	//variable dice1 = dice()
-	let dice1 = dice()
+	let dice1 = currPlayer.dice();
 	//variable dice 2 = dice()
-	let dice2 = dice()
+	let dice2 = currPlayer.dice();
 	//roll currplayer.dice() === currPlayer.dice()
 	if (dice1 === dice2) {
 		//if true currPlayer.rolled Number = dice1 + dice2
-		currPlayer.rolledNumber = dice1 + dice2
+		currPlayer.rolledNumber = dice1 + dice2;
 	}
 	// if player is on third turn and double false subtract money
 	if (dice1 !== dice2 && currPlayer.jail[1] === 3) {
-		currPlayer.bitcoin -= .5
-		currPlayer.rolledNumber = dice1 + dice2
+		currPlayer.bitcoin -= 0.5;
+		currPlayer.rolledNumber = dice1 + dice2;
 	}
 	//set currPlayer.jail = false counter to 0
-	currPlayer.jail = [false, 0]
+	currPlayer.jail = [false, 0];
 	// TODO: close Jail modal
-	currPlayer.player.move()
+	currPlayer.player.move();
 }
 
 function freeJail() {
 	//check if they have pass
 	if (currPlayer.getOutJail[0] === false) {
-		console.log("You can't do that")
+		console.log("You can't do that");
 	}
 	//if true pass - 1 if = 0 then pass = false
 	// change player jail status to false and 0
-	currPlayer.getOutJail[0] = false
-	currPlayer.getOutJail[1] -= 1
-	currPlayer.jail = [false, 0]
+	currPlayer.getOutJail[0] = false;
+	currPlayer.getOutJail[1] -= 1;
+	currPlayer.jail = [false, 0];
 	// TODO: close modal
 }
 
@@ -109,46 +109,3 @@ export {
 	players,
 	currPlayer,
 };
-
-// //if in jail prompt for options
-// if (currPlayer.jail[0] === true) {
-// 	//skip turn
-// 	document.querySelector('skipturn').addEventListener('click', () => {
-// 		currPlayer.jail[1] += 1;
-// 	});
-// 	// if they roll, check if they get double
-// 	document.querySelector('roll').addEventListener('click', () => {
-// 		if (currPlayer.dice() === currPlayer.dice()) {
-
-// 			currPlayer.jail[0] = false;
-// 			currPlayer.jail[1] = 0;
-// 		} else {
-// 			//TODO:grey out the option button
-// 			currPlayer.jail[1] += 1;
-// 		}
-// 	});
-// 	// if not enough bitcoin, grey out the option for pay Jail
-// 	if (currPlayer.bitcoin < .5) {
-// 		currPlayer.gameoptions.payJail = false;
-// 	} else {
-// 		// else addeventlistener for click to take money and  allow player to move
-// 		document.querySelector('paybutton').addEventListener('click', () => {
-// 			currPlayer.bitcoin - .5;
-// 			currPlayer.jail[0] = false;
-// 			currPlayer.jail[1] = 0;
-// 		});
-// 	}
-// 	// if player have get out jail card addevent listener else gray out option
-// 	if (currPlayer.jailOptions.usePass === true) {
-// 		document.querySelector('usePassButton').addEventListener('click', () => {
-// 			currPlayer.getOutJail[1] -= 1;
-// 			if (currPlayer.getOutJail[1] === 0) currPlayer.getOutJail[0] = false;
-// 			currPlayer.jail[0] = false;
-// 			currPlayer.jail[1] = 0;
-// 			currPlayer.gameOptions.move = true;
-// 			currPlayer.gameOptions.buy = true;
-// 		});
-// 		return true;
-// 	}
-// 	//TODO: prompt jail option
-// }
