@@ -1,3 +1,4 @@
+import { updateBitcoin } from '../game.js';
 import { landOnChance } from './chance.js';
 // community is an ARRAY of OBJECTS
 // landOnCommunity RETURNS an OBJECT of a community Card
@@ -56,17 +57,21 @@ class Character {
 
 	// what tile did player land on and what will happen
 	checkPosition() {
-		if (this.position === 4 || this.position === 38) {
+		if (this.position === 0) {
+			console.log("you're at go");
+			return false;
+		} else if (this.position === 4 || this.position === 38) {
 			this.collectTax();
 		} else if (this.position === 7 || this.position === 22 || this.position === 36) {
 			//TODO: animation/action for chance?
 			landOnChance();
+			updateBitcoin();
 		} else if (this.position === 2 || this.position === 17 || this.position === 33) {
 			//TODO: animation?
 			landOnCommunity();
+			updateBitcoin();
 		} else if (this.position === 10 || this.position === 20) {
-			//TODO: prompt for property management?
-			console.log(`You can't do shit`);
+			return false;
 		} else if (this.position === 30) {
 			this.position = 10;
 			this.jail[0] = true;
@@ -77,8 +82,6 @@ class Character {
 			);
 			//TODO: prompt for property option
 		}
-
-		//TODO: end turn
 	}
 }
 

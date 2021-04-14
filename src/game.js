@@ -98,6 +98,17 @@ function move() {
 	currPlayer.movePlayer();
 }
 
+function updateBitcoin() {
+	const p1 = document.querySelector('#p1-money');
+	const p2 = document.querySelector('#p2-money');
+	const p3 = document.querySelector('#p3-money');
+	const p4 = document.querySelector('#p4-money');
+	p1.innerText = players[0].bitcoin;
+	p2.innerText = players[1].bitcoin;
+	p3.innerText = players[2].bitcoin;
+	p4.innerText = players[3].bitcoin;
+}
+
 function endTurn() {
 	currPlayer.diceRolled = false;
 	index < nameList[0] ? index++ : (index = 0);
@@ -118,4 +129,5 @@ export {
 	endTurn,
 	players,
 	currPlayer,
+	updateBitcoin,
 };

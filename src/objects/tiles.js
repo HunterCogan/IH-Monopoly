@@ -1,4 +1,4 @@
-import { currPlayer } from './../game.js';
+import { currPlayer, updateBitcoin } from './../game.js';
 
 let totalHouse = 50;
 let totalHotel = 50;
@@ -28,11 +28,13 @@ class Property {
 	mortgagProp() {
 		currPlayer.bitcoin += this.mortgage;
 		this.isMortgaged = true;
+		updateBitcoin();
 	}
 
 	unmortgageProp() {
 		currPlayer.bitcoin -= this.mortgage * 1.1;
 		this.isMortgaged = false;
+		updateBitcoin();
 	}
 
 	// how many of one type does owner have and do they have all of of one type
@@ -71,6 +73,7 @@ class Property {
 				currPlayer.bitcoin -= this.cost;
 				// add property to player's list of properties they own
 				currPlayer.properties.push(this.name);
+				updateBitcoin();
 			}
 		}
 	}
@@ -125,6 +128,7 @@ class Property {
 						this.server++;
 						// take money from player
 						currPlayer.bitcoin -= this.housePrice;
+						updateBitcoin();
 					}
 				} else {
 					console.log('Ran out of microtransistors to build servers or super compputers');
