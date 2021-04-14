@@ -184,7 +184,7 @@ properties[13] = new Property(
 );
 
 properties[14] = new Property(
-	'Walmart.com',
+	'Walmart',
 	1.6,
 	[0.12, 0.6, 1.8, 5, 7, 9],
 	0.8,
@@ -208,7 +208,7 @@ properties[18] = new Property(
 	'orange'
 );
 
-properties[19] = new Property('CNN.com', 2, [0.16, 0.8, 2.2, 6, 8, 10], 1, 1, 'Orange');
+properties[19] = new Property('CNN', 2, [0.16, 0.8, 2.2, 6, 8, 10], 1, 1, 'Orange');
 properties[21] = new Property(
 	'instagram',
 	2.2,
@@ -226,7 +226,7 @@ properties[23] = new Property(
 	'red'
 ); // Export Property Class
 properties[24] = new Property(
-	'Twitter.com',
+	'Twitter',
 	2.4,
 	[0.2, 1, 3, 7.5, 9.25, 11],
 	1.2,
@@ -295,7 +295,7 @@ properties[37] = new Property(
 	'darkBlue'
 );
 
-properties[39] = new Property('Google.com', 4, [0.5, 2, 6, 14, 17, 20], 2, 2, 'darkBlue');
+properties[39] = new Property('Google', 4, [0.5, 2, 6, 14, 17, 20], 2, 2, 'darkBlue');
 
 properties[5] = new Property('Charter', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[15] = new Property('Time Warner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
