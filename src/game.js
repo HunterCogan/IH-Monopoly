@@ -21,9 +21,16 @@ function startGame() {
 	createPlayers(nameList.slice(1));
 	currPlayer = players[index];
 	console.log('Game Started');
+	console.log(players);
 }
 function checkJail() {
 	//if player.jail[0] = true
+	if (currPlayer.jail[0] === false) {
+		console.log('current Player not in jail and moved');
+
+		return false;
+	}
+	console.log(`${currPlayer.name} is in jail`);
 	// if already on third turn subtract money .5
 	//close modal
 	//TODO: open jail model
@@ -79,7 +86,12 @@ function freeJail() {
 }
 
 function rollDice() {
-	currPlayer.rollDice();
+	// if the player in jail and have they rolled before?
+	if (!checkJail() && !currPlayer.diceRolled) {
+		currPlayer.rollDice();
+		currPlayer.movePlayer();
+		console.log(currPlayer);
+	}
 }
 
 function move() {
@@ -87,14 +99,12 @@ function move() {
 }
 
 function endTurn() {
-	const option = currPlayer.gameoptions;
-	option.improve = true;
-	option.trade = true;
-	option.mortgage = true;
-	option.move = false;
-	option.buy = false;
-	index++;
-	checkJail();
+	currPlayer.diceRolled = false;
+	index < nameList[0] ? index++ : (index = 0);
+
+	currPlayer = players[index];
+	console.log('turn ended');
+	console.log(`next player is ${currPlayer.name}`);
 }
 
 export {

@@ -14,13 +14,17 @@ class Character {
 		this.position = 0;
 		this.properties = [];
 		this.getOutJail = [false, 0];
-		this.rolledNumber;
+		this.rolledNumber = 0;
+		this.diceRolled = false;
 	}
 	rollDice() {
 		this.rolledNumber = this.dice() + this.dice();
+		// if dice already rolled once, set to true
+		this.diceRolled = true;
+		console.log(this.rolledNumber);
 	}
 	dice() {
-		return Math.round(Math.random() * 6);
+		return Math.round(Math.random() * 6) + 1;
 	}
 	collectTax() {
 		//TODO: need an action for bankrupt
@@ -67,10 +71,11 @@ class Character {
 			this.position = 10;
 			this.jail[0] = true;
 		} else {
+			console.log(this);
 			console.log(
 				`${this.name} what do you want to do with ${properties[this.position].name}`
-				//TODO: prompt for property option
 			);
+			//TODO: prompt for property option
 		}
 
 		//TODO: end turn

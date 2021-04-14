@@ -208,7 +208,6 @@ const movePiece = (where, current) => {
 
 		p1Piece.style[direction] = `${64 * j}px`;
 
-
 		if (current > where) {
 			clearInterval(int);
 		}
@@ -218,8 +217,8 @@ const movePiece = (where, current) => {
 		console.log(j);
 	}, 1000);
 };
-
-testBtn.onclick = () => movePiece(4, 1);
+//Testing uncomment line below after done
+// testBtn.onclick = () => movePiece(4, 1);
 
 window.movePiece = movePiece;
 
@@ -227,11 +226,8 @@ window.movePiece = movePiece;
 
 //////////////////////Start Mortgage modal//////////////////////
 let mortgageBtn = $('#mortgage-properties');
-mortgageBtn.onclick = () => {
-	
-};
+mortgageBtn.onclick = () => {};
 //////////////////////End Mortgage modal//////////////////////
-
 
 //////////////////////Page-load binding//////////////////////
 //bind the property tiles
