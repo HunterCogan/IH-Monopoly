@@ -124,6 +124,7 @@ body {
 div.p-select-btn {
     justify-content: center;
     font-size: 2rem;
+    color: #c9e8df;
 }
 
 .p-select-btn:hover {
@@ -180,15 +181,85 @@ div.p-select-btn {
     margin-right: 40px;
 }
 
-/*mortgage modal*/
-#mortgage-content {
-    margin-right: 40px;
+/*manage property modal*/
+
+#manage-content {
     width: 500px;
-    height: 570px;
-    background-color: #c9e8df;
+    min-height: 200px;
+    background-color: #c9e8df;;
+    border-radius: 15px;
+    align-items: center;
+    padding: 25px;
 }
 
-/*Start Global Classes*/
+.manage-list {
+    margin: 0 25px 70px 25px;
+    width: 100%;
+    align-items: center;
+}
+
+#properties-title{
+    margin: 15px 0;
+    font-size: 1.75rem;
+}
+
+.prop-list {
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+}
+
+.m-name {
+    text-align: left;
+    width: 100px;
+    padding-left: 5px;
+}
+
+.m-amt {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.m-server, .m-trade, .m-mortgage {
+    margin-right: 5px;
+    border-radius: 5px;
+    color: #c9e8df;
+    padding: 5px 10px;
+}
+
+.m-server, .m-trade, .m-mortgage:hover {
+    cursor: pointer;
+}
+
+.m-server {
+    background-color: #236af1;
+}
+.m-trade {
+    background-color: #d2562e;
+}
+
+.m-mortgage {
+    background-color: #8b1641;
+}
+
+#close-mng {
+    position: absolute;
+    bottom: 25px;
+    height: 45px;
+    width: 100px;
+    background-color: #d25f69;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#close-mng:hover {
+    cursor: pointer;
+}
+
+    /*Start Global Classes*/
 .flex-column {
     display: flex;
     flex-direction: column;
@@ -202,6 +273,15 @@ div.p-select-btn {
 .flex-end {
     justify-content: flex-end;
     width: 100%;
+}
+
+.baseline {
+    align-items: baseline;
+}
+
+.lightgreen {
+    background-color: #e5fff8;
+
 }
 
 /*End Global Classes*/
@@ -277,7 +357,7 @@ div.p-select-btn {
     #board {
         width: 100%;
         height: 100%;
-        background: url('../assets/webopolyv2.jpg') no-repeat center;
+        background: url('../assets/board1600.jpg') no-repeat center;
         background-size: contain;
         border-radius: 30px;
         overflow: hidden;
@@ -582,22 +662,23 @@ div.p-select-btn {
         display: flex;
         justify-content: center;
         align-items: center;
+        border: 2px black solid;
     }
 
     #p1-box{
-        background-color: #f0e1cc;        ;
+        background-color: #f0e1cc;
     }
 
     #p2-box{
-        background-color: #f0e1cc;        ;
+        background-color: #f0e1cc;
     }
 
     #p3-box{
-        background-color: #f0e1cc;        ;
+        background-color: #f0e1cc;
     }
 
     #p4-box{
-        background-color: #f0e1cc;        ;
+        background-color: #f0e1cc;
     }
 
     #p1Target{
@@ -619,7 +700,7 @@ div.p-select-btn {
     .p1 {background-color: #234ea2;}
     .p2 {background-color: #04a55c;}
     .p3 {background-color: #ec3a25;}
-    .p4 {background-color: #eb3978;}
+    .p4 {background-color: #f37f25;}
 
     .speaker{
         background-image: url("../assets/Iconpack/speaker.png");
@@ -651,6 +732,29 @@ div.p-select-btn {
 
     #p1-token {
         position: absolute;
+        right: 60px;
+        bottom: 60px;
+        transition: all 1s;
+    }
+
+    #p2-token {
+        position: absolute;
+        right: 60px;
+        bottom: 30px;
+        transition: all 1s;
+    }
+
+    #p3-token {
+        position: absolute;
+        right: 30px;
+        bottom: 60px;
+        transition: all 1s;
+    }
+
+    #p4-token {
+        position: absolute;
+        right: 30px;
+        bottom: 30px;
         transition: all 1s;
     }
 
@@ -670,19 +774,17 @@ div.p-select-btn {
 }
 
 .menu-column {
-    height: 148px;
-    margin: 0 25px;
     justify-content: space-between;
 }
 
 .menu-btn {
-    padding: 10px 10px;
+    padding: 15px 15px;
     background-color: #e5fff8;
-    margin: 5px 0;
+    margin: 30px 15px;
     border-radius: 10px;
     display: flex;
     align-items: center;
-    font-size: 1.25rem;
+    font-size: 1.75rem;
 }
 
 .menu-btn:hover {

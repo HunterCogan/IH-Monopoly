@@ -186,56 +186,82 @@ const showProperty = (ele) => {
 
 //////////////////////Test movement //////////////////////
 
-let p1Piece = $('#p1-token');
-let testBtn = $('#testBtn');
-
-const movePiece = (where, current) => {
-	let j = current;
-	let direction = 'right';
-
-	let int = setInterval(() => {
-		if (current === 12) {
-			console.log('turn1');
-			direction = 'bottom';
-			j = 0;
-		}
-
-		if (current === 22) {
-			console.log('turn2');
-			direction = 'left';
-			j = 0;
-		}
-
-		p1Piece.style[direction] = `${64 * j}px`;
-
-		if (current > where) {
-			clearInterval(int);
-		}
-		j++;
-		where++;
-		console.log(i);
-		console.log(j);
-	}, 1000);
-};
-//Testing uncomment line below after done
+// let p1Piece = $('#p1-token');
+// let testBtn = $('#testBtn');
+//
+// const movePiece = (where, current) => {
+// 	let j = current;
+// 	let direction = 'right';
+//
+// 	let int = setInterval(() => {
+// 		if (current === 12) {
+// 			console.log('turn1');
+// 			direction = 'bottom';
+// 			j = 0;
+// 		}
+//
+// 		if (current === 22) {
+// 			console.log('turn2');
+// 			direction = 'left';
+// 			j = 0;
+// 		}
+//
+// 		p1Piece.style[direction] = `${64 * j}px`;
+//
+//
+// 		if (current > where) {
+// 			clearInterval(int);
+// 		}
+// 		j++;
+// 		where++;
+// 		console.log(i);
+// 		console.log(j);
+// 	}, 1000);
+// };
+//
 // testBtn.onclick = () => movePiece(4, 1);
-
-window.movePiece = movePiece;
+//
+// window.movePiece = movePiece;
 
 //////////////////////End Test Movement//////////////////////
 
 //////////////////////Start Mortgage modal//////////////////////
-let mortgageBtn = $('#mortgage-properties');
-mortgageBtn.onclick = () => {};
+
+let manageBtn = $('#manage-property');
+let manageModal = $('#manage-modal');
+
+const handleManage = () => {
+	manageModal.style.display = 'flex';
+	let close = $('#close-mng');
+
+
+
+	close.onclick = () => {
+		manageModal.style.display = 'none';
+	}
+};
+
+manageBtn.onclick = () => {
+	handleManage();
+};
+//////////////////////End Mortgage modal//////////////////////
+
+
+//////////////////////Start Mortgage modal//////////////////////
+// let mortgageBtn = $('#mortgage-properties');
+// mortgageBtn.onclick = () => {
+//
+// };
 //////////////////////End Mortgage modal//////////////////////
 
 //////////////////////Page-load binding//////////////////////
 //bind the property tiles
 document.querySelectorAll('.grid').forEach((e, i) => {
 	e.onclick = () => {
+		console.log('test');
 		showProperty(e.id);
 	};
 });
 //////////////////////End page-load binding//////////////////////
 
-export { $, showProperty, startOutput, movePiece };
+export { $, showProperty, startOutput };

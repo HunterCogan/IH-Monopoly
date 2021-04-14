@@ -77,6 +77,7 @@
 				<!--Actual game board-->
 				<div id="board">
 					<div id="board-grid">
+						<!--grid-->
 						<div id="grid-top" class="flex-row grid-h">
 							<div id="grid-free-trial" class="grid-corner-h"></div>
 							<div id="grid-instagram" class="grid grid-middle-h"></div>
@@ -91,6 +92,7 @@
 							<div id="grid-hacked" class="grid-corner-h"></div>
 						</div>
 
+						<!--Middle grid holds left, right, and block-->
 						<div id="grid-middle" class="flex-row grid-mid">
 							<div id="grid-left" class="flex-column grid-mid">
 								<div id="grid-cnn" class="grid grid-middle-v"></div>
@@ -104,23 +106,23 @@
 								<div id="grid-weather" class="grid grid-middle-v"></div>
 							</div>
 
-							<!--Middle interface-->
+							<!--Middle interface grid block-->
 							<div id="grid-block" class="grid-mid">
-								<div id="interface-hold" class="flex-row">
-									<div class="flex-column menu-column">
-										<div id="buy-servers" class="menu-btn">Buy Servers</div>
-										<div id="trade-properties" class="menu-btn">Trade Properties</div>
-										<div id="mortgage-properties" class="menu-btn">Mortgage Properties</div>
-									</div>
-									<div class="flex-column menu-column">
+								<div id="interface-hold" class="flex-column menu-column">
+									<div class="flex-row">
 										<div id="roll-dice" class="menu-btn">Roll Dice</div>
 										<div id="end-turn" class="menu-btn">End Turn</div>
 									</div>
-									<!--										<button id="testBtn"> TEST </button>-->
 
+									<div class="flex-row">
+										<div id="manage-property" class="menu-btn">Manage Properties</div>
+									</div>
+									<!--<button id="testBtn"> TEST </button>-->
 								</div>
 							</div>
+							<!--end middle grid block -->
 
+							<!--grid right-->
 							<div id="grid-right" class="flex-column grid-mid">
 								<div id="grid-wikipedia" class="grid grid-middle-v"></div>
 								<div id="grid-amazon" class="grid grid-middle-v"></div>
@@ -132,8 +134,11 @@
 								<div id="grid-luxury" class="grid-middle-v"></div>
 								<div id="grid-google" class="grid grid-middle-v"></div>
 							</div>
+							<!--End grid right-->
 						</div>
+						<!--End Middle grid-->
 
+						<!-- bottom grid -->
 						<div id="grid-bot" class="flex-row grid-h">
 							<div id="grid-jail" class="grid-corner-h"></div>
 							<div id="grid-espn" class="grid grid-middle-h"></div>
@@ -149,12 +154,24 @@
 								<div id="p1-token" class="tokenBackground p1">
 									<div class="speaker"></div>
 								</div>
+								<!-- mouse -->
+								<div id="p2-token" class="tokenBackground p2">
+									<div class="mouse"></div>
+								</div>
+
+								<!-- keyboard -->
+								<div id="p3-token" class="tokenBackground p3">
+									<div class="keyboard"></div>
+								</div>
+
+								<!-- monitor -->
+								<div id="p4-token" class="tokenBackground p4">
+									<div class="monitor"></div>
+								</div>
 							</div>
 						</div>
+						<!--end bottom grid-->
 					</div>
-
-					<!-- animations here-->
-					<canvas></canvas>
 				</div>
 
 				<!--Right column with tab placeholders-->
@@ -222,16 +239,57 @@
 			</div>
 		</div>
 
-		<!-- Mortgage modal -->
-		<div id="mortgage-modal" class="modal" style="display: none">
+		<!-- Manage Property modal WIP -->
+		<div id="manage-modal" class="modal" style="display: none">
 			<div class="flex-column modal-contain">
-				<div id="close-mort" class="close"></div>
-				<div id="mortgage-content" class="modal-content">
-					<div class="flex-column">
-						<div id="m-linkedin" class="flex-row">
-							<div class="m-name">LinkedIn Avenue: </div>
-							<div class="m-amt">₿ 0.3</div>
+				<div id="manage-content" class=" flex-column">
+					<div id="properties-title">Properties: </div>
+					<div class="flex-column manage-list">
+						<div id="m-microsoft" class="flex-row prop-list lightgreen">
+							<div class="flex-row baseline">
+								<div class="m-name">Microsoft: </div>
+								<div class="m-amt"> ₿ 0.02</div>
+							</div>
+							<div class="m-btn-row flex-row">
+								<div id="microsoft-server" class="m-server" >Buy Servers</div>
+								<div id="microsoft-trade" class="m-trade">Trade</div>
+								<div id="microsoft-mortgage" class="m-mortgage">Mortgage</div>
+							</div>
 						</div>
+						<div id="m-linkedin" class="flex-row prop-list">
+							<div class="flex-row baseline">
+								<div class="m-name">LinkedIn: </div>
+								<div class="m-amt">₿ 0.04</div>
+							</div>
+							<div class="m-btn-row flex-row">
+								<div id="linkedin-server" class="m-server" >Buy Servers</div>
+								<div id="linkedin-trade" class="m-trade">Trade</div>
+								<div id="linkedin-mortgage" class="m-mortgage">Mortgage</div>
+							</div>
+						</div>
+						<div id="m-foxnews" class="flex-row prop-list lightgreen">
+							<div class="flex-row baseline">
+								<div class="m-name">Foxnews: </div>
+								<div class="m-amt">₿ 0.06</div>
+							</div>
+							<div class="m-btn-row flex-row">
+								<div id="foxnews-server" class="m-server" >Buy Servers</div>
+								<div id="foxnews-trade" class="m-trade">Trade</div>
+								<div id="foxnews-mortgage" class="m-mortgage">Mortgage</div>
+							</div>
+						</div>
+						<div id="m-IMDB" class="flex-row prop-list">
+							<div class="flex-row baseline">
+								<div class="m-name">Foxnews: </div>
+								<div class="m-amt">₿ 0.06</div>
+							</div>
+							<div class="m-btn-row flex-row">
+								<div id="IMDB-server" class="m-server" >Buy Servers</div>
+								<div id="IMDB-trade" class="m-trade">Trade</div>
+								<div id="IMDB-mortgage" class="m-mortgage">Mortgage</div>
+							</div>
+						</div>
+						<div id="close-mng" class="close-btn">Close</div>
 					</div>
 				</div>
 			</div>
@@ -280,37 +338,7 @@
 	</div>
 </body>
 
-<!-- Juan Tokens -->
-
-<!-- speaker -->
-<div id="remove-in-production">
-
-	<!-- mouse -->
-	<div class="tokenBackground p2">
-		<div class="mouse"></div>
-	</div>
-
-	<!-- keyboard -->
-	<div class="tokenBackground p3">
-		<div class="keyboard"></div>
-	</div>
-
-	<!-- monitor -->
-	<div class="tokenBackground p4">
-		<div class="monitor"></div>
-	</div>
-</div>
-
-<!-- Juan tokens end -->
-
-
-
-<script type='module' src="src/objects/chance.js"></script>
-<script type="module" src="src/objects/chest.js"></script>
-<script type='module' src="src/objects/players.js"></script>
-<script type="module" src="src/objects/tiles.js"></script>
-<script type='module' src="src/game.js"></script>
-<script type="module" src="src/dom.js"></script>
-<script type='module' src="src/main.js"></script>
+<script type="script" src="src/dom.js"></script>
+<script type="module" src="src/main.js"></script>
 
 </html>
