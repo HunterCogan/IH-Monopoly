@@ -109,18 +109,16 @@
 
 								<!--Middle interface-->
 								<div id="grid-block" class="grid-mid">
-									<div id="interface-hold" class="flex-row">
-										<div class="flex-column menu-column">
-											<div id="buy-servers" class="menu-btn" >Buy Servers</div>
-											<div id="trade-properties" class="menu-btn">Trade Properties</div>
-											<div id="mortgage-properties" class="menu-btn">Mortgage Properties</div>
-										</div>
-										<div class="flex-column menu-column">
-											<div id="roll-dice" class="menu-btn">Roll Dice</div>
-											<div id="end-turn" class="menu-btn">End Turn</div>
-										</div>
-<!--										<button id="testBtn"> TEST </button>-->
+									<div id="interface-hold" class="flex-column menu-column">
+                                        <div class="flex-row">
+                                            <div id="roll-dice" class="menu-btn">Roll Dice</div>
+                                            <div id="end-turn" class="menu-btn">End Turn</div>
+                                        </div>
 
+                                        <div class="flex-row">
+                                            <div id="manage-property" class="menu-btn">Manage Properties</div>
+                                        </div>
+<!--										<button id="testBtn"> TEST </button>-->
 									</div>
 								</div>
 
@@ -152,6 +150,20 @@
 									<div id="p1-token" class="tokenBackground p1">
 										<div class="speaker"></div>
 									</div>
+                                    <!-- mouse -->
+                                    <div id="p2-token" class="tokenBackground p2">
+                                        <div class="mouse"></div>
+                                    </div>
+
+                                    <!-- keyboard -->
+                                    <div id="p3-token" class="tokenBackground p3">
+                                        <div class="keyboard"></div>
+                                    </div>
+
+                                    <!-- monitor -->
+                                    <div id="p4-token" class="tokenBackground p4">
+                                        <div class="monitor"></div>
+                                    </div>
 								</div>
 							</div>
 						</div>
@@ -227,16 +239,57 @@
 				</div>
 			</div>
 
-			<!-- Mortgage modal -->
-			<div id="mortgage-modal" class="modal" style="display: none">
+			<!-- Manage Property modal WIP -->
+			<div id="manage-modal" class="modal" style="display: none">
 				<div class="flex-column modal-contain">
-					<div id="close-mort" class="close"></div>
-					<div id="mortgage-content" class="modal-content">
-						<div class="flex-column">
-							<div id="m-linkedin" class="flex-row">
-								<div class="m-name">LinkedIn Avenue: </div>
-								<div class="m-amt">₿ 0.3</div>
+					<div id="manage-content" class=" flex-column">
+						<div id="properties-title">Properties: </div>
+						<div class="flex-column manage-list">
+                            <div id="m-microsoft" class="flex-row prop-list lightgreen">
+								<div class="flex-row baseline">
+									<div class="m-name">Microsoft: </div>
+									<div class="m-amt"> ₿ 0.02</div>
+								</div>
+								<div class="m-btn-row flex-row">
+									<div id="microsoft-server" class="m-server" >Buy Servers</div>
+									<div id="microsoft-trade" class="m-trade">Trade</div>
+									<div id="microsoft-mortgage" class="m-mortgage">Mortgage</div>
+								</div>
+                            </div>
+							<div id="m-linkedin" class="flex-row prop-list">
+								<div class="flex-row baseline">
+									<div class="m-name">LinkedIn: </div>
+									<div class="m-amt">₿ 0.04</div>
+								</div>
+								<div class="m-btn-row flex-row">
+									<div id="linkedin-server" class="m-server" >Buy Servers</div>
+									<div id="linkedin-trade" class="m-trade">Trade</div>
+									<div id="linkedin-mortgage" class="m-mortgage">Mortgage</div>
+								</div>
 							</div>
+							<div id="m-foxnews" class="flex-row prop-list lightgreen">
+								<div class="flex-row baseline">
+									<div class="m-name">Foxnews: </div>
+									<div class="m-amt">₿ 0.06</div>
+								</div>
+								<div class="m-btn-row flex-row">
+									<div id="foxnews-server" class="m-server" >Buy Servers</div>
+									<div id="foxnews-trade" class="m-trade">Trade</div>
+									<div id="foxnews-mortgage" class="m-mortgage">Mortgage</div>
+								</div>
+							</div>
+							<div id="m-IMDB" class="flex-row prop-list">
+								<div class="flex-row baseline">
+									<div class="m-name">Foxnews: </div>
+									<div class="m-amt">₿ 0.06</div>
+								</div>
+								<div class="m-btn-row flex-row">
+									<div id="IMDB-server" class="m-server" >Buy Servers</div>
+									<div id="IMDB-trade" class="m-trade">Trade</div>
+									<div id="IMDB-mortgage" class="m-mortgage">Mortgage</div>
+								</div>
+							</div>
+							<div id="close-mng" class="close-btn">Close</div>
 						</div>
 					</div>
 				</div>
@@ -289,20 +342,6 @@
 	<!-- speaker -->
 	<div id="remove-in-production">
 
-		<!-- mouse -->
-		<div class="tokenBackground p2">
-			<div class="mouse"></div>
-		</div>
-
-		<!-- keyboard -->
-		<div class="tokenBackground p3">
-			<div class="keyboard"></div>
-		</div>
-
-		<!-- monitor -->
-		<div class="tokenBackground p4">
-			<div class="monitor"></div>
-		</div>
 	</div>
 
 	<!-- Juan tokens end -->
