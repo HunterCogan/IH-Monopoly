@@ -49,31 +49,17 @@ class Character {
 				: (this.bitoin -= 1.5);
 		}
 	}
-	//in Jail options. return true if still in jail false for not in jail or no longer in jail
-	// inJail() {
-	// 	//TODO: check in jail, if so prompt options and do logic
-	// 	// if not in jail, return false
-	// 	//TODO: prompt for the options//click on what they want
-	// 	// if (this.jail[1] === 3) {
-	// 	// 	return;
-	// 	// }
-	// 	//rolled for a double? pay?
-	// 	// else if (dice1() === dice2()) {
-	// 	// 	this.jail[0] = false;
-	// 	// 	this.jail[1] = 0;
-	// 	// } else {
-	// 	// 	return true;
-	// 	// }
 
-	// 	//TODO: remove later , return false for now
-	// 	return false;
-	// }
 	//Moves the player
 	movePlayer() {
 		// const { rolledNumber } = allGameObjects;
-		this.position + this.rolledNumber >= 40
-			? (this.position = this.rolledNumber + this.position - 40)
-			: (this.position += this.rolledNumber);
+		if (this.position + this.rolledNumber >= 40) {
+			this.position = this.rolledNumber + this.position - 40;
+			this.bitcoin += 2;
+		} else {
+			this.position += this.rolledNumber;
+		}
+
 		// TODO:if pass go collect
 		// check the position and its options
 		this.checkPosition();
@@ -81,10 +67,7 @@ class Character {
 
 	// what tile did player land on and what will happen
 	checkPosition() {
-		if (this.position === 0) {
-			this.bitcoin += 2;
-			('You got some money for passing go');
-		} else if (this.position === 4 || this.position === 38) {
+		if (this.position === 4 || this.position === 38) {
 			this.collectTax();
 		} else if (this.position === 7 || this.position === 22 || this.position === 36) {
 			//TODO: animation/action for chance?
@@ -101,7 +84,7 @@ class Character {
 		} else {
 			console.log(
 				`${this.name} what do you want to do with ${properties[this.position].name}`
-				//TODO: property[this.position].buy? build? etc
+				//TODO: prompt for property option
 			);
 		}
 
