@@ -535,12 +535,27 @@ div.p-select-btn {
     right: 25px;
     height: 275px;
     width: 530px;
-    box-shadow: inset 0px 0px 28px 0px rgba(0,0,0,0.35)
+    box-shadow: inset 0 0 28px 0 rgba(0,0,0,0.35)
+}
+
+.menu-column {
+    height: 148px;
+    margin: 0 25px;
+    justify-content: space-between;
 }
 
 .menu-btn {
-    padding: 5px 10px;
-    background-color: #e5fff8;
+    padding: 10px 10px;
+    box-shadow: inset 0 0 25px 0 #e5fff8;
+    /*background-color: #e5fff8;*/
     margin: 5px 0;
-    border-radius: 5px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+}
+
+.menu-btn:hover {
+    cursor: pointer;
+    background-color: #abcabc;
 }
