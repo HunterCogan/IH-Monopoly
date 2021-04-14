@@ -291,6 +291,8 @@ div.p-select-btn {
 
     #grid-block {
         width: 580px;
+
+        position: relative;
     }
 
     .grid:hover {
@@ -515,8 +517,30 @@ div.p-select-btn {
         height: 19px;
         width: 19px;
     }
-    /* test */
 
-    
+    #p1-token {
+        position: absolute;
+        transition: all 1s;
+    }
 
 /*end tokens*/
+
+/*Main Interface */
+#interface-hold {
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    position: absolute;
+    bottom: 25px;
+    right: 25px;
+    height: 275px;
+    width: 530px;
+    box-shadow: inset 0px 0px 28px 0px rgba(0,0,0,0.35)
+}
+
+.menu-btn {
+    padding: 5px 10px;
+    background-color: #e5fff8;
+    margin: 5px 0;
+    border-radius: 5px;
+}
