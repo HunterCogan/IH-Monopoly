@@ -1,5 +1,5 @@
 import { startGame } from './game.js';
-import {dom} from './dom.js';
+import { dom } from './dom.js';
 dom();
 
 //TODO: on PLAY button click make players
