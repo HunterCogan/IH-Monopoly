@@ -20,10 +20,10 @@ function randomize() {
 
 //call to randomly pick card when player lands on chance tile
 function landOnChance(allGameObjects) {
-	const { currPlayer } = allGameObjects;
+	// const { currPlayer } = allGameObjects;
 	const chanceCard = chance.pop();
 
-	chanceCard.action(currPlayer);
+	chanceCard.action(allGameObjects);
 }
 
 // Advance to Go (Collect $2)
@@ -45,7 +45,7 @@ card2.action = (allGameObjects) => {
 };
 
 // Advance to Weather Place – If you pass Go, collect $2
-let card3 = new Chance(4);
+let card3 = new Chance(3);
 card3.action = (allGameObjects) => {
 	const { currPlayer } = allGameObjects;
 	if (currPlayer.position > 11) {
@@ -55,7 +55,7 @@ card3.action = (allGameObjects) => {
 };
 
 // Advance hardware to nearest Tech Utility. If unowned, you may buy it from the Bank. If owned, throw dice and pay owner a total ten times the amount thrown.
-let card4 = new Chance(3);
+let card4 = new Chance(4);
 card4.action = (allGameObjects) => {
 	const { currPlayer, properties, diceRoll } = allGameObjects;
 	if (currPlayer.position === 36) {
@@ -68,8 +68,10 @@ card4.action = (allGameObjects) => {
 	if (currPlayer.position === 22) {
 		currPlayer.position = 28;
 	}
+	console.log(properties);
 	const property = properties[currPlayer.position];
-	if (property.checkOwner()) {
+
+	if (property.checkOwner(allGameObjects)) {
 		currPlayer.bitcoin -= property.calculateRent(properties, diceRoll);
 		property.owner.bitcoin += property.calculateRent(properties, diceRoll);
 	}
@@ -79,7 +81,7 @@ card4.action = (allGameObjects) => {
 // Advance hardware to the nearest ISP and pay owner twice the fee to which he/she is otherwise entitled. If ISP is unowned, you may buy it from the Bank.
 let card5 = new Chance(5);
 card5.action = (allGameObjects) => {
-	const { currPlayer, properties } = allGameObjects;
+	const { currPlayer, properties, diceRoll } = allGameObjects;
 	if (currPlayer.position === 7) {
 		currPlayer.position = 15;
 	}
@@ -91,7 +93,7 @@ card5.action = (allGameObjects) => {
 		currPlayer.position = 5;
 	}
 	const property = properties[currPlayer.position];
-	if (property.checkOwner()) {
+	if (property.checkOwner(allGameObjects)) {
 		currPlayer.bitcoin -= property.calculateRent(properties, diceRoll) * 2;
 		property.owner.bitcoin += property.calculateRent(properties, diceRoll) * 2;
 	}
@@ -109,6 +111,7 @@ card6.action = (allGameObjects) => {
 let card7 = new Chance(7);
 card7.action = (allGameObjects) => {
 	const { currPlayer } = allGameObjects;
+
 	currPlayer.getOutJail[0] = true;
 	currPlayer.getOutJail[1] += 1;
 };
@@ -133,8 +136,11 @@ let card10 = new Chance(10);
 card10.action = (allGameObjects) => {
 	const { currPlayer, properties } = allGameObjects;
 	let amt = 0;
-	for (card in properties) {
-		if (card.owner.name === currPlayer.name) {
+	for (let card in properties) {
+		if (
+			properties[card].owner !== null &&
+			properties[card].owner.name === currPlayer.name
+		) {
 			if (card.server < 5) {
 				amt += card.server * 0.4;
 			} else {
@@ -172,11 +178,12 @@ card13.action = (allGameObjects) => {
 
 // Pay each player $0.5
 let card14 = new Chance(14);
-card14.action = (currPlayer, otherPlayers) => {
+card14.action = (allGameObjects) => {
 	const { currPlayer, players } = allGameObjects;
-	for (player in players) {
+
+	for (let player in players) {
 		currPlayer.bitcoin -= 0.5;
-		player.bitcoin += 0.5;
+		players[player].bitcoin += 0.5;
 	}
 };
 

@@ -1,28 +1,6 @@
-import { diceRoll } from './game.js';
-import { properties } from './objects/tiles.js';
-import { chance, landOnChance } from './objects/chance.js';
-import { Character } from './objects/players.js';
-import { community, landOnCommunity } from './objects/chest.js';
+import { startGame } from './game.js';
 
-// game('dummyData');
-
-const dicky = new Character('Dicky');
-const johnny = new Character('Johnny');
-const juan = new Character('Juan');
-const hunter = new Character('Hunter');
-const players = { dicky, johnny, juan, hunter };
-const currPlayer = johnny;
-const currentProperty = properties[1];
-
-const allGameObjects = {
-	currPlayer,
-	players,
-	properties,
-	chance,
-	community,
-	diceRoll,
-};
-currentProperty.owner = johnny;
-let y = currentProperty.checkOwner(allGameObjects);
-
-landOnChance(allGameObjects);
+//TODO: on PLAY button click make players
+//query for Play Buttons
+const playBtn = document.querySelector('#modalClose');
+playBtn.addEventListener('click', startGame);

@@ -41,7 +41,7 @@ class Property {
 		let serverCount = [];
 
 		// loop for how many of the same card type this owner has
-		for (card in properties) {
+		for (let card in properties) {
 			if (card.type == this.type && card.owner == this.owner) {
 				typeCounter++;
 				serverCount.push(card.server);
@@ -68,7 +68,8 @@ class Property {
 
 	//  the cards object will tiles, current player will be player
 	calculateRent(allGameObjects) {
-		if (!isMortgaged) {
+		if (!this.isMortgaged) {
+			let rentDue = 0;
 			const { properties, diceRoll } = allGameObjects;
 			// desstructure return values
 			const { typeCounter, typeMax, serverCount } = this.counter(properties);
@@ -100,8 +101,8 @@ class Property {
 	}
 	// build servers
 	build(allGameObjects) {
-		const { currPlayer } = allGameObjects;
-		const { typeMax, serverCount } = this.counter(tiles);
+		const { currPlayer, properties } = allGameObjects;
+		const { typeMax, serverCount } = this.counter(properties);
 		// if utility or isp, cannot use this function;
 		if (this.type === 'utility' || this.type == 'isp') return false;
 

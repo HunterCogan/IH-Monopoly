@@ -17,7 +17,7 @@ class Character {
 	}
 
 	// on dice roll call this function to move. accepts dice number as steps value
-	moveDraw(steps) {}
+	// moveDraw(steps) {}
 }
 
 export { Character };
