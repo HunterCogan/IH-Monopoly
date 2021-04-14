@@ -185,11 +185,7 @@ properties[13] = new Property(
 );
 
 properties[14] = new Property(
-<<<<<<< HEAD
-	'Walmart Avenue',
-=======
 	'Walmart',
->>>>>>> cf0de8306f25c7a40849533e50d791249fe530f0
 	1.6,
 	[0.12, 0.6, 1.8, 5, 7, 9],
 	0.8,
@@ -213,18 +209,7 @@ properties[18] = new Property(
 	'orange'
 );
 
-<<<<<<< HEAD
-properties[19] = new Property(
-	'CNN Avenue',
-	2,
-	[0.16, 0.8, 2.2, 6, 8, 10],
-	1,
-	1,
-	'Orange'
-);
-=======
 properties[19] = new Property('CNN', 2, [0.16, 0.8, 2.2, 6, 8, 10], 1, 1, 'Orange');
->>>>>>> cf0de8306f25c7a40849533e50d791249fe530f0
 properties[21] = new Property(
 	'Instagram Avenue',
 	2.2,
@@ -242,11 +227,7 @@ properties[23] = new Property(
 	'red'
 ); // Export Property Class
 properties[24] = new Property(
-<<<<<<< HEAD
-	'Twitter Avenue',
-=======
 	'Twitter',
->>>>>>> cf0de8306f25c7a40849533e50d791249fe530f0
 	2.4,
 	[0.2, 1, 3, 7.5, 9.25, 11],
 	1.2,
@@ -315,18 +296,7 @@ properties[37] = new Property(
 	'darkBlue'
 );
 
-<<<<<<< HEAD
-properties[39] = new Property(
-	'Google Place',
-	4,
-	[0.5, 2, 6, 14, 17, 20],
-	2,
-	2,
-	'darkBlue'
-);
-=======
 properties[39] = new Property('Google', 4, [0.5, 2, 6, 14, 17, 20], 2, 2, 'darkBlue');
->>>>>>> cf0de8306f25c7a40849533e50d791249fe530f0
 
 properties[5] = new Property('Charter', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[15] = new Property('Time Warner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
