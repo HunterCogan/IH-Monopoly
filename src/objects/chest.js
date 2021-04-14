@@ -2,8 +2,6 @@ let communityCards = [];
 
 let community = [];
 
-//function to randomize from chanceCards
-// call on load
 class Community {
 	constructor(id) {
 		this.id = id;
@@ -11,13 +9,16 @@ class Community {
 	// every action will be different per card, modify when creating instance of Chance
 	action() {}
 }
-
+//function to randomize from chanceCards
+// automatically called on load
 function randomize() {
 	for (let x = 0; x < 17; x++) {
 		const randomIndex = Math.floor(Math.random() * communityCards.length);
 		community.push(...communityCards.splice(randomIndex, 1));
 	}
 }
+
+// returns a random card from community chest
 function landOnCommunity(allGameObjects) {
 	const { currPlayer } = allGameObjects;
 	const communityCard = community.pop();
@@ -73,10 +74,10 @@ card6.action = (allGameObjects) => {
 let card7 = new Community(7);
 card7.action = (allGameObjects) => {
 	const { currPlayer, players } = allGameObjects;
-	for (player in players) {
-		players.bitcoin -= 0.5;
+	for (let player in players) {
+		players[player].bitcoin -= 0.5;
 		//have a function to check for broke-ness added to player
-		TODO: currPlayer += 0.5;
+		currPlayer.bitcoin += 0.5;
 	}
 };
 
@@ -133,8 +134,11 @@ card15.action = (allGameObjects) => {
 	const { currPlayer, properties } = allGameObjects;
 
 	let amt = 0;
-	for (property in properties) {
-		if (property.owner.name === currPlayer.name) {
+	for (let property in properties) {
+		if (
+			properties[property].owner &&
+			properties[property].owner.name === currPlayer.name
+		) {
 			if (property.server < 5) {
 				amt += property.server * 0.4;
 			} else {
@@ -142,7 +146,7 @@ card15.action = (allGameObjects) => {
 			}
 		}
 	}
-	//check for broke-ness
+	//TODO:check for broke-ness
 	currPlayer.bitcoin -= amt;
 };
 
