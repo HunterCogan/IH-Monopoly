@@ -124,6 +124,7 @@ body {
 div.p-select-btn {
     justify-content: center;
     font-size: 2rem;
+    color: #c9e8df;
 }
 
 .p-select-btn:hover {
