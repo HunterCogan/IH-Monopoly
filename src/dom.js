@@ -11,6 +11,17 @@ let pSelected = 3;
 let p2 = $('#p2-name');
 let p3 = $('#p3-name');
 let p4 = $('#p4-name');
+let modalClose = $('#modalClose');
+let p1Target = $('#p1Target');
+let p2Target = $('#p2Target');
+let p3Target = $('#p3Target');
+let p4Target = $('#p4Target');
+let devBtn = $('#devBtn');
+let p1Input = $('#p1-name input');
+let p2Input = $('#p2-name input');
+let p3Input = $('#p3-name input');
+let p4Input = $('#p4-name input');
+let startOutput = [];
 
 const removeBorders = () => {
     pSelect.forEach((e, i) => {
@@ -49,17 +60,90 @@ pSelect.forEach((e, i) => {
     };
 });
 
-//dev exit modal
-let modalClose = $('#modalClose');
-modalClose.onclick = e => {
-    startModal.style.display = "none";
-    bodyWrap.style.display = "flex";
-};
-
 
 //page load popup modal
+//this is pretty sloppy so lmk if you need explaination
 const handleStartModal = () => {
+    let allGood = true;
+    const checkP4 = () => {
+        if (p4Input.value) {
+            p4Target.innerHTML = p4Input.value;
+        } else  {
+            allGood = false;
+            p3Target.innerHTML = '';
+            p4Input.style.border = 'red 2px solid';
+        }
+    };
+    const checkP3 = () => {
+        if (p3Input.value) {
+            p3Target.innerHTML = p3Input.value;
+        } else {
+            allGood = false;
+            p3Target.innerHTML = '';
+            p3Input.style.border = 'red 2px solid';
+        }
+    };
+    const checkP2 = () => {
+        if (p2Input.value) {
+            p2Target.innerHTML = p2Input.value;
+        } else {
+            allGood = false;
+            p2Input.style.border = 'red 2px solid';
+        }
+    };
+    const checkP1 = () => {
+        if (p1Input.value) {
+            p1Target.innerHTML = p1Input.value;
+        } else {
+            allGood = false;
+            p1Input.style.border = 'red 2px solid';
+        }
+    };
 
+    if (pSelected === 3) {
+        checkP1();
+        checkP2();
+        checkP3();
+        checkP4();
+        startOutput.push(pSelected, p1Target.innerText, p2Target.innerText, p3Target.innerText, p4Target.innerText);
+    } else if (pSelected === 2) {
+        checkP1();
+        checkP2();
+        checkP3();
+        if (allGood) {
+            $('#p4-box').style.display = 'none';
+            startOutput.push(pSelected, p1Target.innerText, p2Target.innerText, p3Target.innerText);
+        }
+    } else if (pSelected === 1) {
+        checkP1();
+        checkP2();
+        if (allGood) {
+            $('#p3-box').style.display = 'none';
+            $('#p4-box').style.display = 'none';
+            startOutput.push(pSelected, p1Target.innerText, p2Target.innerText);
+        }
+    } else if (pSelected === 0) {
+        allGood = false;
+        $('#lonely').style.display = 'flex';
+    }
+
+    if (allGood) {
+        startModal.style.display = "none";
+        bodyWrap.style.display = "flex";
+        console.log('OUTPUT: ' , startOutput);
+    }
+};
+
+modalClose.onclick = () => {
+    handleStartModal();
+};
+
+//remove this for product
+devBtn.onclick = () => {
+    p1Input.value = 'Juan';
+    p2Input.value = 'Dicky';
+    p3Input.value = 'Jonny';
+    p4Input.value = 'Hunter';
 };
 
 
