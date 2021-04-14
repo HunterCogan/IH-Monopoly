@@ -25,10 +25,10 @@ body {
 
 /*Canvas*/
 
-canvas {
+/* canvas {
     height: 800px;
     width: 800px;
-}
+} */
 /**********************/
 
 /*PageLoad modal*/
@@ -335,6 +335,39 @@ div.p-select-btn {
 /*End Board Grid*/
 
 /*Start Player Boxes*/
+    /* player1 color = #ffd3d5
+    player2 color = #9dcfff
+    player3 color = #bbffbb
+    player4 color = #ffecbc */
+
+    /* boredcolor(blue) = #234ea2
+    boredcolor(green) = #04a55c
+    boredcolor(red) = #ec3a25
+    boredcolor(pink) = #eb3978
+    boredcolor(orange) = #f37f24
+    boredcolor(yellow) = #f4df30
+ */
+
+
+
+
+    #p1Color{
+     background-color:#ec3b25
+    }
+
+    #p2Color{
+        background-color: #04a55c
+    }
+    #p3Color{
+        background-color: #234ea2
+    }
+
+    #p4Color{
+        background-color:#f37f25
+    }
+
+
+
     #p1-box, #p3-box {margin-top: 0;}
     #p2-box, #p4-box {margin-bottom: 0;}
 
@@ -346,11 +379,14 @@ div.p-select-btn {
     .player-box {
         width: 200px;
         height: 230px;
-        padding: 15px;
+        padding: 0 15px 15px 15px;
         display: flex;
         flex-direction: column;
         border-radius: 15px;
         margin: 15px;
+        overflow: hidden;
+        background-color: #f0e1cc
+        ;
     }
 
     /* player box  */
@@ -386,10 +422,9 @@ div.p-select-btn {
     .player-name {
         font-family: "Josefin Sans", serif;
         font-size: 1.75rem;
-        height: 40px;
-        width: 100%;
-        border: 2px black solid;
-        border-radius: 25px;
+        height: 45px;
+        width: 250px;
+        
         display: flex;
         justify-content: center;
         align-items: center;
@@ -494,10 +529,42 @@ div.p-select-btn {
         align-items: center;
     }
 
-    .p1 {background-color: #ffd3d5;}
-    .p2 {background-color: #9dcfff;}
-    .p3 {background-color: #bbffbb;}
-    .p4 {background-color: #ffecbc;}
+    #p1-box{
+        background-color: #f0e1cc;        ;
+    }
+
+    #p2-box{
+        background-color: #f0e1cc;        ;
+    }
+
+    #p3-box{
+        background-color: #f0e1cc;        ;
+    }
+
+    #p4-box{
+        background-color: #f0e1cc;        ;
+    }
+
+    #p1Target{
+        color: white;
+    }
+
+    #p2Target{
+        color: white;
+    }
+
+    #p3Target{
+        color: white;
+    }
+
+    #p4Target{
+        color: white;
+    }
+
+    .p1 {background-color: #234ea2;}
+    .p2 {background-color: #04a55c;}
+    .p3 {background-color: #ec3a25;}
+    .p4 {background-color: #eb3978;}
 
     .speaker{
         background-image: url("../assets/Iconpack/speaker.png");

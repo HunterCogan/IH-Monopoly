@@ -1,313 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-		/>
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans" />
-		<link rel="stylesheet" href="styles/styles.css" />
-		<title>Webopoly</title>
-	</head>
 
-	<body>
-		<!--Wrap everything to center-->
-		<div id="body-wrap" style="display: none">
-			<!--Left side player boxes-->
-			<div class="flex-column players">
-				<div id="p1-box" class="player-box p1">
-					<div class="player-name">
-						<span id="p1Target">Jonny</span>
-					</div>
-					<div class="player-coin">
-						₿ <span id="p1-money">15.00</span>
-					</div>
-					<button type="button" class="player-property">Properties</button>
-					<div class="player-tokens">
-						<div class="speaker"></div>
-					</div>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans" />
+	<link rel="stylesheet" href="styles/styles.css" />
+	<title>Webopoly</title>
+</head>
+
+<body>
+	<!--Wrap everything to center-->
+	<div id="body-wrap" style="display: none">
+		<!--Left side player boxes-->
+		<div class="flex-column players">
+			<div id="p1-box" class="player-box p1">
+				<div id="p1Color" class="player-name">
+					<span id="p1Target">Jonny</span>
 				</div>
-				<div id="p2-box" class="player-box p2">
-					<div class="player-name">
-						<span id="p2Target">Juan</span>
-					</div>
-					<div class="player-coin">
-						₿ <span id="p2-money">15.00</span>
-					</div>
-					<button type="button" class="player-property">Properties</button>
-					<div class="player-tokens">
-						<div class="mouse"></div>
-					</div>
+				<div class="player-coin">
+					₿ <span id="p1-money">15.00</span>
+				</div>
+				<div class="player-tokens">
+					<div class="speaker"></div>
 				</div>
 			</div>
+			<div id="p2-box" class="player-box p2">
+				<div id="p2Color" class="player-name">
+					<span id="p2Target">Juan</span>
+				</div>
+				<div class="player-coin">
+					₿ <span id="p2-money">15.00</span>
+				</div>
+				<div class="player-tokens">
+					<div class="mouse"></div>
+				</div>
+			</div>
+		</div>
 
-			<!--Wrapper for board and "property owned by X player" tabs-->
-			<div id="board-wrap">
-				<!--Top row with tab placeholders-->
-				<div id="tab-top" class="flex-row">
-					<div class="board-tab tab-corner-h"></div>
-					<div id="tab-instagram" class="board-tab tab-middle-h"></div>
-					<div id="tab-chance-1" class="board-tab tab-middle-h"></div>
-					<div id="tab-ebay" class="board-tab tab-middle-h"></div>
-					<div id="tab-twitter" class="board-tab tab-middle-h"></div>
-					<div id="tab-att" class="board-tab tab-middle-h"></div>
-					<div id="tab-reddit" class="board-tab tab-middle-h"></div>
-					<div id="tab-cornhub" class="board-tab tab-middle-h"></div>
-					<div id="tab-fiber" class="board-tab tab-middle-h"></div>
-					<div id="tab-yahoo" class="board-tab tab-middle-h"></div>
-					<div class="board-tab tab-corner-h"></div>
+		<!--Wrapper for board and "property owned by X player" tabs-->
+		<div id="board-wrap">
+			<!--Top row with tab placeholders-->
+			<div id="tab-top" class="flex-row">
+				<div class="board-tab tab-corner-h"></div>
+				<div id="tab-instagram" class="board-tab tab-middle-h"></div>
+				<div id="tab-chance-1" class="board-tab tab-middle-h"></div>
+				<div id="tab-ebay" class="board-tab tab-middle-h"></div>
+				<div id="tab-twitter" class="board-tab tab-middle-h"></div>
+				<div id="tab-att" class="board-tab tab-middle-h"></div>
+				<div id="tab-reddit" class="board-tab tab-middle-h"></div>
+				<div id="tab-cornhub" class="board-tab tab-middle-h"></div>
+				<div id="tab-fiber" class="board-tab tab-middle-h"></div>
+				<div id="tab-yahoo" class="board-tab tab-middle-h"></div>
+				<div class="board-tab tab-corner-h"></div>
+			</div>
+
+			<!--Wrapper row that holds left tabs, game board, and right tabs-->
+			<div id="tab-middle" class="flex-row">
+				<!--Left column with tab placeholders-->
+				<div id="tabs-left" class="flex-column">
+					<div class="board-tab tab-corner-v"></div>
+					<div id="tab-cnn" class="board-tab tab-middle-v"></div>
+					<div id="tab-fandom" class="board-tab tab-middle-v"></div>
+					<div id="tab-chest-1" class="board-tab tab-middle-v"></div>
+					<div id="tab-zoom" class="board-tab tab-middle-v"></div>
+					<div id="tab-time-warner" class="board-tab tab-middle-v"></div>
+					<div id="tab-walmart" class="board-tab tab-middle-v"></div>
+					<div id="tab-craigslist" class="board-tab tab-middle-v"></div>
+					<div id="tab-5g" class="board-tab tab-middle-v"></div>
+					<div id="tab-weather" class="board-tab tab-middle-v"></div>
+					<div class="board-tab tab-corner-v"></div>
 				</div>
 
-				<!--Wrapper row that holds left tabs, game board, and right tabs-->
-				<div id="tab-middle" class="flex-row">
-					<!--Left column with tab placeholders-->
-					<div id="tabs-left" class="flex-column">
-						<div class="board-tab tab-corner-v"></div>
-						<div id="tab-cnn" class="board-tab tab-middle-v"></div>
-						<div id="tab-fandom" class="board-tab tab-middle-v"></div>
-						<div id="tab-chest-1" class="board-tab tab-middle-v"></div>
-						<div id="tab-zoom" class="board-tab tab-middle-v"></div>
-						<div id="tab-time-warner" class="board-tab tab-middle-v"></div>
-						<div id="tab-walmart" class="board-tab tab-middle-v"></div>
-						<div id="tab-craigslist" class="board-tab tab-middle-v"></div>
-						<div id="tab-5g" class="board-tab tab-middle-v"></div>
-						<div id="tab-weather" class="board-tab tab-middle-v"></div>
-						<div class="board-tab tab-corner-v"></div>
-					</div>
+				<!--Actual game board-->
+				<div id="board">
+					<div id="board-grid">
+						<div id="grid-top" class="flex-row grid-h">
+							<div id="grid-free-trial" class="grid-corner-h"></div>
+							<div id="grid-instagram" class="grid grid-middle-h"></div>
+							<div id="grid-chance-1" class="grid-middle-h"></div>
+							<div id="grid-ebay" class="grid grid-middle-h"></div>
+							<div id="grid-twitter" class="grid grid-middle-h"></div>
+							<div id="grid-att" class="grid grid-middle-h"></div>
+							<div id="grid-reddit" class="grid grid-middle-h"></div>
+							<div id="grid-cornhub" class="grid grid-middle-h"></div>
+							<div id="grid-fiber" class="grid-middle-h"></div>
+							<div id="grid-yahoo" class="grid grid-middle-h"></div>
+							<div id="grid-hacked" class="grid-corner-h"></div>
+						</div>
 
-					<!--Actual game board-->
-					<div id="board">
-						<div id="board-grid">
-							<div id="grid-top" class="flex-row grid-h">
-								<div id="grid-free-trial" class="grid-corner-h"></div>
-								<div id="grid-instagram" class="grid grid-middle-h"></div>
-								<div id="grid-chance-1" class="grid-middle-h"></div>
-								<div id="grid-ebay" class="grid grid-middle-h"></div>
-								<div id="grid-twitter" class="grid grid-middle-h"></div>
-								<div id="grid-att" class="grid grid-middle-h"></div>
-								<div id="grid-reddit" class="grid grid-middle-h"></div>
-								<div id="grid-cornhub" class="grid grid-middle-h"></div>
-								<div id="grid-fiber" class="grid-middle-h"></div>
-								<div id="grid-yahoo" class="grid grid-middle-h"></div>
-								<div id="grid-hacked" class="grid-corner-h"></div>
+						<div id="grid-middle" class="flex-row grid-mid">
+							<div id="grid-left" class="flex-column grid-mid">
+								<div id="grid-cnn" class="grid grid-middle-v"></div>
+								<div id="grid-fandom" class="grid grid-middle-v"></div>
+								<div id="grid-chest-1" class="grid-middle-v"></div>
+								<div id="grid-zoom" class="grid grid-middle-v"></div>
+								<div id="grid-time-warner" class="grid grid-middle-v"></div>
+								<div id="grid-walmart" class="grid grid-middle-v"></div>
+								<div id="grid-craigslist" class="grid grid-middle-v"></div>
+								<div id="grid-5g" class="grid grid-middle-v"></div>
+								<div id="grid-weather" class="grid grid-middle-v"></div>
 							</div>
 
-							<div id="grid-middle" class="flex-row grid-mid">
-								<div id="grid-left" class="flex-column grid-mid">
-									<div id="grid-cnn" class="grid grid-middle-v"></div>
-									<div id="grid-fandom" class="grid grid-middle-v"></div>
-									<div id="grid-chest-1" class="grid-middle-v"></div>
-									<div id="grid-zoom" class="grid grid-middle-v"></div>
-									<div id="grid-time-warner" class="grid grid-middle-v"></div>
-									<div id="grid-walmart" class="grid grid-middle-v"></div>
-									<div id="grid-craigslist" class="grid grid-middle-v"></div>
-									<div id="grid-5g" class="grid grid-middle-v"></div>
-									<div id="grid-weather" class="grid grid-middle-v"></div>
-								</div>
-
-								<!--Middle interface-->
-								<div id="grid-block" class="grid-mid">
-									<div id="interface-hold" class="flex-row">
-										<div class="flex-column menu-column">
-											<div id="buy-servers" class="menu-btn" >Buy Servers</div>
-											<div id="trade-properties" class="menu-btn">Trade Properties</div>
-											<div id="mortgage-properties" class="menu-btn">Mortgage Properties</div>
-										</div>
-										<div class="flex-column menu-column">
-											<div id="roll-dice" class="menu-btn">Roll Dice</div>
-											<div id="end-turn" class="menu-btn">End Turn</div>
-										</div>
-<!--										<button id="testBtn"> TEST </button>-->
-
+							<!--Middle interface-->
+							<div id="grid-block" class="grid-mid">
+								<div id="interface-hold" class="flex-row">
+									<div class="flex-column menu-column">
+										<div id="buy-servers" class="menu-btn">Buy Servers</div>
+										<div id="trade-properties" class="menu-btn">Trade Properties</div>
+										<div id="mortgage-properties" class="menu-btn">Mortgage Properties</div>
 									</div>
-								</div>
+									<div class="flex-column menu-column">
+										<div id="roll-dice" class="menu-btn">Roll Dice</div>
+										<div id="end-turn" class="menu-btn">End Turn</div>
+									</div>
+									<!--										<button id="testBtn"> TEST </button>-->
 
-								<div id="grid-right" class="flex-column grid-mid">
-									<div id="grid-wikipedia" class="grid grid-middle-v"></div>
-									<div id="grid-amazon" class="grid grid-middle-v"></div>
-									<div id="grid-chest-2" class="grid-middle-v"></div>
-									<div id="grid-youtube" class="grid grid-middle-v"></div>
-									<div id="grid-comcast" class="grid grid-middle-v"></div>
-									<div id="grid-chance-2" class="grid-middle-v"></div>
-									<div id="grid-facebook" class="grid grid-middle-v"></div>
-									<div id="grid-luxury" class="grid-middle-v"></div>
-									<div id="grid-google" class="grid grid-middle-v"></div>
 								</div>
 							</div>
 
-							<div id="grid-bot" class="flex-row grid-h">
-								<div id="grid-jail" class="grid-corner-h"></div>
-								<div id="grid-espn" class="grid grid-middle-h"></div>
-								<div id="grid-imdb" class="grid grid-middle-h"></div>
-								<div id="grid-chance" class="grid-middle-h"></div>
-								<div id="grid-foxnews" class="grid grid-middle-h"></div>
-								<div id="grid-charter" class="grid grid-middle-h"></div>
-								<div id="grid-income-tax" class="grid-middle-h"></div>
-								<div id="grid-linkedin" class="grid grid-middle-h"></div>
-								<div id="grid-chest" class="grid-middle-h"></div>
-								<div id="grid-microsoft" class="grid grid-middle-h"></div>
-								<div id="grid-go" class="grid-corner-h">
-									<div id="p1-token" class="tokenBackground p1">
-										<div class="speaker"></div>
-									</div>
-								</div>
+							<div id="grid-right" class="flex-column grid-mid">
+								<div id="grid-wikipedia" class="grid grid-middle-v"></div>
+								<div id="grid-amazon" class="grid grid-middle-v"></div>
+								<div id="grid-chest-2" class="grid-middle-v"></div>
+								<div id="grid-youtube" class="grid grid-middle-v"></div>
+								<div id="grid-comcast" class="grid grid-middle-v"></div>
+								<div id="grid-chance-2" class="grid-middle-v"></div>
+								<div id="grid-facebook" class="grid grid-middle-v"></div>
+								<div id="grid-luxury" class="grid-middle-v"></div>
+								<div id="grid-google" class="grid grid-middle-v"></div>
 							</div>
 						</div>
 
-						<!-- animations here-->
-						<canvas></canvas>
-					</div>
-
-					<!--Right column with tab placeholders-->
-					<div id="tabs-right" class="flex-column">
-						<div id="tab-hacked-1" class="board-tab tab-corner-v"></div>
-						<div id="tab-wikipedia" class="board-tab tab-middle-v"></div>
-						<div id="tab-amazon" class="board-tab tab-middle-v"></div>
-						<div id="tab-chest-2" class="board-tab tab-middle-v"></div>
-						<div id="tab-youtube" class="board-tab tab-middle-v"></div>
-						<div id="tab-comcast" class="board-tab tab-middle-v"></div>
-						<div id="tab-chance-2" class="board-tab tab-middle-v"></div>
-						<div id="tab-facebook" class="board-tab tab-middle-v"></div>
-						<div id="tab-luxury" class="board-tab tab-middle-v"></div>
-						<div id="tab-google" class="board-tab tab-middle-v"></div>
-						<div class="board-tab tab-corner-v"></div>
-					</div>
-				</div>
-
-				<!--Bottom row with tab placeholders-->
-				<div id="tab-bottom" class="flex-row">
-					<div class="board-tab tab-corner-h"></div>
-					<div id="tab-espn" class="board-tab tab-middle-h"></div>
-					<div id="tab-imdb" class="board-tab tab-middle-h"></div>
-					<div id="tab-chance" class="board-tab tab-middle-h"></div>
-					<div id="tab-foxnews" class="board-tab tab-middle-h"></div>
-					<div id="tab-charter" class="board-tab tab-middle-h"></div>
-					<div id="tab-income-tax" class="board-tab tab-middle-h"></div>
-					<div id="tab-linkedin" class="board-tab tab-middle-h"></div>
-					<div id="tab-chest" class="board-tab tab-middle-h"></div>
-					<div id="tab-microsoft" class="board-tab tab-middle-h"></div>
-					<div class="board-tab tab-corner-h"></div>
-				</div>
-			</div>
-
-			<!--Right side player boxes-->
-			<div class="flex-column players">
-				<div id="p3-box" class="player-box p3">
-					<div class="player-name">
-						<span id="p3Target">Dicky</span>
-					</div>
-					<div class="player-coin">
-						₿ <span id="p3-money">15.00</span>
-					</div>
-					<button type="button" class="player-property">Properties</button>
-					<div class="player-tokens">
-						<div class="keyboard"></div>
-					</div>
-				</div>
-				<div id="p4-box" class="player-box p4">
-					<div class="player-name">
-						<span id="p4Target">Hunter</span>
-					</div>
-					<div class="player-coin">
-						₿ <span id="p4-money">15.00</span>
-					</div>
-					<button type="button" class="player-property">Properties</button>
-					<div class="player-tokens">
-						<div class="monitor"></div>
-					</div>
-				</div>
-			</div>
-			<!-- property inspect modal -->
-			<div id="property-modal" class="modal">
-				<div class="flex-column modal-contain">
-					<div id="close-prop" class="close"></div>
-					<div id="prop-modal-content" class="modal-content"></div>
-				</div>
-			</div>
-
-			<!-- Mortgage modal -->
-			<div id="mortgage-modal" class="modal" style="display: none">
-				<div class="flex-column modal-contain">
-					<div id="close-mort" class="close"></div>
-					<div id="mortgage-content" class="modal-content">
-						<div class="flex-column">
-							<div id="m-linkedin" class="flex-row">
-								<div class="m-name">LinkedIn Avenue: </div>
-								<div class="m-amt">₿ 0.3</div>
+						<div id="grid-bot" class="flex-row grid-h">
+							<div id="grid-jail" class="grid-corner-h"></div>
+							<div id="grid-espn" class="grid grid-middle-h"></div>
+							<div id="grid-imdb" class="grid grid-middle-h"></div>
+							<div id="grid-chance" class="grid-middle-h"></div>
+							<div id="grid-foxnews" class="grid grid-middle-h"></div>
+							<div id="grid-charter" class="grid grid-middle-h"></div>
+							<div id="grid-income-tax" class="grid-middle-h"></div>
+							<div id="grid-linkedin" class="grid grid-middle-h"></div>
+							<div id="grid-chest" class="grid-middle-h"></div>
+							<div id="grid-microsoft" class="grid grid-middle-h"></div>
+							<div id="grid-go" class="grid-corner-h">
+								<div id="p1-token" class="tokenBackground p1">
+									<div class="speaker"></div>
+								</div>
 							</div>
+						</div>
+					</div>
+
+					<!-- animations here-->
+					<canvas></canvas>
+				</div>
+
+				<!--Right column with tab placeholders-->
+				<div id="tabs-right" class="flex-column">
+					<div id="tab-hacked-1" class="board-tab tab-corner-v"></div>
+					<div id="tab-wikipedia" class="board-tab tab-middle-v"></div>
+					<div id="tab-amazon" class="board-tab tab-middle-v"></div>
+					<div id="tab-chest-2" class="board-tab tab-middle-v"></div>
+					<div id="tab-youtube" class="board-tab tab-middle-v"></div>
+					<div id="tab-comcast" class="board-tab tab-middle-v"></div>
+					<div id="tab-chance-2" class="board-tab tab-middle-v"></div>
+					<div id="tab-facebook" class="board-tab tab-middle-v"></div>
+					<div id="tab-luxury" class="board-tab tab-middle-v"></div>
+					<div id="tab-google" class="board-tab tab-middle-v"></div>
+					<div class="board-tab tab-corner-v"></div>
+				</div>
+			</div>
+
+			<!--Bottom row with tab placeholders-->
+			<div id="tab-bottom" class="flex-row">
+				<div class="board-tab tab-corner-h"></div>
+				<div id="tab-espn" class="board-tab tab-middle-h"></div>
+				<div id="tab-imdb" class="board-tab tab-middle-h"></div>
+				<div id="tab-chance" class="board-tab tab-middle-h"></div>
+				<div id="tab-foxnews" class="board-tab tab-middle-h"></div>
+				<div id="tab-charter" class="board-tab tab-middle-h"></div>
+				<div id="tab-income-tax" class="board-tab tab-middle-h"></div>
+				<div id="tab-linkedin" class="board-tab tab-middle-h"></div>
+				<div id="tab-chest" class="board-tab tab-middle-h"></div>
+				<div id="tab-microsoft" class="board-tab tab-middle-h"></div>
+				<div class="board-tab tab-corner-h"></div>
+			</div>
+		</div>
+
+		<!--Right side player boxes-->
+		<div class="flex-column players">
+			<div id="p3-box" class="player-box p3">
+				<div id="p3Color" class="player-name">
+					<span id="p3Target">Dicky</span>
+				</div>
+				<div class="player-coin">
+					₿ <span id="p3-money">15.00</span>
+				</div>
+				<div class="player-tokens">
+					<div class="keyboard"></div>
+				</div>
+			</div>
+			<div id="p4-box" class="player-box p4">
+				<div id="p4Color" class="player-name">
+					<span id="p4Target">Hunter</span>
+				</div>
+				<div class="player-coin">
+					₿ <span id="p4-money">15.00</span>
+				</div>
+				<div class="player-tokens">
+					<div class="monitor"></div>
+				</div>
+			</div>
+		</div>
+		<!-- property inspect modal -->
+		<div id="property-modal" class="modal">
+			<div class="flex-column modal-contain">
+				<div id="close-prop" class="close"></div>
+				<div id="prop-modal-content" class="modal-content"></div>
+			</div>
+		</div>
+
+		<!-- Mortgage modal -->
+		<div id="mortgage-modal" class="modal" style="display: none">
+			<div class="flex-column modal-contain">
+				<div id="close-mort" class="close"></div>
+				<div id="mortgage-content" class="modal-content">
+					<div class="flex-column">
+						<div id="m-linkedin" class="flex-row">
+							<div class="m-name">LinkedIn Avenue: </div>
+							<div class="m-amt">₿ 0.3</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!--End page wrap -->
-
-		<!--start Pageload Modal -->
-		<div id="start-modal" class="modal">
-			<div id="start-modal-content" class="modal-content">
-				<div id="logo"></div>
-				<div id="p-select-name">Players:</div>
-				<div id="p-select-wrap" class="flex-row">
-					<div class="p1 p-select-btn"><span>1</span></div>
-					<div class="p2 p-select-btn"><span>2</span></div>
-					<div class="p3 p-select-btn"><span>3</span></div>
-					<div id="p-num-default" class="p4 p-select-btn"><span>4</span></div>
-				</div>
-				<div id="name-list" class="flex-end flex-column">
-					<div id="p1-name" class="p-name-hold flex-row">
-						<span>Player 1: </span>
-						<input type="text" placeholder="Name Here . . ." maxlength="11" />
-					</div>
-					<div id="p2-name" class="p-name-hold flex-row">
-						<span>Player 2: </span>
-						<input type="text" placeholder="Name Here . . ." maxlength="11" />
-					</div>
-					<div id="p3-name" class="p-name-hold flex-row">
-						<span>Player 3: </span>
-						<input type="text" placeholder="Name Here . . ." maxlength="11" />
-					</div>
-					<div id="p4-name" class="p-name-hold flex-row">
-						<span>Player 4: </span>
-						<input type="text" placeholder="Name Here . . ." maxlength="11" />
-					</div>
-				</div>
-				<div id="start-play" class="flex-column">
-					<div id="tempDevBtnHolder" class="flex-row">
-						<div id="devBtn">devBtn</div>
-						<div id="modalClose"><span>Play!</span></div>
-					</div>
-					<span id="lonely" style="display: none">You won't have much fun playing this by yourself... &#x1F614</span>
-				</div>
-			</div>
-		</div>
-	</body>
-
-	<!-- Juan Tokens -->
-
-	<!-- speaker -->
-	<div id="remove-in-production">
-
-		<!-- mouse -->
-		<div class="tokenBackground p2">
-			<div class="mouse"></div>
-		</div>
-
-		<!-- keyboard -->
-		<div class="tokenBackground p3">
-			<div class="keyboard"></div>
-		</div>
-
-		<!-- monitor -->
-		<div class="tokenBackground p4">
-			<div class="monitor"></div>
 		</div>
 	</div>
+	<!--End page wrap -->
 
-	<!-- Juan tokens end -->
+	<!--start Pageload Modal -->
+	<div id="start-modal" class="modal">
+		<div id="start-modal-content" class="modal-content">
+			<div id="logo"></div>
+			<div id="p-select-name">Players:</div>
+			<div id="p-select-wrap" class="flex-row">
+				<div class="p1 p-select-btn"><span>1</span></div>
+				<div class="p2 p-select-btn"><span>2</span></div>
+				<div class="p3 p-select-btn"><span>3</span></div>
+				<div id="p-num-default" class="p4 p-select-btn"><span>4</span></div>
+			</div>
+			<div id="name-list" class="flex-end flex-column">
+				<div id="p1-name" class="p-name-hold flex-row">
+					<span>Player 1: </span>
+					<input type="text" placeholder="Name Here . . ." maxlength="11" />
+				</div>
+				<div id="p2-name" class="p-name-hold flex-row">
+					<span>Player 2: </span>
+					<input type="text" placeholder="Name Here . . ." maxlength="11" />
+				</div>
+				<div id="p3-name" class="p-name-hold flex-row">
+					<span>Player 3: </span>
+					<input type="text" placeholder="Name Here . . ." maxlength="11" />
+				</div>
+				<div id="p4-name" class="p-name-hold flex-row">
+					<span>Player 4: </span>
+					<input type="text" placeholder="Name Here . . ." maxlength="11" />
+				</div>
+			</div>
+			<div id="start-play" class="flex-column">
+				<div id="tempDevBtnHolder" class="flex-row">
+					<div id="devBtn">devBtn</div>
+					<div id="modalClose"><span>Play!</span></div>
+				</div>
+				<span id="lonely" style="display: none">You won't have much fun playing this by yourself...
+					&#x1F614</span>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!-- Juan Tokens -->
+
+<!-- speaker -->
+<div id="remove-in-production">
+
+	<!-- mouse -->
+	<div class="tokenBackground p2">
+		<div class="mouse"></div>
+	</div>
+
+	<!-- keyboard -->
+	<div class="tokenBackground p3">
+		<div class="keyboard"></div>
+	</div>
+
+	<!-- monitor -->
+	<div class="tokenBackground p4">
+		<div class="monitor"></div>
+	</div>
+</div>
+
+<!-- Juan tokens end -->
 
 
-	<script type="script" src="src/dom.js"></script>
-	<script type="module" src="src/main.js"></script>
+<script type="script" src="src/dom.js"></script>
+<script type="module" src="src/main.js"></script>
+
 </html>
