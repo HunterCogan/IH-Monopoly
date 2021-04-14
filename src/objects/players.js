@@ -1,3 +1,4 @@
+import { updateBitcoin } from '../game.js';
 import { landOnChance } from './chance.js';
 // community is an ARRAY of OBJECTS
 // landOnCommunity RETURNS an OBJECT of a community Card
@@ -14,13 +15,17 @@ class Character {
 		this.position = 0;
 		this.properties = [];
 		this.getOutJail = [false, 0];
-		this.rolledNumber;
+		this.rolledNumber = 0;
+		this.diceRolled = false;
 	}
 	rollDice() {
 		this.rolledNumber = this.dice() + this.dice();
+		// if dice already rolled once, set to true
+		this.diceRolled = true;
+		console.log(this.rolledNumber);
 	}
 	dice() {
-		return Math.round(Math.random() * 6);
+		return Math.round(Math.random() * 6) + 1;
 	}
 	collectTax() {
 		//TODO: need an action for bankrupt
@@ -52,28 +57,31 @@ class Character {
 
 	// what tile did player land on and what will happen
 	checkPosition() {
-		if (this.position === 4 || this.position === 38) {
+		if (this.position === 0) {
+			console.log("you're at go");
+			return false;
+		} else if (this.position === 4 || this.position === 38) {
 			this.collectTax();
 		} else if (this.position === 7 || this.position === 22 || this.position === 36) {
 			//TODO: animation/action for chance?
 			landOnChance();
+			updateBitcoin();
 		} else if (this.position === 2 || this.position === 17 || this.position === 33) {
 			//TODO: animation?
 			landOnCommunity();
+			updateBitcoin();
 		} else if (this.position === 10 || this.position === 20) {
-			//TODO: prompt for property management?
-			console.log(`You can't do shit`);
+			return false;
 		} else if (this.position === 30) {
 			this.position = 10;
 			this.jail[0] = true;
 		} else {
+			console.log(this);
 			console.log(
 				`${this.name} what do you want to do with ${properties[this.position].name}`
-				//TODO: prompt for property option
 			);
+			//TODO: prompt for property option
 		}
-
-		//TODO: end turn
 	}
 }
 
