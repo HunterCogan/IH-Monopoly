@@ -62,7 +62,7 @@ function rollJail() {
 	//set currPlayer.jail = false counter to 0
 	currPlayer.jail = [false, 0];
 	// TODO: close Jail modal
-	currPlayer.player.move();
+	currPlayer.movePlayer();
 }
 
 function freeJail() {
