@@ -1,5 +1,8 @@
+import { currPlayer, players } from './..game.js';
+
 let totalHouse = 50;
 let totalHotel = 50;
+
 class Property {
 	constructor(name, cost, rentPrices, mortgage, housePrice, type) {
 		// number for position on the board
@@ -22,14 +25,12 @@ class Property {
 		this.isMortgaged = false;
 	}
 
-	mortgagProp(allGameObjects) {
-		const { currPlayer } = allGameObjects;
+	mortgagProp() {
 		currPlayer.bitcoin += this.mortgage;
 		this.isMortgaged = true;
 	}
 
-	unmortgageProp(allGameObjects) {
-		const { currPlayer } = allGameObjects;
+	unmortgageProp() {
 		currPlayer.bitcoin -= this.mortgage * 1.1;
 		this.isMortgaged = false;
 	}
@@ -41,10 +42,10 @@ class Property {
 		let serverCount = [];
 
 		// loop for how many of the same card type this owner has
-		for (let card in properties) {
-			if (card.type == this.type && card.owner == this.owner) {
+		for (let property in properties) {
+			if (property.type == this.type && property.owner == this.owner) {
 				typeCounter++;
-				serverCount.push(card.server);
+				serverCount.push(property.server);
 			}
 		}
 		// if owner has all of the same group update typeMax
@@ -56,21 +57,28 @@ class Property {
 
 		return { typeCounter, typeMax, serverCount };
 	}
-	buy(allGameObjects) {
-		const { currPlayer } = allGameObjects;
-		// update owner
-		this.owner = currPlayer;
-		//take money
-		currPlayer.bitcoin -= this.cost;
-		// add property to player's list of properties they own
-		currPlayer.properties.push(this.name);
+	buy() {
+		if (this.checkOwner()) {
+			console.log('Someone already owns this property');
+			return false;
+		} else {
+			if (currPlayer.bitcoin <= this.cost) {
+				console.log("You don't have enough money to buy this property");
+			} else {
+				// update owner
+				this.owner = currPlayer;
+				//take money
+				currPlayer.bitcoin -= this.cost;
+				// add property to player's list of properties they own
+				currPlayer.properties.push(this.name);
+			}
+		}
 	}
 
 	//  the cards object will tiles, current player will be player
-	calculateRent(allGameObjects) {
+	calculateRent() {
 		if (!this.isMortgaged) {
 			let rentDue = 0;
-			const { properties, diceRoll } = allGameObjects;
 			// desstructure return values
 			const { typeCounter, typeMax, serverCount } = this.counter(properties);
 			//whats the max amount of server of this property type
@@ -79,7 +87,7 @@ class Property {
 			this.type === 'isp'
 				? (rentDue += this.rentPrices[typeCounter - 1])
 				: this.type === 'utility'
-				? (rentDue += (this.rentPrices[typeCounter - 1] * diceRoll) / 10)
+				? (rentDue += (this.rentPrices[typeCounter - 1] * currPlayer.rolledNumber) / 10)
 				: typeMax === true && noServer === 0
 				? (rentDue += this.rentPrices[0] * 2)
 				: (rentDue += this.rentPrices[this.server]);
@@ -90,18 +98,15 @@ class Property {
 		return 0;
 	}
 
-	// pass in current player and the cards object
-	checkOwner(allGameObjects) {
-		const { currPlayer } = allGameObjects;
-
+	// true is owned false if not owned
+	checkOwner() {
 		if (this.owner && this.owner !== currPlayer.name) {
 			return true;
 		}
 		return false;
 	}
 	// build servers
-	build(allGameObjects) {
-		const { currPlayer, properties } = allGameObjects;
+	build() {
 		const { typeMax, serverCount } = this.counter(properties);
 		// if utility or isp, cannot use this function;
 		if (this.type === 'utility' || this.type == 'isp') return false;
@@ -110,15 +115,25 @@ class Property {
 		if (typeMax) {
 			// check what he can build
 			if (this.server === Math.min(...serverCount)) {
-				//update server count
-				this.server++;
-				// take money from player
-				currPlayer.bitcoin -= this.housePrice;
+				if ((this.server < 4 && totalHouse > 0) || (this.server = 4 && totalHotel > 0)) {
+					//if player has enough money
+					if (this.housePrice > currPlayer.bitcoin) {
+						console.log("You don't have enough money to buy a server");
+						return false;
+					} else {
+						//update server count
+						this.server++;
+						// take money from player
+						currPlayer.bitcoin -= this.housePrice;
+					}
+				} else {
+					console.log('Ran out of microtransistors to build servers or super compputers');
+					return false;
+				}
 			}
 		}
-
 		//if not no
-		return false;
+		return true;
 	}
 }
 

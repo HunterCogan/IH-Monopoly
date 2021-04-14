@@ -81,7 +81,18 @@ function endTurn() {
 	checkJail();
 }
 
-export { startGame, checkJail, rollDice, move, endTurn, players, currPlayer };
+export {
+	startGame,
+	checkJail,
+	rollDice,
+	move,
+	payJail,
+	rollJail,
+	freeJail,
+	endTurn,
+	players,
+	currPlayer,
+};
 
 // //if in jail prompt for options
 // if (currPlayer.jail[0] === true) {

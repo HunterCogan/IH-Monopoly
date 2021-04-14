@@ -15,21 +15,6 @@ class Character {
 		this.properties = [];
 		this.getOutJail = [false, 0];
 		this.rolledNumber;
-		this.gameOptions = {
-			roll: true,
-			improve: true,
-			trade: true,
-			mortgage: true,
-			move: true,
-			buy: true,
-			endTurn: true,
-		};
-		this.jailOptions = {
-			payJail: true,
-			skipTurn: true,
-			usePass: true,
-			roll: true,
-		};
 	}
 	rollDice() {
 		this.rolledNumber = this.dice() + this.dice();
