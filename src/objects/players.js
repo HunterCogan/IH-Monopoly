@@ -21,8 +21,8 @@ class Character {
 	rollDice() {
 		// this.rolledNumber = this.dice() + this.dice();
 
-		let dice1 = this.dice();
-		let dice2 = this.dice();
+		let dice1 = 3
+		let dice2 = 3
 		let doubleCount = 0;
 		this.rolledNumber = dice1 + dice2;
 		if (dice1 !== dice2) {
