@@ -226,24 +226,49 @@ const movePiece = (piece, start, end) => {
 		//topLeft = translate(-680px,-680px)
 		//topRight = translate(0px,-680px)
 		//bottomRight = translate(0,0)
+		if (start === 1) {
+			piece.style.transform = `translate(${-100}px, ${0}px)`
+		}
 
-
-		if (start > 0 && start < 10) {
-			piece.style.transform = `translate(${start * -68}px, ${0}px)`
+		if (start > 1 && start < 10) {
+			piece.style.transform = `translate(${(start * -65) - 30}px, ${0}px)`
 		}
 		if (start == 10) {
-			piece.style.transform = `translate(${start * -71}px, ${24}px)`
+			if (piece === p1Piece) {
+				piece.style.transform = `translate(${-726}px, ${-20}px)`
+			}
+			if (piece === p2Piece) {
+				piece.style.transform = `translate(${-726}px, ${-20}px)`
+			}
+			if (piece === p3Piece) {
+				piece.style.transform = `translate(${-725}px, ${45}px)`
+			}
+			if (piece === p4Piece) {
+				piece.style.transform = `translate(${-690}px, ${15}px)`
+			}
+			// piece.style.transform = `translate(${start * -71}px, ${24}px)`
 		}
-		if (start > 10 && start <= 20) {
-			piece.style.transform = `translate(-680px, ${(start - 10) * -68}px)`
+		if (start > 10 && start < 20) {
+			piece.style.transform = `translate(${-700}px, ${((start - 10) * -65) - 30}px)`
 		}
 
-		if (start > 20 && start <= 30) {
-			piece.style.transform = `translate(${-680 + (start - 20) * 68}px, -680px)`
+		if (start === 20) {
+			piece.style.transform = `translate(${-700}px, ${((start - 10) * -65) - 65}px)`
+		}
+		
+		if (start >= 21 && start <= 30) {
+			piece.style.transform = `translate(${-700 + ((start - 20) * 65) + 20}px, ${-715}px)`
+		}
+		if (start === 30) {
+			piece.style.transform = `translate(${-700 + ((start - 20) * 65) + 45}px, ${-715}px)`
 		}
 
 		if (start > 30 && start <= 40) {
-			piece.style.transform = `translate(0px, ${-680 + (start - 30) * 68}px)`
+			piece.style.transform = `translate(0px, ${-700 + ((start - 30) * 65) + 20}px)`
+		}
+
+		if (start === 40) {
+			piece.style.transform = `translate(0px, ${-700 + ((start - 30) * 65) + 50}px)`
 		}
 
 		if (start % 10 === 0) {
@@ -260,11 +285,11 @@ const movePiece = (piece, start, end) => {
 
 		console.log('position is', end % 40)
 
-	}, 300)
+	}, 1000)
 }
 
 
-testBtn.onclick = () => movePiece(p1Piece, 0, 4);
+testBtn.onclick = () => (movePiece(p1Piece, 0, 45), movePiece(p2Piece, 0, 45), movePiece(p3Piece, 0, 45), movePiece(p4Piece, 0, 45));
 
 window.movePiece = movePiece;
 
