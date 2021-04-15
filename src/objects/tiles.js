@@ -38,22 +38,24 @@ class Property {
 	}
 
 	// how many of one type does owner have and do they have all of of one type
-	counter(properties) {
+	counter(props) {
 		let typeCounter = 0;
 		let typeMax = false;
 		let serverCount = [];
 
 		// loop for how many of the same card type this owner has
-		for (let property in properties) {
-			if (property.type == this.type && property.owner == this.owner) {
+		for (let property in props) {
+			if (props[property].type == this.type && props[property].owner == this.owner) {
+				serverCount.push(props[property].server);
+				console.log(this.type);
+				console.log(this.owner);
 				typeCounter++;
-				serverCount.push(property.server);
 			}
 		}
 		// if owner has all of the same group update typeMax
 		this.type === 'darkBlue' || (this.type === 'brown' && typeCounter == 2)
 			? (typeMax = true)
-			: typeMax === 3
+			: typeCounter === 3
 			? (typeMax = true)
 			: (typeMax = false);
 
@@ -111,6 +113,7 @@ class Property {
 	// build servers
 	build() {
 		const { typeMax, serverCount } = this.counter(properties);
+		console.log(serverCount);
 		// if utility or isp, cannot use this function;
 		if (this.type === 'utility' || this.type == 'isp') return false;
 
@@ -118,14 +121,18 @@ class Property {
 		if (typeMax) {
 			// check what he can build
 			if (this.server === Math.min(...serverCount)) {
+				console.log('both have same number of servers');
 				if ((this.server < 4 && totalHouse > 0) || (this.server = 4 && totalHotel > 0)) {
+					console.log("there's enough servers");
 					//if player has enough money
 					if (this.housePrice > currPlayer.bitcoin) {
 						console.log("You don't have enough money to buy a server");
 						return false;
 					} else {
 						//update server count
-						this.server++;
+						console.log(this.server);
+						this.server += 1;
+						console.log(this.server);
 						// take money from player
 						currPlayer.bitcoin -= this.housePrice;
 						updateBitcoin();
@@ -330,4 +337,4 @@ properties[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[12] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
 properties[28] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
 
-export { properties };
+export { properties, totalHouse, totalHotel };
