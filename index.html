@@ -239,16 +239,36 @@
 			</div>
 		</div>
 
-		<!-- Manage Property modal WIP -->
-		<div id="manage-modal" class="modal" style="display: none">
+		<!-- Manage Property modal -->
+		<div id="manage-modal" class="modal flex-column" style="display: none">
+			<div id="servers-modal" class="flex-column" style="display: none">
+				<div class="modal-title">Buy Servers for <span>"Company" </span>: </div>
+				<div class="flex-row justify-around server-list">
+					<div class="flex-column">
+						<div class="small-title">Servers: </div>
+						<div class="flex-row">
+							<div class="server-buy s-item">Buy</div>
+							<div class="server-sell s-item">Sell</div>
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="small-title">Server Clusters: </div>
+						<div class="flex-row">
+							<div class="cluster-buy s-item">Buy</div>
+							<div class="cluster-sell s-item">Sell</div>
+						</div>
+					</div>
+				</div>
+				<div id="close-serv" class="close-btn">Close</div>
+			</div>
 			<div class="flex-column modal-contain">
 				<div id="manage-content" class=" flex-column">
-					<div id="properties-title">Properties: </div>
+					<div class="modal-title">Properties: </div>
 					<div class="flex-column manage-list">
 						<div id="m-microsoft" class="flex-row prop-list lightgreen">
 							<div class="flex-row baseline">
 								<div class="m-name">Microsoft: </div>
-								<div class="m-amt"> ₿ 0.02</div>
+								<div class="m-amt"> ₿ <span>0.02</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
 								<div id="microsoft-server" class="m-server" >Buy Servers</div>
@@ -259,7 +279,7 @@
 						<div id="m-linkedin" class="flex-row prop-list">
 							<div class="flex-row baseline">
 								<div class="m-name">LinkedIn: </div>
-								<div class="m-amt">₿ 0.04</div>
+								<div class="m-amt">₿ <span>0.04</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
 								<div id="linkedin-server" class="m-server" >Buy Servers</div>
@@ -270,7 +290,7 @@
 						<div id="m-foxnews" class="flex-row prop-list lightgreen">
 							<div class="flex-row baseline">
 								<div class="m-name">Foxnews: </div>
-								<div class="m-amt">₿ 0.06</div>
+								<div class="m-amt">₿ <span>0.06</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
 								<div id="foxnews-server" class="m-server" >Buy Servers</div>
@@ -281,7 +301,7 @@
 						<div id="m-IMDB" class="flex-row prop-list">
 							<div class="flex-row baseline">
 								<div class="m-name">Foxnews: </div>
-								<div class="m-amt">₿ 0.06</div>
+								<div class="m-amt">₿ <span>0.06</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
 								<div id="IMDB-server" class="m-server" >Buy Servers</div>

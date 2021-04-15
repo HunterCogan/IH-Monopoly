@@ -227,14 +227,36 @@ const showProperty = (ele) => {
 
 //////////////////////Start Mortgage modal//////////////////////
 
+//main manage modal
 let manageBtn = $('#manage-property');
 let manageModal = $('#manage-modal');
+
+//server modal
+let serverModal = $('#servers-modal');
+let serverModalTitle = $('#servers-modal .modal-title span');
+let currentServerModalId = 'none';
+
+const handleServerBuy = (e) => {
+	let close = $('#close-serv');
+	serverModal.style.display = 'flex';
+	let id = e.id.split('-')[0];
+
+	serverModalTitle.innerHTML = id.charAt(0).toUpperCase() + id.slice(1);
+	currentServerModalId = id;
+	close.onclick = () => {
+		serverModal.style.display = 'none';
+	}
+};
 
 const handleManage = () => {
 	manageModal.style.display = 'flex';
 	let close = $('#close-mng');
 
-
+	document.querySelectorAll('.m-server').forEach((e) => {
+		e.onclick = () => {
+			handleServerBuy(e);
+		}
+	});
 
 	close.onclick = () => {
 		manageModal.style.display = 'none';
