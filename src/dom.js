@@ -360,11 +360,9 @@ const handleServerBuy = (e) => {
 	for (let property of currPlayer.properties) {
 		if (property.name === id) currProperty = property;
 	}
-	console.log(currProperty);
-	console.log(currProperty.server);
+
 	let { typeMax, serverCount } = currProperty.counter(properties);
 	console.log(typeMax, serverCount);
-
 	//if total house or hotel is maxed out grey out all buttons
 	if (totalHouse === 0) serverBuy.classList.add('no-click');
 	if (totalHotel === 0) clusterBuy.classList.add('no-click');
