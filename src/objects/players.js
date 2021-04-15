@@ -13,7 +13,7 @@ class Character {
 		// jail status, if true, how many turns have they been in jail
 		this.jail = [false, 0];
 		this.position = 0;
-		this.properties = [];
+		this.properties = [properties[1], properties[6], properties[8]];
 		this.getOutJail = [false, 0];
 		this.rolledNumber = 0;
 		this.diceRolled = false;

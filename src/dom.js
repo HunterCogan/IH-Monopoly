@@ -234,11 +234,9 @@ const handleManage = () => {
 	manageModal.style.display = 'flex';
 	let close = $('#close-mng');
 
-
-
 	close.onclick = () => {
 		manageModal.style.display = 'none';
-	}
+	};
 };
 
 manageBtn.onclick = () => {
@@ -246,12 +244,11 @@ manageBtn.onclick = () => {
 };
 //////////////////////End Mortgage modal//////////////////////
 
-
 //////////////////////Start Mortgage modal//////////////////////
 let mortgageBtn = $('#mortgage-properties');
-mortgageBtn.onclick = () => {
+// mortgageBtn.onclick = () => {
 
-};
+// };
 //////////////////////End Mortgage modal//////////////////////
 
 //////////////////////Page-load binding//////////////////////

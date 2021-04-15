@@ -1,5 +1,5 @@
-import { startGame, rollDice, endTurn, payJail, freeJail, rollJail } from './game.js';
-//import {movePiece} from "./dom.js";
+import { startGame, rollDice, endTurn, managePropList } from './game.js';
+// import { movePiece } from './dom.js';
 
 //TODO: on PLAY button click make players
 // play button
@@ -8,6 +8,8 @@ playBtn.addEventListener('click', startGame);
 // roll dice
 const diceBtn = document.querySelector('#roll-dice');
 diceBtn.addEventListener('click', rollDice);
+const manageBtn = document.querySelector('#manage-property');
+manageBtn.addEventListener('click', managePropList);
 
 // pay to get out of jail
 // const payJailBtn = document.querySelector('#pay-jail');
