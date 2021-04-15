@@ -293,10 +293,12 @@ document.querySelectorAll('.grid').forEach((e, i) => {
 	};
 });
 
+//test function to bring up modals
 $('#tempTest1').onclick = () => {
 	manageModal.style.display = 'flex';
 	$('#manage-content').style.display = 'none';
-	$('#landing-modal').style.display = 'flex';
+	//$('#landing-modal').style.display = 'flex';
+	$('#jail-modal').style.display = 'flex';
 
 
 	$('#dont-buy-prop').onclick = () => {
@@ -304,7 +306,6 @@ $('#tempTest1').onclick = () => {
 		$('#manage-content').style.display = 'flex';
 		$('#landing-modal').style.display = 'none';
 	};
-
 
 	$('#pay-rent').onclick = () => {
 		manageModal.style.display = 'none';
