@@ -191,40 +191,152 @@ const showProperty = (ele) => {
 
 // let p1Piece = $('#p1-token');
 // let testBtn = $('#testBtn');
-//
+
 // const movePiece = (where, current) => {
 // 	let j = current;
 // 	let direction = 'right';
-//
+// 	// let moves = 0;
+
 // 	let int = setInterval(() => {
-// 		if (current === 12) {
+// 		if (j === 12) {
+// 			console.log(current);
+// 			console.log(j);
 // 			console.log('turn1');
 // 			direction = 'bottom';
-// 			j = 0;
+// 			j = 0
 // 		}
-//
-// 		if (current === 22) {
+
+// 		if (j === 22) {
 // 			console.log('turn2');
 // 			direction = 'left';
 // 			j = 0;
 // 		}
-//
+
+// 		if (j === 32) {
+// 			console.log('turn2');
+// 			direction = 'bottom';
+// 			j = 0;
+// 		}
+
+// 		if (j === 42) {
+// 			console.log('turn2');
+// 			direction = 'left';
+// 			j = 0;
+// 		}
+
 // 		p1Piece.style[direction] = `${64 * j}px`;
-//
-//
-// 		if (current > where) {
+
+
+// 		if (j === where) {
 // 			clearInterval(int);
 // 		}
 // 		j++;
-// 		where++;
-// 		console.log(i);
-// 		console.log(j);
-// 	}, 1000);
+// 		// where++;
+// 		console.log('where', where);
+// 		// console.log("moves", moves)
+// 		console.log("j", j);
+// 	}, 500);
 // };
-//
-// testBtn.onclick = () => movePiece(4, 1);
-//
-// window.movePiece = movePiece;
+
+let p1Piece = $('#p1-token');
+let testBtn = $('#testBtn');
+
+// const movePiece = (start, end) => {
+
+// 	let direction = 'right';
+// 	// let moves = 0;
+
+// 	let int = setInterval(() => {
+// 		// if (j === 12) {
+// 		// 	console.log(current);
+// 		// 	console.log(j);
+// 		// 	console.log('turn1');
+// 		// 	direction = 'bottom';
+// 		// 	j = 0
+// 		// }
+
+// 		//left : 100%
+// 		// if (start == 10) {
+// 		// 	direction = 'bottom'
+// 		// 	start = 0;
+// 		// }
+
+// 		// //left:100% & bottom:100%
+// 		// if (start == 20) {
+// 		// 	direction = 'left'
+// 		// 	start = 0;
+// 		// }
+
+// 		// if (start == 30) {
+// 		// 	direction = ''
+// 		// 	start = 0;
+// 		// }
+
+// 		// if (j === 22) {
+// 		// 	console.log('turn2');
+// 		// 	direction = 'left';
+// 		// 	j = 0;
+// 		// }
+
+// 		// if (j === 32) {
+// 		// 	console.log('turn2');
+// 		// 	direction = 'bottom';
+// 		// 	j = 0;
+// 		// }
+
+// 		// if (j === 42) {
+// 		// 	console.log('turn2');
+// 		// 	direction = 'left';
+// 		// 	j = 0;
+// 		// }
+
+// 		// p1Piece.style[direction] = `${64 * start}px`;
+// 		console.log(start, end, direction)
+
+// 		start++
+
+// 		if (start === end) {
+// 			clearInterval(int);
+// 		}
+
+// 		if(end === 40){
+
+// 		}
+
+
+// 	}, 500);
+// };
+
+
+const movePiece = (start, end) => {
+	let int = setInterval(() => {
+
+		console.log(start, end);
+
+		//p1Piece.style['right'] = `${start * 10}%`
+		p1Piece.style.transform = `translateX(${start * -64})`
+
+		start++
+
+		if (start % 10 === 0) {
+			console.log('change direction')
+		}
+
+		if (start === end) {
+			clearInterval(int)
+		}
+		if (start === 40) {
+			start = 0
+			end = end - 40
+		}
+
+	}, 1000)
+}
+
+
+testBtn.onclick = () => movePiece(1, 10);
+
+window.movePiece = movePiece;
 
 //////////////////////End Test Movement//////////////////////
 
@@ -344,10 +456,12 @@ document.querySelectorAll('.grid').forEach((e, i) => {
 	};
 });
 
+//test function to bring up modals
 $('#tempTest1').onclick = () => {
 	manageModal.style.display = 'flex';
 	$('#manage-content').style.display = 'none';
-	$('#landing-modal').style.display = 'flex';
+	//$('#landing-modal').style.display = 'flex';
+	$('#jail-modal').style.display = 'flex';
 
 	$('#dont-buy-prop').onclick = () => {
 		manageModal.style.display = 'none';

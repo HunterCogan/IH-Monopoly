@@ -183,6 +183,7 @@ function managePropList() {
 }
 function endTurn() {
 	currPlayer.diceRolled = false;
+	currPlayer.doubleCount = 0;
 	index < nameList[0] ? index++ : (index = 0);
 
 	currPlayer = players[index];
