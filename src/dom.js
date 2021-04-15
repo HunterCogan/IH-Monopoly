@@ -194,13 +194,13 @@ const movePiece = (where, current) => {
 	let direction = 'right';
 
 	let int = setInterval(() => {
-		if (current === 12) {
+		if (j === 12) {
 			console.log('turn1');
 			direction = 'bottom';
 			j = 0;
 		}
 
-		if (current === 22) {
+		if (j === 22) {
 			console.log('turn2');
 			direction = 'left';
 			j = 0;
@@ -209,14 +209,14 @@ const movePiece = (where, current) => {
 		p1Piece.style[direction] = `${64 * j}px`;
 
 
-		if (current > where) {
+		if (j > where) {
 			clearInterval(int);
 		}
 		j++;
 		where++;
-		console.log(i);
+		// console.log(i);
 		console.log(j);
-	}, 1000);
+	}, 300);
 };
 
 testBtn.onclick = () => movePiece(4, 1);
