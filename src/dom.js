@@ -144,15 +144,8 @@ const handleStartModal = () => {
 		if (allGood) {
 			$('#p3-box').style.display = 'none';
 			$('#p4-box').style.display = 'none';
-			if (
-				p1Input.value.length > 0 &&
-				p2Input.value.length > 0
-			) {
-				startOutput.push(
-					pSelected,
-					p1Target.innerText,
-					p2Target.innerText
-				);
+			if (p1Input.value.length > 0 && p2Input.value.length > 0) {
+				startOutput.push(pSelected, p1Target.innerText, p2Target.innerText);
 			}
 		}
 	} else if (pSelected === 0) {
@@ -368,6 +361,7 @@ let serverModalTitle = $('#servers-modal .modal-title span');
 let currentServerModalId = 'none';
 
 const handleServerBuy = (e) => {
+	console.log(currPlayer);
 	let id = e.id.split('-')[0];
 	//================================================================//
 	//Dicky's test: remove if buggy START
@@ -377,18 +371,36 @@ const handleServerBuy = (e) => {
 	let serverSell = $('.server-sell');
 	let clusterBuy = $('.cluster-buy');
 	let clusterSell = $('.cluster-sell');
-
+	serverBuy.classList.remove('no-click');
+	serverSell.classList.remove('no-click');
+	clusterBuy.classList.remove('no-click');
+	clusterSell.classList.remove('no-click');
 	// sets the current Property for this button
 	for (let property of currPlayer.properties) {
 		if (property.name === id) currProperty = property;
 	}
+	const updateServer = () => {
+		const serverNum = $('#serverNum');
+		serverNum.innerText = 0;
+		const clusterNum = $('#clusterNum');
+		clusterNum.innerText = 0;
+		if (currProperty.server < 5) {
+			serverNum.innerText = currProperty.server;
+			clusterNum.innerText = 0;
+		}
+		if (currProperty.server === 5) {
+			serverNum.innerText = 0;
+			clusterNum.innerText = 1;
+		}
+	};
+	updateServer();
 
 	let { typeMax, serverCount } = currProperty.counter(properties);
-	console.log(typeMax, serverCount);
 	//if total house or hotel is maxed out grey out all buttons
 	if (totalHouse === 0) serverBuy.classList.add('no-click');
 	if (totalHotel === 0) clusterBuy.classList.add('no-click');
 	// if player doesn't have all of the same property, can't buy or sell anything
+	console.log(typeMax, serverCount);
 	if (!typeMax) {
 		serverBuy.classList.add('no-click');
 		serverSell.classList.add('no-click');
@@ -396,11 +408,13 @@ const handleServerBuy = (e) => {
 		clusterSell.classList.add('no-click');
 	} else {
 		// if player has less than 4 houses, they can't touch cluster button
-		if (currProperty.server < 4 && currProperty.server == Math.min(serverCount)) {
+		if (currProperty.server < 4 && currProperty.server == Math.min(...serverCount)) {
 			clusterBuy.classList.add('no-click');
 			clusterSell.classList.add('no-click');
 			// if player has no houses, can't see
-			if (currProperty.server === 0) serverSell.classList.add('no-click');
+			if (currProperty.server === 0) {
+				serverSell.classList.add('no-click');
+			}
 		}
 		if (currProperty.server === 4) {
 			serverBuy.classList.add('no-click');
@@ -412,6 +426,24 @@ const handleServerBuy = (e) => {
 
 			clusterSell.classList.add('no-click');
 		}
+
+		const buildBtn = $('.server-buy');
+		const buildBtn2 = $('.cluster-buy');
+		buildBtn.addEventListener('click', () => {
+			currProperty.build();
+
+			updateServer();
+		});
+		buildBtn2.addEventListener('click', () => {
+			currProperty.build;
+			updateServer();
+		});
+		// document.querySelectorAll('.m-server').forEach((e) => {
+		// 	e.onclick = () => {
+		// 		handleServerBuy(e);
+		// 		updateServer();
+		// 	};
+		// });
 	}
 
 	//Dicky's test: remove if buggy END

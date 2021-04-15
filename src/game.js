@@ -1,5 +1,6 @@
 //Characeter is a CLASS
 import { Character } from './objects/players.js';
+import { properties } from './objects/tiles.js';
 
 import { handleManage, handleServerBuy, startOutput as nameList } from './dom.js';
 
@@ -22,7 +23,14 @@ function startGame() {
 	currPlayer = players[index];
 	console.log('Game Started');
 	console.log(players);
+	properties[1].buy();
+	properties[3].buy();
+	properties[6].buy();
+	properties[8].buy();
+	properties[9].buy();
+	properties[11].buy();
 }
+
 function checkJail() {
 	//if player.jail[0] = true
 	if (currPlayer.jail[0] === false) {
