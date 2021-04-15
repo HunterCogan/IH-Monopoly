@@ -90,7 +90,7 @@ function rollDice() {
 	if (!checkJail() && !currPlayer.diceRolled) {
 		currPlayer.rollDice();
 		currPlayer.movePlayer();
-		console.log(currPlayer);
+		// console.log(currPlayer);
 	}
 }
 
