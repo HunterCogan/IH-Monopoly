@@ -178,8 +178,6 @@ function managePropList() {
 				handleServerBuy(e);
 			};
 		});
-
-		console.log(listParent);
 	}
 }
 function endTurn() {
@@ -206,7 +204,6 @@ export {
 	managePropList,
 };
 
-
 // dice roll start
 //Generates a random number from 1-6
 const firstRandom = Math.floor(Math.random() * 6) + 1;
@@ -216,4 +213,3 @@ const firstRandom = Math.floor(Math.random() * 6) + 1;
 
 // document.querySelector('#dice1').setAttribute('src', firstDiceImg)
 // dice roll end
-
