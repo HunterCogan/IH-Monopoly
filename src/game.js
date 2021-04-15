@@ -178,12 +178,11 @@ function managePropList() {
 				handleServerBuy(e);
 			};
 		});
-
-		console.log(listParent);
 	}
 }
 function endTurn() {
 	currPlayer.diceRolled = false;
+	currPlayer.doubleCount = 0;
 	index < nameList[0] ? index++ : (index = 0);
 
 	currPlayer = players[index];
@@ -206,7 +205,6 @@ export {
 	managePropList,
 };
 
-
 // dice roll start
 //Generates a random number from 1-6
 const firstRandom = Math.floor(Math.random() * 6) + 1;
@@ -216,4 +214,3 @@ const firstRandom = Math.floor(Math.random() * 6) + 1;
 
 // document.querySelector('#dice1').setAttribute('src', firstDiceImg)
 // dice roll end
-
