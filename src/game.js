@@ -116,7 +116,7 @@ function managePropList() {
 	}
 	for (let property of currPlayer.properties) {
 		console.log('property list activated');
-		//Text nodes for 1st nested loop
+		//Text nodes for 1st nested div
 		const nodeText = document.createTextNode(`${property.name}`);
 		const nodeText2 = document.createTextNode(`₿ ${property.cost}`);
 		// sub div for 1st div
@@ -133,10 +133,11 @@ function managePropList() {
 		node2.appendChild(node25);
 		node2.appendChild(node255);
 
-		// 2nd sub div
+		// text node for 2nd sub divs
 		const node35Text = document.createTextNode('Buy Server');
 		const node355Text = document.createTextNode('Trade');
 		const node3555Text = document.createTextNode('Mortgage');
+		// sub divs for 2nd nest div
 		const node35 = document.createElement('div');
 		node35.setAttribute('id', `${property.name}-server`);
 		node35.classList.add('m-server');
@@ -146,19 +147,21 @@ function managePropList() {
 		const node3555 = document.createElement('div');
 		node3555.setAttribute('id', `${property.name}-mortgage`);
 		node3555.classList.add('m-mortgage');
+		// add text nodes to sub divs
 		node35.appendChild(node35Text);
 		node355.appendChild(node355Text);
 		node3555.appendChild(node3555Text);
 		// second div
 		const node3 = document.createElement('div');
 		node3.classList.add('m-btn-row', 'flex-row');
-
+		// append sub div to 2nd div
 		node3.appendChild(node35);
 		node3.appendChild(node355);
 		node3.appendChild(node3555);
-
+		// top div
 		let node = document.createElement('div');
 		node.setAttribute('id', `m-${property.name}`);
+		// alternate lightgreen class
 		if (counter % 2 === 0) {
 			node.classList.add('flex-row', 'prop-list', 'lightgreen');
 			counter++;
@@ -166,6 +169,7 @@ function managePropList() {
 			node.classList.add('flex-row', 'prop-list');
 			counter++;
 		}
+		// append 1st and second nested div into top div
 		node.appendChild(node2);
 		node.appendChild(node3);
 		listParent.appendChild(node);
