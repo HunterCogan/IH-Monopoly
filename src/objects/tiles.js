@@ -15,7 +15,7 @@ class Property {
 		// Type of property, type or utility
 		this.type = type;
 		//Owner of property
-		this.owner = null;
+		this.owner = 'Juan';
 		//how many servers are on property, 1 - 5, 1-4 for server, 5 for supercomputer
 		this.server = 0;
 		// mortage is an arr with price for
@@ -38,22 +38,24 @@ class Property {
 	}
 
 	// how many of one type does owner have and do they have all of of one type
-	counter(properties) {
+	counter(props) {
 		let typeCounter = 0;
 		let typeMax = false;
 		let serverCount = [];
 
 		// loop for how many of the same card type this owner has
-		for (let property in properties) {
-			if (property.type == this.type && property.owner == this.owner) {
+		for (let property in props) {
+			if (props[property].type == this.type && props[property].owner == this.owner) {
+				serverCount.push(props[property].server);
+				console.log(this.type);
+				console.log(this.owner);
 				typeCounter++;
-				serverCount.push(property.server);
 			}
 		}
 		// if owner has all of the same group update typeMax
 		this.type === 'darkBlue' || (this.type === 'brown' && typeCounter == 2)
 			? (typeMax = true)
-			: typeMax === 3
+			: typeCounter === 3
 			? (typeMax = true)
 			: (typeMax = false);
 
@@ -330,4 +332,4 @@ properties[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[12] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
 properties[28] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
 
-export { properties };
+export { properties, totalHouse, totalHotel };

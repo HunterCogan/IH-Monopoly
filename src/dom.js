@@ -1,3 +1,6 @@
+//DICKY's Import
+import { currPlayer } from './game.js';
+import { totalHouse, totalHotel, properties } from './objects/tiles.js';
 const $ = function (ele) {
 	return document.querySelector(ele);
 };
@@ -23,7 +26,7 @@ let p4Input = $('#p4-name input');
 let startOutput = [];
 
 const removeBorders = () => {
-	pSelect.forEach((e, i) => {
+	pSelect.forEach((e) => {
 		if (e.classList.contains('pSelected')) {
 			e.classList.remove('pSelected');
 		}
@@ -102,25 +105,38 @@ const handleStartModal = () => {
 		checkP2();
 		checkP3();
 		checkP4();
-		startOutput.push(
-			pSelected,
-			p1Target.innerText,
-			p2Target.innerText,
-			p3Target.innerText,
-			p4Target.innerText
-		);
+		if (
+			p1Input.value.length > 0 &&
+			p2Input.value.length > 0 &&
+			p3Input.value.length > 0 &&
+			p3Input.value.length > 0
+		) {
+			startOutput.push(
+				pSelected,
+				p1Target.innerText,
+				p2Target.innerText,
+				p3Target.innerText,
+				p4Target.innerText
+			);
+		}
 	} else if (pSelected === 2) {
 		checkP1();
 		checkP2();
 		checkP3();
 		if (allGood) {
 			$('#p4-box').style.display = 'none';
-			startOutput.push(
-				pSelected,
-				p1Target.innerText,
-				p2Target.innerText,
-				p3Target.innerText
-			);
+			if (
+				p1Input.value.length > 0 &&
+				p2Input.value.length > 0 &&
+				p3Input.value.length > 0
+			) {
+				startOutput.push(
+					pSelected,
+					p1Target.innerText,
+					p2Target.innerText,
+					p3Target.innerText
+				);
+			}
 		}
 	} else if (pSelected === 1) {
 		checkP1();
@@ -128,7 +144,16 @@ const handleStartModal = () => {
 		if (allGood) {
 			$('#p3-box').style.display = 'none';
 			$('#p4-box').style.display = 'none';
-			startOutput.push(pSelected, p1Target.innerText, p2Target.innerText);
+			if (
+				p1Input.value.length > 0 &&
+				p2Input.value.length > 0
+			) {
+				startOutput.push(
+					pSelected,
+					p1Target.innerText,
+					p2Target.innerText
+				);
+			}
 		}
 	} else if (pSelected === 0) {
 		allGood = false;
@@ -223,7 +248,6 @@ const showProperty = (ele) => {
 
 // 		p1Piece.style[direction] = `${64 * j}px`;
 
-
 // 		if (j === where) {
 // 			clearInterval(int);
 // 		}
@@ -249,6 +273,7 @@ let testBtn = $('#testBtn');
 const movePiece = (piece, start, end) => {
 	let int = setInterval(() => {
 
+<<<<<<< HEAD
 		start++
 
 		console.log(start, end);
@@ -276,24 +301,42 @@ const movePiece = (piece, start, end) => {
 		if (start > 30 && start <= 40) {
 			piece.style.transform = `translate(0px, ${-680 + (start - 30) * 68}px)`
 		}
+=======
+// 	}, 500);
+// };
+
+const movePiece = (start, end) => {
+	let int = setInterval(() => {
+		console.log(start, end);
+
+		//p1Piece.style['right'] = `${start * 10}%`
+		p1Piece.style.transform = `translateX(${start * -64})`;
+
+		start++;
+>>>>>>> 456b79b1d79c4227bf921ae3ad5d7567f4ae3962
 
 		if (start % 10 === 0) {
-			console.log('change direction')
+			console.log('change direction');
 		}
 
 		if (start === end) {
-			clearInterval(int)
+			clearInterval(int);
 		}
 		if (start === 40) {
-			start = 0
-			end = end - 40
+			start = 0;
+			end = end - 40;
 		}
+<<<<<<< HEAD
 
 		console.log('position is', end % 40)
 
 	}, 300)
 }
 
+=======
+	}, 1000);
+};
+>>>>>>> 456b79b1d79c4227bf921ae3ad5d7567f4ae3962
 
 testBtn.onclick = () => movePiece(p1Piece, 0, 4);
 
@@ -313,9 +356,56 @@ let serverModalTitle = $('#servers-modal .modal-title span');
 let currentServerModalId = 'none';
 
 const handleServerBuy = (e) => {
+	let id = e.id.split('-')[0];
+	//================================================================//
+	//Dicky's test: remove if buggy START
+	let currProperty;
+	let serverBuy = $('.server-buy');
+	console.log(serverBuy);
+	let serverSell = $('.server-sell');
+	let clusterBuy = $('.cluster-buy');
+	let clusterSell = $('.cluster-sell');
+
+	// sets the current Property for this button
+	for (let property of currPlayer.properties) {
+		if (property.name === id) currProperty = property;
+	}
+
+	let { typeMax, serverCount } = currProperty.counter(properties);
+	console.log(typeMax, serverCount);
+	//if total house or hotel is maxed out grey out all buttons
+	if (totalHouse === 0) serverBuy.classList.add('no-click');
+	if (totalHotel === 0) clusterBuy.classList.add('no-click');
+	// if player doesn't have all of the same property, can't buy or sell anything
+	if (!typeMax) {
+		serverBuy.classList.add('no-click');
+		serverSell.classList.add('no-click');
+		clusterBuy.classList.add('no-click');
+		clusterSell.classList.add('no-click');
+	} else {
+		// if player has less than 4 houses, they can't touch cluster button
+		if (currProperty.server < 4 && currProperty.server == Math.min(serverCount)) {
+			clusterBuy.classList.add('no-click');
+			clusterSell.classList.add('no-click');
+			// if player has no houses, can't see
+			if (currProperty.server === 0) serverSell.classList.add('no-click');
+		}
+		if (currProperty.server === 4) {
+			serverBuy.classList.add('no-click');
+			clusterSell.classList.add('no-click');
+		}
+		if (currProperty.server === 5) {
+			serverBuy.classList.add('no-click');
+			serverSell.classList.add('no-click');
+
+			clusterSell.classList.add('no-click');
+		}
+	}
+
+	//Dicky's test: remove if buggy END
+	//===================================================================//
 	let close = $('#close-serv');
 	serverModal.style.display = 'flex';
-	let id = e.id.split('-')[0];
 
 	serverModalTitle.innerHTML = id.charAt(0).toUpperCase() + id.slice(1);
 	currentServerModalId = id;
@@ -326,6 +416,8 @@ const handleServerBuy = (e) => {
 
 const handleManage = () => {
 	manageModal.style.display = 'flex';
+	$('#manage-content').style.display = 'flex';
+	$('#jail-modal').style.display = 'none';
 	let close = $('#close-mng');
 
 	document.querySelectorAll('.m-server').forEach((e) => {
@@ -362,7 +454,7 @@ manageBtn.onclick = () => {
 
 //////////////////////Page-load binding//////////////////////
 //bind the property tiles
-document.querySelectorAll('.grid').forEach((e, i) => {
+document.querySelectorAll('.grid').forEach((e) => {
 	e.onclick = () => {
 		console.log('test');
 		showProperty(e.id);
@@ -375,7 +467,6 @@ $('#tempTest1').onclick = () => {
 	$('#manage-content').style.display = 'none';
 	//$('#landing-modal').style.display = 'flex';
 	$('#jail-modal').style.display = 'flex';
-
 
 	$('#dont-buy-prop').onclick = () => {
 		manageModal.style.display = 'none';
