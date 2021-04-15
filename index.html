@@ -113,8 +113,17 @@
 										<div id="roll-dice" class="menu-btn">Roll Dice</div>
 										<div id="end-turn" class="menu-btn">End Turn</div>
 									</div>
-									<div id="game-status" class="modal-title flex-row">Juan's Turn!<div id="tempTest1">
-											test button</div>
+									<div id="game-status" class="modal-title flex-column">
+										<span></span>
+<!--										<div id="tempTest1">test button</div>-->
+										<div id="dice-holder-mid" class="flex-row center" style="">
+											<div class="dice">
+												<img id="dice1" class='diceImg' />
+											</div>
+											<div class="dice">
+												<img id="dice2" class='diceImg' />
+											</div>
+										</div>
 									</div>
 									<div class="flex-row">
 										<div id="manage-property" class="menu-btn">Manage Properties</div>
@@ -243,6 +252,14 @@
 			</div>
 		</div>
 
+		<!-- property inspect modal -->
+		<div id="chance-modal" class="modal">
+			<div class="flex-column modal-contain">
+				<div id="close-chance" class="close"></div>
+				<div id="chance-modal-content" class="modal-content"></div>
+			</div>
+		</div>
+
 		<!-- Manage Property modal -->
 		<div id="manage-modal" class="modal flex-column" style="display: none">
 			<!-- Mortgage Modal WIP-->
@@ -317,7 +334,8 @@
 					<div class="flex-row center">
 						<div id="buy-prop" class="flex-row center">Buy Property?</div>
 						<div id="dont-buy-prop" class="flex-row center">Nah</div>
-						<div id="pay-rent" class="flex-row center" style="display: none">Pay Rent: <span id="rent-due"></span></div>
+						<div id="pay-rent" class="flex-row center" style="display: none">Pay Rent: <span
+								id="rent-due"></span></div>
 					</div>
 				</div>
 			</div>
@@ -326,15 +344,16 @@
 			<div id="jail-modal" class="flex-column" style="display: none">
 				<div class="flex-row">
 					<div class="jail-icon"></div>
-					<div class="modal-title center" style="text-align: center">You downloaded ransom-ware and your files are locked!</div>
+					<div class="modal-title center" style="text-align: center">You downloaded ransom-ware and your files
+						are locked!</div>
 				</div>
-				<div id="dice-holder" class="flex-row">
-					<div class="dice">
-						<img id="dice1" class='diceImg' />
-					</div>
-					<div class="dice">
-						<img id="dice2" class='diceImg' />
-					</div>
+				<div id="dice-holder" class="flex-row" style="display: none">
+<!--					<div class="dice">-->
+<!--						<img id="dice1" class='diceImg' />-->
+<!--					</div>-->
+<!--					<div class="dice">-->
+<!--						<img id="dice2" class='diceImg' />-->
+<!--					</div>-->
 				</div>
 				<div class="flex-column jail-content">
 					<div class="flex-row center" style="margin-top: 15px">
@@ -388,12 +407,12 @@
 		</div>
 	</div>
 	<!-- dice start -->
-	<!--	<div class="dice">-->
-	<!--		<img id="dice1" class='diceImg' />-->
-	<!--	</div>-->
-	<!--	<div class="dice">-->
-	<!--		<img id="dice2" class='diceImg' />-->
-	<!--	</div>-->
+<!--		<div class="dice">-->
+<!--			<img id="dice1" class='diceImg' />-->
+<!--		</div>-->
+<!--		<div class="dice">-->
+<!--			<img id="dice2" class='diceImg' />-->
+<!--		</div>-->
 	<!-- dice end -->
 </body>
 

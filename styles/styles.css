@@ -388,7 +388,24 @@ div.p-select-btn {
 	cursor: pointer;
 }
 
+/*chance modal*/
+#chance-modal {
+	cursor: pointer;
+}
+
+#chance-modal-content {
+	margin-right: 40px;
+	pointer-events: none;
+	height: 292px;
+	cursor: default;
+}
+
 /*manage property modal*/
+
+#manage-property {
+	margin-top: -5px;
+	padding: 10px 15px;
+}
 
 #manage-content {
 	width: 500px;
@@ -1065,7 +1082,7 @@ div.disabled {
 }
 
 /* dice roll style start */
-diceImg {
+.diceImg {
 	height: 30px;
 	width: 30px;
 }
@@ -1076,10 +1093,13 @@ diceImg {
 	width: 30px;
 }
 
+#dice1, #dice2:focus {
+	outline: none;
+}
+
 .dice {
 	height: 30px;
 	width: 30px;
 
-	border: solid 2px black;
 }
 /* dice roll style end */

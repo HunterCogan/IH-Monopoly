@@ -47,8 +47,7 @@ class Property {
 		for (let property in props) {
 			if (props[property].type == this.type && props[property].owner == this.owner) {
 				serverCount.push(props[property].server);
-				console.log(this.type);
-				console.log(this.owner);
+
 				typeCounter++;
 			}
 		}
@@ -113,7 +112,7 @@ class Property {
 	// build servers
 	build() {
 		const { typeMax, serverCount } = this.counter(properties);
-		console.log(serverCount);
+
 		// if utility or isp, cannot use this function;
 		if (this.type === 'utility' || this.type == 'isp') return false;
 
@@ -130,9 +129,9 @@ class Property {
 						return false;
 					} else {
 						//update server count
-						console.log(this.server);
+
 						this.server += 1;
-						console.log(this.server);
+
 						// take money from player
 						currPlayer.bitcoin -= this.housePrice;
 						updateBitcoin();

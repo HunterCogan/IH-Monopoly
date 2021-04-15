@@ -22,13 +22,17 @@ function startGame() {
 	createPlayers(nameList.slice(1));
 	currPlayer = players[index];
 	console.log('Game Started');
-	console.log(players);
+
 	properties[1].buy();
 	properties[3].buy();
 	properties[6].buy();
 	properties[8].buy();
 	properties[9].buy();
 	properties[11].buy();
+	console.log(currPlayer.name);
+	document.querySelector('#game-status span').innerHTML = `
+		${currPlayer.name}'s turn!
+	`
 }
 
 function checkJail() {
@@ -98,6 +102,7 @@ function rollDice() {
 	if (!checkJail() && !currPlayer.diceRolled) {
 		currPlayer.rollDice();
 		currPlayer.movePlayer();
+		console.log(currPlayer.position)
 		// console.log(currPlayer);
 	}
 }
@@ -123,7 +128,6 @@ function managePropList() {
 		listParent.removeChild(listParent.lastElementChild);
 	}
 	for (let property of currPlayer.properties) {
-		console.log('property list activated');
 		//Text nodes for 1st nested div
 		const nodeText = document.createTextNode(`${property.name}`);
 		const nodeText2 = document.createTextNode(`₿ ${property.cost}`);
@@ -196,7 +200,10 @@ function endTurn() {
 
 	currPlayer = players[index];
 	console.log('turn ended');
-	console.log(`next player is ${currPlayer.name}`);
+	//console.log(`next player is ${currPlayer.name}`);
+	document.querySelector('#game-status span').innerHTML = `
+		${currPlayer.name}'s turn!
+	`
 }
 
 export {
@@ -216,7 +223,7 @@ export {
 
 // dice roll start
 //Generates a random number from 1-6
-const firstRandom = Math.floor(Math.random() * 6) + 1;
+// const firstRandom = Math.floor(Math.random() * 6) + 1;
 
 // const firstDiceImg = './../assets/dice' + firstRandom + '.png';
 // console.log(firstDiceImg)
