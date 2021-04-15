@@ -113,7 +113,7 @@
 										<div id="roll-dice" class="menu-btn">Roll Dice</div>
 										<div id="end-turn" class="menu-btn">End Turn</div>
 									</div>
-									<div id="game-status"></div>
+									<div id="game-status" class="modal-title flex-row">Juan's Turn!<div id="tempTest1">test button</div></div>
 									<div class="flex-row">
 										<div id="manage-property" class="menu-btn">Manage Properties</div>
 									</div>
@@ -304,6 +304,19 @@
 					<div id="close-mng" class="close-btn">Close</div>
 				</div>
 			</div>
+
+			<!-- Land on Property Modal -->
+			<div id="landing-modal" class="flex-column" style="display: none">
+				<div class="modal-title">You landed on <span id="prop-landed-on">Cornhub</span></div>
+				<div class="flex-column landing-content">
+					<div class="landing-card"></div>
+					<div class="flex-row">
+						<div class="flex-row buy-prop"></div>
+						<div class="flex-row pay-rent"></div>
+					</div>
+				</div>
+				<div id="close-landing" class="close-btn">Close</div>
+			</div>
 		</div>
 	</div>
 	<!--End page wrap -->
@@ -349,7 +362,7 @@
 	</div>
 </body>
 
-<script type="script" src="src/dom.js"></script>
+<script type="module" src="src/dom.js"></script>
 <script type="module" src="src/main.js"></script>
 
 </html>

@@ -262,6 +262,13 @@ const handleManage = () => {
 		manageModal.style.display = 'none';
 		serverModal.style.display = 'none';
 	};
+
+	window.onclick = (e) => {
+		if (e.target === manageModal) {
+			manageModal.style.display = 'none';
+			serverModal.style.display = 'none';
+		}
+	};
 };
 
 manageBtn.onclick = () => {
@@ -285,6 +292,25 @@ document.querySelectorAll('.grid').forEach((e, i) => {
 		showProperty(e.id);
 	};
 });
+
+$('#tempTest1').onclick = () => {
+	manageModal.style.display = 'flex';
+	$('#manage-content').style.display = 'none';
+	$('#landing-modal').style.display = 'flex';
+
+	window.onclick = (e) => {
+		if (e.target === manageModal) {
+			manageModal.style.display = 'none';
+		}
+	};
+};
+
+$('#close-landing').onclick = () => {
+	manageModal.style.display = 'none';
+	$('#manage-content').style.display = 'flex';
+	$('#landing-modal').style.display = 'none';
+};
+
 //////////////////////End page-load binding//////////////////////
 
 export { $, showProperty, startOutput, handleManage, handleServerBuy };
