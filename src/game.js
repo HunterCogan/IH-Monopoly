@@ -203,13 +203,4 @@ export {
 };
 
 
-// dice roll start
-//Generates a random number from 1-6
-const firstRandom = Math.floor(Math.random() * 6) + 1;
-
-// const firstDiceImg = './../assets/dice' + firstRandom + '.png';
-// console.log(firstDiceImg)
-
-// document.querySelector('#dice1').setAttribute('src', firstDiceImg)
-// dice roll end
 
