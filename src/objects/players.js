@@ -21,8 +21,19 @@ class Character {
 	rollDice() {
 		// this.rolledNumber = this.dice() + this.dice();
 
-		let dice1 = 3
-		let dice2 = 3
+		let dice1 = this.dice();
+		let dice2 = this.dice()
+
+		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
+		console.log(firstDiceImg)
+
+		document.querySelector('#dice1').setAttribute('src', firstDiceImg)
+
+		const secondDiceImg = './../../assets/dice' + dice2 + '.png';
+		console.log(secondDiceImg)
+
+		document.querySelector('#dice2').setAttribute('src', secondDiceImg)
+
 		let doubleCount = 0;
 		this.rolledNumber = dice1 + dice2;
 		if (dice1 !== dice2) {
@@ -41,7 +52,7 @@ class Character {
 	}
 
 	dice() {
-		return Math.round(Math.random() * 6) + 1;
+		return Math.round(Math.random() * 5) + 1;
 	}
 	collectTax() {
 		//TODO: need an action for bankrupt
