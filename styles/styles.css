@@ -181,6 +181,62 @@ div.p-select-btn {
     margin-right: 40px;
 }
 
+/*buy servers modal*/
+#servers-modal {
+    width: 550px;
+    height: 200px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    background-color: #c9e8df;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.server-list {
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+.s-item {
+    width: 90px;
+    height: 35px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25rem;
+    margin-left: 5px;
+    color: #c9e8df;
+}
+
+.s-item:hover {
+    cursor: pointer;
+}
+
+.server-buy, .cluster-buy {
+    background-color: #13c531;
+}
+
+.server-sell, .cluster-sell {
+    background-color: #8b1641;
+}
+
+#close-serv {
+    height: 30px;
+    width: 80px;
+    background-color: #d25f69;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+#close-serv:hover {
+    cursor: pointer;
+}
+
 /*manage property modal*/
 
 #manage-content {
@@ -198,7 +254,7 @@ div.p-select-btn {
     align-items: center;
 }
 
-#properties-title{
+.modal-title {
     margin: 15px 0;
     font-size: 1.75rem;
 }
@@ -207,7 +263,7 @@ div.p-select-btn {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 30px;
+    height: 40px;
 }
 
 .m-name {
@@ -246,8 +302,8 @@ div.p-select-btn {
 #close-mng {
     position: absolute;
     bottom: 25px;
-    height: 45px;
-    width: 100px;
+    height: 30px;
+    width: 80px;
     background-color: #d25f69;
     border-radius: 10px;
     display: flex;
@@ -275,15 +331,23 @@ div.p-select-btn {
     width: 100%;
 }
 
+.justify-around {
+    justify-content: space-around;
+}
+
 .baseline {
     align-items: baseline;
 }
 
 .lightgreen {
     background-color: #e5fff8;
-
 }
 
+.small-title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
 /*End Global Classes*/
 
 .pSelected {
