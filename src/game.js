@@ -111,10 +111,10 @@ function updateBitcoin() {
 	const p2 = document.querySelector('#p2-money');
 	const p3 = document.querySelector('#p3-money');
 	const p4 = document.querySelector('#p4-money');
-	p1.innerText = players[0].bitcoin;
-	p2.innerText = players[1].bitcoin;
-	p3.innerText = players[2].bitcoin;
-	p4.innerText = players[3].bitcoin;
+	p1.innerText = players[0].bitcoin.toFixed(2);
+	p2.innerText = players[1].bitcoin.toFixed(2);
+	p3.innerText = players[2].bitcoin.toFixed(2);
+	p4.innerText = players[3].bitcoin.toFixed(2);
 }
 function managePropList() {
 	const listParent = document.querySelector('.manage-list');
