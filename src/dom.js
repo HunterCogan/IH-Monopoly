@@ -186,42 +186,42 @@ const showProperty = (ele) => {
 
 //////////////////////Test movement //////////////////////
 
-// let p1Piece = $('#p1-token');
-// let testBtn = $('#testBtn');
-//
-// const movePiece = (where, current) => {
-// 	let j = current;
-// 	let direction = 'right';
-//
-// 	let int = setInterval(() => {
-// 		if (current === 12) {
-// 			console.log('turn1');
-// 			direction = 'bottom';
-// 			j = 0;
-// 		}
-//
-// 		if (current === 22) {
-// 			console.log('turn2');
-// 			direction = 'left';
-// 			j = 0;
-// 		}
-//
-// 		p1Piece.style[direction] = `${64 * j}px`;
-//
-//
-// 		if (current > where) {
-// 			clearInterval(int);
-// 		}
-// 		j++;
-// 		where++;
-// 		console.log(i);
-// 		console.log(j);
-// 	}, 1000);
-// };
-//
-// testBtn.onclick = () => movePiece(4, 1);
-//
-// window.movePiece = movePiece;
+let p1Piece = $('#p1-token');
+let testBtn = $('#testBtn');
+
+const movePiece = (where, current) => {
+	let j = current;
+	let direction = 'right';
+
+	let int = setInterval(() => {
+		if (current === 12) {
+			console.log('turn1');
+			direction = 'bottom';
+			j = 0;
+		}
+
+		if (current === 22) {
+			console.log('turn2');
+			direction = 'left';
+			j = 0;
+		}
+
+		p1Piece.style[direction] = `${64 * j}px`;
+
+
+		if (current > where) {
+			clearInterval(int);
+		}
+		j++;
+		where++;
+		console.log(i);
+		console.log(j);
+	}, 1000);
+};
+
+testBtn.onclick = () => movePiece(4, 1);
+
+window.movePiece = movePiece;
 
 //////////////////////End Test Movement//////////////////////
 
