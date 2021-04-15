@@ -4,6 +4,7 @@ import { landOnChance } from './chance.js';
 // landOnCommunity RETURNS an OBJECT of a community Card
 import { landOnCommunity } from './chest.js';
 import { properties } from './tiles.js';
+import { makeMoveHappen } from '../dom.js'
 
 class Character {
 	constructor(name) {
@@ -20,12 +21,13 @@ class Character {
 		this.doubleCount = 0;
 	}
 	rollDice() {
-		//this.rolledNumber = this.dice() + this.dice();
-		this.rolledNumber = 7;
-		//let dice1 = this.dice();
-		//let dice2 = this.dice();
-		let dice1 = 3;
-		let dice2 = 4;
+		this.rolledNumber = this.dice() + this.dice();
+
+		//this.rolledNumber = 7;
+		let dice1 = this.dice();
+		let dice2 = this.dice();
+		// let dice1 = 3;
+		// let dice2 = 4;
 
 		console.log('test123');
 
@@ -54,6 +56,8 @@ class Character {
 			}
 			console.log(`Double count = ${this.doubleCount}`);
 		}
+
+		makeMoveHappen();
 	}
 
 	dice() {

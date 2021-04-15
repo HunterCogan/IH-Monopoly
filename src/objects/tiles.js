@@ -189,7 +189,7 @@ properties[6] = new Property(
 );
 
 properties[8] = new Property(
-	'Imbd',
+	'Imdb',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
 	0.5,

@@ -1,5 +1,5 @@
 //DICKY's Import
-import { currPlayer } from './game.js';
+import { currPlayer, players } from './game.js';
 import { totalHouse, totalHotel, properties } from './objects/tiles.js';
 const $ = function (ele) {
 	return document.querySelector(ele);
@@ -217,8 +217,9 @@ window.p4Piece = $('#p4-token');
 let testBtn = $('#testBtn');
 
 const movePiece = (piece, start, end) => {
+	console.log(piece, start, end);
 	let int = setInterval(() => {
-		start++
+		start++;
 
 		if (piece === p1Piece) {
 			speaker.currentTime = 0;
@@ -321,6 +322,35 @@ testBtn.onclick = () => (
 
 window.movePiece = movePiece;
 
+const makeMoveHappen = () => {
+	let roll = currPlayer.rolledNumber;
+	let start = currPlayer.position;
+	let name = currPlayer.name;
+	let end = start + roll;
+	let pos = '';
+	let piece;
+
+	players.forEach((e, i) => {
+		if (e.name === currPlayer.name) {
+			pos = i + 1;
+		}
+	});
+
+	if (pos === 1) {
+		piece = $('#p1-token');
+	} else if (pos === 2) {
+		piece = $('#p2-token');
+	} else if (pos === 3) {
+		piece = $('#p3-token');
+	} else if (pos === 4) {
+		piece = $('#p4-token');
+	}
+
+	console.log(roll, start, end, piece);
+	console.log(typeof piece);
+
+	movePiece(piece, start, end);
+};
 
 //////////////////////End Test Movement//////////////////////
 
@@ -503,4 +533,4 @@ document.querySelectorAll('.grid').forEach((e) => {
 
 //////////////////////End page-load binding//////////////////////
 
-export { $, showProperty, startOutput, handleManage, handleServerBuy };
+export { $, showProperty, startOutput, handleManage, handleServerBuy, makeMoveHappen };
