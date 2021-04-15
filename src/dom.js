@@ -4,6 +4,10 @@ import { totalHouse, totalHotel, properties } from './objects/tiles.js';
 const $ = function (ele) {
 	return document.querySelector(ele);
 };
+const keyboard = new Audio('/assets/sounds/keyboard.mp3')
+const monitor = new Audio('/assets/sounds/monitor.mp3')
+const mouse = new Audio('/assets/sounds/mouse.mp3')
+const speaker = new Audio('/assets/sounds/speaker.mp3')
 
 //////////////////////Start Page-load Modal//////////////////////
 let startModal = $('#start-modal');
@@ -214,7 +218,21 @@ let testBtn = $('#testBtn');
 
 const movePiece = (piece, start, end) => {
 	let int = setInterval(() => {
-		start++;
+		start++
+
+		if (piece === p1Piece) {
+			speaker.play();
+		}
+		if (piece === p2Piece) {
+			speaker.play();
+		}
+		if (piece === p3Piece) {
+			speaker.play();
+		}
+		if (piece === p4Piece) {
+			speaker.play();
+		}
+
 
 		console.log(start, end);
 
@@ -227,8 +245,15 @@ const movePiece = (piece, start, end) => {
 		}
 
 		if (start > 1 && start < 10) {
-			piece.style.transform = `translate(${start * -65 - 30}px, ${0}px)`;
+			piece.style.transform = `translate(${(start * -65) - 29}px, ${0}px)`
 		}
+
+		// IF IN JAIL /////////////////////
+		if (currPlayer.jail[0] === true && start == 10) {
+			piece.style.transform = `translate(${(start * -65) - 35}px, ${-25}px)`
+		}
+		////////////////////////////////////////////////////////////////
+
 		if (start == 10) {
 			if (piece === p1Piece) {
 				piece.style.transform = `translate(${-726}px, ${-20}px)`;
@@ -237,15 +262,15 @@ const movePiece = (piece, start, end) => {
 				piece.style.transform = `translate(${-726}px, ${-20}px)`;
 			}
 			if (piece === p3Piece) {
-				piece.style.transform = `translate(${-725}px, ${45}px)`;
+				piece.style.transform = `translate(${-726}px, ${45}px)`
 			}
 			if (piece === p4Piece) {
 				piece.style.transform = `translate(${-690}px, ${15}px)`;
 			}
-			// piece.style.transform = `translate(${start * -71}px, ${24}px)`
 		}
+
 		if (start > 10 && start < 20) {
-			piece.style.transform = `translate(${-700}px, ${(start - 10) * -65 - 30}px)`;
+			piece.style.transform = `translate(${-700}px, ${((start - 10) * -65) - 29}px)`
 		}
 
 		if (start === 20) {
@@ -260,7 +285,7 @@ const movePiece = (piece, start, end) => {
 		}
 
 		if (start > 30 && start <= 40) {
-			piece.style.transform = `translate(0px, ${-700 + (start - 30) * 65 + 20}px)`;
+			piece.style.transform = `translate(0px, ${-700 + ((start - 30) * 65) + 21}px)`
 		}
 
 		if (start === 40) {
