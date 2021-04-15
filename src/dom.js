@@ -299,7 +299,13 @@ window.movePiece = movePiece;
 //////////////////////End Test Movement//////////////////////
 
 //////////////////////Start Mortgage modal//////////////////////
+let manageBtn = $('#manage-property');
+let manageModal = $('#manage-modal');
 
+//server modal
+let serverModal = $('#servers-modal');
+let serverModalTitle = $('#servers-modal .modal-title span');
+let currentServerModalId = 'none';
 const handleServerBuy = (e) => {
 	let id = e.id.split('-')[0];
 	//================================================================//
@@ -389,42 +395,6 @@ const handleServerBuy = (e) => {
 	//===================================================================//
 	let close = $('#close-serv');
 	serverModal.style.display = 'flex';
-
-	console.log(typeMax, serverCount);
-	//if total house or hotel is maxed out grey out all buttons
-	if (totalHouse === 0) serverBuy.classList.add('no-click');
-	if (totalHotel === 0) clusterBuy.classList.add('no-click');
-	// if player doesn't have all of the same property, can't buy or sell anything
-	if (!typeMax) {
-		serverBuy.classList.add('no-click');
-		serverSell.classList.add('no-click');
-		clusterBuy.classList.add('no-click');
-		clusterSell.classList.add('no-click');
-	} else {
-		// if player has less than 4 houses, they can't touch cluster button
-		if (currProperty.server < 4 && currProperty.server == Math.min(serverCount)) {
-			clusterBuy.classList.add('no-click');
-			clusterSell.classList.add('no-click');
-			// if player has no houses, can't see
-			if (currProperty.server === 0) serverSell.classList.add('no-click');
-		}
-		if (currProperty.server === 4) {
-			serverBuy.classList.add('no-click');
-			clusterSell.classList.add('no-click');
-		}
-		if (currProperty.server === 5) {
-			serverBuy.classList.add('no-click');
-			serverSell.classList.add('no-click');
-
-			clusterSell.classList.add('no-click');
-		}
-	}
-
-	//Dicky's test: remove if buggy END
-	//===================================================================//
-	let close = $('#close-serv');
-	serverModal.style.display = 'flex';
-
 	serverModalTitle.innerHTML = id.charAt(0).toUpperCase() + id.slice(1);
 	currentServerModalId = id;
 	close.onclick = () => {
@@ -480,30 +450,30 @@ document.querySelectorAll('.grid').forEach((e) => {
 });
 
 //test function to bring up modals
-$('#tempTest1').onclick = () => {
-	manageModal.style.display = 'flex';
-	$('#manage-content').style.display = 'none';
-	//$('#landing-modal').style.display = 'flex';
-	$('#jail-modal').style.display = 'flex';
-
-	$('#dont-buy-prop').onclick = () => {
-		manageModal.style.display = 'none';
-		$('#manage-content').style.display = 'flex';
-		$('#landing-modal').style.display = 'none';
-	};
-
-	$('#pay-rent').onclick = () => {
-		manageModal.style.display = 'none';
-		$('#manage-content').style.display = 'flex';
-		$('#landing-modal').style.display = 'none';
-	};
-
-	window.onclick = (e) => {
-		if (e.target === manageModal) {
-			manageModal.style.display = 'none';
-		}
-	};
-};
+// $('#tempTest1').onclick = () => {
+// 	manageModal.style.display = 'flex';
+// 	$('#manage-content').style.display = 'none';
+// 	//$('#landing-modal').style.display = 'flex';
+// 	$('#jail-modal').style.display = 'flex';
+//
+// 	$('#dont-buy-prop').onclick = () => {
+// 		manageModal.style.display = 'none';
+// 		$('#manage-content').style.display = 'flex';
+// 		$('#landing-modal').style.display = 'none';
+// 	};
+//
+// 	$('#pay-rent').onclick = () => {
+// 		manageModal.style.display = 'none';
+// 		$('#manage-content').style.display = 'flex';
+// 		$('#landing-modal').style.display = 'none';
+// 	};
+//
+// 	window.onclick = (e) => {
+// 		if (e.target === manageModal) {
+// 			manageModal.style.display = 'none';
+// 		}
+// 	};
+// };
 
 //////////////////////End page-load binding//////////////////////
 

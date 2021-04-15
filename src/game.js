@@ -29,6 +29,10 @@ function startGame() {
 	properties[8].buy();
 	properties[9].buy();
 	properties[11].buy();
+	console.log(currPlayer.name);
+	document.querySelector('#game-status span').innerHTML = `
+		${currPlayer.name}'s turn!
+	`
 }
 
 function checkJail() {
@@ -98,6 +102,7 @@ function rollDice() {
 	if (!checkJail() && !currPlayer.diceRolled) {
 		currPlayer.rollDice();
 		currPlayer.movePlayer();
+		console.log(currPlayer.position)
 		// console.log(currPlayer);
 	}
 }
@@ -195,7 +200,10 @@ function endTurn() {
 
 	currPlayer = players[index];
 	console.log('turn ended');
-	console.log(`next player is ${currPlayer.name}`);
+	//console.log(`next player is ${currPlayer.name}`);
+	document.querySelector('#game-status span').innerHTML = `
+		${currPlayer.name}'s turn!
+	`
 }
 
 export {
@@ -215,7 +223,7 @@ export {
 
 // dice roll start
 //Generates a random number from 1-6
-const firstRandom = Math.floor(Math.random() * 6) + 1;
+// const firstRandom = Math.floor(Math.random() * 6) + 1;
 
 // const firstDiceImg = './../assets/dice' + firstRandom + '.png';
 // console.log(firstDiceImg)
