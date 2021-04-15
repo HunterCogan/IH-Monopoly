@@ -273,220 +273,183 @@ let testBtn = $('#testBtn');
 const movePiece = (piece, start, end) => {
 	let int = setInterval(() => {
 
-<<<<<<< HEAD
-		start++
+		// 	}, 500);
+		// };
 
-		console.log(start, end);
+		const movePiece = (start, end) => {
+			let int = setInterval(() => {
+				console.log(start, end);
 
-		//bottomLeft translate(-680px,0px)
-		//topLeft = translate(-680px,-680px)
-		//topRight = translate(0px,-680px)
-		//bottomRight = translate(0,0)
+				//p1Piece.style['right'] = `${start * 10}%`
+				p1Piece.style.transform = `translateX(${start * -64})`;
 
+				start++;
 
-		if (start > 0 && start < 10) {
-			piece.style.transform = `translate(${start * -68}px, ${0}px)`
-		}
-		if (start == 10) {
-			piece.style.transform = `translate(${start * -71}px, ${24}px)`
-		}
-		if (start > 10 && start <= 20) {
-			piece.style.transform = `translate(-680px, ${(start - 10) * -68}px)`
-		}
+				if (start % 10 === 0) {
+					console.log('change direction');
+				}
 
-		if (start > 20 && start <= 30) {
-			piece.style.transform = `translate(${-680 + (start - 20) * 68}px, -680px)`
-		}
-
-		if (start > 30 && start <= 40) {
-			piece.style.transform = `translate(0px, ${-680 + (start - 30) * 68}px)`
-		}
-=======
-// 	}, 500);
-// };
-
-const movePiece = (start, end) => {
-	let int = setInterval(() => {
-		console.log(start, end);
-
-		//p1Piece.style['right'] = `${start * 10}%`
-		p1Piece.style.transform = `translateX(${start * -64})`;
-
-		start++;
->>>>>>> 456b79b1d79c4227bf921ae3ad5d7567f4ae3962
-
-		if (start % 10 === 0) {
-			console.log('change direction');
-		}
-
-		if (start === end) {
-			clearInterval(int);
-		}
-		if (start === 40) {
-			start = 0;
-			end = end - 40;
-		}
-<<<<<<< HEAD
-
-		console.log('position is', end % 40)
-
-	}, 300)
-}
-
-=======
-	}, 1000);
-};
->>>>>>> 456b79b1d79c4227bf921ae3ad5d7567f4ae3962
-
-testBtn.onclick = () => movePiece(p1Piece, 0, 4);
-
-window.movePiece = movePiece;
-
-//////////////////////End Test Movement//////////////////////
-
-//////////////////////Start Mortgage modal//////////////////////
-
-//main manage modal
-let manageBtn = $('#manage-property');
-let manageModal = $('#manage-modal');
-
-//server modal
-let serverModal = $('#servers-modal');
-let serverModalTitle = $('#servers-modal .modal-title span');
-let currentServerModalId = 'none';
-
-const handleServerBuy = (e) => {
-	let id = e.id.split('-')[0];
-	//================================================================//
-	//Dicky's test: remove if buggy START
-	let currProperty;
-	let serverBuy = $('.server-buy');
-	console.log(serverBuy);
-	let serverSell = $('.server-sell');
-	let clusterBuy = $('.cluster-buy');
-	let clusterSell = $('.cluster-sell');
-
-	// sets the current Property for this button
-	for (let property of currPlayer.properties) {
-		if (property.name === id) currProperty = property;
-	}
-
-	let { typeMax, serverCount } = currProperty.counter(properties);
-	console.log(typeMax, serverCount);
-	//if total house or hotel is maxed out grey out all buttons
-	if (totalHouse === 0) serverBuy.classList.add('no-click');
-	if (totalHotel === 0) clusterBuy.classList.add('no-click');
-	// if player doesn't have all of the same property, can't buy or sell anything
-	if (!typeMax) {
-		serverBuy.classList.add('no-click');
-		serverSell.classList.add('no-click');
-		clusterBuy.classList.add('no-click');
-		clusterSell.classList.add('no-click');
-	} else {
-		// if player has less than 4 houses, they can't touch cluster button
-		if (currProperty.server < 4 && currProperty.server == Math.min(serverCount)) {
-			clusterBuy.classList.add('no-click');
-			clusterSell.classList.add('no-click');
-			// if player has no houses, can't see
-			if (currProperty.server === 0) serverSell.classList.add('no-click');
-		}
-		if (currProperty.server === 4) {
-			serverBuy.classList.add('no-click');
-			clusterSell.classList.add('no-click');
-		}
-		if (currProperty.server === 5) {
-			serverBuy.classList.add('no-click');
-			serverSell.classList.add('no-click');
-
-			clusterSell.classList.add('no-click');
-		}
-	}
-
-	//Dicky's test: remove if buggy END
-	//===================================================================//
-	let close = $('#close-serv');
-	serverModal.style.display = 'flex';
-
-	serverModalTitle.innerHTML = id.charAt(0).toUpperCase() + id.slice(1);
-	currentServerModalId = id;
-	close.onclick = () => {
-		serverModal.style.display = 'none';
-	};
-};
-
-const handleManage = () => {
-	manageModal.style.display = 'flex';
-	$('#manage-content').style.display = 'flex';
-	$('#jail-modal').style.display = 'none';
-	let close = $('#close-mng');
-
-	document.querySelectorAll('.m-server').forEach((e) => {
-		e.onclick = () => {
-			handleServerBuy(e);
+				if (start === end) {
+					clearInterval(int);
+				}
+				if (start === 40) {
+					start = 0;
+					end = end - 40;
+				}
+			}, 1000);
 		};
-	});
 
-	close.onclick = () => {
-		manageModal.style.display = 'none';
-		serverModal.style.display = 'none';
-	};
+		testBtn.onclick = () => movePiece(p1Piece, 0, 4);
 
-	window.onclick = (e) => {
-		if (e.target === manageModal) {
-			manageModal.style.display = 'none';
-			serverModal.style.display = 'none';
-		}
-	};
-};
+		window.movePiece = movePiece;
 
-manageBtn.onclick = () => {
-	handleManage();
-};
+		//////////////////////End Test Movement//////////////////////
 
-//////////////////////End Mortgage modal//////////////////////
+		//////////////////////Start Mortgage modal//////////////////////
 
-//////////////////////Start Mortgage modal//////////////////////
-// let mortgageBtn = $('#mortgage-properties');
-// mortgageBtn.onclick = () => {
-//
-// };
-//////////////////////End Mortgage modal//////////////////////
+		//main manage modal
+		let manageBtn = $('#manage-property');
+		let manageModal = $('#manage-modal');
 
-//////////////////////Page-load binding//////////////////////
-//bind the property tiles
-document.querySelectorAll('.grid').forEach((e) => {
-	e.onclick = () => {
-		console.log('test');
-		showProperty(e.id);
-	};
-});
+		//server modal
+		let serverModal = $('#servers-modal');
+		let serverModalTitle = $('#servers-modal .modal-title span');
+		let currentServerModalId = 'none';
 
-//test function to bring up modals
-$('#tempTest1').onclick = () => {
-	manageModal.style.display = 'flex';
-	$('#manage-content').style.display = 'none';
-	//$('#landing-modal').style.display = 'flex';
-	$('#jail-modal').style.display = 'flex';
+		const handleServerBuy = (e) => {
+			let id = e.id.split('-')[0];
+			//================================================================//
+			//Dicky's test: remove if buggy START
+			let currProperty;
+			let serverBuy = $('.server-buy');
+			console.log(serverBuy);
+			let serverSell = $('.server-sell');
+			let clusterBuy = $('.cluster-buy');
+			let clusterSell = $('.cluster-sell');
 
-	$('#dont-buy-prop').onclick = () => {
-		manageModal.style.display = 'none';
-		$('#manage-content').style.display = 'flex';
-		$('#landing-modal').style.display = 'none';
-	};
+			// sets the current Property for this button
+			for (let property of currPlayer.properties) {
+				if (property.name === id) currProperty = property;
+			}
 
-	$('#pay-rent').onclick = () => {
-		manageModal.style.display = 'none';
-		$('#manage-content').style.display = 'flex';
-		$('#landing-modal').style.display = 'none';
-	};
+			let { typeMax, serverCount } = currProperty.counter(properties);
+			console.log(typeMax, serverCount);
+			//if total house or hotel is maxed out grey out all buttons
+			if (totalHouse === 0) serverBuy.classList.add('no-click');
+			if (totalHotel === 0) clusterBuy.classList.add('no-click');
+			// if player doesn't have all of the same property, can't buy or sell anything
+			if (!typeMax) {
+				serverBuy.classList.add('no-click');
+				serverSell.classList.add('no-click');
+				clusterBuy.classList.add('no-click');
+				clusterSell.classList.add('no-click');
+			} else {
+				// if player has less than 4 houses, they can't touch cluster button
+				if (currProperty.server < 4 && currProperty.server == Math.min(serverCount)) {
+					clusterBuy.classList.add('no-click');
+					clusterSell.classList.add('no-click');
+					// if player has no houses, can't see
+					if (currProperty.server === 0) serverSell.classList.add('no-click');
+				}
+				if (currProperty.server === 4) {
+					serverBuy.classList.add('no-click');
+					clusterSell.classList.add('no-click');
+				}
+				if (currProperty.server === 5) {
+					serverBuy.classList.add('no-click');
+					serverSell.classList.add('no-click');
 
-	window.onclick = (e) => {
-		if (e.target === manageModal) {
-			manageModal.style.display = 'none';
-		}
-	};
-};
+					clusterSell.classList.add('no-click');
+				}
+			}
 
-//////////////////////End page-load binding//////////////////////
+			//Dicky's test: remove if buggy END
+			//===================================================================//
+			let close = $('#close-serv');
+			serverModal.style.display = 'flex';
 
-export { $, showProperty, startOutput, handleManage, handleServerBuy };
+			serverModalTitle.innerHTML = id.charAt(0).toUpperCase() + id.slice(1);
+			currentServerModalId = id;
+			close.onclick = () => {
+				serverModal.style.display = 'none';
+			};
+		};
+
+		const handleManage = () => {
+			manageModal.style.display = 'flex';
+			$('#manage-content').style.display = 'flex';
+			$('#jail-modal').style.display = 'none';
+			let close = $('#close-mng');
+
+			document.querySelectorAll('.m-server').forEach((e) => {
+				e.onclick = () => {
+					handleServerBuy(e);
+				};
+			});
+
+			close.onclick = () => {
+				manageModal.style.display = 'none';
+				serverModal.style.display = 'none';
+			};
+
+			window.onclick = (e) => {
+				if (e.target === manageModal) {
+					manageModal.style.display = 'none';
+					serverModal.style.display = 'none';
+				}
+			};
+		};
+
+		manageBtn.onclick = () => {
+			handleManage();
+		};
+
+		//////////////////////End Mortgage modal//////////////////////
+
+		//////////////////////Start Mortgage modal//////////////////////
+		// let mortgageBtn = $('#mortgage-properties');
+		// mortgageBtn.onclick = () => {
+		//
+		// };
+		//////////////////////End Mortgage modal//////////////////////
+
+		//////////////////////Page-load binding//////////////////////
+		//bind the property tiles
+		document.querySelectorAll('.grid').forEach((e) => {
+			e.onclick = () => {
+				console.log('test');
+				showProperty(e.id);
+			};
+		});
+
+		//test function to bring up modals
+		$('#tempTest1').onclick = () => {
+			manageModal.style.display = 'flex';
+			$('#manage-content').style.display = 'none';
+			//$('#landing-modal').style.display = 'flex';
+			$('#jail-modal').style.display = 'flex';
+
+			$('#dont-buy-prop').onclick = () => {
+				manageModal.style.display = 'none';
+				$('#manage-content').style.display = 'flex';
+				$('#landing-modal').style.display = 'none';
+			};
+
+			$('#pay-rent').onclick = () => {
+				manageModal.style.display = 'none';
+				$('#manage-content').style.display = 'flex';
+				$('#landing-modal').style.display = 'none';
+			};
+
+			window.onclick = (e) => {
+				if (e.target === manageModal) {
+					manageModal.style.display = 'none';
+				}
+			};
+		};
+
+
+		//////////////////////End page-load binding//////////////////////
+
+		export { $, showProperty, startOutput, handleManage, handleServerBuy };
+
