@@ -1,6 +1,6 @@
 //DICKY's Import
 import { currPlayer } from './game.js';
-import { totalHouse, totalHotel } from './objects/tiles.js';
+import { totalHouse, totalHotel, properties } from './objects/tiles.js';
 const $ = function (ele) {
 	return document.querySelector(ele);
 };
@@ -26,7 +26,7 @@ let p4Input = $('#p4-name input');
 let startOutput = [];
 
 const removeBorders = () => {
-	pSelect.forEach((e, i) => {
+	pSelect.forEach((e) => {
 		if (e.classList.contains('pSelected')) {
 			e.classList.remove('pSelected');
 		}
@@ -226,7 +226,6 @@ const showProperty = (ele) => {
 
 // 		p1Piece.style[direction] = `${64 * j}px`;
 
-
 // 		if (j === where) {
 // 			clearInterval(int);
 // 		}
@@ -303,36 +302,31 @@ let testBtn = $('#testBtn');
 
 // 		}
 
-
 // 	}, 500);
 // };
 
-
 const movePiece = (start, end) => {
 	let int = setInterval(() => {
-
 		console.log(start, end);
 
 		//p1Piece.style['right'] = `${start * 10}%`
-		p1Piece.style.transform = `translateX(${start * -64})`
+		p1Piece.style.transform = `translateX(${start * -64})`;
 
-		start++
+		start++;
 
 		if (start % 10 === 0) {
-			console.log('change direction')
+			console.log('change direction');
 		}
 
 		if (start === end) {
-			clearInterval(int)
+			clearInterval(int);
 		}
 		if (start === 40) {
-			start = 0
-			end = end - 40
+			start = 0;
+			end = end - 40;
 		}
-
-	}, 1000)
-}
-
+	}, 1000);
+};
 
 testBtn.onclick = () => movePiece(1, 10);
 
@@ -366,15 +360,16 @@ const handleServerBuy = (e) => {
 	for (let property of currPlayer.properties) {
 		if (property.name === id) currProperty = property;
 	}
-
-	let { typeMax, serverCount } = currProperty.counter();
+	console.log(currProperty);
+	console.log(currProperty.server);
+	let { typeMax, serverCount } = currProperty.counter(properties);
+	console.log(typeMax, serverCount);
 
 	//if total house or hotel is maxed out grey out all buttons
 	if (totalHouse === 0) serverBuy.classList.add('no-click');
 	if (totalHotel === 0) clusterBuy.classList.add('no-click');
 	// if player doesn't have all of the same property, can't buy or sell anything
 	if (!typeMax) {
-		console.log(serverBuy);
 		serverBuy.classList.add('no-click');
 		serverSell.classList.add('no-click');
 		clusterBuy.classList.add('no-click');
@@ -414,6 +409,7 @@ const handleServerBuy = (e) => {
 const handleManage = () => {
 	manageModal.style.display = 'flex';
 	$('#manage-content').style.display = 'flex';
+	$('#jail-modal').style.display = 'none';
 	let close = $('#close-mng');
 
 	document.querySelectorAll('.m-server').forEach((e) => {
@@ -450,7 +446,7 @@ manageBtn.onclick = () => {
 
 //////////////////////Page-load binding//////////////////////
 //bind the property tiles
-document.querySelectorAll('.grid').forEach((e, i) => {
+document.querySelectorAll('.grid').forEach((e) => {
 	e.onclick = () => {
 		console.log('test');
 		showProperty(e.id);

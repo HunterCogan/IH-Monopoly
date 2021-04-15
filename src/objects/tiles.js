@@ -46,6 +46,8 @@ class Property {
 		// loop for how many of the same card type this owner has
 		for (let property in properties) {
 			if (property.type == this.type && property.owner == this.owner) {
+				console.log(this.type);
+				console.log(this.owner);
 				typeCounter++;
 				serverCount.push(property.server);
 			}
