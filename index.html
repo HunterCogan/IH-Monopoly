@@ -311,13 +311,36 @@
 
 			<!-- Land on Property Modal -->
 			<div id="landing-modal" class="flex-column" style="display: none">
-				<div class="modal-title">You landed on <span id="prop-landed-on">Cornhub</span></div>
+				<div class="modal-title">You landed on <span id="prop-landed-on">'company'</span></div>
 				<div class="flex-column landing-content">
 					<div class="landing-card"></div>
 					<div class="flex-row center">
 						<div id="buy-prop" class="flex-row center">Buy Property?</div>
 						<div id="dont-buy-prop" class="flex-row center">Nah</div>
-						<div id="pay-rent" class="flex-row center">Pay Rent: <span id="rent-due"></span></div>
+						<div id="pay-rent" class="flex-row center" style="display: none">Pay Rent: <span id="rent-due"></span></div>
+					</div>
+				</div>
+			</div>
+
+			<!--In Jail Modal-->
+			<div id="jail-modal" class="flex-column">
+				<div class="flex-row">
+					<div class="jail-icon"></div>
+					<div class="modal-title center" style="text-align: center">You downloaded ransom-ware and your files are locked!</div>
+				</div>
+				<div id="dice-holder" class="flex-row">
+					<div class="dice">
+						<img id="dice1" class='diceImg' />
+					</div>
+					<div class="dice">
+						<img id="dice2" class='diceImg' />
+					</div>
+				</div>
+				<div class="flex-column jail-content">
+					<div class="flex-row center" style="margin-top: 15px">
+						<div id="roll-for-double" class="flex-row center green">Roll for Double?</div>
+						<div id="get-out-jail" class="flex-row center yellow">Use Anti-Virus (<span>0</span>)</div>
+						<div id="pay-ransom" class="flex-row center red">Pay Ransom: (₿ 0.5)</div>
 					</div>
 				</div>
 			</div>
