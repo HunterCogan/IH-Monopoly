@@ -105,25 +105,38 @@ const handleStartModal = () => {
 		checkP2();
 		checkP3();
 		checkP4();
-		startOutput.push(
-			pSelected,
-			p1Target.innerText,
-			p2Target.innerText,
-			p3Target.innerText,
-			p4Target.innerText
-		);
+		if (
+			p1Input.value.length > 0 &&
+			p2Input.value.length > 0 &&
+			p3Input.value.length > 0 &&
+			p3Input.value.length > 0
+		) {
+			startOutput.push(
+				pSelected,
+				p1Target.innerText,
+				p2Target.innerText,
+				p3Target.innerText,
+				p4Target.innerText
+			);
+		}
 	} else if (pSelected === 2) {
 		checkP1();
 		checkP2();
 		checkP3();
 		if (allGood) {
 			$('#p4-box').style.display = 'none';
-			startOutput.push(
-				pSelected,
-				p1Target.innerText,
-				p2Target.innerText,
-				p3Target.innerText
-			);
+			if (
+				p1Input.value.length > 0 &&
+				p2Input.value.length > 0 &&
+				p3Input.value.length > 0
+			) {
+				startOutput.push(
+					pSelected,
+					p1Target.innerText,
+					p2Target.innerText,
+					p3Target.innerText
+				);
+			}
 		}
 	} else if (pSelected === 1) {
 		checkP1();
@@ -131,7 +144,16 @@ const handleStartModal = () => {
 		if (allGood) {
 			$('#p3-box').style.display = 'none';
 			$('#p4-box').style.display = 'none';
-			startOutput.push(pSelected, p1Target.innerText, p2Target.innerText);
+			if (
+				p1Input.value.length > 0 &&
+				p2Input.value.length > 0
+			) {
+				startOutput.push(
+					pSelected,
+					p1Target.innerText,
+					p2Target.innerText
+				);
+			}
 		}
 	} else if (pSelected === 0) {
 		allGood = false;
