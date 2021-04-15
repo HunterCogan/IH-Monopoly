@@ -113,7 +113,7 @@
 										<div id="roll-dice" class="menu-btn">Roll Dice</div>
 										<div id="end-turn" class="menu-btn">End Turn</div>
 									</div>
-									
+									<div id="game-status"></div>
 									<div class="flex-row">
 										<div id="manage-property" class="menu-btn">Manage Properties</div>
 									</div>
@@ -241,6 +241,7 @@
 
 		<!-- Manage Property modal -->
 		<div id="manage-modal" class="modal flex-column" style="display: none">
+			<!-- Server Buy Modal -->
 			<div id="servers-modal" class="flex-column" style="display: none">
 				<div class="modal-title">Buy Servers for <span>"Company" </span>: </div>
 				<div class="flex-row justify-around server-list">
@@ -261,52 +262,21 @@
 				</div>
 				<div id="close-serv" class="close-btn">Close</div>
 			</div>
+			<!-- Main Management Modal-->
 			<div class="flex-column modal-contain">
 				<div id="manage-content" class=" flex-column">
 					<div class="modal-title">Properties: </div>
 					<div class="flex-column manage-list">
+						<!--Example list item -->
 						<div id="m-microsoft" class="flex-row prop-list lightgreen">
 							<div class="flex-row baseline">
 								<div class="m-name">Microsoft: </div>
 								<div class="m-amt"> ₿ <span>0.02</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
-								<div id="microsoft-server" class="m-server" >Buy Servers</div>
+								<div id="microsoft-server" class="m-server no-click" >Buy Servers</div>
 								<div id="microsoft-trade" class="m-trade">Trade</div>
 								<div id="microsoft-mortgage" class="m-mortgage">Mortgage</div>
-							</div>
-						</div>
-						<div id="m-linkedin" class="flex-row prop-list">
-							<div class="flex-row baseline">
-								<div class="m-name">LinkedIn: </div>
-								<div class="m-amt">₿ <span>0.04</span></div>
-							</div>
-							<div class="m-btn-row flex-row">
-								<div id="linkedin-server" class="m-server" >Buy Servers</div>
-								<div id="linkedin-trade" class="m-trade">Trade</div>
-								<div id="linkedin-mortgage" class="m-mortgage">Mortgage</div>
-							</div>
-						</div>
-						<div id="m-foxnews" class="flex-row prop-list lightgreen">
-							<div class="flex-row baseline">
-								<div class="m-name">Foxnews: </div>
-								<div class="m-amt">₿ <span>0.06</span></div>
-							</div>
-							<div class="m-btn-row flex-row">
-								<div id="foxnews-server" class="m-server" >Buy Servers</div>
-								<div id="foxnews-trade" class="m-trade">Trade</div>
-								<div id="foxnews-mortgage" class="m-mortgage">Mortgage</div>
-							</div>
-						</div>
-						<div id="m-IMDB" class="flex-row prop-list">
-							<div class="flex-row baseline">
-								<div class="m-name">Foxnews: </div>
-								<div class="m-amt">₿ <span>0.06</span></div>
-							</div>
-							<div class="m-btn-row flex-row">
-								<div id="IMDB-server" class="m-server" >Buy Servers</div>
-								<div id="IMDB-trade" class="m-trade">Trade</div>
-								<div id="IMDB-mortgage" class="m-mortgage">Mortgage</div>
 							</div>
 						</div>
 					</div>

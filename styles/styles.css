@@ -348,6 +348,11 @@ div.p-select-btn {
     margin-bottom: 10px;
     text-align: center;
 }
+
+.no-click {
+    background-color: rgba(105, 105, 105, 0.61);
+    pointer-events: none;
+}
 /*End Global Classes*/
 
 .pSelected {
