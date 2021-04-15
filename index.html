@@ -20,7 +20,7 @@
 				<div id="p1Color" class="player-name">
 					<span id="p1Target">Jonny</span>
 				</div>
-				<div class="player-coin">
+				<div id="player1coincolor" class="player-coin">
 					₿ <span id="p1-money">15.00</span>
 				</div>
 				<div id='player1iconColor' class="player-tokens">
@@ -31,7 +31,7 @@
 				<div id="p2Color" class="player-name">
 					<span id="p2Target">Juan</span>
 				</div>
-				<div class="player-coin">
+				<div id="player2coincolor" class="player-coin">
 					₿ <span id="p2-money">15.00</span>
 				</div>
 				<div id='player2iconColor' class="player-tokens">
@@ -52,7 +52,7 @@
 				<div id="tab-att" class="board-tab tab-middle-h"></div>
 				<div id="tab-reddit" class="board-tab tab-middle-h"></div>
 				<div id="tab-cornhub" class="board-tab tab-middle-h"></div>
-				<div id="tab-fiber" class="board-tab tab-middle-h"></div>
+				<div id="tab-googlefiber" class="board-tab tab-middle-h"></div>
 				<div id="tab-yahoo" class="board-tab tab-middle-h"></div>
 				<div class="board-tab tab-corner-h"></div>
 			</div>
@@ -66,7 +66,7 @@
 					<div id="tab-fandom" class="board-tab tab-middle-v"></div>
 					<div id="tab-chest-1" class="board-tab tab-middle-v"></div>
 					<div id="tab-zoom" class="board-tab tab-middle-v"></div>
-					<div id="tab-time-warner" class="board-tab tab-middle-v"></div>
+					<div id="tab-timewarner" class="board-tab tab-middle-v"></div>
 					<div id="tab-walmart" class="board-tab tab-middle-v"></div>
 					<div id="tab-craigslist" class="board-tab tab-middle-v"></div>
 					<div id="tab-5g" class="board-tab tab-middle-v"></div>
@@ -87,7 +87,7 @@
 							<div id="grid-att" class="grid grid-middle-h"></div>
 							<div id="grid-reddit" class="grid grid-middle-h"></div>
 							<div id="grid-cornhub" class="grid grid-middle-h"></div>
-							<div id="grid-fiber" class="grid-middle-h"></div>
+							<div id="grid-googlefiber" class="grid grid-middle-h"></div>
 							<div id="grid-yahoo" class="grid grid-middle-h"></div>
 							<div id="grid-hacked" class="grid-corner-h"></div>
 						</div>
@@ -99,7 +99,7 @@
 								<div id="grid-fandom" class="grid grid-middle-v"></div>
 								<div id="grid-chest-1" class="grid-middle-v"></div>
 								<div id="grid-zoom" class="grid grid-middle-v"></div>
-								<div id="grid-time-warner" class="grid grid-middle-v"></div>
+								<div id="grid-timewarner" class="grid grid-middle-v"></div>
 								<div id="grid-walmart" class="grid grid-middle-v"></div>
 								<div id="grid-craigslist" class="grid grid-middle-v"></div>
 								<div id="grid-5g" class="grid grid-middle-v"></div>
@@ -212,7 +212,7 @@
 				<div id="p3Color" class="player-name">
 					<span id="p3Target">Dicky</span>
 				</div>
-				<div class="player-coin">
+				<div id="player3coincolor" class="player-coin">
 					₿ <span id="p3-money">15.00</span>
 				</div>
 				<div id='player3iconColor' class="player-tokens">
@@ -223,7 +223,7 @@
 				<div id="p4Color" class="player-name">
 					<span id="p4Target">Hunter</span>
 				</div>
-				<div class="player-coin">
+				<div id="player4coincolor" class="player-coin">
 					₿ <span id="p4-money">15.00</span>
 				</div>
 				<div id='player4iconColor' class="player-tokens">
@@ -239,16 +239,36 @@
 			</div>
 		</div>
 
-		<!-- Manage Property modal WIP -->
-		<div id="manage-modal" class="modal" style="display: none">
+		<!-- Manage Property modal -->
+		<div id="manage-modal" class="modal flex-column" style="display: none">
+			<div id="servers-modal" class="flex-column" style="display: none">
+				<div class="modal-title">Buy Servers for <span>"Company" </span>: </div>
+				<div class="flex-row justify-around server-list">
+					<div class="flex-column">
+						<div class="small-title">Servers: </div>
+						<div class="flex-row">
+							<div class="server-buy s-item">Buy</div>
+							<div class="server-sell s-item">Sell</div>
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="small-title">Server Clusters: </div>
+						<div class="flex-row">
+							<div class="cluster-buy s-item">Buy</div>
+							<div class="cluster-sell s-item">Sell</div>
+						</div>
+					</div>
+				</div>
+				<div id="close-serv" class="close-btn">Close</div>
+			</div>
 			<div class="flex-column modal-contain">
 				<div id="manage-content" class=" flex-column">
-					<div id="properties-title">Properties: </div>
+					<div class="modal-title">Properties: </div>
 					<div class="flex-column manage-list">
 						<div id="m-microsoft" class="flex-row prop-list lightgreen">
 							<div class="flex-row baseline">
 								<div class="m-name">Microsoft: </div>
-								<div class="m-amt"> ₿ 0.02</div>
+								<div class="m-amt"> ₿ <span>0.02</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
 								<div id="microsoft-server" class="m-server" >Buy Servers</div>
@@ -259,7 +279,7 @@
 						<div id="m-linkedin" class="flex-row prop-list">
 							<div class="flex-row baseline">
 								<div class="m-name">LinkedIn: </div>
-								<div class="m-amt">₿ 0.04</div>
+								<div class="m-amt">₿ <span>0.04</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
 								<div id="linkedin-server" class="m-server" >Buy Servers</div>
@@ -270,7 +290,7 @@
 						<div id="m-foxnews" class="flex-row prop-list lightgreen">
 							<div class="flex-row baseline">
 								<div class="m-name">Foxnews: </div>
-								<div class="m-amt">₿ 0.06</div>
+								<div class="m-amt">₿ <span>0.06</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
 								<div id="foxnews-server" class="m-server" >Buy Servers</div>
@@ -281,7 +301,7 @@
 						<div id="m-IMDB" class="flex-row prop-list">
 							<div class="flex-row baseline">
 								<div class="m-name">Foxnews: </div>
-								<div class="m-amt">₿ 0.06</div>
+								<div class="m-amt">₿ <span>0.06</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
 								<div id="IMDB-server" class="m-server" >Buy Servers</div>
