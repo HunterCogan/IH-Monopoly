@@ -1,4 +1,4 @@
-import { updateBitcoin } from '../game.js';
+import { currPlayer, updateBitcoin } from '../game.js';
 import { landOnChance } from './chance.js';
 // community is an ARRAY of OBJECTS
 // landOnCommunity RETURNS an OBJECT of a community Card
@@ -13,17 +13,33 @@ class Character {
 		// jail status, if true, how many turns have they been in jail
 		this.jail = [false, 0];
 		this.position = 0;
-		this.properties = [];
+		this.properties = [properties[1], properties[6], properties[8]];
 		this.getOutJail = [false, 0];
 		this.rolledNumber = 0;
 		this.diceRolled = false;
 	}
 	rollDice() {
-		this.rolledNumber = this.dice() + this.dice();
-		// if dice already rolled once, set to true
-		this.diceRolled = true;
-		console.log(this.rolledNumber);
+		// this.rolledNumber = this.dice() + this.dice();
+
+		let dice1 = this.dice();
+		let dice2 = this.dice();
+		let doubleCount = 0;
+		this.rolledNumber = dice1 + dice2;
+		if (dice1 !== dice2) {
+			this.diceRolled = true;
+			console.log(`You rolled ${dice1}, ${dice2}, for a total of ${this.rolledNumber}`)
+		}
+		if (dice1 === dice2) {
+			console.log(`You rolled ${dice1}, ${dice2}, for a total of ${this.rolledNumber}`)
+			console.log('You rolled a double, roll again')
+			doubleCount++
+			if (doubleCount === 3) {
+				currPlayer.jail = [true, 0]
+			}
+			console.log(`Double count = ${doubleCount}`)
+		}
 	}
+
 	dice() {
 		return Math.round(Math.random() * 6) + 1;
 	}

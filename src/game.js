@@ -108,7 +108,71 @@ function updateBitcoin() {
 	p3.innerText = players[2].bitcoin;
 	p4.innerText = players[3].bitcoin;
 }
+function managePropList() {
+	const listParent = document.querySelector('.manage-list');
+	let counter = 0;
+	while (listParent.lastElementChild) {
+		listParent.removeChild(listParent.lastElementChild);
+	}
+	for (let property of currPlayer.properties) {
+		console.log('property list activated');
+		//Text nodes for 1st nested loop
+		const nodeText = document.createTextNode(`${property.name}`);
+		const nodeText2 = document.createTextNode(`₿ ${property.cost}`);
+		// sub div for 1st div
+		let node25 = document.createElement('div');
+		node25.classList.add('m-name');
+		let node255 = document.createElement('div');
+		node255.classList.add('m-amt');
+		let node2 = document.createElement('div');
+		node2.classList.add('flex-row', 'baseline');
+		// put text in 1st sub div
+		node25.appendChild(nodeText);
+		node255.appendChild(nodeText2);
+		// append sub div to 1st div
+		node2.appendChild(node25);
+		node2.appendChild(node255);
 
+		// 2nd sub div
+		const node35Text = document.createTextNode('Buy Server');
+		const node355Text = document.createTextNode('Trade');
+		const node3555Text = document.createTextNode('Mortgage');
+		const node35 = document.createElement('div');
+		node35.setAttribute('id', `${property.name}-server`);
+		node35.classList.add('m-server');
+		const node355 = document.createElement('div');
+		node355.setAttribute('id', `${property.name}-trade`);
+		node355.classList.add('m-trade');
+		const node3555 = document.createElement('div');
+		node3555.setAttribute('id', `${property.name}-mortgage`);
+		node3555.classList.add('m-mortgage');
+		node35.appendChild(node35Text);
+		node355.appendChild(node355Text);
+		node3555.appendChild(node3555Text);
+		// second div
+		const node3 = document.createElement('div');
+		node3.classList.add('m-btn-row', 'flex-row');
+
+		node3.appendChild(node35);
+		node3.appendChild(node355);
+		node3.appendChild(node3555);
+
+		let node = document.createElement('div');
+		node.setAttribute('id', `m-${property.name}`);
+		if (counter % 2 === 0) {
+			node.classList.add('flex-row', 'prop-list', 'lightgreen');
+			counter++;
+		} else {
+			node.classList.add('flex-row', 'prop-list');
+			counter++;
+		}
+		node.appendChild(node2);
+		node.appendChild(node3);
+		listParent.appendChild(node);
+
+		console.log(listParent);
+	}
+}
 function endTurn() {
 	currPlayer.diceRolled = false;
 	index < nameList[0] ? index++ : (index = 0);
@@ -130,4 +194,5 @@ export {
 	players,
 	currPlayer,
 	updateBitcoin,
+	managePropList,
 };
