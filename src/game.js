@@ -1,7 +1,7 @@
 //Characeter is a CLASS
 import { Character } from './objects/players.js';
 
-import { handleManage, handleServerBuy , startOutput as nameList } from './dom.js';
+import { handleManage, handleServerBuy, startOutput as nameList } from './dom.js';
 
 // pass this to almost all functions, destructure what you need
 
@@ -201,3 +201,15 @@ export {
 	updateBitcoin,
 	managePropList,
 };
+
+
+// dice roll start
+//Generates a random number from 1-6
+const firstRandom = Math.floor(Math.random() * 6) + 1;
+
+// const firstDiceImg = './../assets/dice' + firstRandom + '.png';
+// console.log(firstDiceImg)
+
+// document.querySelector('#dice1').setAttribute('src', firstDiceImg)
+// dice roll end
+

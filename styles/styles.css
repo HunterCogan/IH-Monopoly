@@ -929,3 +929,26 @@ div.disabled {
 #tempTest1:hover {
     cursor: pointer;
 }
+
+
+
+/* dice roll style start */
+diceImg{
+    height: 30px;
+    width: 30px;
+}
+
+#dice1, #dice2{
+    height: 30px;
+    width: 30px;
+}
+
+.dice{
+    height:30px;
+    width: 30px;
+    
+    border:solid 2px black;
+}
+/* dice roll style end */
+
+
