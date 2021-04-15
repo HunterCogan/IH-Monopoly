@@ -113,10 +113,13 @@
 										<div id="roll-dice" class="menu-btn">Roll Dice</div>
 										<div id="end-turn" class="menu-btn">End Turn</div>
 									</div>
-									
+									<div id="game-status" class="modal-title flex-row">Juan's Turn!<div id="tempTest1">
+											test button</div>
+									</div>
 									<div class="flex-row">
 										<div id="manage-property" class="menu-btn">Manage Properties</div>
 									</div>
+
 									<!--<button id="testBtn"> TEST </button>-->
 								</div>
 							</div>
@@ -134,6 +137,7 @@
 								<div id="grid-luxury" class="grid-middle-v"></div>
 								<div id="grid-google" class="grid grid-middle-v"></div>
 							</div>
+
 							<!--End grid right-->
 						</div>
 						<!--End Middle grid-->
@@ -241,6 +245,28 @@
 
 		<!-- Manage Property modal -->
 		<div id="manage-modal" class="modal flex-column" style="display: none">
+			<!-- Mortgage Modal WIP-->
+			<div id="mortgage-modal" class="flex-column" style="display: none">
+				<div class="modal-title">Mortgage <span>"Company" </span>: </div>
+				<div class="flex-row justify-around server-list">
+					<div class="flex-column">
+						<div class="small-title">Servers: </div>
+						<div class="flex-row">
+							<div class="server-buy s-item">Buy</div>
+							<div class="server-sell s-item">Sell</div>
+						</div>
+					</div>
+					<div class="flex-column">
+						<div class="small-title">Server Clusters: </div>
+						<div class="flex-row">
+							<div class="cluster-buy s-item">Buy</div>
+							<div class="cluster-sell s-item">Sell</div>
+						</div>
+					</div>
+				</div>
+				<div id="close-mort" class="close-btn">Close</div>
+			</div>
+			<!-- Server Buy Modal -->
 			<div id="servers-modal" class="flex-column" style="display: none">
 				<div class="modal-title">Buy Servers for <span>"Company" </span>: </div>
 				<div class="flex-row justify-around server-list">
@@ -261,56 +287,38 @@
 				</div>
 				<div id="close-serv" class="close-btn">Close</div>
 			</div>
+			<!-- Main Management Modal-->
 			<div class="flex-column modal-contain">
 				<div id="manage-content" class=" flex-column">
 					<div class="modal-title">Properties: </div>
 					<div class="flex-column manage-list">
+						<!--Example list item -->
 						<div id="m-microsoft" class="flex-row prop-list lightgreen">
 							<div class="flex-row baseline">
 								<div class="m-name">Microsoft: </div>
 								<div class="m-amt"> ₿ <span>0.02</span></div>
 							</div>
 							<div class="m-btn-row flex-row">
-								<div id="microsoft-server" class="m-server" >Buy Servers</div>
+								<div id="microsoft-server" class="m-server no-click">Buy Servers</div>
 								<div id="microsoft-trade" class="m-trade">Trade</div>
 								<div id="microsoft-mortgage" class="m-mortgage">Mortgage</div>
 							</div>
 						</div>
-						<div id="m-linkedin" class="flex-row prop-list">
-							<div class="flex-row baseline">
-								<div class="m-name">LinkedIn: </div>
-								<div class="m-amt">₿ <span>0.04</span></div>
-							</div>
-							<div class="m-btn-row flex-row">
-								<div id="linkedin-server" class="m-server" >Buy Servers</div>
-								<div id="linkedin-trade" class="m-trade">Trade</div>
-								<div id="linkedin-mortgage" class="m-mortgage">Mortgage</div>
-							</div>
-						</div>
-						<div id="m-foxnews" class="flex-row prop-list lightgreen">
-							<div class="flex-row baseline">
-								<div class="m-name">Foxnews: </div>
-								<div class="m-amt">₿ <span>0.06</span></div>
-							</div>
-							<div class="m-btn-row flex-row">
-								<div id="foxnews-server" class="m-server" >Buy Servers</div>
-								<div id="foxnews-trade" class="m-trade">Trade</div>
-								<div id="foxnews-mortgage" class="m-mortgage">Mortgage</div>
-							</div>
-						</div>
-						<div id="m-IMDB" class="flex-row prop-list">
-							<div class="flex-row baseline">
-								<div class="m-name">Foxnews: </div>
-								<div class="m-amt">₿ <span>0.06</span></div>
-							</div>
-							<div class="m-btn-row flex-row">
-								<div id="IMDB-server" class="m-server" >Buy Servers</div>
-								<div id="IMDB-trade" class="m-trade">Trade</div>
-								<div id="IMDB-mortgage" class="m-mortgage">Mortgage</div>
-							</div>
-						</div>
 					</div>
 					<div id="close-mng" class="close-btn">Close</div>
+				</div>
+			</div>
+
+			<!-- Land on Property Modal -->
+			<div id="landing-modal" class="flex-column" style="display: none">
+				<div class="modal-title">You landed on <span id="prop-landed-on">Cornhub</span></div>
+				<div class="flex-column landing-content">
+					<div class="landing-card"></div>
+					<div class="flex-row center">
+						<div id="buy-prop" class="flex-row center">Buy Property?</div>
+						<div id="dont-buy-prop" class="flex-row center">Nah</div>
+						<div id="pay-rent" class="flex-row center">Pay Rent: <span id="rent-due"></span></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -356,9 +364,17 @@
 			</div>
 		</div>
 	</div>
+	<!-- dice start -->
+<!--	<div class="dice">-->
+<!--		<img id="dice1" class='diceImg' />-->
+<!--	</div>-->
+<!--	<div class="dice">-->
+<!--		<img id="dice2" class='diceImg' />-->
+<!--	</div>-->
+	<!-- dice end -->
 </body>
 
-<script type="script" src="src/dom.js"></script>
+<script type="module" src="src/dom.js"></script>
 <script type="module" src="src/main.js"></script>
 
 </html>

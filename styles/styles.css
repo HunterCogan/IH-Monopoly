@@ -237,15 +237,95 @@ div.p-select-btn {
     cursor: pointer;
 }
 
+/*Land-on-property modal*/
+#landing-modal {
+    width: 528px;
+    background-color: #c9e8df;
+    border-radius: 15px;
+    align-items: center;
+    padding: 25px;
+    justify-content: space-between;
+}
+
+#landing-modal:hover {
+    cursor: default;
+}
+
+.landing-content {
+    justify-content: space-between;
+}
+
+.landing-options {
+    width: 350px;
+    padding: 0 25px;
+}
+
+#buy-prop, #dont-buy-prop, #pay-rent {
+    height: 30px;
+    padding: 0 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#buy-prop, #dont-buy-prop, #pay-rent:hover {
+    cursor: pointer;
+}
+
+#buy-prop {
+    background-color: #3ccc3c;
+}
+
+#dont-buy-prop {
+    margin-left: 5px;
+    background-color: #d25f69;
+}
+
+#pay-rent {
+    background-color: #236af1;
+}
+
+.landing-card {
+    background: url("../assets/Cards/cornhub.jpg");
+    width: 375px;
+    height: 430px;
+    background-size: 100%;
+}
+
+#close-landing {
+    height: 30px;
+    width: 80px;
+    background-color: #d25f69;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#close-landing:hover {
+    cursor: pointer;
+}
+
 /*manage property modal*/
 
 #manage-content {
     width: 500px;
     min-height: 200px;
-    background-color: #c9e8df;;
+    background-color: #c9e8df;
     border-radius: 15px;
     align-items: center;
     padding: 25px;
+}
+
+#manage-modal:hover {
+    cursor: pointer;
+}
+
+#manage-content:hover {
+    cursor: default;
+}
+
+#servers-modal:hover {
+    cursor: default;
 }
 
 .manage-list {
@@ -348,6 +428,16 @@ div.p-select-btn {
     margin-bottom: 10px;
     text-align: center;
 }
+
+.no-click {
+    background-color: rgba(105, 105, 105, 0.61);
+    pointer-events: none;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+}
 /*End Global Classes*/
 
 .pSelected {
@@ -449,8 +539,8 @@ div.p-select-btn {
     }
 
     .grid:hover {
-        box-shadow: inset 0px 0px 20px 9px rgba(0,0,0,0.40),
-                    0px 0px 5px 2px rgba(0,0,0,0.5);
+        box-shadow: inset 0 0 20px 9px rgba(0,0,0,0.40),
+                    0 0 5px 2px rgba(0,0,0,0.5);
         cursor: pointer;
     }
 
@@ -855,3 +945,38 @@ div.disabled {
     background-color: #c9e8df;
     color: #848484;
 }
+
+#tempTest1 {
+    width: 146px;
+    height: 28px;
+    margin-left: 30px;
+    background-color: #236af1;
+    color: #c9e8df;
+}
+
+#tempTest1:hover {
+    cursor: pointer;
+}
+
+
+
+/* dice roll style start */
+diceImg{
+    height: 30px;
+    width: 30px;
+}
+
+#dice1, #dice2{
+    height: 30px;
+    width: 30px;
+}
+
+.dice{
+    height:30px;
+    width: 30px;
+    
+    border:solid 2px black;
+}
+/* dice roll style end */
+
+

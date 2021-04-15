@@ -5,6 +5,9 @@ import { landOnChance } from './chance.js';
 import { landOnCommunity } from './chest.js';
 import { properties } from './tiles.js';
 
+
+
+
 class Character {
 	constructor(name) {
 		this.name = name;
@@ -17,13 +20,26 @@ class Character {
 		this.getOutJail = [false, 0];
 		this.rolledNumber = 0;
 		this.diceRolled = false;
+		this.doubleCount = 0;
 	}
 	rollDice() {
 		// this.rolledNumber = this.dice() + this.dice();
 
-		let dice1 = this.dice();
-		let dice2 = this.dice();
-		let doubleCount = 0;
+		// let dice1 = this.dice();
+		// let dice2 = this.dice()
+		let dice1 = 3
+		let dice2 = 3
+
+		// const firstDiceImg = './../../assets/dice' + dice1 + '.png';
+		// console.log(firstDiceImg)
+
+		// document.querySelector('#dice1').setAttribute('src', firstDiceImg)
+
+		// const secondDiceImg = './../../assets/dice' + dice2 + '.png';
+		// console.log(secondDiceImg)
+
+		// document.querySelector('#dice2').setAttribute('src', secondDiceImg)
+
 		this.rolledNumber = dice1 + dice2;
 		if (dice1 !== dice2) {
 			this.diceRolled = true;
@@ -32,16 +48,17 @@ class Character {
 		if (dice1 === dice2) {
 			console.log(`You rolled ${dice1}, ${dice2}, for a total of ${this.rolledNumber}`)
 			console.log('You rolled a double, roll again')
-			doubleCount++
-			if (doubleCount === 3) {
-				currPlayer.jail = [true, 0]
+			this.doubleCount++
+			if (this.doubleCount === 2) {
+				this.jail = [true, 0]
+				this.position = 10;
 			}
-			console.log(`Double count = ${doubleCount}`)
+			console.log(`Double count = ${this.doubleCount}`)
 		}
 	}
 
 	dice() {
-		return Math.round(Math.random() * 6) + 1;
+		return Math.round(Math.random() * 5) + 1;
 	}
 	collectTax() {
 		//TODO: need an action for bankrupt
