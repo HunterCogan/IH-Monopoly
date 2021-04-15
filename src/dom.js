@@ -156,7 +156,7 @@ const handleStartModal = () => {
 	if (allGood) {
 		startModal.style.display = 'none';
 		bodyWrap.style.display = 'flex';
-		console.log('OUTPUT: ', startOutput);
+		// console.log('OUTPUT: ', startOutput);
 	}
 };
 
@@ -204,21 +204,17 @@ const showProperty = (ele) => {
 
 //////////////////////Test movement //////////////////////
 
-
-
 let p1Piece = $('#p1-token');
 
-window.p1Piece = $('#p1-token')
-window.p2Piece = $('#p2-token')
-window.p3Piece = $('#p3-token')
-window.p4Piece = $('#p4-token')
+window.p1Piece = $('#p1-token');
+window.p2Piece = $('#p2-token');
+window.p3Piece = $('#p3-token');
+window.p4Piece = $('#p4-token');
 let testBtn = $('#testBtn');
-
 
 const movePiece = (piece, start, end) => {
 	let int = setInterval(() => {
-
-		start++
+		start++;
 
 		console.log(start, end);
 
@@ -227,23 +223,22 @@ const movePiece = (piece, start, end) => {
 		//topRight = translate(0px,-680px)
 		//bottomRight = translate(0,0)
 
-
 		if (start > 0 && start < 10) {
-			piece.style.transform = `translate(${start * -68}px, ${0}px)`
+			piece.style.transform = `translate(${start * -68}px, ${0}px)`;
 		}
 		if (start == 10) {
-			piece.style.transform = `translate(${start * -71}px, ${24}px)`
+			piece.style.transform = `translate(${start * -71}px, ${24}px)`;
 		}
 		if (start > 10 && start <= 20) {
-			piece.style.transform = `translate(-680px, ${(start - 10) * -68}px)`
+			piece.style.transform = `translate(-680px, ${(start - 10) * -68}px)`;
 		}
 
 		if (start > 20 && start <= 30) {
-			piece.style.transform = `translate(${-680 + (start - 20) * 68}px, -680px)`
+			piece.style.transform = `translate(${-680 + (start - 20) * 68}px, -680px)`;
 		}
 
 		if (start > 30 && start <= 40) {
-			piece.style.transform = `translate(0px, ${-680 + (start - 30) * 68}px)`
+			piece.style.transform = `translate(0px, ${-680 + (start - 30) * 68}px)`;
 		}
 
 		if (start % 10 === 0) {
@@ -258,11 +253,9 @@ const movePiece = (piece, start, end) => {
 			end = end - 40;
 		}
 
-		console.log('position is', end % 40)
-
-	}, 300)
-}
-
+		console.log('position is', end % 40);
+	}, 300);
+};
 
 testBtn.onclick = () => movePiece(p1Piece, 0, 4);
 
@@ -282,13 +275,12 @@ let serverModalTitle = $('#servers-modal .modal-title span');
 let currentServerModalId = 'none';
 
 const handleServerBuy = (e) => {
-	console.log(currPlayer);
 	let id = e.id.split('-')[0];
 	//================================================================//
 	//Dicky's test: remove if buggy START
 	let currProperty;
 	let serverBuy = $('.server-buy');
-	console.log(serverBuy);
+
 	let serverSell = $('.server-sell');
 	let clusterBuy = $('.cluster-buy');
 	let clusterSell = $('.cluster-sell');
@@ -300,6 +292,7 @@ const handleServerBuy = (e) => {
 	for (let property of currPlayer.properties) {
 		if (property.name === id) currProperty = property;
 	}
+	console.log(properties[1].server);
 	const updateServer = () => {
 		const serverNum = $('#serverNum');
 		serverNum.innerText = 0;
@@ -315,13 +308,17 @@ const handleServerBuy = (e) => {
 		}
 	};
 	updateServer();
+	function serverBtnHandler() {
+		currProperty.build();
+		updateServer();
+	}
 
 	let { typeMax, serverCount } = currProperty.counter(properties);
 	//if total house or hotel is maxed out grey out all buttons
 	if (totalHouse === 0) serverBuy.classList.add('no-click');
 	if (totalHotel === 0) clusterBuy.classList.add('no-click');
 	// if player doesn't have all of the same property, can't buy or sell anything
-	console.log(typeMax, serverCount);
+
 	if (!typeMax) {
 		serverBuy.classList.add('no-click');
 		serverSell.classList.add('no-click');
@@ -350,21 +347,16 @@ const handleServerBuy = (e) => {
 
 		const buildBtn = $('.server-buy');
 		const buildBtn2 = $('.cluster-buy');
-		buildBtn.addEventListener('click', () => {
-			currProperty.build();
 
-			updateServer();
+		buildBtn.addEventListener('click', serverBtnHandler);
+		buildBtn2.addEventListener('click', serverBtnHandler);
+		document.querySelectorAll('.m-server').forEach((e) => {
+			e.onclick = () => {
+				buildBtn.removeEventListener('click', serverBtnHandler);
+				buildBtn2.removeEventListener('click', serverBtnHandler);
+				handleServerBuy(e);
+			};
 		});
-		buildBtn2.addEventListener('click', () => {
-			currProperty.build;
-			updateServer();
-		});
-		// document.querySelectorAll('.m-server').forEach((e) => {
-		// 	e.onclick = () => {
-		// 		handleServerBuy(e);
-		// 		updateServer();
-		// 	};
-		// });
 	}
 
 	//Dicky's test: remove if buggy END
@@ -421,7 +413,7 @@ manageBtn.onclick = () => {
 //bind the property tiles
 document.querySelectorAll('.grid').forEach((e) => {
 	e.onclick = () => {
-		console.log('test');
+		// console.log('test');
 		showProperty(e.id);
 	};
 });
