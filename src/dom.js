@@ -260,12 +260,14 @@ const handleManage = () => {
 
 	close.onclick = () => {
 		manageModal.style.display = 'none';
+		serverModal.style.display = 'none';
 	};
 };
 
 manageBtn.onclick = () => {
 	handleManage();
 };
+
 //////////////////////End Mortgage modal//////////////////////
 
 //////////////////////Start Mortgage modal//////////////////////
@@ -285,4 +287,4 @@ document.querySelectorAll('.grid').forEach((e, i) => {
 });
 //////////////////////End page-load binding//////////////////////
 
-export { $, showProperty, startOutput };
+export { $, showProperty, startOutput, handleManage, handleServerBuy };

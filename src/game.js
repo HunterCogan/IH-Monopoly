@@ -1,7 +1,7 @@
 //Characeter is a CLASS
 import { Character } from './objects/players.js';
 
-import { startOutput as nameList } from './dom.js';
+import { handleManage, handleServerBuy , startOutput as nameList } from './dom.js';
 
 // pass this to almost all functions, destructure what you need
 
@@ -169,6 +169,11 @@ function managePropList() {
 		node.appendChild(node2);
 		node.appendChild(node3);
 		listParent.appendChild(node);
+		document.querySelectorAll('.m-server').forEach((e) => {
+			e.onclick = () => {
+				handleServerBuy(e);
+			};
+		});
 
 		console.log(listParent);
 	}
