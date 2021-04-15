@@ -5,6 +5,9 @@ import { landOnChance } from './chance.js';
 import { landOnCommunity } from './chest.js';
 import { properties } from './tiles.js';
 
+
+
+
 class Character {
 	constructor(name) {
 		this.name = name;
@@ -13,28 +16,30 @@ class Character {
 		// jail status, if true, how many turns have they been in jail
 		this.jail = [false, 0];
 		this.position = 0;
-		this.properties = [properties[1], properties[6], properties[8]];
+		this.properties = [];
 		this.getOutJail = [false, 0];
 		this.rolledNumber = 0;
 		this.diceRolled = false;
+		this.doubleCount = 0;
 	}
 	rollDice() {
 		// this.rolledNumber = this.dice() + this.dice();
 
-		let dice1 = this.dice();
-		let dice2 = this.dice()
+		// let dice1 = this.dice();
+		// let dice2 = this.dice()
+		let dice1 = 3
+		let dice2 = 3
 
-		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
-		console.log(firstDiceImg)
+		// const firstDiceImg = './../../assets/dice' + dice1 + '.png';
+		// console.log(firstDiceImg)
 
-		document.querySelector('#dice1').setAttribute('src', firstDiceImg)
+		// document.querySelector('#dice1').setAttribute('src', firstDiceImg)
 
-		const secondDiceImg = './../../assets/dice' + dice2 + '.png';
-		console.log(secondDiceImg)
+		// const secondDiceImg = './../../assets/dice' + dice2 + '.png';
+		// console.log(secondDiceImg)
 
-		document.querySelector('#dice2').setAttribute('src', secondDiceImg)
+		// document.querySelector('#dice2').setAttribute('src', secondDiceImg)
 
-		let doubleCount = 0;
 		this.rolledNumber = dice1 + dice2;
 		if (dice1 !== dice2) {
 			this.diceRolled = true;
@@ -43,11 +48,12 @@ class Character {
 		if (dice1 === dice2) {
 			console.log(`You rolled ${dice1}, ${dice2}, for a total of ${this.rolledNumber}`)
 			console.log('You rolled a double, roll again')
-			doubleCount++
-			if (doubleCount === 3) {
-				currPlayer.jail = [true, 0]
+			this.doubleCount++
+			if (this.doubleCount === 2) {
+				this.jail = [true, 0]
+				this.position = 10;
 			}
-			console.log(`Double count = ${doubleCount}`)
+			console.log(`Double count = ${this.doubleCount}`)
 		}
 	}
 
