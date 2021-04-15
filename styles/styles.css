@@ -528,22 +528,17 @@ div.p-select-btn {
     }
 
     /* text color */
-
-    #p1-money{
+    .player-coin{
         color: white;
     }
 
-    #p2-money{
+    #p1-money, #p2-money, 
+    #p3-money, #p4-money{
         color: white;
+        margin-left: 8px;
     }
 
-    #p3-money{
-        color: white;
-    }
-
-    #p4-money{
-        color: white;
-    }
+   
 
     /* text color END */
     /* coin color on player card END */
