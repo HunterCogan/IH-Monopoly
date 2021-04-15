@@ -236,84 +236,46 @@ const showProperty = (ele) => {
 // };
 
 let p1Piece = $('#p1-token');
+
+window.p1Piece = $('#p1-token')
+window.p2Piece = $('#p2-token')
+window.p3Piece = $('#p3-token')
+window.p4Piece = $('#p4-token')
 let testBtn = $('#testBtn');
 
-// const movePiece = (start, end) => {
-
-// 	let direction = 'right';
-// 	// let moves = 0;
-
-// 	let int = setInterval(() => {
-// 		// if (j === 12) {
-// 		// 	console.log(current);
-// 		// 	console.log(j);
-// 		// 	console.log('turn1');
-// 		// 	direction = 'bottom';
-// 		// 	j = 0
-// 		// }
-
-// 		//left : 100%
-// 		// if (start == 10) {
-// 		// 	direction = 'bottom'
-// 		// 	start = 0;
-// 		// }
-
-// 		// //left:100% & bottom:100%
-// 		// if (start == 20) {
-// 		// 	direction = 'left'
-// 		// 	start = 0;
-// 		// }
-
-// 		// if (start == 30) {
-// 		// 	direction = ''
-// 		// 	start = 0;
-// 		// }
-
-// 		// if (j === 22) {
-// 		// 	console.log('turn2');
-// 		// 	direction = 'left';
-// 		// 	j = 0;
-// 		// }
-
-// 		// if (j === 32) {
-// 		// 	console.log('turn2');
-// 		// 	direction = 'bottom';
-// 		// 	j = 0;
-// 		// }
-
-// 		// if (j === 42) {
-// 		// 	console.log('turn2');
-// 		// 	direction = 'left';
-// 		// 	j = 0;
-// 		// }
-
-// 		// p1Piece.style[direction] = `${64 * start}px`;
-// 		console.log(start, end, direction)
-
-// 		start++
-
-// 		if (start === end) {
-// 			clearInterval(int);
-// 		}
-
-// 		if(end === 40){
-
-// 		}
+// 
 
 
-// 	}, 500);
-// };
-
-
-const movePiece = (start, end) => {
+const movePiece = (piece, start, end) => {
 	let int = setInterval(() => {
+
+		start++
 
 		console.log(start, end);
 
-		//p1Piece.style['right'] = `${start * 10}%`
-		p1Piece.style.transform = `translateX(${start * -64})`
+		//bottomLeft translate(-680px,0px)
+		//topLeft = translate(-680px,-680px)
+		//topRight = translate(0px,-680px)
+		//bottomRight = translate(0,0)
 
-		start++
+
+		if (start > 0 && start < 10) {
+			piece.style.transform = `translate(${start * -68}px, ${0}px)`
+		}
+		if (start == 10) {
+			piece.style.transform = `translate(${start * -71}px, ${24}px)`
+		}
+		if (start > 10 && start <= 20) {
+			piece.style.transform = `translate(-680px, ${(start - 10) * -68}px)`
+		}
+
+		if (start > 20 && start <= 30) {
+			piece.style.transform = `translate(${-680 + (start - 20) * 68}px, -680px)`
+		}
+
+		if (start > 30 && start <= 40) {
+			piece.style.transform = `translate(0px, ${-680 + (start - 30) * 68}px)`
+		}
 
 		if (start % 10 === 0) {
 			console.log('change direction')
@@ -327,11 +289,13 @@ const movePiece = (start, end) => {
 			end = end - 40
 		}
 
-	}, 1000)
+		console.log('position is', end % 40)
+
+	}, 300)
 }
 
 
-testBtn.onclick = () => movePiece(1, 10);
+testBtn.onclick = () => movePiece(p1Piece, 0, 4);
 
 window.movePiece = movePiece;
 
