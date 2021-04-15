@@ -298,17 +298,25 @@ $('#tempTest1').onclick = () => {
 	$('#manage-content').style.display = 'none';
 	$('#landing-modal').style.display = 'flex';
 
+
+	$('#dont-buy-prop').onclick = () => {
+		manageModal.style.display = 'none';
+		$('#manage-content').style.display = 'flex';
+		$('#landing-modal').style.display = 'none';
+	};
+
+
+	$('#pay-rent').onclick = () => {
+		manageModal.style.display = 'none';
+		$('#manage-content').style.display = 'flex';
+		$('#landing-modal').style.display = 'none';
+	};
+
 	window.onclick = (e) => {
 		if (e.target === manageModal) {
 			manageModal.style.display = 'none';
 		}
 	};
-};
-
-$('#close-landing').onclick = () => {
-	manageModal.style.display = 'none';
-	$('#manage-content').style.display = 'flex';
-	$('#landing-modal').style.display = 'none';
 };
 
 //////////////////////End page-load binding//////////////////////
