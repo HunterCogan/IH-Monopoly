@@ -15,7 +15,7 @@ class Property {
 		// Type of property, type or utility
 		this.type = type;
 		//Owner of property
-		this.owner = 'Juan';
+		this.owner = null;
 		//how many servers are on property, 1 - 5, 1-4 for server, 5 for supercomputer
 		this.server = 0;
 		// mortage is an arr with price for
@@ -113,6 +113,7 @@ class Property {
 	// build servers
 	build() {
 		const { typeMax, serverCount } = this.counter(properties);
+		console.log(serverCount);
 		// if utility or isp, cannot use this function;
 		if (this.type === 'utility' || this.type == 'isp') return false;
 
@@ -120,14 +121,18 @@ class Property {
 		if (typeMax) {
 			// check what he can build
 			if (this.server === Math.min(...serverCount)) {
+				console.log('both have same number of servers');
 				if ((this.server < 4 && totalHouse > 0) || (this.server = 4 && totalHotel > 0)) {
+					console.log("there's enough servers");
 					//if player has enough money
 					if (this.housePrice > currPlayer.bitcoin) {
 						console.log("You don't have enough money to buy a server");
 						return false;
 					} else {
 						//update server count
-						this.server++;
+						console.log(this.server);
+						this.server += 1;
+						console.log(this.server);
 						// take money from player
 						currPlayer.bitcoin -= this.housePrice;
 						updateBitcoin();
