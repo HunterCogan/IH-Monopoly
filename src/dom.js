@@ -245,22 +245,19 @@ const handleServerBuy = (e) => {
 	currentServerModalId = id;
 	close.onclick = () => {
 		serverModal.style.display = 'none';
-	}
+	};
 };
 
 const handleManage = () => {
 	manageModal.style.display = 'flex';
 	let close = $('#close-mng');
 
-<<<<<<< HEAD
-=======
 	document.querySelectorAll('.m-server').forEach((e) => {
 		e.onclick = () => {
 			handleServerBuy(e);
-		}
+		};
 	});
 
->>>>>>> 049cbce3642f586b51153ce557a7f5a0f733aa54
 	close.onclick = () => {
 		manageModal.style.display = 'none';
 	};
@@ -272,15 +269,9 @@ manageBtn.onclick = () => {
 //////////////////////End Mortgage modal//////////////////////
 
 //////////////////////Start Mortgage modal//////////////////////
-<<<<<<< HEAD
-let mortgageBtn = $('#mortgage-properties');
-// mortgageBtn.onclick = () => {
-
-=======
 // let mortgageBtn = $('#mortgage-properties');
 // mortgageBtn.onclick = () => {
 //
->>>>>>> 049cbce3642f586b51153ce557a7f5a0f733aa54
 // };
 //////////////////////End Mortgage modal//////////////////////
 
