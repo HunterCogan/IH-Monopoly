@@ -245,7 +245,7 @@ const handleServerBuy = (e) => {
 	currentServerModalId = id;
 	close.onclick = () => {
 		serverModal.style.display = 'none';
-	}
+	};
 };
 
 const handleManage = () => {
@@ -255,19 +255,20 @@ const handleManage = () => {
 	document.querySelectorAll('.m-server').forEach((e) => {
 		e.onclick = () => {
 			handleServerBuy(e);
-		}
+		};
 	});
 
 	close.onclick = () => {
 		manageModal.style.display = 'none';
-	}
+		serverModal.style.display = 'none';
+	};
 };
 
 manageBtn.onclick = () => {
 	handleManage();
 };
-//////////////////////End Mortgage modal//////////////////////
 
+//////////////////////End Mortgage modal//////////////////////
 
 //////////////////////Start Mortgage modal//////////////////////
 // let mortgageBtn = $('#mortgage-properties');
@@ -286,4 +287,4 @@ document.querySelectorAll('.grid').forEach((e, i) => {
 });
 //////////////////////End page-load binding//////////////////////
 
-export { $, showProperty, startOutput };
+export { $, showProperty, startOutput, handleManage, handleServerBuy };
