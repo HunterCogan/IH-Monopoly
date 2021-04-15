@@ -77,7 +77,7 @@ card4.action = () => {
 	if (currPlayer.position === 22) {
 		currPlayer.position = 28;
 	}
-	console.log(properties);
+
 	const property = properties[currPlayer.position];
 
 	if (property.checkOwner(currPlayer)) {
