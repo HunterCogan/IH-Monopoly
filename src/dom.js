@@ -390,7 +390,6 @@ const handleServerBuy = (e) => {
 	let close = $('#close-serv');
 	serverModal.style.display = 'flex';
 
-	let { typeMax, serverCount } = currProperty.counter(properties);
 	console.log(typeMax, serverCount);
 	//if total house or hotel is maxed out grey out all buttons
 	if (totalHouse === 0) serverBuy.classList.add('no-click');
