@@ -22,7 +22,7 @@ function startGame() {
 	createPlayers(nameList.slice(1));
 	currPlayer = players[index];
 	console.log('Game Started');
-	console.log(players);
+
 	properties[1].buy();
 	properties[3].buy();
 	properties[6].buy();
@@ -128,7 +128,6 @@ function managePropList() {
 		listParent.removeChild(listParent.lastElementChild);
 	}
 	for (let property of currPlayer.properties) {
-		console.log('property list activated');
 		//Text nodes for 1st nested div
 		const nodeText = document.createTextNode(`${property.name}`);
 		const nodeText2 = document.createTextNode(`₿ ${property.cost}`);

@@ -110,7 +110,6 @@ class Character {
 			this.position = 10;
 			this.jail[0] = true;
 		} else {
-			console.log(this);
 			console.log(
 				`${this.name} what do you want to do with ${properties[this.position].name}`
 			);
