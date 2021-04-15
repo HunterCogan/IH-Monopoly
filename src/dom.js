@@ -413,6 +413,7 @@ const handleServerBuy = (e) => {
 
 const handleManage = () => {
 	manageModal.style.display = 'flex';
+	$('#manage-content').style.display = 'flex';
 	let close = $('#close-mng');
 
 	document.querySelectorAll('.m-server').forEach((e) => {
