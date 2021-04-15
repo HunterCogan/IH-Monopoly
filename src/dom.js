@@ -1,3 +1,6 @@
+//DICKY's Import
+import { currPlayer } from './game.js';
+import { totalHouse, totalHotel } from './objects/tiles.js';
 const $ = function (ele) {
 	return document.querySelector(ele);
 };
@@ -349,9 +352,57 @@ let serverModalTitle = $('#servers-modal .modal-title span');
 let currentServerModalId = 'none';
 
 const handleServerBuy = (e) => {
+	let id = e.id.split('-')[0];
+	//================================================================//
+	//Dicky's test: remove if buggy START
+	let currProperty;
+	let serverBuy = $('.server-buy');
+	console.log(serverBuy);
+	let serverSell = $('.server-sell');
+	let clusterBuy = $('.cluster-buy');
+	let clusterSell = $('.cluster-sell');
+
+	// sets the current Property for this button
+	for (let property of currPlayer.properties) {
+		if (property.name === id) currProperty = property;
+	}
+
+	let { typeMax, serverCount } = currProperty.counter();
+
+	//if total house or hotel is maxed out grey out all buttons
+	if (totalHouse === 0) serverBuy.classList.add('no-click');
+	if (totalHotel === 0) clusterBuy.classList.add('no-click');
+	// if player doesn't have all of the same property, can't buy or sell anything
+	if (!typeMax) {
+		console.log(serverBuy);
+		serverBuy.classList.add('no-click');
+		serverSell.classList.add('no-click');
+		clusterBuy.classList.add('no-click');
+		clusterSell.classList.add('no-click');
+	} else {
+		// if player has less than 4 houses, they can't touch cluster button
+		if (currProperty.server < 4 && currProperty.server == Math.min(serverCount)) {
+			clusterBuy.classList.add('no-click');
+			clusterSell.classList.add('no-click');
+			// if player has no houses, can't see
+			if (currProperty.server === 0) serverSell.classList.add('no-click');
+		}
+		if (currProperty.server === 4) {
+			serverBuy.classList.add('no-click');
+			clusterSell.classList.add('no-click');
+		}
+		if (currProperty.server === 5) {
+			serverBuy.classList.add('no-click');
+			serverSell.classList.add('no-click');
+
+			clusterSell.classList.add('no-click');
+		}
+	}
+
+	//Dicky's test: remove if buggy END
+	//===================================================================//
 	let close = $('#close-serv');
 	serverModal.style.display = 'flex';
-	let id = e.id.split('-')[0];
 
 	serverModalTitle.innerHTML = id.charAt(0).toUpperCase() + id.slice(1);
 	currentServerModalId = id;
@@ -412,7 +463,6 @@ $('#tempTest1').onclick = () => {
 	$('#manage-content').style.display = 'none';
 	//$('#landing-modal').style.display = 'flex';
 	$('#jail-modal').style.display = 'flex';
-
 
 	$('#dont-buy-prop').onclick = () => {
 		manageModal.style.display = 'none';
