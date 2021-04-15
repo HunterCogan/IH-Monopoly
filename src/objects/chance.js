@@ -1,6 +1,7 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
 import { players, currPlayer } from './../game.js';
+import {$} from './../dom.js';
 
 // all the chance cards before shuffling
 let chanceCards = [];
@@ -16,7 +17,7 @@ class Chance {
 //function to randomize from chanceCards
 // call on load
 function randomize() {
-	for (let x = 0; x < 16; x++) {
+	for (let x = 0; x < 15; x++) {
 		const randomIndex = Math.floor(Math.random() * chanceCards.length);
 		chance.push(...chanceCards.splice(randomIndex, 1));
 	}
@@ -24,18 +25,40 @@ function randomize() {
 let cardCounter = 0;
 //call to randomly pick card when player lands on chance tile
 function landOnChance() {
-	if (cardCounter === 32) cardCounter = 0;
-	if (cardCounter < 16) {
+	console.log('landed on chance');
+	if (cardCounter === 30) cardCounter = 0;
+	if (cardCounter < 15) {
 		const chanceCard = chance.pop();
 		chanceCard.action();
 		chanceCards.push(chanceCard);
 		cardCounter++;
+
+		let chanceModalContent = $('#chance-modal-content ');
+		let chanceModal = $('#chance-modal');
+		console.log(chanceCard.id);
+		$('#chance-modal').style.display = 'flex';
+		$('#manage-content').style.display = 'none';
+		chanceModalContent.style.display = 'flex';
+		chanceModalContent.style.background = `url(../assets/Cards/chance${chanceCard.id}.jpg) no-repeat`;
+		chanceModalContent.style.backgroundSize = '100%';
+
+		$('#close-chance').onclick = () => {
+			chanceModal.style.display = 'none';
+		};
+
+		window.onclick = (e) => {
+			if (e.target === chanceModal) {
+				chanceModal.style.display = 'none';
+			}
+		}
 	}
+
 	if (32 > cardCounter > 15) {
 		const chanceCard = chance.shift();
 		chanceCard.action();
 		chance.push(chanceCard);
 		cardCounter++;
+
 	}
 }
 
@@ -124,8 +147,7 @@ card7.action = () => {
 
 // Go Back 3 Spaces
 let card8 = new Chance(8);
-card8.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card8.action = () => {
 	currPlayer.position -= 3;
 };
 
@@ -187,16 +209,16 @@ card14.action = () => {
 };
 
 // Collect $1
-let card15 = new Chance(15);
-card15.action = () => {
-	currPlayer.bitcoin += 1;
-};
+// let card15 = new Chance(15);
+// card15.action = () => {
+// 	currPlayer.bitcoin += 1;
+// };
 
 // Collect $1.5
-let card16 = new Chance(16);
-card16.action = () => {
-	currPlayer.bitcoin += 1.5;
-};
+// let card16 = new Chance(16);
+// card16.action = () => {
+// 	currPlayer.bitcoin += 1.5;
+// };
 
 chanceCards.push(
 	card1,
@@ -213,8 +235,8 @@ chanceCards.push(
 	card12,
 	card13,
 	card14,
-	card15,
-	card16
+	//card15,
+	//card16
 );
 
 randomize();

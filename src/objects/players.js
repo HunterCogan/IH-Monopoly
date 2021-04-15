@@ -20,22 +20,24 @@ class Character {
 		this.doubleCount = 0;
 	}
 	rollDice() {
-		// this.rolledNumber = this.dice() + this.dice();
-
-		// let dice1 = this.dice();
-		// let dice2 = this.dice()
+		//this.rolledNumber = this.dice() + this.dice();
+		this.rolledNumber = 7;
+		//let dice1 = this.dice();
+		//let dice2 = this.dice();
 		let dice1 = 3;
-		let dice2 = 3;
+		let dice2 = 4;
 
-		// const firstDiceImg = './../../assets/dice' + dice1 + '.png';
-		// console.log(firstDiceImg)
+		console.log('test123');
 
-		// document.querySelector('#dice1').setAttribute('src', firstDiceImg)
+		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
+		console.log(firstDiceImg)
 
-		// const secondDiceImg = './../../assets/dice' + dice2 + '.png';
-		// console.log(secondDiceImg)
+		document.querySelector('#dice1').setAttribute('src', firstDiceImg)
 
-		// document.querySelector('#dice2').setAttribute('src', secondDiceImg)
+		const secondDiceImg = './../../assets/dice' + dice2 + '.png';
+		console.log(secondDiceImg)
+
+		document.querySelector('#dice2').setAttribute('src', secondDiceImg)
 
 		this.rolledNumber = dice1 + dice2;
 		if (dice1 !== dice2) {
@@ -92,8 +94,10 @@ class Character {
 			return false;
 		} else if (this.position === 4 || this.position === 38) {
 			this.collectTax();
+			//maybe add modal to say income tax was taken
 		} else if (this.position === 7 || this.position === 22 || this.position === 36) {
 			//TODO: animation/action for chance?
+			console.log('pos 7');
 			landOnChance();
 			updateBitcoin();
 		} else if (this.position === 2 || this.position === 17 || this.position === 33) {
