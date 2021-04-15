@@ -221,16 +221,20 @@ const movePiece = (piece, start, end) => {
 		start++
 
 		if (piece === p1Piece) {
+			speaker.currentTime = 0;
 			speaker.play();
 		}
 		if (piece === p2Piece) {
-			speaker.play();
+			mouse.currentTime = 0;
+			mouse.play();
 		}
 		if (piece === p3Piece) {
-			speaker.play();
+			keyboard.currentTime = 0;
+			keyboard.play();
 		}
 		if (piece === p4Piece) {
-			speaker.play();
+			monitor.currentTime = 0;
+			monitor.play();
 		}
 
 
@@ -305,21 +309,18 @@ const movePiece = (piece, start, end) => {
 		}
 
 		console.log('position is', end % 40);
-	}, 1000);
+	}, 300);
 };
 
 testBtn.onclick = () => (
-	movePiece(p1Piece, 0, 45),
-	movePiece(p2Piece, 0, 45),
-	movePiece(p3Piece, 0, 45),
-	movePiece(p4Piece, 0, 45)
+	// movePiece(p1Piece, 0, 45),
+	// movePiece(p2Piece, 0, 45),
+	// movePiece(p3Piece, 0, 45),
+	movePiece(p3Piece, 0, 45)
 );
 
 window.movePiece = movePiece;
 
-testBtn.onclick = () => movePiece(p1Piece, 0, 4);
-
-window.movePiece = movePiece;
 
 //////////////////////End Test Movement//////////////////////
 
