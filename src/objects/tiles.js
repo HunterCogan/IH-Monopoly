@@ -53,7 +53,7 @@ class Property {
 		// if owner has all of the same group update typeMax
 		this.type === 'darkBlue' || (this.type === 'brown' && typeCounter == 2)
 			? (typeMax = true)
-			: typeMax === 3
+			: typeCounter === 3
 			? (typeMax = true)
 			: (typeMax = false);
 
@@ -330,4 +330,4 @@ properties[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[12] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
 properties[28] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
 
-export { properties };
+export { properties, totalHouse, totalHotel };

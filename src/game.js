@@ -173,6 +173,7 @@ function managePropList() {
 		node.appendChild(node2);
 		node.appendChild(node3);
 		listParent.appendChild(node);
+
 		document.querySelectorAll('.m-server').forEach((e) => {
 			e.onclick = () => {
 				handleServerBuy(e);
