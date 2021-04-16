@@ -233,7 +233,7 @@ properties[11] = new Property(
 	'pink'
 );
 properties[13] = new Property(
-	'Craiglist',
+	'Craigslist',
 	1.4,
 	[0.1, 0.5, 1.5, 4.5, 6.25, 7.5],
 	0.7,
@@ -241,7 +241,7 @@ properties[13] = new Property(
 	'pink'
 );
 
-properties[14] = new Property('walmart', 1.6, [0.12, 0.6, 1.8, 5, 7, 9], 0.8, 1, 'pink');
+properties[14] = new Property('Walmart', 1.6, [0.12, 0.6, 1.8, 5, 7, 9], 0.8, 1, 'pink');
 properties[16] = new Property(
 	'Zoom',
 	1.8,

@@ -1,7 +1,7 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
 import { players, currPlayer, updateBitcoin } from './../game.js';
-import {$, makeMoveHappen, landingModalHandle} from './../dom.js';
+import { $, makeMoveHappen, landingModalHandle } from './../dom.js';
 
 // all the chance cards before shuffling
 let chanceCards = [];
@@ -29,8 +29,8 @@ function landOnChance() {
 	if (cardCounter === 30) cardCounter = 0;
 	if (cardCounter < 15) {
 		const chanceCard = chance.pop();
-
-		let wait = (currPlayer.rolledNumber * 300 ) + 500;
+		//TODO: should wait time be 1 second?
+		let wait = currPlayer.rolledNumber * 300 + 500;
 		let chanceModalContent = $('#chance-modal-content ');
 		let chanceModal = $('#chance-modal');
 
@@ -47,7 +47,7 @@ function landOnChance() {
 
 			if (currPlayer.jail[0] === true) {
 				makeMoveHappen('jail', 10, 10);
-			} else if (currPlayer.position === 0){
+			} else if (currPlayer.position === 0) {
 				makeMoveHappen('direct', 39, 40);
 			} else {
 				makeMoveHappen('direct', currPlayer.position - 1, currPlayer.position);
@@ -62,7 +62,7 @@ function landOnChance() {
 				if (e.target === chanceModal) {
 					chanceModal.style.display = 'none';
 				}
-			}
+			};
 		}, wait);
 	}
 
@@ -71,7 +71,6 @@ function landOnChance() {
 		chanceCard.action();
 		chance.push(chanceCard);
 		cardCounter++;
-
 	}
 }
 
@@ -233,7 +232,6 @@ card14.action = () => {
 // 	currPlayer.bitcoin += 1;
 // };
 
-
 chanceCards.push(
 	card1,
 	card2,
@@ -248,7 +246,7 @@ chanceCards.push(
 	card11,
 	card12,
 	card13,
-	card14,
+	card14
 	//card15,
 	//card16
 );

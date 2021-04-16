@@ -37,9 +37,7 @@ function checkJail() {
 		return false;
 	}
 	console.log(`${currPlayer.name} is in jail`);
-	// if already on third turn subtract money .5
-	//close modal
-	//TODO: open jail model
+	return true;
 }
 
 function payJail() {
@@ -202,6 +200,9 @@ function endTurn() {
 	document.querySelector('#game-status span').innerHTML = `
 		${currPlayer.name}'s turn!
 	`;
+	if (!checkJail()) {
+		document.querySelector('#jail-modal').style.display = 'flex';
+	}
 }
 
 export {
