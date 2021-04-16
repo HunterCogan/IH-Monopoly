@@ -43,7 +43,7 @@ payJailBtn.addEventListener('click', payJail);
 const rollJailBtn = document.querySelector('#roll-for-double');
 rollJailBtn.addEventListener('click', rollJail);
 // use get out of jail card
-const freeJailBtn = document.querySelector('#get-outjail');
+const freeJailBtn = document.querySelector('#get-out-jail');
 freeJailBtn.addEventListener('click', freeJail);
 
 const endBtn = document.querySelector('#end-turn');
