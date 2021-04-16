@@ -541,21 +541,32 @@ const handleServerBuy = (e) => {
 		}
 	};
 	updateServer();
-	function serverBtnHandler() {
+	function buyServerHandler() {
 		currProperty.build();
+		updateServer();
+		handleBtnColor(currProperty);
+	}
+	function sellServerHandler() {
+		currProperty.sell();
 		updateServer();
 		handleBtnColor(currProperty);
 	}
 
 	const buildBtn = $('.server-buy');
 	const buildBtn2 = $('.cluster-buy');
+	const sellBtn = $('.server-sell');
+	const sellBtn2 = $('.cluster-sell');
 
-	buildBtn.addEventListener('click', serverBtnHandler);
-	buildBtn2.addEventListener('click', serverBtnHandler);
+	buildBtn.addEventListener('click', buyServerHandler);
+	buildBtn2.addEventListener('click', buyServerHandler);
+	sellBtn.addEventListener('click', sellServerHandler);
+	sellBtn2.addEventListener('click', sellServerHandler);
 	document.querySelectorAll('.m-server').forEach((e) => {
 		e.onclick = () => {
-			buildBtn.removeEventListener('click', serverBtnHandler);
-			buildBtn2.removeEventListener('click', serverBtnHandler);
+			buildBtn.removeEventListener('click', buyServerHandler);
+			buildBtn2.removeEventListener('click', buyServerHandler);
+			sellBtn.addEventListener('click', sellServerHandler);
+			sellBtn2.addEventListener('click', sellServerHandler);
 			handleServerBuy(e);
 		};
 	});

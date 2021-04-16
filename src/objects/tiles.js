@@ -134,43 +134,49 @@ class Property {
 					if (this.housePrice > currPlayer.bitcoin) {
 						console.log("You don't have enough money to buy a server");
 						return false;
-					} else if(this.server === 4 && this.housePrice * 5 > currPlayer.bitcoin){
-							console.log("You don't have enough money to buy a server");
-							return false;
-						} else if (this.server === 4 && this.housePrice * 5 < currPlayer.bitcoin){
-							this.server += 1;
+					} else if (this.server === 4 && this.housePrice * 5 > currPlayer.bitcoin) {
+						console.log("You don't have enough money to buy a server");
+						return false;
+					} else if (this.server === 4 && this.housePrice * 5 < currPlayer.bitcoin) {
+						this.server += 1;
 						totalHotel--;
 						// take money from player
 						currPlayer.bitcoin -= this.housePrice * 5;
 						updateBitcoin();
-						return true
-						}
-						//update server count
-
-						this.server += 1;
-						totalHouse--;
-						// take money from player
-						currPlayer.bitcoin -= this.housePrice;
-						updateBitcoin();
 						return true;
 					}
-				} else {
-					console.log('Ran out of microtransistors to build servers or super compputers');
-					return false;
+					//update server count
+
+					this.server += 1;
+					totalHouse--;
+					// take money from player
+					currPlayer.bitcoin -= this.housePrice;
+					updateBitcoin();
+					return true;
 				}
+			} else {
+				console.log('Ran out of microtransistors to build servers or super compputers');
+				return false;
 			}
 		}
-		//if not no
-	
 	}
+	sell() {
+		// if serer amt is < 0 return false
 
-	// sell(){
-	// 	// if serer amt is < 0 return false
-
-	// 	// if server= 5 server amt -- then currplayer.bitcoin  += this.housePrice /2
-	// 	if(this.server )
-	// }
-
+		// if server= 5 server amt -- then currplayer.bitcoin  += this.housePrice /2
+		if (this.server === 5) {
+			this.server--;
+			currPlayer.bitcoin += (this.housePrice * 5) / 2;
+		}
+		if (this.server === 0) {
+			return false;
+		}
+		if (this.server < 4) {
+			this.server--;
+			currPlayer.bitcoin += this.housePrice / 2;
+		}
+	}
+}
 
 let properties = {};
 
