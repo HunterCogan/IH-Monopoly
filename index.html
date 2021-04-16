@@ -111,17 +111,17 @@
 								<div id="interface-hold" class="flex-column menu-column">
 									<div class="flex-row">
 										<div id="roll-dice" class="menu-btn">Roll Dice</div>
-										<div id="end-turn" class="menu-btn">End Turn</div>
+										<div id="end-turn" class="menu-btn no-click" style="background-color: #8d9491; color: #c9e8df">End Turn</div>
 									</div>
 									<div id="game-status" class="modal-title flex-column">
 										<span></span>
 <!--										<div id="tempTest1">test button</div>-->
 										<div id="dice-holder-mid" class="flex-row center" style="">
 											<div class="dice">
-												<img id="dice1" class='diceImg' />
+												<img id="dice1" class='diceImg' style="display: none"/>
 											</div>
 											<div class="dice">
-												<img id="dice2" class='diceImg' />
+												<img id="dice2" class='diceImg' style="display: none"/>
 											</div>
 										</div>
 									</div>
@@ -129,7 +129,7 @@
 										<div id="manage-property" class="menu-btn">Manage Properties</div>
 									</div>
 
-									<button id="testBtn"> TEST </button>
+<!--									<button id="testBtn"> TEST </button>-->
 								</div>
 							</div>
 							<!--end middle grid block -->
@@ -330,7 +330,7 @@
 			<div id="landing-modal" class="flex-column" style="display: none">
 				<div class="modal-title">You landed on <span id="prop-landed-on">'company'</span></div>
 				<div class="flex-column landing-content">
-					<div class="landing-card"></div>
+					<div id="landing-img" class="landing-card" style="background-image: url('assets/Cards/cornhub.jpg')"></div>
 					<div class="flex-row center">
 						<div id="buy-prop" class="flex-row center">Buy Property?</div>
 						<div id="dont-buy-prop" class="flex-row center">Nah</div>

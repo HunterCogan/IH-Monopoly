@@ -1,9 +1,13 @@
 //DICKY's Import
-import { currPlayer } from './game.js';
+import { currPlayer, players } from './game.js';
 import { totalHouse, totalHotel, properties } from './objects/tiles.js';
 const $ = function (ele) {
 	return document.querySelector(ele);
 };
+const keyboard = new Audio('/assets/sounds/keyboard.mp3')
+const monitor = new Audio('/assets/sounds/monitor.mp3')
+const mouse = new Audio('/assets/sounds/mouse.mp3')
+const speaker = new Audio('/assets/sounds/speaker.mp3')
 
 //////////////////////Start Page-load Modal//////////////////////
 let startModal = $('#start-modal');
@@ -24,6 +28,7 @@ let p2Input = $('#p2-name input');
 let p3Input = $('#p3-name input');
 let p4Input = $('#p4-name input');
 let startOutput = [];
+let propIds = [1,3,5,6,8,9,11,12,13,14,15,16,18,19,21,23,24,25,26,27,28,29,31,32,34,35,37,39];
 
 const removeBorders = () => {
 	pSelect.forEach((e) => {
@@ -213,8 +218,27 @@ window.p4Piece = $('#p4-token');
 let testBtn = $('#testBtn');
 
 const movePiece = (piece, start, end) => {
+	console.log(piece, start, end);
 	let int = setInterval(() => {
 		start++;
+
+		if (piece === p1Piece) {
+			speaker.currentTime = 0;
+			speaker.play();
+		}
+		if (piece === p2Piece) {
+			mouse.currentTime = 0;
+			mouse.play();
+		}
+		if (piece === p3Piece) {
+			keyboard.currentTime = 0;
+			keyboard.play();
+		}
+		if (piece === p4Piece) {
+			monitor.currentTime = 0;
+			monitor.play();
+		}
+
 
 		console.log(start, end);
 
@@ -227,8 +251,15 @@ const movePiece = (piece, start, end) => {
 		}
 
 		if (start > 1 && start < 10) {
-			piece.style.transform = `translate(${start * -65 - 30}px, ${0}px)`;
+			piece.style.transform = `translate(${(start * -65) - 29}px, ${0}px)`
 		}
+
+		// IF IN JAIL /////////////////////
+		if (currPlayer.jail[0] === true && start == 10) {
+			piece.style.transform = `translate(${(start * -65) - 35}px, ${-25}px)`
+		}
+		////////////////////////////////////////////////////////////////
+
 		if (start == 10) {
 			if (piece === p1Piece) {
 				piece.style.transform = `translate(${-726}px, ${-20}px)`;
@@ -237,15 +268,15 @@ const movePiece = (piece, start, end) => {
 				piece.style.transform = `translate(${-726}px, ${-20}px)`;
 			}
 			if (piece === p3Piece) {
-				piece.style.transform = `translate(${-725}px, ${45}px)`;
+				piece.style.transform = `translate(${-726}px, ${45}px)`
 			}
 			if (piece === p4Piece) {
 				piece.style.transform = `translate(${-690}px, ${15}px)`;
 			}
-			// piece.style.transform = `translate(${start * -71}px, ${24}px)`
 		}
+
 		if (start > 10 && start < 20) {
-			piece.style.transform = `translate(${-700}px, ${(start - 10) * -65 - 30}px)`;
+			piece.style.transform = `translate(${-700}px, ${((start - 10) * -65) - 29}px)`
 		}
 
 		if (start === 20) {
@@ -260,7 +291,7 @@ const movePiece = (piece, start, end) => {
 		}
 
 		if (start > 30 && start <= 40) {
-			piece.style.transform = `translate(0px, ${-700 + (start - 30) * 65 + 20}px)`;
+			piece.style.transform = `translate(0px, ${-700 + ((start - 30) * 65) + 21}px)`
 		}
 
 		if (start === 40) {
@@ -280,21 +311,120 @@ const movePiece = (piece, start, end) => {
 		}
 
 		console.log('position is', end % 40);
-	}, 1000);
+	}, 300);
 };
 
-testBtn.onclick = () => (
-	movePiece(p1Piece, 0, 45),
-	movePiece(p2Piece, 0, 45),
-	movePiece(p3Piece, 0, 45),
-	movePiece(p4Piece, 0, 45)
-);
+// testBtn.onclick = () => (
+// 	(p1Piece, 0, 45),
+// 	movePiece(p2Piece, 0, 45),
+// 	movePiece(p3Piece, 0, 45),
+// 	movePiece(p3Piece, 0, 45)
+// );
 
 window.movePiece = movePiece;
 
-testBtn.onclick = () => movePiece(p1Piece, 0, 4);
+//handle greying of dice
+let diceBtn = $('#roll-dice');
+let endTurn = $('#end-turn');
 
-window.movePiece = movePiece;
+diceBtn.onclick = () => {
+	diceBtn.style.backgroundColor = '#8d9491';
+	diceBtn.classList.add('no-click');
+
+	let wait = 0;
+	setTimeout(() => {
+		wait = (currPlayer.rolledNumber * 300 );
+		setTimeout(() => {
+			endTurn.style.backgroundColor = '#8b1641';
+			endTurn.style.color = '#d49fa3';
+			endTurn.classList.remove('no-click');
+		}, wait)
+	}, 500);
+
+};
+
+endTurn.onclick = () => {
+	diceBtn.style.backgroundColor = '#04a55c';
+	diceBtn.classList.remove('no-click');
+
+	endTurn.style.backgroundColor = '#8d9491';
+	endTurn.style.color = '#c9e8df';
+	endTurn.classList.add('no-click');
+};
+
+const landingModalHandle = () => {
+	console.log('pos: ' + currPlayer.position);
+	propIds.forEach((e, i) => {
+		if (currPlayer.position === e) {
+			let prop = properties[currPlayer.position].name.toLowerCase();
+			console.log(prop);
+			manageModal.style.display = 'flex';
+			$('#manage-content').style.display = 'none';
+			$('#landing-modal').style.display = 'flex';
+
+			console.log($('#landing-img'));
+			$('#landing-img').style.backgroundImage = `url('assets/Cards/${prop}.jpg')`;
+
+			$('#buy-prop').onclick = () => {
+				manageModal.style.display = 'none';
+				$('#manage-content').style.display = 'flex';
+				$('#landing-modal').style.display = 'none';
+				
+
+			};
+			$('#dont-buy-prop').onclick = () => {
+				manageModal.style.display = 'none';
+				$('#manage-content').style.display = 'flex';
+				$('#landing-modal').style.display = 'none';
+			};
+		}
+	});
+
+};
+
+
+const makeMoveHappen = (type, s, e) => {
+	let pos = '';
+	let piece;
+	let wait = 0;
+	wait = (currPlayer.rolledNumber * 300 ) + 500;
+
+	players.forEach((e, i) => {
+		if (e.name === currPlayer.name) {
+			pos = i + 1;
+		}
+	});
+
+	if (pos === 1) {
+		piece = $('#p1-token');
+	} else if (pos === 2) {
+		piece = $('#p2-token');
+	} else if (pos === 3) {
+		piece = $('#p3-token');
+	} else if (pos === 4) {
+		piece = $('#p4-token');
+	}
+
+	//move directly, forced
+	if (type === 'direct') {
+		movePiece(piece, s, e);
+	} else if (type === 'jail') {
+		//else if jail
+		piece.style.transform = `translate(-692px, -20px)`;
+	} else {
+		//else normal
+		let roll = currPlayer.rolledNumber;
+		let start = currPlayer.position;
+		let end = start + roll;
+
+		movePiece(piece, start, end);
+	}
+
+	setTimeout(() => {
+		console.log('test1');
+		landingModalHandle();
+	},wait);
+};
 
 //////////////////////End Test Movement//////////////////////
 
@@ -480,4 +610,4 @@ document.querySelectorAll('.grid').forEach((e) => {
 
 //////////////////////End page-load binding//////////////////////
 
-export { $, showProperty, startOutput, handleManage, handleServerBuy };
+export { $, showProperty, startOutput, handleManage, handleServerBuy, makeMoveHappen, landingModalHandle };

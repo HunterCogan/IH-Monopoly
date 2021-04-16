@@ -4,6 +4,7 @@ import { landOnChance } from './chance.js';
 // landOnCommunity RETURNS an OBJECT of a community Card
 import { landOnCommunity } from './chest.js';
 import { properties } from './tiles.js';
+import { makeMoveHappen } from '../dom.js'
 
 class Character {
 	constructor(name) {
@@ -20,24 +21,29 @@ class Character {
 		this.doubleCount = 0;
 	}
 	rollDice() {
-		//this.rolledNumber = this.dice() + this.dice();
-		this.rolledNumber = 7;
-		//let dice1 = this.dice();
-		//let dice2 = this.dice();
-		let dice1 = 3;
-		let dice2 = 4;
+		//chance debugging
+		// this.rolledNumber = 7;
+		// let dice1 = 3;
+		// let dice2 = 4;
+
+		//normal
+		this.rolledNumber = this.dice() + this.dice();
+		let dice1 = this.dice();
+		let dice2 = this.dice();
 
 		console.log('test123');
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
 		console.log(firstDiceImg)
 
-		document.querySelector('#dice1').setAttribute('src', firstDiceImg)
+		document.querySelector('#dice1').style.display = 'flex';
+		document.querySelector('#dice1').setAttribute('src', firstDiceImg);
 
 		const secondDiceImg = './../../assets/dice' + dice2 + '.png';
-		console.log(secondDiceImg)
+		console.log(secondDiceImg);
 
-		document.querySelector('#dice2').setAttribute('src', secondDiceImg)
+		document.querySelector('#dice2').style.display = 'flex';
+		document.querySelector('#dice2').setAttribute('src', secondDiceImg);
 
 		this.rolledNumber = dice1 + dice2;
 		if (dice1 !== dice2) {
@@ -54,6 +60,8 @@ class Character {
 			}
 			console.log(`Double count = ${this.doubleCount}`);
 		}
+
+		makeMoveHappen();
 	}
 
 	dice() {

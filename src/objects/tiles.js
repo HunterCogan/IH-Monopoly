@@ -202,7 +202,7 @@ properties[6] = new Property(
 );
 
 properties[8] = new Property(
-	'Imbd',
+	'Imdb',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
 	0.5,
@@ -346,7 +346,7 @@ properties[15] = new Property('Time Warner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp
 properties[25] = new Property('AT&T', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 
-properties[12] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
-properties[28] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
+properties[28] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
+properties[12] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
 
 export { properties, totalHouse, totalHotel };

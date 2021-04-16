@@ -1,5 +1,5 @@
 import { startGame, rollDice, endTurn, managePropList } from './game.js';
-// import { movePiece } from './dom.js';
+import { makeMoveHappen } from './dom.js';
 
 //TODO: on PLAY button click make players
 // play button
