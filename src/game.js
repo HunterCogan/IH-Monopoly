@@ -14,6 +14,7 @@ const manageContent = document.querySelector('#manage-content');
 const jailModal = document.querySelector('#jail-modal');
 const rollEnd = document.querySelector('#end-turn');
 let diceBtn = document.querySelector('#roll-dice');
+let messageDisplay = document.querySelector('#game-status span');
 
 // takes an ARRAY to make the players
 function afterJailOption() {
@@ -75,12 +76,13 @@ function payJail() {
 	currPlayer.jail[0] = false;
 	currPlayer.jail[1] = 0;
 	closeJailModal();
-	makeMoveHappen();
+
 	//close jail modal
 	//TODO: query select to close modal
 }
 
 function rollJail() {
+	currPlayer.jail[1];
 	//variable dice1 = dice()
 	let dice1 = currPlayer.dice();
 	//variable dice 2 = dice()
@@ -89,20 +91,25 @@ function rollJail() {
 	//roll currplayer.dice() === currPlayer.dice()
 	if (dice1 === dice2) {
 		//if true currPlayer.rolled Number = dice1 + dice2
+		currPlayer.jail = [false, 0];
 		currPlayer.rolledNumber = dice1 + dice2;
 		makeMoveHappen();
 		currPlayer.movePlayer();
 	}
 	// if player is on third turn and double false subtract money
 	if (dice1 !== dice2) {
+		console.log(currPlayer.name, currPlayer.jail[1]);
 		if (currPlayer.jail[1] === 3) {
+			messageDisplay.innerText = 'You did not roll a double, you loose bitcoins';
 			currPlayer.jail = [false, 0];
 			currPlayer.bitcoin -= 0.5;
 			currPlayer.rolledNumber = dice1 + dice2;
 			makeMoveHappen();
 			currPlayer.movePlayer();
+		} else {
+			currPlayer.jail[1]++;
+			messageDisplay.innerText = 'You did not roll a double, good luck next turn';
 		}
-		console.log('YOU DID NOT ROLL A DOUBLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 	}
 
 	afterJailOption();
@@ -150,6 +157,7 @@ function updateBitcoin() {
 	p3.innerText = players[2].bitcoin.toFixed(2);
 	p4.innerText = players[3].bitcoin.toFixed(2);
 }
+
 function managePropList() {
 	const listParent = document.querySelector('.manage-list');
 	let counter = 0;
@@ -226,6 +234,7 @@ function managePropList() {
 		};
 	});
 }
+
 function endTurn() {
 	currPlayer.diceRolled = false;
 	currPlayer.doubleCount = 0;
@@ -266,13 +275,3 @@ export {
 	updateBitcoin,
 	managePropList,
 };
-
-// dice roll start
-//Generates a random number from 1-6
-// const firstRandom = Math.floor(Math.random() * 6) + 1;
-
-// const firstDiceImg = './../assets/dice' + firstRandom + '.png';
-// console.log(firstDiceImg)
-
-// document.querySelector('#dice1').setAttribute('src', firstDiceImg)
-// dice roll end

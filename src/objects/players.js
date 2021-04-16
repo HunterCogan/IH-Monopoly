@@ -63,12 +63,11 @@ class Character {
 		}
 	}
 
-
 	dice() {
 		return Math.round(Math.random() * 5) + 1;
 	}
 	collectTax() {
-		//TODO: need an action for bankrupt
+		//need an action for bankrupt
 		if (this.position === 4) {
 			if (this.bitcoin <= 0.5) {
 				console.log(`${this.name} is BANKRUPT`);
