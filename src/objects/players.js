@@ -25,12 +25,12 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
-		// let dice1 = 15;
-		// let dice2 = 15;
+		let dice1 = 1;
+		let dice2 = 1;
 
 		//normal
-		let dice1 = this.dice();
-		let dice2 = this.dice();
+		// let dice1 = this.dice();
+		// let dice2 = this.dice();
 		this.rolledNumber = dice1 + dice2;
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
