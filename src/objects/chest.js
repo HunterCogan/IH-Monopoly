@@ -70,7 +70,6 @@ let card5 = new Community(5);
 card5.action = () => {
 	currPlayer.getOutJail[0] = true;
 	currPlayer.getOutJail[1] += 1;
-	currPlayer.jailOptions.usePass = true;
 };
 
 // You’ve been hacked!–Files are locked immediately–Do not pass Go, do not collect $2

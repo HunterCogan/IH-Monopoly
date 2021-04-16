@@ -23,16 +23,10 @@ function startGame() {
 	currPlayer = players[index];
 	console.log('Game Started');
 
-	properties[1].buy();
-	properties[3].buy();
-	properties[6].buy();
-	properties[8].buy();
-	properties[9].buy();
-	properties[11].buy();
 	console.log(currPlayer.name);
 	document.querySelector('#game-status span').innerHTML = `
 		${currPlayer.name}'s turn!
-	`
+	`;
 }
 
 function checkJail() {
@@ -102,7 +96,7 @@ function rollDice() {
 	if (!checkJail() && !currPlayer.diceRolled) {
 		currPlayer.rollDice();
 		currPlayer.movePlayer();
-		console.log(currPlayer.position)
+		console.log(currPlayer.position);
 		// console.log(currPlayer);
 	}
 }
@@ -185,13 +179,17 @@ function managePropList() {
 		node.appendChild(node2);
 		node.appendChild(node3);
 		listParent.appendChild(node);
-
-		document.querySelectorAll('.m-server').forEach((e) => {
-			e.onclick = () => {
-				handleServerBuy(e);
-			};
-		});
+		if (property.type === 'isp' || property.type === 'utility') {
+			document.querySelector(
+				`#${property.name}-server` === '5G' ? '5g' : `#${property.name}-server`
+			).style.display = 'none';
+		}
 	}
+	document.querySelectorAll('.m-server').forEach((e) => {
+		e.onclick = () => {
+			handleServerBuy(e);
+		};
+	});
 }
 function endTurn() {
 	currPlayer.diceRolled = false;
@@ -203,7 +201,7 @@ function endTurn() {
 	//console.log(`next player is ${currPlayer.name}`);
 	document.querySelector('#game-status span').innerHTML = `
 		${currPlayer.name}'s turn!
-	`
+	`;
 }
 
 export {

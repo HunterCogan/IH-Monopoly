@@ -4,7 +4,7 @@ import { landOnChance } from './chance.js';
 // landOnCommunity RETURNS an OBJECT of a community Card
 import { landOnCommunity } from './chest.js';
 import { properties } from './tiles.js';
-import { makeMoveHappen } from '../dom.js'
+import { makeMoveHappen } from '../dom.js';
 
 class Character {
 	constructor(name) {
@@ -34,7 +34,7 @@ class Character {
 		console.log('test123');
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
-		console.log(firstDiceImg)
+		console.log(firstDiceImg);
 
 		document.querySelector('#dice1').style.display = 'flex';
 		document.querySelector('#dice1').setAttribute('src', firstDiceImg);
@@ -70,13 +70,19 @@ class Character {
 	collectTax() {
 		//TODO: need an action for bankrupt
 		if (this.position === 4) {
-			this.bitcoin <= 0.5
-				? console.log(`${this.name} is BANKRUPT`)
-				: (this.bitoin -= 0.5);
+			if (this.bitcoin <= 0.5) {
+				console.log(`${this.name} is BANKRUPT`);
+			} else {
+				this.bitoin -= 0.5;
+				updateBitcoin();
+			}
 		} else if (this.position === 38) {
-			this.bitcoin <= 1.5
-				? console.log(`${this.name} is BANKRUPT`)
-				: (this.bitoin -= 1.5);
+			if (this.bitcoin <= 1.5) {
+				console.log(`${this.name} is BANKRUPT`);
+			} else {
+				this.bitoin -= 1.5;
+				updateBitcoin();
+			}
 		}
 	}
 

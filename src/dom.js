@@ -218,7 +218,6 @@ const showProperty = (ele) => {
 	let propModalContent = $('#prop-modal-content');
 	let cardName = ele.split('-')[1];
 	let close = $('#close-prop');
-
 	//show modal
 	propModal.style.display = 'flex';
 	propModalContent.style.backgroundImage = `url("./assets/Cards/${cardName}.jpg")`;
@@ -382,17 +381,27 @@ endTurn.onclick = () => {
 const landingModalHandle = () => {
 	console.log('pos: ' + currPlayer.position);
 	propIds.forEach((e, i) => {
-		if (currPlayer.position === e) {
+		// DICKY -- added to check if currPlayer owns property already, if so, don't display anything
+		if (
+			currPlayer.position === e &&
+			properties[currPlayer.position].owner !== currPlayer.name
+		) {
 			let prop = properties[currPlayer.position].name.toLowerCase();
 			console.log(prop);
 			manageModal.style.display = 'flex';
 			$('#manage-content').style.display = 'none';
 			$('#landing-modal').style.display = 'flex';
-
+			//===========================DICKY====================//
+			let companyName = $('#prop-landed-on');
+			// set company name on modal
+			companyName.innerText = properties[currPlayer.position].name;
+			//===================================================//
 			console.log($('#landing-img'));
 			$('#landing-img').style.backgroundImage = `url('assets/Cards/${prop}.jpg')`;
 
 			$('#buy-prop').onclick = () => {
+				//Dicky -- calls the buy function for currPlayer to buy
+				properties[currPlayer.position].buy();
 				manageModal.style.display = 'none';
 				$('#manage-content').style.display = 'flex';
 				$('#landing-modal').style.display = 'none';
@@ -587,7 +596,7 @@ const handleManage = () => {
 	$('#manage-content').style.display = 'flex';
 	$('#jail-modal').style.display = 'none';
 	let close = $('#close-mng');
-
+	// Dicky - is this needed? already called in Game.js every time managebtn is clicked
 	document.querySelectorAll('.m-server').forEach((e) => {
 		e.onclick = () => {
 			handleServerBuy(e);

@@ -25,16 +25,17 @@ class Property {
 		this.isMortgaged = false;
 	}
 
-	mortgagProp() {
-		currPlayer.bitcoin += this.mortgage;
-		this.isMortgaged = true;
-		updateBitcoin();
-	}
-
-	unmortgageProp() {
-		currPlayer.bitcoin -= this.mortgage * 1.1;
-		this.isMortgaged = false;
-		updateBitcoin();
+	mortgageToggle() {
+		if (!this.isMortgaged) {
+			currPlayer.bitcoin += this.mortgage;
+			this.isMortgaged = true;
+			updateBitcoin();
+		}
+		if (this.isMortgaged) {
+			currPlayer.bitcoin -= this.mortgage * 1.1;
+			this.isMortgaged = false;
+			updateBitcoin();
+		}
 	}
 
 	// how many of one type does owner have and do they have all of of one type
@@ -348,11 +349,11 @@ properties[37] = new Property(
 properties[39] = new Property('Google', 4, [0.5, 2, 6, 14, 17, 20], 2, 2, 'darkBlue');
 
 properties[5] = new Property('Charter', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
-properties[15] = new Property('Time Warner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+properties[15] = new Property('TimeWarner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[25] = new Property('AT&T', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 
-properties[28] = new Property('Google Fiber', 1.5, [4, 10], 0.75, null, 'utility');
+properties[28] = new Property('GoogleFiber', 1.5, [4, 10], 0.75, null, 'utility');
 properties[12] = new Property('5G', 1.5, [4, 10], 0.75, null, 'utility');
 
 export { properties, totalHouse, totalHotel };

@@ -1,4 +1,5 @@
 import { startGame, rollDice, endTurn, managePropList } from './game.js';
+import { properties } from './objects/tiles.js';
 import { makeMoveHappen } from './dom.js';
 
 //TODO: on PLAY button click make players
@@ -9,7 +10,23 @@ playBtn.addEventListener('click', startGame);
 const diceBtn = document.querySelector('#roll-dice');
 diceBtn.addEventListener('click', rollDice);
 const manageBtn = document.querySelector('#manage-property');
-manageBtn.addEventListener('click', managePropList);
+manageBtn.addEventListener('click', () => {
+	managePropList();
+	// action for mortage button
+	let mortgageBtn = document.querySelector('.m-mortgage');
+	mortgageBtn.onclick = (e) => {
+		console.log(e.target.id);
+		const propName = e.target.id.split('-')[0];
+
+		for (let prop in properties) {
+			console.log(properties[prop].name == propName, properties[prop].name, propName);
+			if (properties[prop].name == propName) {
+				properties[prop].mortgageToggle();
+				return;
+			}
+		}
+	};
+});
 
 // pay to get out of jail
 // const payJailBtn = document.querySelector('#pay-jail');
