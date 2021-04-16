@@ -75,7 +75,7 @@ function payJail() {
 	currPlayer.jail[0] = false;
 	currPlayer.jail[1] = 0;
 	closeJailModal();
-	makeMoveHappen();
+
 	//close jail modal
 	//TODO: query select to close modal
 }
