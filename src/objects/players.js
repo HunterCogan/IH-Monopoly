@@ -68,6 +68,17 @@ class Character {
 			this.doubleCount++;
 			if (this.doubleCount === 3) {
 				makeMoveHappen('jail');
+
+				let wait = currPlayer.rolledNumber * 300 + 500;
+				setTimeout(() => {
+					document.querySelector('#roll-dice').style.backgroundColor = '#8d9491';
+					document.querySelector('#roll-dice').classList.add('no-click');
+
+					document.querySelector('#end-turn').style.backgroundColor = '#8b1641';
+					document.querySelector('#end-turn').style.color = '#d49fa3';
+					document.querySelector('#end-turn').classList.remove('no-click');
+				}, wait);
+
 				this.diceRolled = true;
 				this.jail = [true, 0];
 				this.position = 10;
