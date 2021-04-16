@@ -28,6 +28,7 @@ let p2Input = $('#p2-name input');
 let p3Input = $('#p3-name input');
 let p4Input = $('#p4-name input');
 let startOutput = [];
+let propIds = [1,3,5,6,8,9,11,12,13,14,15,16,18,19,21,23,24,25,26,27,28,29,31,32,34,35,37,39];
 
 const removeBorders = () => {
 	pSelect.forEach((e) => {
@@ -351,9 +352,42 @@ endTurn.onclick = () => {
 	endTurn.classList.add('no-click');
 };
 
+const landingModalHandle = () => {
+	console.log('pos: ' + currPlayer.position);
+	propIds.forEach((e, i) => {
+		if (currPlayer.position === e) {
+			let prop = properties[currPlayer.position].name.toLowerCase();
+			console.log(prop);
+			manageModal.style.display = 'flex';
+			$('#manage-content').style.display = 'none';
+			$('#landing-modal').style.display = 'flex';
+
+			console.log($('#landing-img'));
+			$('#landing-img').style.backgroundImage = `url('assets/Cards/${prop}.jpg')`;
+
+			$('#buy-prop').onclick = () => {
+				manageModal.style.display = 'none';
+				$('#manage-content').style.display = 'flex';
+				$('#landing-modal').style.display = 'none';
+				
+
+			};
+			$('#dont-buy-prop').onclick = () => {
+				manageModal.style.display = 'none';
+				$('#manage-content').style.display = 'flex';
+				$('#landing-modal').style.display = 'none';
+			};
+		}
+	});
+
+};
+
+
 const makeMoveHappen = (type, s, e) => {
 	let pos = '';
 	let piece;
+	let wait = 0;
+	wait = (currPlayer.rolledNumber * 300 ) + 500;
 
 	players.forEach((e, i) => {
 		if (e.name === currPlayer.name) {
@@ -385,6 +419,11 @@ const makeMoveHappen = (type, s, e) => {
 
 		movePiece(piece, start, end);
 	}
+
+	setTimeout(() => {
+		console.log('test1');
+		landingModalHandle();
+	},wait);
 };
 
 //////////////////////End Test Movement//////////////////////
@@ -568,4 +607,4 @@ document.querySelectorAll('.grid').forEach((e) => {
 
 //////////////////////End page-load binding//////////////////////
 
-export { $, showProperty, startOutput, handleManage, handleServerBuy, makeMoveHappen };
+export { $, showProperty, startOutput, handleManage, handleServerBuy, makeMoveHappen, landingModalHandle };

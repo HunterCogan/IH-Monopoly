@@ -1,7 +1,7 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
 import { players, currPlayer, updateBitcoin } from './../game.js';
-import {$, makeMoveHappen} from './../dom.js';
+import {$, makeMoveHappen, landingModalHandle} from './../dom.js';
 
 // all the chance cards before shuffling
 let chanceCards = [];
