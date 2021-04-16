@@ -9,8 +9,6 @@ const monitor = new Audio('assets/sounds/monitor.mp3');
 const mouse = new Audio('assets/sounds/mouse.mp3');
 const speaker = new Audio('assets/sounds/speaker.mp3');
 
-console.log('test123');
-
 //////////////////////Start Page-load Modal//////////////////////
 let startModal = $('#start-modal');
 let bodyWrap = $('#body-wrap');
