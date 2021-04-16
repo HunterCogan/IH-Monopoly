@@ -9,8 +9,27 @@ import { makeMoveHappen, handleServerBuy, startOutput as nameList } from './dom.
 let players = [];
 let index = 0;
 let currPlayer = players[index];
+const manageModal = document.querySelector('#manage-modal');
+const manageContent = document.querySelector('#manage-content');
+const jailModal = document.querySelector('#jail-modal');
+const rollEnd = document.querySelector('#end-turn');
+let diceBtn = document.querySelector('#roll-dice');
 
 // takes an ARRAY to make the players
+function afterJailOption() {
+	diceBtn.style.backgroundColor = '#8d9491';
+	diceBtn.classList.add('no-click');
+	rollEnd.style.backgroundColor = '#8b1641';
+	rollEnd.style.color = '#d49fa3';
+	rollEnd.classList.remove('no-click');
+	currPlayer.diceRolled = true;
+}
+function closeJailModal() {
+	manageModal.style.display = 'none';
+	manageContent.style.display = 'flex';
+	jailModal.style.display = 'none';
+}
+
 function createPlayers(playerNames) {
 	for (let x = 1; x < playerNames.length + 1; x++) {
 		players.push(new Character(playerNames[x - 1], x));
@@ -28,6 +47,10 @@ function startGame() {
 		${currPlayer.name}'s turn!
 	`;
 }
+
+// function goToJail() {
+// 	currPlayer.position
+// }
 
 function checkJail() {
 	//if player.jail[0] = true
@@ -51,6 +74,8 @@ function payJail() {
 	//set jail false set the jail counter = 0
 	currPlayer.jail[0] = false;
 	currPlayer.jail[1] = 0;
+	closeJailModal();
+
 	//close jail modal
 	//TODO: query select to close modal
 }
@@ -60,20 +85,30 @@ function rollJail() {
 	let dice1 = currPlayer.dice();
 	//variable dice 2 = dice()
 	let dice2 = currPlayer.dice();
+
 	//roll currplayer.dice() === currPlayer.dice()
 	if (dice1 === dice2) {
 		//if true currPlayer.rolled Number = dice1 + dice2
 		currPlayer.rolledNumber = dice1 + dice2;
+		makeMoveHappen();
+		currPlayer.movePlayer();
 	}
 	// if player is on third turn and double false subtract money
-	if (dice1 !== dice2 && currPlayer.jail[1] === 3) {
-		currPlayer.bitcoin -= 0.5;
-		currPlayer.rolledNumber = dice1 + dice2;
+	if (dice1 !== dice2) {
+		if (currPlayer.jail[1] === 3) {
+			currPlayer.jail = [false, 0];
+			currPlayer.bitcoin -= 0.5;
+			currPlayer.rolledNumber = dice1 + dice2;
+			makeMoveHappen();
+			currPlayer.movePlayer();
+		}
+		console.log('YOU DID NOT ROLL A DOUBLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 	}
+
+	afterJailOption();
+	closeJailModal();
 	//set currPlayer.jail = false counter to 0
-	currPlayer.jail = [false, 0];
 	// TODO: close Jail modal
-	currPlayer.movePlayer();
 }
 
 function freeJail() {
@@ -86,6 +121,7 @@ function freeJail() {
 	currPlayer.getOutJail[0] = false;
 	currPlayer.getOutJail[1] -= 1;
 	currPlayer.jail = [false, 0];
+	closeJailModal();
 	// TODO: close modal
 }
 
@@ -93,8 +129,8 @@ function rollDice() {
 	// if the player in jail and have they rolled before?
 	if (!checkJail() && !currPlayer.diceRolled) {
 		currPlayer.rollDice();
-		makeMoveHappen();
-		currPlayer.movePlayer();
+		// makeMoveHappen();
+		// currPlayer.movePlayer();
 		console.log(currPlayer.position);
 		// console.log(currPlayer);
 	}
@@ -203,13 +239,16 @@ function endTurn() {
 	`;
 	if (checkJail()) {
 		if (currPlayer.getOutJail[0] === false) {
-			document.querySelector('#get-out-jail').classList.add('.no-click');
+			console.log(document.querySelector('#get-out-jail'));
+			document.querySelector('#get-out-jail').classList.remove('yellow');
+			document.querySelector('#get-out-jail').classList.add('no-click');
 		} else {
-			document.querySelector('#get-out-jail').classList.remove('.no-click');
+			document.querySelector('#get-out-jail').classList.remove('no-click');
+			document.querySelector('#get-out-jail').classList.add('yellow');
 		}
-		document.querySelector('#manage-modal').style.display = 'flex';
-		document.querySelector('#manage-content').style.display = 'none';
-		document.querySelector('#jail-modal').style.display = 'flex';
+		manageModal.style.display = 'flex';
+		manageContent.style.display = 'none';
+		jailModal.style.display = 'flex';
 	}
 }
 

@@ -369,19 +369,19 @@ diceBtn.onclick = () => {
 				endTurn.style.color = '#d49fa3';
 				endTurn.classList.remove('no-click');
 			} else {
-			diceBtn.style.backgroundColor = '#04a55c';
-			diceBtn.classList.remove('no-click');
-			endTurn.style.backgroundColor = '#8d9491';
-			endTurn.style.color = '#c9e8df';
-			endTurn.classList.add('no-click');
-			} 
+				diceBtn.style.backgroundColor = '#04a55c';
+				diceBtn.classList.remove('no-click');
+				endTurn.style.backgroundColor = '#8d9491';
+				endTurn.style.color = '#c9e8df';
+				endTurn.classList.add('no-click');
+			}
 		} else {
 			setTimeout(() => {
 				endTurn.style.backgroundColor = '#8b1641';
 				endTurn.style.color = '#d49fa3';
 				endTurn.classList.remove('no-click');
 			}, wait);
-		}	
+		}
 	}, 500);
 };
 
@@ -470,7 +470,7 @@ const makeMoveHappen = (type, s, e) => {
 	let pos = '';
 	let piece;
 	let wait = 0;
-	wait = currPlayer.rolledNumber * 300 + 500;
+	wait = (currPlayer.rolledNumber * 300) + 500;
 
 	players.forEach((e, i) => {
 		if (e.name === currPlayer.name) {
