@@ -23,11 +23,9 @@ manageBtn.addEventListener('click', () => {
 	// action for mortage button
 	let mortgageBtn = document.querySelector('.m-mortgage');
 	mortgageBtn.onclick = (e) => {
-		console.log(e.target.id);
 		const propName = e.target.id.split('-')[0];
 
 		for (let prop in properties) {
-			console.log(properties[prop].name == propName, properties[prop].name, propName);
 			if (properties[prop].name == propName) {
 				properties[prop].mortgageToggle();
 				return;
