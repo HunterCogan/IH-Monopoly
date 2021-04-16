@@ -62,7 +62,7 @@ class Character {
 				this.movePlayer();
 				document.querySelector(
 					'#game-status span'
-				).innerText = `You rolled a double, ${currPlayer.name}'s turn.`;
+				).innerText = `${currPlayer.name} rolled a double. Roll Again!`;
 			}
 		}
 	}
@@ -73,18 +73,18 @@ class Character {
 	collectTax() {
 		//need an action for bankrupt
 		if (this.position === 4) {
-			if (this.bitcoin <= 0.5) {
+			if (this.bitcoin <= 2) {
 				console.log(`${this.name} is BANKRUPT`);
 			} else {
-				this.bitcoin -= 0.5;
+				this.bitcoin -= 2;
 
 				updateBitcoin();
 			}
 		} else if (this.position === 38) {
-			if (this.bitcoin <= 1.5) {
+			if (this.bitcoin <= .75) {
 				console.log(`${this.name} is BANKRUPT`);
 			} else {
-				this.bitcoin -= 1.5;
+				this.bitcoin -= .75;
 				updateBitcoin();
 			}
 		}
@@ -139,7 +139,7 @@ class Character {
 			this.goToJail();
 		} else {
 			console.log(
-				`${this.name} what do you want to do with ${properties[this.position].name}`
+				`${this.name}, what do you want to do with ${properties[this.position].name}`
 			);
 			//TODO: prompt for property option
 		}
