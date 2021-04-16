@@ -29,8 +29,8 @@ class Character {
 		// let dice2 = 1;
 
 		//normal
-		let dice1 = this.dice();
-		let dice2 = this.dice();
+		let dice1 = 1;
+		let dice2 = 1;
 		this.rolledNumber = dice1 + dice2;
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
@@ -48,6 +48,9 @@ class Character {
 			this.diceRolled = true;
 			makeMoveHappen();
 			this.movePlayer();
+			document.querySelector(
+				'#game-status span'
+			).innerText = `${currPlayer.name}'s turn`;
 		}
 		if (dice1 === dice2) {
 			this.rolledDouble = true;
@@ -107,7 +110,7 @@ class Character {
 		let wait = currPlayer.rolledNumber * 300 + 500;
 
 		setTimeout(() => {
-			document.querySelector('#game-status span').innerText = `Your files have been hacked, ${currPlayer.name}'s turn.`;
+			document.querySelector('#game-status span').innerText = `${currPlayer.name}, your files have been hacked!`;
 			document.querySelector('#roll-dice').style.backgroundColor = '#8d9491';
 			document.querySelector('#roll-dice').classList.add('no-click');
 

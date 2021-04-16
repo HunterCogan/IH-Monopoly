@@ -79,6 +79,9 @@ let card1 = new Chance(1);
 card1.action = () => {
 	currPlayer.position = 0;
 	currPlayer.bitcoin += 2;
+	document.querySelector(
+		'#game-status span'
+	).innerText = `${currPlayer.name} received $2`;
 };
 
 // Advance to Twitter Ave—If you pass Go, collect $2
@@ -86,6 +89,9 @@ let card2 = new Chance(2);
 card2.action = () => {
 	if (currPlayer.position > 24) {
 		currPlayer.bitcoin += 2;
+		document.querySelector(
+			'#game-status span'
+		).innerText = `${currPlayer.name} passed go and received $2`;
 	}
 	currPlayer.position = 24;
 };
@@ -95,6 +101,9 @@ let card3 = new Chance(3);
 card3.action = () => {
 	if (currPlayer.position > 11) {
 		currPlayer.bitcoin += 2;
+		document.querySelector(
+			'#game-status span'
+		).innerText = `${currPlayer.name} passed go and received $2`;
 	}
 	currPlayer.position = 11;
 };
@@ -118,6 +127,9 @@ card4.action = () => {
 	if (property.checkOwner(currPlayer)) {
 		currPlayer.bitcoin -= property.calculateRent(properties, currPlayer.rolledNumber);
 		property.owner.bitcoin += property.calculateRent(properties, currPlayer.rolledNumber);
+		document.querySelector(
+			'#game-status span'
+		).innerText = `${currPlayer.name} paid ${property.owner.name} ${property.calculateRent(properties, currPlayer.rolledNumber)}`;
 	}
 	// Prompt to buy property
 };
@@ -137,9 +149,11 @@ card5.action = () => {
 	}
 	const property = properties[currPlayer.position];
 	if (property.checkOwner(currPlayer)) {
-		currPlayer.bitcoin -= property.calculateRent(properties, currPlayer.rolledNumber) * 2;
-		property.owner.bitcoin +=
-			property.calculateRent(properties, currPlayer.rolledNumber) * 2;
+		currPlayer.bitcoin -= property.calculateRent() * 2;
+		property.owner.bitcoin += property.calculateRent() * 2;
+		document.querySelector(
+			'#game-status span'
+		).innerText = `${currPlayer.name} paid ${property.owner.name} ${property.calculateRent() * 2}`;
 	}
 	// prompt to buy ISP
 };
@@ -148,6 +162,9 @@ card5.action = () => {
 let card6 = new Chance(6);
 card6.action = () => {
 	currPlayer.bitcoin += 0.5;
+	document.querySelector(
+		'#game-status span'
+	).innerText = `${currPlayer.name} received $0.5`;
 };
 
 // Anti-virus Software–Free ransomware unlock
@@ -155,6 +172,9 @@ let card7 = new Chance(7);
 card7.action = () => {
 	currPlayer.getOutJail[0] = true;
 	currPlayer.getOutJail[1] += 1;
+	document.querySelector(
+		'#game-status span'
+	).innerText = `${currPlayer.name} received 1 free ransomware unlock`;
 };
 
 // Go Back 3 Spaces
