@@ -31,16 +31,12 @@ class Character {
 		let dice1 = this.dice();
 		let dice2 = this.dice();
 
-		console.log('test123');
-
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
-		console.log(firstDiceImg);
 
 		document.querySelector('#dice1').style.display = 'flex';
 		document.querySelector('#dice1').setAttribute('src', firstDiceImg);
 
 		const secondDiceImg = './../../assets/dice' + dice2 + '.png';
-		console.log(secondDiceImg);
 
 		document.querySelector('#dice2').style.display = 'flex';
 		document.querySelector('#dice2').setAttribute('src', secondDiceImg);
@@ -60,8 +56,8 @@ class Character {
 			}
 			console.log(`Double count = ${this.doubleCount}`);
 		}
-
-		makeMoveHappen();
+		// move to game.js
+		// makeMoveHappen();
 	}
 
 	dice() {
@@ -73,14 +69,15 @@ class Character {
 			if (this.bitcoin <= 0.5) {
 				console.log(`${this.name} is BANKRUPT`);
 			} else {
-				this.bitoin -= 0.5;
+				this.bitcoin -= 0.5;
+
 				updateBitcoin();
 			}
 		} else if (this.position === 38) {
 			if (this.bitcoin <= 1.5) {
 				console.log(`${this.name} is BANKRUPT`);
 			} else {
-				this.bitoin -= 1.5;
+				this.bitcoin -= 1.5;
 				updateBitcoin();
 			}
 		}
