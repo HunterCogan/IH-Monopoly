@@ -72,6 +72,7 @@ function payJail() {
 	}
 	//subtract money from player
 	currPlayer.bitcoin -= 0.5;
+	updateBitcoin();
 	//set jail false set the jail counter = 0
 	currPlayer.jail[0] = false;
 	currPlayer.jail[1] = 0;
@@ -93,6 +94,7 @@ function rollJail() {
 		//if true currPlayer.rolled Number = dice1 + dice2
 		currPlayer.jail = [false, 0];
 		currPlayer.rolledNumber = dice1 + dice2;
+		messageDisplay.innerText = `You rolled a double, ${currPlayer.name}'s turn`;
 		makeMoveHappen();
 		currPlayer.movePlayer();
 	}
@@ -103,6 +105,7 @@ function rollJail() {
 			messageDisplay.innerText = 'You did not roll a double, you loose bitcoins';
 			currPlayer.jail = [false, 0];
 			currPlayer.bitcoin -= 0.5;
+			updateBitcoin();
 			currPlayer.rolledNumber = dice1 + dice2;
 			makeMoveHappen();
 			currPlayer.movePlayer();
@@ -224,7 +227,7 @@ function managePropList() {
 		listParent.appendChild(node);
 		if (property.type === 'isp' || property.type === 'utility') {
 			document.querySelector(
-				`#${property.name}-server` === '5G' ? '5g' : `#${property.name}-server`
+				`#${property.name}` === '5G' ? '5g-server' : `#${property.name}-server`
 			).style.display = 'none';
 		}
 	}
