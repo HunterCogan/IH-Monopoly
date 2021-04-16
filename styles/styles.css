@@ -887,11 +887,6 @@ div.p-select-btn {
 	margin: 1px 5px;
 }
 
-.tab-middle-h:hover,
-.tab-middle-v:hover {
-	background: linear-gradient(45deg, #437daf, #59b7fbf2);
-}
-
 .tab-middle-v {
 	height: 59px;
 	border-radius: 4px;

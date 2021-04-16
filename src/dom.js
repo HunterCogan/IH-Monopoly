@@ -246,7 +246,7 @@ window.p4Piece = $('#p4-token');
 let testBtn = $('#testBtn');
 
 const movePiece = (piece, start, end) => {
-	console.log(piece, start, end);
+	//console.log(piece, start, end);
 	let int = setInterval(() => {
 		start++;
 
@@ -267,7 +267,7 @@ const movePiece = (piece, start, end) => {
 			monitor.play();
 		}
 
-		console.log(start, end);
+		//console.log(start, end);
 
 		//bottomLeft translate(-680px,0px)
 		//topLeft = translate(-680px,-680px)
@@ -282,9 +282,9 @@ const movePiece = (piece, start, end) => {
 		}
 
 		// IF IN JAIL /////////////////////
-		if (currPlayer.jail[0] === true && start == 10) {
-			piece.style.transform = `translate(${start * -65 - 35}px, ${-25}px)`;
-		}
+		// if (currPlayer.jail[0] === true && start == 10) {
+		// 	piece.style.transform = `translate(${start * -65 - 35}px, ${-25}px)`;
+		// }
 		////////////////////////////////////////////////////////////////
 
 		if (start == 10) {
@@ -326,7 +326,7 @@ const movePiece = (piece, start, end) => {
 		}
 
 		if (start % 10 === 0) {
-			console.log('change direction');
+			//console.log('change direction');
 		}
 
 		if (start === end) {
@@ -337,7 +337,7 @@ const movePiece = (piece, start, end) => {
 			end = end - 40;
 		}
 
-		console.log('position is', end % 40);
+		//console.log('position is', end % 40);
 	}, 300);
 };
 
@@ -361,11 +361,27 @@ diceBtn.onclick = () => {
 	let wait = 0;
 	setTimeout(() => {
 		wait = currPlayer.rolledNumber * 300;
-		setTimeout(() => {
-			endTurn.style.backgroundColor = '#8b1641';
-			endTurn.style.color = '#d49fa3';
-			endTurn.classList.remove('no-click');
-		}, wait);
+		console.log(currPlayer.rolledDouble === true);
+
+		if (currPlayer.rolledDouble === true) {
+			if (currPlayer.jail[0] === true) {
+				endTurn.style.backgroundColor = '#8b1641';
+				endTurn.style.color = '#d49fa3';
+				endTurn.classList.remove('no-click');
+			} else {
+				diceBtn.style.backgroundColor = '#04a55c';
+				diceBtn.classList.remove('no-click');
+				endTurn.style.backgroundColor = '#8d9491';
+				endTurn.style.color = '#c9e8df';
+				endTurn.classList.add('no-click');
+			}
+		} else {
+			setTimeout(() => {
+				endTurn.style.backgroundColor = '#8b1641';
+				endTurn.style.color = '#d49fa3';
+				endTurn.classList.remove('no-click');
+			}, wait);
+		}
 	}, 500);
 };
 
@@ -396,7 +412,6 @@ const landingModalHandle = () => {
 			// set company name on modal
 			companyName.innerText = properties[currPlayer.position].name;
 			//===================================================//
-			console.log($('#landing-img'));
 			$('#landing-img').style.backgroundImage = `url('assets/Cards/${prop}.jpg')`;
 
 			$('#buy-prop').onclick = () => {
@@ -407,9 +422,18 @@ const landingModalHandle = () => {
 				$('#landing-modal').style.display = 'none';
 
 				let tab = `#tab-${prop}`;
-				console.log(tab);
-				console.log(currPlayer);
-				$(tab).style.display = `backgroundColor: `;
+
+				console.log(currPlayer.playerNum);
+
+				if (currPlayer.playerNum === 1) {
+					$(tab).style.backgroundColor = `#ec3b25`;
+				} else if (currPlayer.playerNum === 2) {
+					$(tab).style.backgroundColor = `#04a55c`;
+				} else if (currPlayer.playerNum === 3) {
+					$(tab).style.backgroundColor = `#234ea2`;
+				} else if (currPlayer.playerNum === 4) {
+					$(tab).style.backgroundColor = `#f37f25`;
+				}
 			};
 			$('#dont-buy-prop').onclick = () => {
 				manageModal.style.display = 'none';
