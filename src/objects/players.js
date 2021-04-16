@@ -25,8 +25,13 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
+<<<<<<< HEAD
+		//let dice1 = 1;
+		//let dice2 = 1;
+=======
 		// let dice1 = 1;
 		// let dice2 = 1;
+>>>>>>> bf6db528f3f41dcbde962172730580598ebfae58
 
 		//normal
 		let dice1 = 1;
@@ -48,9 +53,7 @@ class Character {
 			this.diceRolled = true;
 			makeMoveHappen();
 			this.movePlayer();
-			document.querySelector(
-				'#game-status span'
-			).innerText = `${currPlayer.name}'s turn`;
+			document.querySelector('#game-status span').innerText = `${currPlayer.name}'s turn`;
 		}
 		if (dice1 === dice2) {
 			this.rolledDouble = true;
@@ -82,10 +85,10 @@ class Character {
 				updateBitcoin();
 			}
 		} else if (this.position === 38) {
-			if (this.bitcoin <= .75) {
+			if (this.bitcoin <= 0.75) {
 				console.log(`${this.name} is BANKRUPT`);
 			} else {
-				this.bitcoin -= .75;
+				this.bitcoin -= 0.75;
 				updateBitcoin();
 			}
 		}
@@ -110,7 +113,9 @@ class Character {
 		let wait = currPlayer.rolledNumber * 300 + 500;
 
 		setTimeout(() => {
-			document.querySelector('#game-status span').innerText = `${currPlayer.name}, your files have been hacked!`;
+			document.querySelector(
+				'#game-status span'
+			).innerText = `${currPlayer.name}, your files have been hacked!`;
 			document.querySelector('#roll-dice').style.backgroundColor = '#8d9491';
 			document.querySelector('#roll-dice').classList.add('no-click');
 
