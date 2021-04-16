@@ -2,7 +2,7 @@
 import { Character } from './objects/players.js';
 import { properties } from './objects/tiles.js';
 
-import { handleManage, handleServerBuy, startOutput as nameList } from './dom.js';
+import { makeMoveHappen, handleServerBuy, startOutput as nameList } from './dom.js';
 
 // pass this to almost all functions, destructure what you need
 
@@ -12,8 +12,8 @@ let currPlayer = players[index];
 
 // takes an ARRAY to make the players
 function createPlayers(playerNames) {
-	for (let name of playerNames) {
-		players.push(new Character(name));
+	for (let x = 1; x < playerNames.length + 1; x++) {
+		players.push(new Character(playerNames[x - 1], x));
 	}
 }
 
@@ -93,6 +93,7 @@ function rollDice() {
 	// if the player in jail and have they rolled before?
 	if (!checkJail() && !currPlayer.diceRolled) {
 		currPlayer.rollDice();
+		makeMoveHappen();
 		currPlayer.movePlayer();
 		console.log(currPlayer.position);
 		// console.log(currPlayer);
@@ -200,9 +201,6 @@ function endTurn() {
 	document.querySelector('#game-status span').innerHTML = `
 		${currPlayer.name}'s turn!
 	`;
-	if (!checkJail()) {
-		document.querySelector('#jail-modal').style.display = 'flex';
-	}
 }
 
 export {
