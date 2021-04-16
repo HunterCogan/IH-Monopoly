@@ -8,7 +8,7 @@ import { makeMoveHappen, handleServerBuy, startOutput as nameList } from './dom.
 
 const slider = document.getElementById('myRange');
 const output = document.getElementById('value');
-const gameMusic = new Audio('./assets/sounds/gameMusic1.mp3')
+const gameMusic = new Audio('assets/sounds/gameMusic1.mp3')
 
 gameMusic.play();
 gameMusic.volume = .2;
