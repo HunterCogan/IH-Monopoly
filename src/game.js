@@ -85,18 +85,24 @@ function rollJail() {
 	let dice1 = currPlayer.dice();
 	//variable dice 2 = dice()
 	let dice2 = currPlayer.dice();
+
 	//roll currplayer.dice() === currPlayer.dice()
 	if (dice1 === dice2) {
 		//if true currPlayer.rolled Number = dice1 + dice2
 		currPlayer.rolledNumber = dice1 + dice2;
+		makeMoveHappen();
+		currPlayer.movePlayer();
 	}
 	// if player is on third turn and double false subtract money
-	if (dice1 !== dice2 && currPlayer.jail[1] === 3) {
-		currPlayer.jail = [false, 0];
-		currPlayer.bitcoin -= 0.5;
-		currPlayer.rolledNumber = dice1 + dice2;
-		currPlayer.movePlayer();
-		makeMoveHappen();
+	if (dice1 !== dice2) {
+		if (currPlayer.jail[1] === 3) {
+			currPlayer.jail = [false, 0];
+			currPlayer.bitcoin -= 0.5;
+			currPlayer.rolledNumber = dice1 + dice2;
+			makeMoveHappen();
+			currPlayer.movePlayer();
+		}
+		console.log('YOU DID NOT ROLL A DOUBLE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
 	}
 
 	afterJailOption();
