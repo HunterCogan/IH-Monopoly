@@ -25,12 +25,12 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
-		let dice1 = 1;
-		let dice2 = 1;
+		// let dice1 = 1;
+		// let dice2 = 1;
 
 		//normal
-		// let dice1 = this.dice();
-		// let dice2 = this.dice();
+		let dice1 = this.dice();
+		let dice2 = this.dice();
 		this.rolledNumber = dice1 + dice2;
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
@@ -58,7 +58,9 @@ class Character {
 				this.diceRolled = false;
 				makeMoveHappen();
 				this.movePlayer();
-				console.log('You rolled a double, roll again');
+				document.querySelector(
+					'#game-status span'
+				).innerText = `You rolled a double, ${currPlayer.name}'s turn.`;
 			}
 		}
 	}
@@ -102,14 +104,14 @@ class Character {
 	}
 
 	goToJail() {
-		let wait = (currPlayer.rolledNumber * 300) + 500;
-			setTimeout(() => {
-				makeMoveHappen('jail');
-				this.position = 10;
-				this.jail = [true, 0]
-				this.diceRolled = true;
-				console.log('WEEEE' + this.position)
-			}, wait)	
+		let wait = currPlayer.rolledNumber * 300 + 500;
+		setTimeout(() => {
+			makeMoveHappen('jail');
+			this.position = 10;
+			this.jail = [true, 0];
+			this.diceRolled = true;
+			console.log('WEEEE' + this.position);
+		}, wait);
 	}
 
 	// what tile did player land on and what will happen
