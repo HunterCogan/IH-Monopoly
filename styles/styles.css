@@ -405,6 +405,8 @@ div.p-select-btn {
 #manage-property {
 	margin-top: -5px;
 	padding: 10px 15px;
+	background-color: #275ecb;
+	color: #ffffff;
 }
 
 #manage-content {
@@ -962,13 +964,13 @@ div.p-select-btn {
 }
 
 .p1 {
-	background-color: #234ea2;
+	background-color: #ec3a25;
 }
 .p2 {
 	background-color: #04a55c;
 }
 .p3 {
-	background-color: #ec3a25;
+	background-color: #234ea2;
 }
 .p4 {
 	background-color: #f37f25;
@@ -1085,6 +1087,18 @@ div.disabled {
 .diceImg {
 	height: 30px;
 	width: 30px;
+}
+
+#roll-dice {
+	margin-bottom: 15px;
+	background-color: #04a55c;
+	color: #c9e8df;
+}
+
+#end-turn {
+	margin-bottom: 15px;
+	background-color: #8b1641;
+	color: #d49fa3;
 }
 
 #dice1,

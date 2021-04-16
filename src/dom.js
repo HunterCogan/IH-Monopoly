@@ -313,20 +313,30 @@ const movePiece = (piece, start, end) => {
 	}, 300);
 };
 
-testBtn.onclick = () => (
-	// movePiece(p1Piece, 0, 45),
-	// movePiece(p2Piece, 0, 45),
-	// movePiece(p3Piece, 0, 45),
-	movePiece(p3Piece, 0, 45)
-);
+// testBtn.onclick = () => (
+// 	(p1Piece, 0, 45),
+// 	movePiece(p2Piece, 0, 45),
+// 	movePiece(p3Piece, 0, 45),
+// 	movePiece(p3Piece, 0, 45)
+// );
 
 window.movePiece = movePiece;
 
-const makeMoveHappen = () => {
-	let roll = currPlayer.rolledNumber;
-	let start = currPlayer.position;
-	let name = currPlayer.name;
-	let end = start + roll;
+//handle greying of dice
+let diceBtn = $('#roll-dice');
+let endTurn = $('#end-turn');
+
+diceBtn.onclick = () => {
+	diceBtn.style.backgroundColor = '#8d9491';
+	diceBtn.classList.add('no-click');
+};
+
+endTurn.onclick = () => {
+	diceBtn.style.backgroundColor = '#04a55c';
+	diceBtn.classList.remove('no-click');
+};
+
+const makeMoveHappen = (type, s, e) => {
 	let pos = '';
 	let piece;
 
@@ -346,10 +356,17 @@ const makeMoveHappen = () => {
 		piece = $('#p4-token');
 	}
 
-	console.log(roll, start, end, piece);
-	console.log(typeof piece);
+	//move directly, forced
+	if (type === 'direct') {
+		movePiece(piece, s, e);
+	} else {
+		let roll = currPlayer.rolledNumber;
+		let start = currPlayer.position;
+		let end = start + roll;
 
-	movePiece(piece, start, end);
+
+		movePiece(piece, start, end);
+	}
 };
 
 //////////////////////End Test Movement//////////////////////

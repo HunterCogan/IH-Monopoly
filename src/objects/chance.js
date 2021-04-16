@@ -1,7 +1,7 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
 import { players, currPlayer } from './../game.js';
-import {$} from './../dom.js';
+import {$, makeMoveHappen} from './../dom.js';
 
 // all the chance cards before shuffling
 let chanceCards = [];
@@ -29,28 +29,34 @@ function landOnChance() {
 	if (cardCounter === 30) cardCounter = 0;
 	if (cardCounter < 15) {
 		const chanceCard = chance.pop();
-		chanceCard.action();
-		chanceCards.push(chanceCard);
-		cardCounter++;
 
+		let wait = (currPlayer.rolledNumber * 300 ) + 500;
 		let chanceModalContent = $('#chance-modal-content ');
 		let chanceModal = $('#chance-modal');
-		console.log(chanceCard.id);
-		$('#chance-modal').style.display = 'flex';
-		$('#manage-content').style.display = 'none';
-		chanceModalContent.style.display = 'flex';
-		chanceModalContent.style.background = `url(../assets/Cards/chance${chanceCard.id}.jpg) no-repeat`;
-		chanceModalContent.style.backgroundSize = '100%';
 
-		$('#close-chance').onclick = () => {
-			chanceModal.style.display = 'none';
-		};
+		setTimeout(() => {
+			chanceCard.action();
+			chanceCards.push(chanceCard);
+			cardCounter++;
 
-		window.onclick = (e) => {
-			if (e.target === chanceModal) {
+			$('#chance-modal').style.display = 'flex';
+			$('#manage-content').style.display = 'none';
+			chanceModalContent.style.display = 'flex';
+			chanceModalContent.style.background = `url(../assets/Cards/chance${chanceCard.id}.jpg) no-repeat`;
+			chanceModalContent.style.backgroundSize = '100%';
+
+			makeMoveHappen('direct', currPlayer.position - 1, currPlayer.position);
+
+			$('#close-chance').onclick = () => {
 				chanceModal.style.display = 'none';
+			};
+
+			window.onclick = (e) => {
+				if (e.target === chanceModal) {
+					chanceModal.style.display = 'none';
+				}
 			}
-		}
+		}, wait);
 	}
 
 	if (32 > cardCounter > 15) {
@@ -179,14 +185,14 @@ card10.action = () => {
 };
 
 // Pay tax of $0.15
-let card11 = new Chance(11);
-card11.action = () => {
-	currPlayer.bitcoin -= 0.15;
-};
+// let card11 = new Chance(11);
+// // card11.action = () => {
+// // 	currPlayer.bitcoin -= 0.15;
+// // };
 
 // Take a trip to Charter ISP–If you pass Go, collect $2
-let card12 = new Chance(12);
-card12.action = () => {
+let card11 = new Chance(11);
+card11.action = () => {
 	if (currPlayer.position > 5) {
 		currPlayer.bitcoin += 2;
 	}
@@ -194,18 +200,24 @@ card12.action = () => {
 };
 
 // Advance hardware to Google Walk
-let card13 = new Chance(13);
-card13.action = () => {
+let card12 = new Chance(12);
+card12.action = () => {
 	currPlayer.position = 39;
 };
 
 // Pay each player $0.5
-let card14 = new Chance(14);
-card14.action = () => {
+let card13 = new Chance(13);
+card13.action = () => {
 	for (let player in players) {
 		currPlayer.bitcoin -= 0.5;
 		players[player].bitcoin += 0.5;
 	}
+};
+
+//Collect $1.5
+let card14 = new Chance(14);
+card14.action = () => {
+	currPlayer.bitcoin += 1.5;
 };
 
 // Collect $1
@@ -214,11 +226,6 @@ card14.action = () => {
 // 	currPlayer.bitcoin += 1;
 // };
 
-// Collect $1.5
-// let card16 = new Chance(16);
-// card16.action = () => {
-// 	currPlayer.bitcoin += 1.5;
-// };
 
 chanceCards.push(
 	card1,
