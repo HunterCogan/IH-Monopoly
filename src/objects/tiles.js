@@ -350,7 +350,7 @@ properties[39] = new Property('Google', 4, [0.5, 2, 6, 14, 17, 20], 2, 2, 'darkB
 
 properties[5] = new Property('Charter', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[15] = new Property('TimeWarner', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
-properties[25] = new Property('AT&T', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
+properties[25] = new Property('ATT', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 properties[35] = new Property('Comcast', 2, [0.25, 0.5, 1, 2], 1, null, 'isp');
 
 properties[28] = new Property('GoogleFiber', 1.5, [4, 10], 0.75, null, 'utility');
