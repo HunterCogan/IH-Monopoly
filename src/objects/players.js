@@ -25,12 +25,12 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
-		// let dice1 = 15;
-		// let dice2 = 15;
+		let dice1 = 5;
+		let dice2 = 5;
 
 		//normal
-		let dice1 = 3;
-		let dice2 = 3;
+		// let dice1 = this.dice();
+		// let dice2 = this.dice();
 		this.rolledNumber = dice1 + dice2;
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
@@ -44,7 +44,7 @@ class Character {
 		document.querySelector('#dice2').setAttribute('src', secondDiceImg);
 
 		if (dice1 !== dice2) {
-			this.rolledDouble = false
+			this.rolledDouble = false;
 			this.diceRolled = true;
 			makeMoveHappen();
 			this.movePlayer();

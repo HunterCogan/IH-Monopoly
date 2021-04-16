@@ -361,7 +361,7 @@ diceBtn.onclick = () => {
 	let wait = 0;
 	setTimeout(() => {
 		wait = currPlayer.rolledNumber * 300;
-		console.log(currPlayer.rolledDouble === true)
+		console.log(currPlayer.rolledDouble === true);
 
 		if (currPlayer.rolledDouble === true) {
 			if (currPlayer.jail[0] === true) {
@@ -369,19 +369,19 @@ diceBtn.onclick = () => {
 				endTurn.style.color = '#d49fa3';
 				endTurn.classList.remove('no-click');
 			} else {
-			diceBtn.style.backgroundColor = '#04a55c';
-			diceBtn.classList.remove('no-click');
-			endTurn.style.backgroundColor = '#8d9491';
-			endTurn.style.color = '#c9e8df';
-			endTurn.classList.add('no-click');
-			} 
+				diceBtn.style.backgroundColor = '#04a55c';
+				diceBtn.classList.remove('no-click');
+				endTurn.style.backgroundColor = '#8d9491';
+				endTurn.style.color = '#c9e8df';
+				endTurn.classList.add('no-click');
+			}
 		} else {
 			setTimeout(() => {
 				endTurn.style.backgroundColor = '#8b1641';
 				endTurn.style.color = '#d49fa3';
 				endTurn.classList.remove('no-click');
 			}, wait);
-		}	
+		}
 	}, 500);
 };
 
@@ -426,13 +426,13 @@ const landingModalHandle = () => {
 				console.log(currPlayer.playerNum);
 
 				if (currPlayer.playerNum === 1) {
-					$(tab).style.backgroundColor = `#ec3b25`
+					$(tab).style.backgroundColor = `#ec3b25`;
 				} else if (currPlayer.playerNum === 2) {
-					$(tab).style.backgroundColor = `#04a55c`
+					$(tab).style.backgroundColor = `#04a55c`;
 				} else if (currPlayer.playerNum === 3) {
-					$(tab).style.backgroundColor = `#234ea2`
+					$(tab).style.backgroundColor = `#234ea2`;
 				} else if (currPlayer.playerNum === 4) {
-					$(tab).style.backgroundColor = `#f37f25`
+					$(tab).style.backgroundColor = `#f37f25`;
 				}
 			};
 			$('#dont-buy-prop').onclick = () => {
