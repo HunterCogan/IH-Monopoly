@@ -42,7 +42,7 @@ function landOnCommunity() {
 			$('#chance-modal').style.display = 'flex';
 			$('#manage-content').style.display = 'none';
 			chanceModalContent.style.display = 'flex';
-			chanceModalContent.style.background = `url(../assets/Cards/comm${communityCard.id}.jpg) no-repeat`;
+			chanceModalContent.style.background = `url(./assets/Cards/comm${communityCard.id}.jpg) no-repeat`;
 			chanceModalContent.style.backgroundSize = '100%';
 
 			if (currPlayer.jail[0] === true) {

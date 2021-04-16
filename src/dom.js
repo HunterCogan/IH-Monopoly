@@ -4,10 +4,10 @@ import { totalHouse, totalHotel, properties } from './objects/tiles.js';
 const $ = function (ele) {
 	return document.querySelector(ele);
 };
-const keyboard = new Audio('/assets/sounds/keyboard.mp3');
-const monitor = new Audio('/assets/sounds/monitor.mp3');
-const mouse = new Audio('/assets/sounds/mouse.mp3');
-const speaker = new Audio('/assets/sounds/speaker.mp3');
+const keyboard = new Audio('./assets/sounds/keyboard.mp3');
+const monitor = new Audio('./assets/sounds/monitor.mp3');
+const mouse = new Audio('./assets/sounds/mouse.mp3');
+const speaker = new Audio('./assets/sounds/speaker.mp3');
 
 //////////////////////Start Page-load Modal//////////////////////
 let startModal = $('#start-modal');
@@ -199,12 +199,12 @@ modalClose.onclick = () => {
 };
 
 //remove this for product
-devBtn.onclick = () => {
-	p1Input.value = 'Juan';
-	p2Input.value = 'Dicky';
-	p3Input.value = 'Jonny';
-	p4Input.value = 'Hunter';
-};
+// devBtn.onclick = () => {
+// 	p1Input.value = 'Juan';
+// 	p2Input.value = 'Dicky';
+// 	p3Input.value = 'Jonny';
+// 	p4Input.value = 'Hunter';
+// };
 
 $('#p-num-default').classList.add('pSelected');
 
