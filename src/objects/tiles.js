@@ -112,29 +112,47 @@ class Property {
 	// build servers
 	build() {
 		const { typeMax, serverCount } = this.counter(properties);
+		console.log(serverCount);
 
 		// if utility or isp, cannot use this function;
 		if (this.type === 'utility' || this.type == 'isp') return false;
 
 		//if owner owns all of the same type he can build
 		if (typeMax) {
+			if (this.server === 5) {
+				return false;
+			}
 			// check what he can build
 			if (this.server === Math.min(...serverCount)) {
 				console.log('both have same number of servers');
-				if ((this.server < 4 && totalHouse > 0) || (this.server = 4 && totalHotel > 0)) {
+				if (
+					(this.server < 4 && totalHouse > 0) ||
+					(this.server === 4 && totalHotel > 0)
+				) {
 					console.log("there's enough servers");
 					//if player has enough money
 					if (this.housePrice > currPlayer.bitcoin) {
 						console.log("You don't have enough money to buy a server");
 						return false;
-					} else {
+					} else if(this.server === 4 && this.housePrice * 5 > currPlayer.bitcoin){
+							console.log("You don't have enough money to buy a server");
+							return false;
+						} else if (this.server === 4 && this.housePrice * 5 < currPlayer.bitcoin){
+							this.server += 1;
+						 totalHotel--;
+						// take money from player
+						currPlayer.bitcoin -= this.housePrice * 5;
+						updateBitcoin();
+						return true
+						}
 						//update server count
 
 						this.server += 1;
-
+						totalHouse--;
 						// take money from player
 						currPlayer.bitcoin -= this.housePrice;
 						updateBitcoin();
+						return true;
 					}
 				} else {
 					console.log('Ran out of microtransistors to build servers or super compputers');
@@ -145,19 +163,14 @@ class Property {
 		//if not no
 		return true;
 	}
-}
 
-/* <div id="m-microsoft" class="flex-row prop-list lightgreen">
-							<div class="flex-row baseline">
-								<div class="m-name">Microsoft: </div>
-								<div class="m-amt"> ₿ 0.02</div>
-							</div>
-							<div class="m-btn-row flex-row">
-								<div id="microsoft-server" class="m-server" >Buy Servers</div>
-								<div id="microsoft-trade" class="m-trade">Trade</div>
-								<div id="microsoft-mortgage" class="m-mortgage">Mortgage</div>
-							</div>
-						</div> */
+	sell(){
+		// if serer amt is < 0 return false
+
+		// if server= 5 server amt -- then currplayer.bitcoin  += this.housePrice /2
+		if(this.server )
+	}
+}
 
 let properties = {};
 

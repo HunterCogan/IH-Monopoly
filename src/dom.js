@@ -307,12 +307,12 @@ let serverModal = $('#servers-modal');
 let serverModalTitle = $('#servers-modal .modal-title span');
 let currentServerModalId = 'none';
 const handleServerBuy = (e) => {
+	console.log(e);
 	let id = e.id.split('-')[0];
 	//================================================================//
 	//Dicky's test: remove if buggy START
 	let currProperty;
 	let serverBuy = $('.server-buy');
-
 	let serverSell = $('.server-sell');
 	let clusterBuy = $('.cluster-buy');
 	let clusterSell = $('.cluster-sell');
@@ -324,7 +324,7 @@ const handleServerBuy = (e) => {
 	for (let property of currPlayer.properties) {
 		if (property.name === id) currProperty = property;
 	}
-	console.log(properties[1].server);
+
 	const updateServer = () => {
 		const serverNum = $('#serverNum');
 		serverNum.innerText = 0;
@@ -366,6 +366,9 @@ const handleServerBuy = (e) => {
 				serverSell.classList.add('no-click');
 			}
 		}
+		if (currProperty.server < 4) {
+			clusterSell.classList.add('no-click');
+		}
 		if (currProperty.server === 4) {
 			serverBuy.classList.add('no-click');
 			clusterSell.classList.add('no-click');
@@ -374,7 +377,7 @@ const handleServerBuy = (e) => {
 			serverBuy.classList.add('no-click');
 			serverSell.classList.add('no-click');
 
-			clusterSell.classList.add('no-click');
+			clusterBuy.classList.add('no-click');
 		}
 
 		const buildBtn = $('.server-buy');
