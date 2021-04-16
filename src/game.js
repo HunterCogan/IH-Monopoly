@@ -239,9 +239,12 @@ function endTurn() {
 	`;
 	if (checkJail()) {
 		if (currPlayer.getOutJail[0] === false) {
-			document.querySelector('#get-out-jail').classList.add('.no-click');
+			console.log(document.querySelector('#get-out-jail'));
+			document.querySelector('#get-out-jail').classList.remove('yellow');
+			document.querySelector('#get-out-jail').classList.add('no-click');
 		} else {
-			document.querySelector('#get-out-jail').classList.remove('.no-click');
+			document.querySelector('#get-out-jail').classList.remove('no-click');
+			document.querySelector('#get-out-jail').classList.add('yellow');
 		}
 		manageModal.style.display = 'flex';
 		manageContent.style.display = 'none';
