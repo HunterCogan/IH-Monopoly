@@ -4,8 +4,7 @@ p {
 }
 
 .slideContainer {
-    width: 100px;
-    margin-top: 200px;
+    width: 500px;
 }
 
 .slider {
@@ -28,19 +27,21 @@ p {
 .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background: white;
     border-radius: 50%;
     cursor: pointer;
 }
 
 .slider::-moz-range-thumb {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     background: white;
     border-radius: 50%;
     cursor: pointer;
 }
+
+
 
 

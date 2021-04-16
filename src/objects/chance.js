@@ -208,19 +208,20 @@ card10.action = () => {
 	}
 	//check for broke-ness
 	currPlayer.bitcoin -= amt;
+	document.querySelector(
+		'#game-status span'
+	).innerText = `${currPlayer.name} paid $0.25 per server and $1 per Quantum Computer`;
 };
 
-// Pay tax of $0.15
-// let card11 = new Chance(11);
-// // card11.action = () => {
-// // 	currPlayer.bitcoin -= 0.15;
-// // };
 
 // Take a trip to Charter ISP–If you pass Go, collect $2
 let card11 = new Chance(11);
 card11.action = () => {
 	if (currPlayer.position > 5) {
 		currPlayer.bitcoin += 2;
+		document.querySelector(
+			'#game-status span'
+		).innerText = `${currPlayer.name} passed go and received $2`;
 	}
 	currPlayer.position = 5;
 };
@@ -237,6 +238,9 @@ card13.action = () => {
 	for (let player in players) {
 		currPlayer.bitcoin -= 0.5;
 		players[player].bitcoin += 0.5;
+		document.querySelector(
+			'#game-status span'
+		).innerText = `${currPlayer.name} paid each player $0.5`;
 	}
 };
 
@@ -244,13 +248,12 @@ card13.action = () => {
 let card14 = new Chance(14);
 card14.action = () => {
 	currPlayer.bitcoin += 1.5;
+	document.querySelector(
+		'#game-status span'
+	).innerText = `${currPlayer.name} received $1.5`;
 };
 
-// Collect $1
-// let card15 = new Chance(15);
-// card15.action = () => {
-// 	currPlayer.bitcoin += 1;
-// };
+
 
 chanceCards.push(
 	card1,
