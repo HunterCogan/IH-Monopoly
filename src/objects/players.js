@@ -25,12 +25,12 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
-		//let dice1 = this.dice();
-		//let dice2 = this.dice();
+		let dice1 = 1;
+		let dice2 = 1;
 
 		//normal
-		let dice1 = this.dice();
-		let dice2 = this.dice();
+		// let dice1 = this.dice();
+		// let dice2 = this.dice();
 		this.rolledNumber = dice1 + dice2;
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
@@ -50,13 +50,13 @@ class Character {
 			this.movePlayer();
 
 			if (this.position === 30) {
-				console.log('landed on 30')
-				let wait = (currPlayer.rolledNumber * 300)+ 500;
+				console.log('landed on 30');
+				let wait = currPlayer.rolledNumber * 300 + 500;
 				setTimeout(() => {
 					makeMoveHappen('jail');
 					this.position = 10;
 					currPlayer.position = 10;
-				}, wait)
+				}, wait);
 				this.diceRolled = true;
 				this.jail = [true, 0];
 			}
@@ -71,33 +71,31 @@ class Character {
 				this.diceRolled = true;
 				this.jail = [true, 0];
 				this.position = 10;
-			} 
-			else {
+			} else {
 				makeMoveHappen();
 				this.movePlayer();
 				if (this.position === 30) {
-					console.log('landed on 30')
-					let wait = (currPlayer.rolledNumber * 300) + 500;
+					console.log('landed on 30');
+					let wait = currPlayer.rolledNumber * 300 + 500;
 					setTimeout(() => {
 						makeMoveHappen('jail');
 						this.position = 10;
-					}, wait)
+					}, wait);
 					this.diceRolled = true;
 					this.jail = [true, 0];
-				} 
-			
+				}
+
 				console.log('TESTTEST' + this.position);
 			}
 			console.log(`Double count = ${this.doubleCount}`);
 		}
 	}
 
-
 	dice() {
 		return Math.round(Math.random() * 5) + 1;
 	}
 	collectTax() {
-		//TODO: need an action for bankrupt
+		//need an action for bankrupt
 		if (this.position === 4) {
 			if (this.bitcoin <= 0.5) {
 				console.log(`${this.name} is BANKRUPT`);
