@@ -1,4 +1,12 @@
-import { startGame, rollDice, endTurn, managePropList } from './game.js';
+import {
+	startGame,
+	rollDice,
+	endTurn,
+	managePropList,
+	payJail,
+	freeJail,
+	rollJail,
+} from './game.js';
 import { properties } from './objects/tiles.js';
 import { makeMoveHappen } from './dom.js';
 
@@ -28,15 +36,15 @@ manageBtn.addEventListener('click', () => {
 	};
 });
 
-// pay to get out of jail
-// const payJailBtn = document.querySelector('#pay-jail');
-// payJailBtn.addEventListener('click', payJail);
-// // roll to get out of jail
-// const rollJailBtn = document.querySelector('#roll-jail');
-// rollJailBtn.addEventListener('click', rollJail);
-// // use get out of jail card
-// const freeJailBtn = document.querySelector('#free-jail');
-// freeJailBtn.addEventListener('click', freeJail);
-//end turn button
+//pay to get out of jail
+const payJailBtn = document.querySelector('#pay-ransom');
+payJailBtn.addEventListener('click', payJail);
+// roll to get out of jail
+const rollJailBtn = document.querySelector('#roll-for-double');
+rollJailBtn.addEventListener('click', rollJail);
+// use get out of jail card
+const freeJailBtn = document.querySelector('#get-out-jail');
+freeJailBtn.addEventListener('click', freeJail);
+
 const endBtn = document.querySelector('#end-turn');
 endBtn.addEventListener('click', endTurn);
