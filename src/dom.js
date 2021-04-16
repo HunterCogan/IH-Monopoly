@@ -409,7 +409,7 @@ const landingModalHandle = () => {
 				let tab = `#tab-${prop}`;
 				console.log(tab);
 				console.log(currPlayer);
-				$(tab).style.display = `backgroundColor: `
+				$(tab).style.display = `backgroundColor: `;
 			};
 			$('#dont-buy-prop').onclick = () => {
 				manageModal.style.display = 'none';
