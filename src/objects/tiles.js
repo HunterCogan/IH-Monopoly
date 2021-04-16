@@ -113,7 +113,6 @@ class Property {
 	// build servers
 	build() {
 		const { typeMax, serverCount } = this.counter(properties);
-		console.log(serverCount);
 
 		// if utility or isp, cannot use this function;
 		if (this.type === 'utility' || this.type == 'isp') return false;

@@ -122,7 +122,6 @@ class Character {
 			this.position = 10;
 			this.jail = [true, 0];
 			this.diceRolled = true;
-			console.log('WEEEE' + this.position);
 		}, wait);
 	}
 
@@ -136,7 +135,7 @@ class Character {
 			//maybe add modal to say income tax was taken
 		} else if (this.position === 7 || this.position === 22 || this.position === 36) {
 			//TODO: animation/action for chance?
-			console.log('pos 7');
+
 			landOnChance();
 			updateBitcoin();
 		} else if (this.position === 2 || this.position === 17 || this.position === 33) {
