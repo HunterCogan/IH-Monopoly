@@ -25,8 +25,8 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
-		let dice1 = this.dice();
-		let dice2 = this.dice();
+		let dice1 = 1;
+		let dice2 = 1;
 
 		//normal
 		// let dice1 = this.dice();
@@ -48,47 +48,18 @@ class Character {
 			this.diceRolled = true;
 			makeMoveHappen();
 			this.movePlayer();
-
-			if (this.position === 30) {
-				console.log('landed on 30')
-				let wait = (currPlayer.rolledNumber * 300)+ 500;
-				setTimeout(() => {
-					makeMoveHappen('jail');
-					this.position = 10;
-					currPlayer.position = 10;
-				}, wait)
-				this.diceRolled = true;
-				this.jail = [true, 0];
-			}
 		}
 		if (dice1 === dice2) {
-			console.log('You rolled a double, roll again');
 			this.rolledDouble = true;
-			this.diceRolled = false;
 			this.doubleCount++;
 			if (this.doubleCount === 3) {
-				makeMoveHappen('jail');
-				this.diceRolled = true;
-				this.jail = [true, 0];
-				this.position = 10;
-			} 
-			else {
+				this.goToJail();
+			} else {
+				this.diceRolled = false;
 				makeMoveHappen();
 				this.movePlayer();
-				if (this.position === 30) {
-					console.log('landed on 30')
-					let wait = (currPlayer.rolledNumber * 300) + 500;
-					setTimeout(() => {
-						makeMoveHappen('jail');
-						this.position = 10;
-					}, wait)
-					this.diceRolled = true;
-					this.jail = [true, 0];
-				} 
-			
-				console.log('TESTTEST' + this.position);
+				console.log('You rolled a double, roll again');
 			}
-			console.log(`Double count = ${this.doubleCount}`);
 		}
 	}
 
@@ -131,6 +102,17 @@ class Character {
 		this.checkPosition();
 	}
 
+	goToJail() {
+		let wait = (currPlayer.rolledNumber * 300) + 500;
+			setTimeout(() => {
+				makeMoveHappen('jail');
+				this.position = 10;
+				this.jail = [true, 0]
+				this.diceRolled = true;
+				console.log('WEEEE' + this.position)
+			}, wait)	
+	}
+
 	// what tile did player land on and what will happen
 	checkPosition() {
 		if (this.position === 0) {
@@ -151,8 +133,7 @@ class Character {
 		} else if (this.position === 10 || this.position === 20) {
 			return false;
 		} else if (this.position === 30) {
-			// this.position = 10;
-			this.jail[0] = true;
+			this.goToJail();
 		} else {
 			console.log(
 				`${this.name} what do you want to do with ${properties[this.position].name}`
