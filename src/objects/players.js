@@ -7,7 +7,7 @@ import { properties } from './tiles.js';
 import { makeMoveHappen } from '../dom.js';
 
 class Character {
-	constructor(name) {
+	constructor(name, playerNum) {
 		this.name = name;
 		// starting amount each player gets
 		this.bitcoin = 15;
@@ -19,6 +19,7 @@ class Character {
 		this.rolledNumber = 0;
 		this.diceRolled = false;
 		this.doubleCount = 0;
+		this.playerNum = playerNum;
 	}
 	rollDice() {
 		//chance debugging

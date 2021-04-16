@@ -12,8 +12,8 @@ let currPlayer = players[index];
 
 // takes an ARRAY to make the players
 function createPlayers(playerNames) {
-	for (let name of playerNames) {
-		players.push(new Character(name));
+	for (let x = 1; x < playerNames.length + 1; x++) {
+		players.push(new Character(playerNames[x - 1], x));
 	}
 }
 
