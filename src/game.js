@@ -23,6 +23,8 @@ function afterJailOption() {
 	rollEnd.style.color = '#d49fa3';
 	rollEnd.classList.remove('no-click');
 	currPlayer.diceRolled = true;
+}
+function closeJailModal() {
 	manageModal.style.display = 'none';
 	manageContent.style.display = 'flex';
 	jailModal.style.display = 'none';
@@ -46,6 +48,10 @@ function startGame() {
 	`;
 }
 
+// function goToJail() {
+// 	currPlayer.position
+// }
+
 function checkJail() {
 	//if player.jail[0] = true
 	if (currPlayer.jail[0] === false) {
@@ -68,6 +74,7 @@ function payJail() {
 	//set jail false set the jail counter = 0
 	currPlayer.jail[0] = false;
 	currPlayer.jail[1] = 0;
+	closeJailModal();
 	makeMoveHappen();
 	//close jail modal
 	//TODO: query select to close modal
@@ -93,6 +100,7 @@ function rollJail() {
 	}
 
 	afterJailOption();
+	closeJailModal();
 	//set currPlayer.jail = false counter to 0
 	// TODO: close Jail modal
 }
@@ -107,6 +115,7 @@ function freeJail() {
 	currPlayer.getOutJail[0] = false;
 	currPlayer.getOutJail[1] -= 1;
 	currPlayer.jail = [false, 0];
+	closeJailModal();
 	// TODO: close modal
 }
 
@@ -114,8 +123,8 @@ function rollDice() {
 	// if the player in jail and have they rolled before?
 	if (!checkJail() && !currPlayer.diceRolled) {
 		currPlayer.rollDice();
-		makeMoveHappen();
-		currPlayer.movePlayer();
+		// makeMoveHappen();
+		// currPlayer.movePlayer();
 		console.log(currPlayer.position);
 		// console.log(currPlayer);
 	}

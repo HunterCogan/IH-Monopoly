@@ -44,9 +44,10 @@ class Character {
 		document.querySelector('#dice2').setAttribute('src', secondDiceImg);
 
 		if (dice1 !== dice2) {
-			this.rolledDouble = false
+			this.rolledDouble = false;
 			this.diceRolled = true;
 			makeMoveHappen();
+			this.movePlayer();
 		}
 		if (dice1 === dice2) {
 			console.log('You rolled a double, roll again');
@@ -54,11 +55,14 @@ class Character {
 			this.diceRolled = false;
 			this.doubleCount++;
 			if (this.doubleCount === 3) {
+				makeMoveHappen('jail');
+				this.diceRolled = true;
 				this.jail = [true, 0];
 				this.position = 10;
-				makeMoveHappen('jail');
 			} else {
 				makeMoveHappen();
+				this.movePlayer();
+				console.log('TESTTEST' + this.position);
 			}
 			console.log(`Double count = ${this.doubleCount}`);
 		}
