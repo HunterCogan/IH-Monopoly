@@ -11,6 +11,7 @@ const output = document.getElementById('value');
 const gameMusic = new Audio('./assets/sounds/gameMusic1.mp3')
 
 gameMusic.play();
+gameMusic.volume = .2;
 
 output.innerHTML = slider.value;
 
