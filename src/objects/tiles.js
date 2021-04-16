@@ -139,7 +139,7 @@ class Property {
 							return false;
 						} else if (this.server === 4 && this.housePrice * 5 < currPlayer.bitcoin){
 							this.server += 1;
-						 totalHotel--;
+						totalHotel--;
 						// take money from player
 						currPlayer.bitcoin -= this.housePrice * 5;
 						updateBitcoin();
@@ -161,16 +161,16 @@ class Property {
 			}
 		}
 		//if not no
-		return true;
+	
 	}
 
-	sell(){
-		// if serer amt is < 0 return false
+	// sell(){
+	// 	// if serer amt is < 0 return false
 
-		// if server= 5 server amt -- then currplayer.bitcoin  += this.housePrice /2
-		if(this.server )
-	}
-}
+	// 	// if server= 5 server amt -- then currplayer.bitcoin  += this.housePrice /2
+	// 	if(this.server )
+	// }
+
 
 let properties = {};
 
