@@ -405,6 +405,11 @@ const landingModalHandle = () => {
 				manageModal.style.display = 'none';
 				$('#manage-content').style.display = 'flex';
 				$('#landing-modal').style.display = 'none';
+
+				let tab = `#tab-${prop}`;
+				console.log(tab);
+				console.log(currPlayer);
+				$(tab).style.display = `backgroundColor: `
 			};
 			$('#dont-buy-prop').onclick = () => {
 				manageModal.style.display = 'none';
@@ -660,6 +665,7 @@ $('#tempTest1').onclick = () => {
 	window.onclick = (e) => {
 		if (e.target === manageModal) {
 			manageModal.style.display = 'none';
+			$('#jail-modal').style.display = 'none';
 		}
 	};
 };
