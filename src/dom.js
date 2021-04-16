@@ -4,10 +4,10 @@ import { totalHouse, totalHotel, properties } from './objects/tiles.js';
 const $ = function (ele) {
 	return document.querySelector(ele);
 };
-const keyboard = new Audio('/assets/sounds/keyboard.mp3')
-const monitor = new Audio('/assets/sounds/monitor.mp3')
-const mouse = new Audio('/assets/sounds/mouse.mp3')
-const speaker = new Audio('/assets/sounds/speaker.mp3')
+const keyboard = new Audio('/assets/sounds/keyboard.mp3');
+const monitor = new Audio('/assets/sounds/monitor.mp3');
+const mouse = new Audio('/assets/sounds/mouse.mp3');
+const speaker = new Audio('/assets/sounds/speaker.mp3');
 
 //////////////////////Start Page-load Modal//////////////////////
 let startModal = $('#start-modal');
@@ -28,7 +28,36 @@ let p2Input = $('#p2-name input');
 let p3Input = $('#p3-name input');
 let p4Input = $('#p4-name input');
 let startOutput = [];
-let propIds = [1,3,5,6,8,9,11,12,13,14,15,16,18,19,21,23,24,25,26,27,28,29,31,32,34,35,37,39];
+let propIds = [
+	1,
+	3,
+	5,
+	6,
+	8,
+	9,
+	11,
+	12,
+	13,
+	14,
+	15,
+	16,
+	18,
+	19,
+	21,
+	23,
+	24,
+	25,
+	26,
+	27,
+	28,
+	29,
+	31,
+	32,
+	34,
+	35,
+	37,
+	39,
+];
 
 const removeBorders = () => {
 	pSelect.forEach((e) => {
@@ -239,7 +268,6 @@ const movePiece = (piece, start, end) => {
 			monitor.play();
 		}
 
-
 		console.log(start, end);
 
 		//bottomLeft translate(-680px,0px)
@@ -251,12 +279,12 @@ const movePiece = (piece, start, end) => {
 		}
 
 		if (start > 1 && start < 10) {
-			piece.style.transform = `translate(${(start * -65) - 29}px, ${0}px)`
+			piece.style.transform = `translate(${start * -65 - 29}px, ${0}px)`;
 		}
 
 		// IF IN JAIL /////////////////////
 		if (currPlayer.jail[0] === true && start == 10) {
-			piece.style.transform = `translate(${(start * -65) - 35}px, ${-25}px)`
+			piece.style.transform = `translate(${start * -65 - 35}px, ${-25}px)`;
 		}
 		////////////////////////////////////////////////////////////////
 
@@ -268,7 +296,7 @@ const movePiece = (piece, start, end) => {
 				piece.style.transform = `translate(${-726}px, ${-20}px)`;
 			}
 			if (piece === p3Piece) {
-				piece.style.transform = `translate(${-726}px, ${45}px)`
+				piece.style.transform = `translate(${-726}px, ${45}px)`;
 			}
 			if (piece === p4Piece) {
 				piece.style.transform = `translate(${-690}px, ${15}px)`;
@@ -276,7 +304,7 @@ const movePiece = (piece, start, end) => {
 		}
 
 		if (start > 10 && start < 20) {
-			piece.style.transform = `translate(${-700}px, ${((start - 10) * -65) - 29}px)`
+			piece.style.transform = `translate(${-700}px, ${(start - 10) * -65 - 29}px)`;
 		}
 
 		if (start === 20) {
@@ -291,7 +319,7 @@ const movePiece = (piece, start, end) => {
 		}
 
 		if (start > 30 && start <= 40) {
-			piece.style.transform = `translate(0px, ${-700 + ((start - 30) * 65) + 21}px)`
+			piece.style.transform = `translate(0px, ${-700 + (start - 30) * 65 + 21}px)`;
 		}
 
 		if (start === 40) {
@@ -333,14 +361,13 @@ diceBtn.onclick = () => {
 
 	let wait = 0;
 	setTimeout(() => {
-		wait = (currPlayer.rolledNumber * 300 );
+		wait = currPlayer.rolledNumber * 300;
 		setTimeout(() => {
 			endTurn.style.backgroundColor = '#8b1641';
 			endTurn.style.color = '#d49fa3';
 			endTurn.classList.remove('no-click');
-		}, wait)
+		}, wait);
 	}, 500);
-
 };
 
 endTurn.onclick = () => {
@@ -369,8 +396,6 @@ const landingModalHandle = () => {
 				manageModal.style.display = 'none';
 				$('#manage-content').style.display = 'flex';
 				$('#landing-modal').style.display = 'none';
-				
-
 			};
 			$('#dont-buy-prop').onclick = () => {
 				manageModal.style.display = 'none';
@@ -379,15 +404,13 @@ const landingModalHandle = () => {
 			};
 		}
 	});
-
 };
-
 
 const makeMoveHappen = (type, s, e) => {
 	let pos = '';
 	let piece;
 	let wait = 0;
-	wait = (currPlayer.rolledNumber * 300 ) + 500;
+	wait = currPlayer.rolledNumber * 300 + 500;
 
 	players.forEach((e, i) => {
 		if (e.name === currPlayer.name) {
@@ -423,7 +446,7 @@ const makeMoveHappen = (type, s, e) => {
 	setTimeout(() => {
 		console.log('test1');
 		landingModalHandle();
-	},wait);
+	}, wait);
 };
 
 //////////////////////End Test Movement//////////////////////
@@ -436,12 +459,8 @@ let manageModal = $('#manage-modal');
 let serverModal = $('#servers-modal');
 let serverModalTitle = $('#servers-modal .modal-title span');
 let currentServerModalId = 'none';
-const handleServerBuy = (e) => {
-	console.log(e);
-	let id = e.id.split('-')[0];
-	//================================================================//
-	//Dicky's test: remove if buggy START
-	let currProperty;
+// handles all the dynamics of the buy server button
+function handleBtnColor(currProperty) {
 	let serverBuy = $('.server-buy');
 	let serverSell = $('.server-sell');
 	let clusterBuy = $('.cluster-buy');
@@ -450,31 +469,6 @@ const handleServerBuy = (e) => {
 	serverSell.classList.remove('no-click');
 	clusterBuy.classList.remove('no-click');
 	clusterSell.classList.remove('no-click');
-	// sets the current Property for this button
-	for (let property of currPlayer.properties) {
-		if (property.name === id) currProperty = property;
-	}
-
-	const updateServer = () => {
-		const serverNum = $('#serverNum');
-		serverNum.innerText = 0;
-		const clusterNum = $('#clusterNum');
-		clusterNum.innerText = 0;
-		if (currProperty.server < 5) {
-			serverNum.innerText = currProperty.server;
-			clusterNum.innerText = 0;
-		}
-		if (currProperty.server === 5) {
-			serverNum.innerText = 0;
-			clusterNum.innerText = 1;
-		}
-	};
-	updateServer();
-	function serverBtnHandler() {
-		currProperty.build();
-		updateServer();
-	}
-
 	let { typeMax, serverCount } = currProperty.counter(properties);
 	//if total house or hotel is maxed out grey out all buttons
 	if (totalHouse === 0) serverBuy.classList.add('no-click');
@@ -496,12 +490,21 @@ const handleServerBuy = (e) => {
 				serverSell.classList.add('no-click');
 			}
 		}
+		if (currProperty.server < 4 && currProperty.server !== Math.min(...serverCount)) {
+			serverBuy.classList.add('no-click');
+		}
 		if (currProperty.server < 4) {
 			clusterSell.classList.add('no-click');
+			clusterBuy.classList.add('no-click');
 		}
 		if (currProperty.server === 4) {
 			serverBuy.classList.add('no-click');
 			clusterSell.classList.add('no-click');
+		}
+		if (currProperty.server === 4 && currProperty.server !== Math.min(...serverCount)) {
+			serverBuy.classList.add('no-click');
+			clusterSell.classList.add('no-click');
+			clusterBuy.classList.add('no-click');
 		}
 		if (currProperty.server === 5) {
 			serverBuy.classList.add('no-click');
@@ -509,23 +512,54 @@ const handleServerBuy = (e) => {
 
 			clusterBuy.classList.add('no-click');
 		}
+	}
+}
 
-		const buildBtn = $('.server-buy');
-		const buildBtn2 = $('.cluster-buy');
-
-		buildBtn.addEventListener('click', serverBtnHandler);
-		buildBtn2.addEventListener('click', serverBtnHandler);
-		document.querySelectorAll('.m-server').forEach((e) => {
-			e.onclick = () => {
-				buildBtn.removeEventListener('click', serverBtnHandler);
-				buildBtn2.removeEventListener('click', serverBtnHandler);
-				handleServerBuy(e);
-			};
-		});
+const handleServerBuy = (e) => {
+	console.log(e);
+	let id = e.id.split('-')[0];
+	//================================================================//
+	//Dicky's test: remove if buggy START
+	let currProperty;
+	// sets the current Property for this button
+	for (let property of currPlayer.properties) {
+		if (property.name === id) currProperty = property;
+	}
+	handleBtnColor(currProperty);
+	const updateServer = () => {
+		const serverNum = $('#serverNum');
+		serverNum.innerText = 0;
+		const clusterNum = $('#clusterNum');
+		clusterNum.innerText = 0;
+		if (currProperty.server < 5) {
+			serverNum.innerText = currProperty.server;
+			clusterNum.innerText = 0;
+		}
+		if (currProperty.server === 5) {
+			serverNum.innerText = 0;
+			clusterNum.innerText = 1;
+		}
+	};
+	updateServer();
+	function serverBtnHandler() {
+		currProperty.build();
+		updateServer();
+		handleBtnColor(currProperty);
 	}
 
-	//Dicky's test: remove if buggy END
-	//===================================================================//
+	const buildBtn = $('.server-buy');
+	const buildBtn2 = $('.cluster-buy');
+
+	buildBtn.addEventListener('click', serverBtnHandler);
+	buildBtn2.addEventListener('click', serverBtnHandler);
+	document.querySelectorAll('.m-server').forEach((e) => {
+		e.onclick = () => {
+			buildBtn.removeEventListener('click', serverBtnHandler);
+			buildBtn2.removeEventListener('click', serverBtnHandler);
+			handleServerBuy(e);
+		};
+	});
+
 	let close = $('#close-serv');
 	serverModal.style.display = 'flex';
 	serverModalTitle.innerHTML = id.charAt(0).toUpperCase() + id.slice(1);
@@ -534,6 +568,8 @@ const handleServerBuy = (e) => {
 		serverModal.style.display = 'none';
 	};
 };
+//Dicky's test: remove if buggy END
+//===================================================================//
 
 const handleManage = () => {
 	manageModal.style.display = 'flex';
@@ -610,4 +646,12 @@ document.querySelectorAll('.grid').forEach((e) => {
 
 //////////////////////End page-load binding//////////////////////
 
-export { $, showProperty, startOutput, handleManage, handleServerBuy, makeMoveHappen, landingModalHandle };
+export {
+	$,
+	showProperty,
+	startOutput,
+	handleManage,
+	handleServerBuy,
+	makeMoveHappen,
+	landingModalHandle,
+};
