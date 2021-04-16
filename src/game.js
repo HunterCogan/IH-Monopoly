@@ -10,8 +10,11 @@ const slider = document.getElementById('myRange');
 const output = document.getElementById('value');
 const gameMusic = new Audio('assets/sounds/gameMusic1.mp3')
 
-gameMusic.play();
-gameMusic.volume = .2;
+setTimeout(() => {
+	gameMusic.play();
+	gameMusic.volume = .2;
+}, 1000)
+
 
 output.innerHTML = slider.value;
 
