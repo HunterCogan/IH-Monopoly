@@ -1,6 +1,8 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
 import { currPlayer, players } from './../game.js';
+import {$, makeMoveHappen} from "../dom.js";
+import {updateBitcoin} from "./../game.js";
 
 let communityCards = [];
 
@@ -27,9 +29,41 @@ function landOnCommunity() {
 	if (cardCounter === 32) cardCounter = 0;
 	if (cardCounter < 16) {
 		const communityCard = community.pop();
-		communityCard.action();
-		communityCards.push(communityCard);
-		cardCounter++;
+
+		let wait = currPlayer.rolledNumber * 300 + 500;
+		let chanceModalContent = $('#chance-modal-content ');
+		let chanceModal = $('#chance-modal');
+
+		setTimeout(() => {
+			communityCard.action();
+			communityCards.push(communityCard);
+			cardCounter++;
+
+			$('#chance-modal').style.display = 'flex';
+			$('#manage-content').style.display = 'none';
+			chanceModalContent.style.display = 'flex';
+			chanceModalContent.style.background = `url(../assets/Cards/comm${communityCard.id}.jpg) no-repeat`;
+			chanceModalContent.style.backgroundSize = '100%';
+
+			if (currPlayer.jail[0] === true) {
+				makeMoveHappen('jail');
+			} else if (currPlayer.position === 0) {
+				makeMoveHappen('direct', 39, 40);
+			} else {
+				makeMoveHappen('direct', currPlayer.position - 1, currPlayer.position);
+			}
+			updateBitcoin();
+
+			$('#close-chance').onclick = () => {
+				chanceModal.style.display = 'none';
+			};
+
+			window.onclick = (e) => {
+				if (e.target === chanceModal) {
+					chanceModal.style.display = 'none';
+				}
+			};
+		}, wait);
 	}
 	if (32 > cardCounter > 15) {
 		const communityCard = community.shift();
