@@ -29,6 +29,10 @@ function startGame() {
 	`;
 }
 
+// function goToJail() {
+// 	currPlayer.position
+// }
+
 function checkJail() {
 	//if player.jail[0] = true
 	if (currPlayer.jail[0] === false) {
@@ -93,8 +97,8 @@ function rollDice() {
 	// if the player in jail and have they rolled before?
 	if (!checkJail() && !currPlayer.diceRolled) {
 		currPlayer.rollDice();
-		makeMoveHappen();
-		currPlayer.movePlayer();
+		// makeMoveHappen();
+		// currPlayer.movePlayer();
 		console.log(currPlayer.position);
 		// console.log(currPlayer);
 	}

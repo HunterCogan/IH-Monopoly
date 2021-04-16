@@ -29,8 +29,8 @@ class Character {
 		// let dice2 = 15;
 
 		//normal
-		let dice1 = this.dice();
-		let dice2 = this.dice();
+		let dice1 = 3;
+		let dice2 = 3;
 		this.rolledNumber = dice1 + dice2;
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
@@ -47,6 +47,7 @@ class Character {
 			this.rolledDouble = false
 			this.diceRolled = true;
 			makeMoveHappen();
+			this.movePlayer();
 		}
 		if (dice1 === dice2) {
 			console.log('You rolled a double, roll again');
@@ -54,11 +55,14 @@ class Character {
 			this.diceRolled = false;
 			this.doubleCount++;
 			if (this.doubleCount === 3) {
+				makeMoveHappen('jail');
+				this.diceRolled = true;
 				this.jail = [true, 0];
 				this.position = 10;
-				makeMoveHappen('jail');
 			} else {
 				makeMoveHappen();
+				this.movePlayer();
+				console.log('TESTTEST' + this.position);
 			}
 			console.log(`Double count = ${this.doubleCount}`);
 		}
