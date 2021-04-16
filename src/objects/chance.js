@@ -25,7 +25,6 @@ function randomize() {
 let cardCounter = 0;
 //call to randomly pick card when player lands on chance tile
 function landOnChance() {
-	console.log('landed on chance');
 	if (cardCounter === 30) cardCounter = 0;
 	if (cardCounter < 15) {
 		const chanceCard = chance.pop();
@@ -127,9 +126,9 @@ card4.action = () => {
 	if (property.checkOwner(currPlayer)) {
 		currPlayer.bitcoin -= property.calculateRent(properties, currPlayer.rolledNumber);
 		property.owner.bitcoin += property.calculateRent(properties, currPlayer.rolledNumber);
-		document.querySelector(
-			'#game-status span'
-		).innerText = `${currPlayer.name} paid ${property.owner.name} ${property.calculateRent(properties, currPlayer.rolledNumber)}`;
+		document.querySelector('#game-status span').innerText = `${currPlayer.name} paid ${
+			property.owner.name
+		} ${property.calculateRent(properties, currPlayer.rolledNumber)}`;
 	}
 	// Prompt to buy property
 };
@@ -151,9 +150,9 @@ card5.action = () => {
 	if (property.checkOwner(currPlayer)) {
 		currPlayer.bitcoin -= property.calculateRent() * 2;
 		property.owner.bitcoin += property.calculateRent() * 2;
-		document.querySelector(
-			'#game-status span'
-		).innerText = `${currPlayer.name} paid ${property.owner.name} ${property.calculateRent() * 2}`;
+		document.querySelector('#game-status span').innerText = `${currPlayer.name} paid ${
+			property.owner.name
+		} ${property.calculateRent() * 2}`;
 	}
 	// prompt to buy ISP
 };

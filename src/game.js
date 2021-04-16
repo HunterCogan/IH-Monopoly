@@ -43,7 +43,7 @@ function startGame() {
 	currPlayer = players[index];
 	console.log('Game Started');
 
-	console.log(currPlayer.name);
+
 	document.querySelector('#game-status span').innerHTML = `
 		${currPlayer.name}'s turn!
 	`;
@@ -100,7 +100,7 @@ function rollJail() {
 	}
 	// if player is on third turn and double false subtract money
 	if (dice1 !== dice2) {
-		console.log(currPlayer.name, currPlayer.jail[1]);
+
 		if (currPlayer.jail[1] === 3) {
 			messageDisplay.innerText = 'You did not roll a double, you loose bitcoins';
 			currPlayer.jail = [false, 0];
@@ -141,7 +141,7 @@ function rollDice() {
 		currPlayer.rollDice();
 		// makeMoveHappen();
 		// currPlayer.movePlayer();
-		console.log(currPlayer.position);
+
 		// console.log(currPlayer);
 	}
 }
@@ -239,6 +239,9 @@ function managePropList() {
 }
 
 function endTurn() {
+	console.log(currPlayer)
+	console.log(properties)
+	console.log('============================================')
 	currPlayer.diceRolled = false;
 	currPlayer.doubleCount = 0;
 	index < nameList[0] ? index++ : (index = 0);

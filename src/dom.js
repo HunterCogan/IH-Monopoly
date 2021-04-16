@@ -336,8 +336,6 @@ const movePiece = (piece, start, end) => {
 			start = 0;
 			end = end - 40;
 		}
-
-		//console.log('position is', end % 40);
 	}, 300);
 };
 
@@ -361,7 +359,6 @@ diceBtn.onclick = () => {
 	let wait = 0;
 	setTimeout(() => {
 		wait = currPlayer.rolledNumber * 300;
-		console.log(currPlayer.rolledDouble === true);
 
 		if (currPlayer.rolledDouble === true) {
 			if (currPlayer.jail[0] === true) {
@@ -450,13 +447,13 @@ const landingModalHandle = () => {
 					let tab = `#tab-${prop}`;
 
 					if (currPlayer.playerNum === 1) {
-						$(tab).style.backgroundColor = `#ec3b25`
+						$(tab).style.backgroundColor = `#ec3b25`;
 					} else if (currPlayer.playerNum === 2) {
-						$(tab).style.backgroundColor = `#04a55c`
+						$(tab).style.backgroundColor = `#04a55c`;
 					} else if (currPlayer.playerNum === 3) {
-						$(tab).style.backgroundColor = `#234ea2`
+						$(tab).style.backgroundColor = `#234ea2`;
 					} else if (currPlayer.playerNum === 4) {
-						$(tab).style.backgroundColor = `#f37f25`
+						$(tab).style.backgroundColor = `#f37f25`;
 					}
 				};
 				$('#dont-buy-prop').onclick = () => {
@@ -473,7 +470,7 @@ const makeMoveHappen = (type, s, e) => {
 	let pos = '';
 	let piece;
 	let wait = 0;
-	wait = (currPlayer.rolledNumber * 300) + 500;
+	wait = currPlayer.rolledNumber * 300 + 500;
 
 	players.forEach((e, i) => {
 		if (e.name === currPlayer.name) {
@@ -578,7 +575,6 @@ function handleBtnColor(currProperty) {
 }
 
 const handleServerBuy = (e) => {
-	console.log(e);
 	let id = e.id.split('-')[0];
 	//================================================================//
 	//Dicky's test: remove if buggy START
