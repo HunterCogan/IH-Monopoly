@@ -608,7 +608,7 @@ div.p-select-btn {
 /*wrap board and center*/
 
 #body-wrap {
-	
+	flex-direction: row;
 	justify-content: center;
 	align-items: center;
 	width: 1600px;
