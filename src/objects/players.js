@@ -29,8 +29,8 @@ class Character {
 		// let dice2 = 1;
 
 		//normal
-		let dice1 = 1;
-		let dice2 = 1;
+		let dice1 = 3;
+		let dice2 = 4;
 		this.rolledNumber = dice1 + dice2;
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
