@@ -18,6 +18,7 @@ class Character {
 		this.getOutJail = [false, 0];
 		this.rolledNumber = 0;
 		this.diceRolled = false;
+		this.rolledDouble = false;
 		this.doubleCount = 0;
 		this.playerNum = playerNum;
 	}
@@ -42,23 +43,25 @@ class Character {
 		document.querySelector('#dice2').style.display = 'flex';
 		document.querySelector('#dice2').setAttribute('src', secondDiceImg);
 
-		this.rolledNumber = dice1 + dice2;
 		if (dice1 !== dice2) {
+			this.rolledDouble = false
 			this.diceRolled = true;
-			console.log(`You rolled ${dice1}, ${dice2}, for a total of ${this.rolledNumber}`);
+			makeMoveHappen();
 		}
 		if (dice1 === dice2) {
-			console.log(`You rolled ${dice1}, ${dice2}, for a total of ${this.rolledNumber}`);
 			console.log('You rolled a double, roll again');
+			this.rolledDouble = true;
+			this.diceRolled = false;
 			this.doubleCount++;
-			if (this.doubleCount === 2) {
+			if (this.doubleCount === 3) {
 				this.jail = [true, 0];
 				this.position = 10;
+				makeMoveHappen('jail');
+			} else {
+				makeMoveHappen();
 			}
 			console.log(`Double count = ${this.doubleCount}`);
 		}
-		// move to game.js
-		// makeMoveHappen();
 	}
 
 	dice() {
