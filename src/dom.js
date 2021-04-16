@@ -1,5 +1,5 @@
 //DICKY's Import
-import { currPlayer, players } from './game.js';
+import { currPlayer, players, updateBitcoin } from './game.js';
 import { totalHouse, totalHotel, properties } from './objects/tiles.js';
 const $ = function (ele) {
 	return document.querySelector(ele);
@@ -361,7 +361,7 @@ diceBtn.onclick = () => {
 	let wait = 0;
 	setTimeout(() => {
 		wait = currPlayer.rolledNumber * 300;
-		console.log(currPlayer.rolledDouble === true)
+		console.log(currPlayer.rolledDouble === true);
 
 		if (currPlayer.rolledDouble === true) {
 			if (currPlayer.jail[0] === true) {
@@ -395,51 +395,73 @@ endTurn.onclick = () => {
 };
 
 const landingModalHandle = () => {
-	console.log('pos: ' + currPlayer.position);
 	propIds.forEach((e, i) => {
 		// DICKY -- added to check if currPlayer owns property already, if so, don't display anything
-		if (
-			currPlayer.position === e &&
-			properties[currPlayer.position].owner !== currPlayer.name
-		) {
-			let prop = properties[currPlayer.position].name.toLowerCase();
-			console.log(prop);
-			manageModal.style.display = 'flex';
-			$('#manage-content').style.display = 'none';
-			$('#landing-modal').style.display = 'flex';
-			//===========================DICKY====================//
-			let companyName = $('#prop-landed-on');
-			// set company name on modal
-			companyName.innerText = properties[currPlayer.position].name;
-			//===================================================//
-			$('#landing-img').style.backgroundImage = `url('assets/Cards/${prop}.jpg')`;
+		if (currPlayer.position === e) {
+			if (properties[currPlayer.position].owner) {
+				if (properties[currPlayer.position].owner.name !== currPlayer.name) {
+					manageModal.style.display = 'flex';
+					$('#manage-content').style.display = 'none';
+					$('#landing-modal').style.display = 'flex';
+					let rent = properties[currPlayer.position].calculateRent();
+					$('#rent-due').innerText = rent;
 
-			$('#buy-prop').onclick = () => {
-				//Dicky -- calls the buy function for currPlayer to buy
-				properties[currPlayer.position].buy();
-				manageModal.style.display = 'none';
-				$('#manage-content').style.display = 'flex';
-				$('#landing-modal').style.display = 'none';
+					$('#buy-prop').style.display = 'none';
+					$('#dont-buy-prop').style.display = 'none';
+					$('#pay-rent').style.display = 'flex';
 
-				let tab = `#tab-${prop}`;
+					$('#pay-rent').onclick = () => {
+						properties[currPlayer.position].owner.bitcoin += rent;
+						currPlayer.bitcoin -= rent;
+						updateBitcoin();
 
-				console.log(currPlayer.playerNum);
-
-				if (currPlayer.playerNum === 1) {
-					$(tab).style.backgroundColor = `#ec3b25`
-				} else if (currPlayer.playerNum === 2) {
-					$(tab).style.backgroundColor = `#04a55c`
-				} else if (currPlayer.playerNum === 3) {
-					$(tab).style.backgroundColor = `#234ea2`
-				} else if (currPlayer.playerNum === 4) {
-					$(tab).style.backgroundColor = `#f37f25`
+						manageModal.style.display = 'none';
+						$('#manage-content').style.display = 'flex';
+						$('#landing-modal').style.display = 'none';
+					};
+				} else if (properties[currPlayer.position].owner.name === currPlayer.name) {
+					console.log('curr player owns this property');
 				}
-			};
-			$('#dont-buy-prop').onclick = () => {
-				manageModal.style.display = 'none';
-				$('#manage-content').style.display = 'flex';
-				$('#landing-modal').style.display = 'none';
-			};
+			} else {
+				let prop = properties[currPlayer.position].name.toLowerCase();
+				manageModal.style.display = 'flex';
+				$('#manage-content').style.display = 'none';
+				$('#landing-modal').style.display = 'flex';
+				$('#buy-prop').style.display = 'flex';
+				$('#dont-buy-prop').style.display = 'flex';
+				$('#pay-rent').style.display = 'none';
+				//===========================DICKY====================//
+				let companyName = $('#prop-landed-on');
+				// set company name on modal
+				companyName.innerText = properties[currPlayer.position].name;
+				//===================================================//
+				$('#landing-img').style.backgroundImage = `url('assets/Cards/${prop}.jpg')`;
+
+				$('#buy-prop').onclick = () => {
+					//Dicky -- calls the buy function for currPlayer to buy
+					properties[currPlayer.position].buy();
+					manageModal.style.display = 'none';
+					$('#manage-content').style.display = 'flex';
+					$('#landing-modal').style.display = 'none';
+
+					let tab = `#tab-${prop}`;
+
+					if (currPlayer.playerNum === 1) {
+						$(tab).style.backgroundColor = `#ec3b25`
+					} else if (currPlayer.playerNum === 2) {
+						$(tab).style.backgroundColor = `#04a55c`
+					} else if (currPlayer.playerNum === 3) {
+						$(tab).style.backgroundColor = `#234ea2`
+					} else if (currPlayer.playerNum === 4) {
+						$(tab).style.backgroundColor = `#f37f25`
+					}
+				};
+				$('#dont-buy-prop').onclick = () => {
+					manageModal.style.display = 'none';
+					$('#manage-content').style.display = 'flex';
+					$('#landing-modal').style.display = 'none';
+				};
+			}
 		}
 	});
 };
@@ -482,7 +504,6 @@ const makeMoveHappen = (type, s, e) => {
 	}
 
 	setTimeout(() => {
-		console.log('test1');
 		landingModalHandle();
 	}, wait);
 };

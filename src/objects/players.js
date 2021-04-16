@@ -31,7 +31,8 @@ class Character {
 		//normal
 		let dice1 = this.dice();
 		let dice2 = this.dice();
-		this.rolledNumber = dice1 + dice2;
+		//this.rolledNumber = dice1 + dice2;
+		this.rolledNumber = 9;
 
 		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
 
