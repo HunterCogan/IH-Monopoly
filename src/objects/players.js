@@ -25,10 +25,8 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
-		let dice1 = this.dice();
-		let dice2 = this.dice();
-		// let dice1 = 1;
-		// let dice2 = 1;
+		//let dice1 = 1;
+		//let dice2 = 1;
 
 		//normal
 		let dice1 = this.dice();
@@ -107,7 +105,16 @@ class Character {
 
 	goToJail() {
 		let wait = currPlayer.rolledNumber * 300 + 500;
+
 		setTimeout(() => {
+			document.querySelector('#game-status span').innerText = `Your files have been hacked, ${currPlayer.name}'s turn.`;
+			document.querySelector('#roll-dice').style.backgroundColor = '#8d9491';
+			document.querySelector('#roll-dice').classList.add('no-click');
+
+			document.querySelector('#end-turn').style.backgroundColor = '#8b1641';
+			document.querySelector('#end-turn').style.color = '#d49fa3';
+			document.querySelector('#end-turn').classList.remove('no-click');
+
 			makeMoveHappen('jail');
 			this.position = 10;
 			this.jail = [true, 0];
