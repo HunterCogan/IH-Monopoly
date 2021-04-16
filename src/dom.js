@@ -199,12 +199,12 @@ modalClose.onclick = () => {
 };
 
 //remove this for product
-devBtn.onclick = () => {
-	p1Input.value = 'Juan';
-	p2Input.value = 'Dicky';
-	p3Input.value = 'Jonny';
-	p4Input.value = 'Hunter';
-};
+// devBtn.onclick = () => {
+// 	p1Input.value = 'Juan';
+// 	p2Input.value = 'Dicky';
+// 	p3Input.value = 'Jonny';
+// 	p4Input.value = 'Hunter';
+// };
 
 $('#p-num-default').classList.add('pSelected');
 
