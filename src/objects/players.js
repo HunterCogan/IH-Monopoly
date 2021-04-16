@@ -25,8 +25,8 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
-		//let dice1 = 1;
-		//let dice2 = 1;
+		// let dice1 = 1;
+		// let dice2 = 1;
 
 		//normal
 		let dice1 = 1;
