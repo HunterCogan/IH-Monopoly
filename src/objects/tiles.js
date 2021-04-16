@@ -209,7 +209,7 @@ properties[6] = new Property(
 );
 
 properties[8] = new Property(
-	'Imdb',
+	'imdb',
 	1,
 	[0.06, 0.3, 0.9, 2.7, 4, 5.5],
 	0.5,
@@ -217,7 +217,7 @@ properties[8] = new Property(
 	'lightBlue'
 );
 properties[9] = new Property(
-	'Espn',
+	'ESPN',
 	1.2,
 	[0.08, 0.4, 1, 3, 4.5, 6],
 	0.6,
@@ -269,7 +269,7 @@ properties[21] = new Property(
 	'red'
 );
 properties[23] = new Property(
-	'Ebay',
+	'eBay',
 	2.2,
 	[0.18, 0.9, 2.5, 7, 8.75, 10.5],
 	1.1,
