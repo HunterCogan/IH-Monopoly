@@ -46,7 +46,7 @@ function landOnChance() {
 			chanceModalContent.style.backgroundSize = '100%';
 
 			if (currPlayer.jail[0] === true) {
-				makeMoveHappen('jail', 10, 10);
+				makeMoveHappen('jail');
 			} else if (currPlayer.position === 0) {
 				makeMoveHappen('direct', 39, 40);
 			} else {

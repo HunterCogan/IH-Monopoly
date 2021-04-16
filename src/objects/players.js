@@ -25,8 +25,13 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
+<<<<<<< HEAD
 		// let dice1 = 1;
 		// let dice2 = 1;
+=======
+		//let dice1 = 1;
+		//let dice2 = 1;
+>>>>>>> 0f0b005721034fa5b32e236f398bc6f349ad01c7
 
 		//normal
 		let dice1 = this.dice();
@@ -50,21 +55,18 @@ class Character {
 			this.movePlayer();
 		}
 		if (dice1 === dice2) {
-			console.log('You rolled a double, roll again');
 			this.rolledDouble = true;
-			this.diceRolled = false;
 			this.doubleCount++;
 			if (this.doubleCount === 3) {
-				makeMoveHappen('jail');
-				this.diceRolled = true;
-				this.jail = [true, 0];
-				this.position = 10;
+				this.goToJail();
 			} else {
+				this.diceRolled = false;
 				makeMoveHappen();
 				this.movePlayer();
-				console.log('TESTTEST' + this.position);
+				document.querySelector(
+					'#game-status span'
+				).innerText = `${currPlayer.name} rolled a double. Roll Again!`;
 			}
-			console.log(`Double count = ${this.doubleCount}`);
 		}
 	}
 
@@ -72,20 +74,20 @@ class Character {
 		return Math.round(Math.random() * 5) + 1;
 	}
 	collectTax() {
-		//TODO: need an action for bankrupt
+		//need an action for bankrupt
 		if (this.position === 4) {
-			if (this.bitcoin <= 0.5) {
+			if (this.bitcoin <= 2) {
 				console.log(`${this.name} is BANKRUPT`);
 			} else {
-				this.bitcoin -= 0.5;
+				this.bitcoin -= 2;
 
 				updateBitcoin();
 			}
 		} else if (this.position === 38) {
-			if (this.bitcoin <= 1.5) {
+			if (this.bitcoin <= .75) {
 				console.log(`${this.name} is BANKRUPT`);
 			} else {
-				this.bitcoin -= 1.5;
+				this.bitcoin -= .75;
 				updateBitcoin();
 			}
 		}
@@ -104,6 +106,26 @@ class Character {
 		// TODO:if pass go collect
 		// check the position and its options
 		this.checkPosition();
+	}
+
+	goToJail() {
+		let wait = currPlayer.rolledNumber * 300 + 500;
+
+		setTimeout(() => {
+			document.querySelector('#game-status span').innerText = `Your files have been hacked, ${currPlayer.name}'s turn.`;
+			document.querySelector('#roll-dice').style.backgroundColor = '#8d9491';
+			document.querySelector('#roll-dice').classList.add('no-click');
+
+			document.querySelector('#end-turn').style.backgroundColor = '#8b1641';
+			document.querySelector('#end-turn').style.color = '#d49fa3';
+			document.querySelector('#end-turn').classList.remove('no-click');
+
+			makeMoveHappen('jail');
+			this.position = 10;
+			this.jail = [true, 0];
+			this.diceRolled = true;
+			console.log('WEEEE' + this.position);
+		}, wait);
 	}
 
 	// what tile did player land on and what will happen
@@ -126,11 +148,10 @@ class Character {
 		} else if (this.position === 10 || this.position === 20) {
 			return false;
 		} else if (this.position === 30) {
-			this.position = 10;
-			this.jail[0] = true;
+			this.goToJail();
 		} else {
 			console.log(
-				`${this.name} what do you want to do with ${properties[this.position].name}`
+				`${this.name}, what do you want to do with ${properties[this.position].name}`
 			);
 			//TODO: prompt for property option
 		}

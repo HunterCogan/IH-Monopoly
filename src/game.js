@@ -14,6 +14,7 @@ const manageContent = document.querySelector('#manage-content');
 const jailModal = document.querySelector('#jail-modal');
 const rollEnd = document.querySelector('#end-turn');
 let diceBtn = document.querySelector('#roll-dice');
+let messageDisplay = document.querySelector('#game-status span');
 
 // takes an ARRAY to make the players
 function afterJailOption() {
@@ -71,32 +72,47 @@ function payJail() {
 	}
 	//subtract money from player
 	currPlayer.bitcoin -= 0.5;
+	updateBitcoin();
 	//set jail false set the jail counter = 0
 	currPlayer.jail[0] = false;
 	currPlayer.jail[1] = 0;
 	closeJailModal();
-	makeMoveHappen();
+
 	//close jail modal
 	//TODO: query select to close modal
 }
 
 function rollJail() {
+	currPlayer.jail[1];
 	//variable dice1 = dice()
 	let dice1 = currPlayer.dice();
 	//variable dice 2 = dice()
 	let dice2 = currPlayer.dice();
+
 	//roll currplayer.dice() === currPlayer.dice()
 	if (dice1 === dice2) {
 		//if true currPlayer.rolled Number = dice1 + dice2
+		currPlayer.jail = [false, 0];
 		currPlayer.rolledNumber = dice1 + dice2;
+		messageDisplay.innerText = `You rolled a double, ${currPlayer.name}'s turn`;
+		makeMoveHappen();
+		currPlayer.movePlayer();
 	}
 	// if player is on third turn and double false subtract money
-	if (dice1 !== dice2 && currPlayer.jail[1] === 3) {
-		currPlayer.jail = [false, 0];
-		currPlayer.bitcoin -= 0.5;
-		currPlayer.rolledNumber = dice1 + dice2;
-		currPlayer.movePlayer();
-		makeMoveHappen();
+	if (dice1 !== dice2) {
+		console.log(currPlayer.name, currPlayer.jail[1]);
+		if (currPlayer.jail[1] === 3) {
+			messageDisplay.innerText = 'You did not roll a double, you loose bitcoins';
+			currPlayer.jail = [false, 0];
+			currPlayer.bitcoin -= 0.5;
+			updateBitcoin();
+			currPlayer.rolledNumber = dice1 + dice2;
+			makeMoveHappen();
+			currPlayer.movePlayer();
+		} else {
+			currPlayer.jail[1]++;
+			messageDisplay.innerText = 'You did not roll a double, good luck next turn';
+		}
 	}
 
 	afterJailOption();
@@ -144,6 +160,7 @@ function updateBitcoin() {
 	p3.innerText = players[2].bitcoin.toFixed(2);
 	p4.innerText = players[3].bitcoin.toFixed(2);
 }
+
 function managePropList() {
 	const listParent = document.querySelector('.manage-list');
 	let counter = 0;
@@ -210,7 +227,7 @@ function managePropList() {
 		listParent.appendChild(node);
 		if (property.type === 'isp' || property.type === 'utility') {
 			document.querySelector(
-				`#${property.name}-server` === '5G' ? '5g' : `#${property.name}-server`
+				`#${property.name}` === '5G' ? '5g-server' : `#${property.name}-server`
 			).style.display = 'none';
 		}
 	}
@@ -220,6 +237,7 @@ function managePropList() {
 		};
 	});
 }
+
 function endTurn() {
 	currPlayer.diceRolled = false;
 	currPlayer.doubleCount = 0;
@@ -233,9 +251,12 @@ function endTurn() {
 	`;
 	if (checkJail()) {
 		if (currPlayer.getOutJail[0] === false) {
-			document.querySelector('#get-out-jail').classList.add('.no-click');
+			console.log(document.querySelector('#get-out-jail'));
+			document.querySelector('#get-out-jail').classList.remove('yellow');
+			document.querySelector('#get-out-jail').classList.add('no-click');
 		} else {
-			document.querySelector('#get-out-jail').classList.remove('.no-click');
+			document.querySelector('#get-out-jail').classList.remove('no-click');
+			document.querySelector('#get-out-jail').classList.add('yellow');
 		}
 		manageModal.style.display = 'flex';
 		manageContent.style.display = 'none';
@@ -257,13 +278,3 @@ export {
 	updateBitcoin,
 	managePropList,
 };
-
-// dice roll start
-//Generates a random number from 1-6
-// const firstRandom = Math.floor(Math.random() * 6) + 1;
-
-// const firstDiceImg = './../assets/dice' + firstRandom + '.png';
-// console.log(firstDiceImg)
-
-// document.querySelector('#dice1').setAttribute('src', firstDiceImg)
-// dice roll end

@@ -1,6 +1,8 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
 import { currPlayer, players } from './../game.js';
+import {$, makeMoveHappen} from "../dom.js";
+import {updateBitcoin} from "./../game.js";
 
 let communityCards = [];
 
@@ -23,17 +25,49 @@ function randomize() {
 }
 let cardCounter = 0;
 // returns a random card from community chest
-function landOnCommunity(allGameObjects) {
+function landOnCommunity() {
 	if (cardCounter === 32) cardCounter = 0;
 	if (cardCounter < 16) {
 		const communityCard = community.pop();
-		communityCard.action(allGameObjects);
-		communityCards.push(communityCard);
-		cardCounter++;
+
+		let wait = currPlayer.rolledNumber * 300 + 500;
+		let chanceModalContent = $('#chance-modal-content ');
+		let chanceModal = $('#chance-modal');
+
+		setTimeout(() => {
+			communityCard.action();
+			communityCards.push(communityCard);
+			cardCounter++;
+
+			$('#chance-modal').style.display = 'flex';
+			$('#manage-content').style.display = 'none';
+			chanceModalContent.style.display = 'flex';
+			chanceModalContent.style.background = `url(../assets/Cards/comm${communityCard.id}.jpg) no-repeat`;
+			chanceModalContent.style.backgroundSize = '100%';
+
+			if (currPlayer.jail[0] === true) {
+				makeMoveHappen('jail');
+			} else if (currPlayer.position === 0) {
+				makeMoveHappen('direct', 39, 40);
+			} else {
+				makeMoveHappen('direct', currPlayer.position - 1, currPlayer.position);
+			}
+			updateBitcoin();
+
+			$('#close-chance').onclick = () => {
+				chanceModal.style.display = 'none';
+			};
+
+			window.onclick = (e) => {
+				if (e.target === chanceModal) {
+					chanceModal.style.display = 'none';
+				}
+			};
+		}, wait);
 	}
 	if (32 > cardCounter > 15) {
 		const communityCard = community.shift();
-		communityCard.action(allGameObjects);
+		communityCard.action();
 		community.push(communityCard);
 		cardCounter++;
 	}
@@ -60,8 +94,7 @@ card3.action = () => {
 
 // From sale of stock you get $0.5
 let card4 = new Community(4);
-card4.action = (allGameObjects) => {
-	const { currPlayer } = allGameObjects;
+card4.action = () => {
 	currPlayer.bitcoin += 0.5;
 };
 
@@ -130,6 +163,8 @@ let card14 = new Community(14);
 card14.action = () => {
 	currPlayer.bitcoin += 0.25;
 };
+
+// Power outtage pay per house and per hotel
 let card15 = new Community(15);
 card15.action = () => {
 	let amt = 0;
@@ -149,11 +184,15 @@ card15.action = () => {
 	currPlayer.bitcoin -= amt;
 };
 
+
+// second prize receive .1
 let card16 = new Community(16);
 card16.action = () => {
 	//FIXME: cannot read property "bitcoin" of undefined
 	currPlayer.bitcoin += 0.1;
 };
+
+// inherit 1
 let card17 = new Community(17);
 card17.action = () => {
 	currPlayer.bitcoin += 1;
