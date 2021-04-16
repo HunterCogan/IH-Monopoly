@@ -201,7 +201,7 @@ function endTurn() {
 	document.querySelector('#game-status span').innerHTML = `
 		${currPlayer.name}'s turn!
 	`;
-	if (!checkJail()) {
+	if (checkJail()) {
 		if (currPlayer.getOutJail[0] === false) {
 			document.querySelector('#get-out-jail').classList.add('.no-click');
 		} else {
