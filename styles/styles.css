@@ -390,7 +390,7 @@ div.p-select-btn {
 
 /*chance modal*/
 #chance-modal {
-	cursor: pointer;
+	cursor: default;
 }
 
 #chance-modal-content {
@@ -1097,8 +1097,6 @@ div.disabled {
 
 #end-turn {
 	margin-bottom: 15px;
-	background-color: #8b1641;
-	color: #d49fa3;
 }
 
 #dice1,

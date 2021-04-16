@@ -22,13 +22,14 @@ class Character {
 	}
 	rollDice() {
 		//chance debugging
-		this.rolledNumber = 7;
-		let dice1 = 3;
-		let dice2 = 4;
+		// this.rolledNumber = 7;
+		// let dice1 = 3;
+		// let dice2 = 4;
 
-		// this.rolledNumber = this.dice() + this.dice();
-		// let dice1 = this.dice();
-		// let dice2 = this.dice();
+		//normal
+		this.rolledNumber = this.dice() + this.dice();
+		let dice1 = this.dice();
+		let dice2 = this.dice();
 
 		console.log('test123');
 

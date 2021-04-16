@@ -1,6 +1,6 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
-import { players, currPlayer } from './../game.js';
+import { players, currPlayer, updateBitcoin } from './../game.js';
 import {$, makeMoveHappen} from './../dom.js';
 
 // all the chance cards before shuffling
@@ -45,7 +45,14 @@ function landOnChance() {
 			chanceModalContent.style.background = `url(../assets/Cards/chance${chanceCard.id}.jpg) no-repeat`;
 			chanceModalContent.style.backgroundSize = '100%';
 
-			makeMoveHappen('direct', currPlayer.position - 1, currPlayer.position);
+			if (currPlayer.jail[0] === true) {
+				makeMoveHappen('jail', 10, 10);
+			} else if (currPlayer.position === 0){
+				makeMoveHappen('direct', 39, 40);
+			} else {
+				makeMoveHappen('direct', currPlayer.position - 1, currPlayer.position);
+			}
+			updateBitcoin();
 
 			$('#close-chance').onclick = () => {
 				chanceModal.style.display = 'none';

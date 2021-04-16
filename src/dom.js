@@ -329,11 +329,26 @@ let endTurn = $('#end-turn');
 diceBtn.onclick = () => {
 	diceBtn.style.backgroundColor = '#8d9491';
 	diceBtn.classList.add('no-click');
+
+	let wait = 0;
+	setTimeout(() => {
+		wait = (currPlayer.rolledNumber * 300 );
+		setTimeout(() => {
+			endTurn.style.backgroundColor = '#8b1641';
+			endTurn.style.color = '#d49fa3';
+			endTurn.classList.remove('no-click');
+		}, wait)
+	}, 500);
+
 };
 
 endTurn.onclick = () => {
 	diceBtn.style.backgroundColor = '#04a55c';
 	diceBtn.classList.remove('no-click');
+
+	endTurn.style.backgroundColor = '#8d9491';
+	endTurn.style.color = '#c9e8df';
+	endTurn.classList.add('no-click');
 };
 
 const makeMoveHappen = (type, s, e) => {
@@ -359,11 +374,14 @@ const makeMoveHappen = (type, s, e) => {
 	//move directly, forced
 	if (type === 'direct') {
 		movePiece(piece, s, e);
+	} else if (type === 'jail') {
+		//else if jail
+		piece.style.transform = `translate(-692px, -20px)`;
 	} else {
+		//else normal
 		let roll = currPlayer.rolledNumber;
 		let start = currPlayer.position;
 		let end = start + roll;
-
 
 		movePiece(piece, start, end);
 	}
