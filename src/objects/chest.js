@@ -163,6 +163,8 @@ let card14 = new Community(14);
 card14.action = () => {
 	currPlayer.bitcoin += 0.25;
 };
+
+// Power outtage pay per house and per hotel
 let card15 = new Community(15);
 card15.action = () => {
 	let amt = 0;
@@ -182,11 +184,15 @@ card15.action = () => {
 	currPlayer.bitcoin -= amt;
 };
 
+
+// second prize receive .1
 let card16 = new Community(16);
 card16.action = () => {
 	//FIXME: cannot read property "bitcoin" of undefined
 	currPlayer.bitcoin += 0.1;
 };
+
+// inherit 1
 let card17 = new Community(17);
 card17.action = () => {
 	currPlayer.bitcoin += 1;
