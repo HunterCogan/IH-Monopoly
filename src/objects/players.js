@@ -29,16 +29,16 @@ class Character {
 		// let dice2 = 1;
 
 		//normal
-		let dice1 = 3;
-		let dice2 = 4;
+		let dice1 = this.dice();
+		let dice2 = this.dice();
 		this.rolledNumber = dice1 + dice2;
 
-		const firstDiceImg = './../../assets/dice' + dice1 + '.png';
+		const firstDiceImg = './assets/dice' + dice1 + '.png';
 
 		document.querySelector('#dice1').style.display = 'flex';
 		document.querySelector('#dice1').setAttribute('src', firstDiceImg);
 
-		const secondDiceImg = './../../assets/dice' + dice2 + '.png';
+		const secondDiceImg = './assets/dice' + dice2 + '.png';
 
 		document.querySelector('#dice2').style.display = 'flex';
 		document.querySelector('#dice2').setAttribute('src', secondDiceImg);
