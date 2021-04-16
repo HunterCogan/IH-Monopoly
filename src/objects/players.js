@@ -25,8 +25,8 @@ class Character {
 	rollDice() {
 		//chance debugging
 		// this.rolledNumber = 7;
-		let dice1 = 1;
-		let dice2 = 1;
+		let dice1 = this.dice();
+		let dice2 = this.dice();
 
 		//normal
 		// let dice1 = this.dice();
@@ -48,6 +48,18 @@ class Character {
 			this.diceRolled = true;
 			makeMoveHappen();
 			this.movePlayer();
+
+			if (this.position === 30) {
+				console.log('landed on 30')
+				let wait = (currPlayer.rolledNumber * 300)+ 500;
+				setTimeout(() => {
+					makeMoveHappen('jail');
+					this.position = 10;
+					currPlayer.position = 10;
+				}, wait)
+				this.diceRolled = true;
+				this.jail = [true, 0];
+			}
 		}
 		if (dice1 === dice2) {
 			console.log('You rolled a double, roll again');
@@ -59,14 +71,27 @@ class Character {
 				this.diceRolled = true;
 				this.jail = [true, 0];
 				this.position = 10;
-			} else {
+			} 
+			else {
 				makeMoveHappen();
 				this.movePlayer();
+				if (this.position === 30) {
+					console.log('landed on 30')
+					let wait = (currPlayer.rolledNumber * 300) + 500;
+					setTimeout(() => {
+						makeMoveHappen('jail');
+						this.position = 10;
+					}, wait)
+					this.diceRolled = true;
+					this.jail = [true, 0];
+				} 
+			
 				console.log('TESTTEST' + this.position);
 			}
 			console.log(`Double count = ${this.doubleCount}`);
 		}
 	}
+
 
 	dice() {
 		return Math.round(Math.random() * 5) + 1;
@@ -126,7 +151,7 @@ class Character {
 		} else if (this.position === 10 || this.position === 20) {
 			return false;
 		} else if (this.position === 30) {
-			this.position = 10;
+			// this.position = 10;
 			this.jail[0] = true;
 		} else {
 			console.log(

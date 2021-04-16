@@ -448,7 +448,7 @@ const makeMoveHappen = (type, s, e) => {
 	let pos = '';
 	let piece;
 	let wait = 0;
-	wait = currPlayer.rolledNumber * 300 + 500;
+	wait = (currPlayer.rolledNumber * 300) + 500;
 
 	players.forEach((e, i) => {
 		if (e.name === currPlayer.name) {
