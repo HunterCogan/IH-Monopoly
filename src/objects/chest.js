@@ -1,8 +1,8 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
 import { currPlayer, players } from './../game.js';
-import {$, makeMoveHappen} from "../dom.js";
-import {updateBitcoin} from "./../game.js";
+import { $, makeMoveHappen } from '../dom.js';
+import { updateBitcoin } from './../game.js';
 
 let communityCards = [];
 
@@ -180,15 +180,13 @@ card15.action = () => {
 			}
 		}
 	}
-	//TODO:check for broke-ness
+
 	currPlayer.bitcoin -= amt;
 };
-
 
 // second prize receive .1
 let card16 = new Community(16);
 card16.action = () => {
-	//FIXME: cannot read property "bitcoin" of undefined
 	currPlayer.bitcoin += 0.1;
 };
 

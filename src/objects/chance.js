@@ -1,7 +1,7 @@
 //properties is an OBJECT of OBJECTS
 import { properties } from './tiles.js';
 import { players, currPlayer, updateBitcoin } from './../game.js';
-import { $, makeMoveHappen, landingModalHandle } from './../dom.js';
+import { $, makeMoveHappen } from './../dom.js';
 
 // all the chance cards before shuffling
 let chanceCards = [];
@@ -212,7 +212,6 @@ card10.action = () => {
 	).innerText = `${currPlayer.name} paid $0.25 per server and $1 per Quantum Computer`;
 };
 
-
 // Take a trip to Charter ISP–If you pass Go, collect $2
 let card11 = new Chance(11);
 card11.action = () => {
@@ -251,8 +250,6 @@ card14.action = () => {
 		'#game-status span'
 	).innerText = `${currPlayer.name} received $1.5`;
 };
-
-
 
 chanceCards.push(
 	card1,

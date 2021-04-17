@@ -392,11 +392,22 @@ endTurn.onclick = () => {
 };
 
 const landingModalHandle = () => {
+	console.log(properties[currPlayer.position]);
 	propIds.forEach((e, i) => {
 		// DICKY -- added to check if currPlayer owns property already, if so, don't display anything
 		if (currPlayer.position === e) {
 			if (properties[currPlayer.position].owner) {
 				if (properties[currPlayer.position].owner.name !== currPlayer.name) {
+					let prop = properties[currPlayer.position].name.toLowerCase();
+					//===========================DICKY====================//
+					let companyName = $('#prop-landed-on');
+					// set company name on modal
+					companyName.innerText = properties[currPlayer.position].name;
+					//===================================================//
+					let cost = properties[currPlayer.position].cost.toFixed(1);
+					$('#buy-prop').innerHTML = `Buy Property? ( ₿ ${cost} )`;
+					console.log(`url('assets/Cards/${prop}.jpg')`);
+					$('#landing-img').style.backgroundImage = `url('assets/Cards/${prop}.jpg')`;
 					manageModal.style.display = 'flex';
 					$('#manage-content').style.display = 'none';
 					$('#landing-modal').style.display = 'flex';
@@ -421,12 +432,6 @@ const landingModalHandle = () => {
 				}
 			} else {
 				let prop = properties[currPlayer.position].name.toLowerCase();
-				manageModal.style.display = 'flex';
-				$('#manage-content').style.display = 'none';
-				$('#landing-modal').style.display = 'flex';
-				$('#buy-prop').style.display = 'flex';
-				$('#dont-buy-prop').style.display = 'flex';
-				$('#pay-rent').style.display = 'none';
 				//===========================DICKY====================//
 				let companyName = $('#prop-landed-on');
 				// set company name on modal
@@ -434,8 +439,14 @@ const landingModalHandle = () => {
 				//===================================================//
 				let cost = properties[currPlayer.position].cost.toFixed(1);
 				$('#buy-prop').innerHTML = `Buy Property? ( ₿ ${cost} )`;
-
+				console.log(`url('assets/Cards/${prop}.jpg')`);
 				$('#landing-img').style.backgroundImage = `url('assets/Cards/${prop}.jpg')`;
+				manageModal.style.display = 'flex';
+				$('#manage-content').style.display = 'none';
+				$('#landing-modal').style.display = 'flex';
+				$('#buy-prop').style.display = 'flex';
+				$('#dont-buy-prop').style.display = 'flex';
+				$('#pay-rent').style.display = 'none';
 
 				$('#buy-prop').onclick = () => {
 					//Dicky -- calls the buy function for currPlayer to buy

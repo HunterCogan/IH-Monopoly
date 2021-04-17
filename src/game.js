@@ -8,33 +8,36 @@ import { makeMoveHappen, handleServerBuy, startOutput as nameList } from './dom.
 
 const slider = document.getElementById('myRange');
 const output = document.getElementById('value');
-const gameMusic = new Audio('./assets/sounds/gameMusic1.mp3')
+const gameMusic = new Audio('./assets/sounds/gameMusic1.mp3');
 
 gameMusic.play();
 
 output.innerHTML = slider.value;
 
 slider.oninput = function () {
-    output.innerHTML = this.value
-}
+	output.innerHTML = this.value;
+};
 
 slider.addEventListener('mousemove', function () {
-    let x = slider.value;
-    let color = 'linear-gradient(90deg, rgb(117, 252, 117)' + x + '%, rgb(214,214,214)' + x + '%)';
-    slider.style.background = color;
-})
+	let x = slider.value;
+	let color =
+		'linear-gradient(90deg, rgb(117, 252, 117)' + x + '%, rgb(214,214,214)' + x + '%)';
+	slider.style.background = color;
+});
 
+let volume = document.querySelector('#myRange');
+volume.addEventListener('change', function (e) {
+	gameMusic.volume = e.currentTarget.value / 100;
+});
 
-let volume = document.querySelector("#myRange");
-volume.addEventListener("change", function(e) {
-gameMusic.volume = e.currentTarget.value / 100;
-})
-
-gameMusic.addEventListener('ended', function() {
-    this.currentTime = 0;
-    this.play();
-}, false);
-
+gameMusic.addEventListener(
+	'ended',
+	function () {
+		this.currentTime = 0;
+		this.play();
+	},
+	false
+);
 
 // pass this to almost all functions, destructure what you need
 
@@ -74,7 +77,6 @@ function startGame() {
 	createPlayers(nameList.slice(1));
 	currPlayer = players[index];
 	console.log('Game Started');
-
 
 	document.querySelector('#game-status span').innerHTML = `
 		${currPlayer.name}'s turn!
@@ -132,7 +134,6 @@ function rollJail() {
 	}
 	// if player is on third turn and double false subtract money
 	if (dice1 !== dice2) {
-
 		if (currPlayer.jail[1] === 3) {
 			messageDisplay.innerText = 'You did not roll a double, you loose bitcoins';
 			currPlayer.jail = [false, 0];
@@ -271,9 +272,9 @@ function managePropList() {
 }
 
 function endTurn() {
-	console.log(currPlayer)
-	console.log(properties)
-	console.log('============================================')
+	console.log(currPlayer);
+	console.log(properties);
+	console.log('============================================');
 	currPlayer.diceRolled = false;
 	currPlayer.doubleCount = 0;
 	index < nameList[0] ? index++ : (index = 0);

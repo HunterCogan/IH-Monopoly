@@ -8,7 +8,6 @@ import {
 	rollJail,
 } from './game.js';
 import { properties } from './objects/tiles.js';
-import { makeMoveHappen } from './dom.js';
 
 //TODO: on PLAY button click make players
 // play button
